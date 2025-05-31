@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "title": "EXPERIENCES THAT INSPIRE, CONNECT AND EMPOWER",
+    "image_url": "/assets/images/Hero-Image.png"
+  },
+  "mission": {
+    "sub_title": "MISSION",
+    "content": "Our job is to create joy, for it to be contagious, impactful, and memorable. We are a creative machine engineered to bring the most complex and fun projects to life. A solution partner; through research, work & creativity. We bring an idea to a reality."
+  },
+  "bbr_events": {
+    "sub_title": "EVENTS",
+    "title": "",
+    "events": [
+      {
+        "title": "LIFE IS A SUCCESSION OF MOMENTS",
+        "bbr_events_logo": "/assets/logo/bbr-events-logo.svg",
+        "bbr_events_vector": "/assets/logo/bbr-events-vector.svg",
+        "bbr_events_image": "/assets/images/bbr-events-image.png",
+        "alt": "bbr events"
+      },
+      {
+        "title": "EVERYTHING CAN BE VIEWED AS EXTRAORDINARY",
+        "bbr_events_logo": "/assets/logo/bbr-pr-logo.svg",
+        "bbr_events_vector": "/assets/logo/bbr-pr-vector.svg",
+        "bbr_events_image": "/assets/images/bbr-pr-image.png",
+        "alt": "bbr pr"
+      },
+      {
+        "title": "THE EXPERTISE TO CONNECT, INSPIRE AND EMPOWER",
+        "bbr_events_logo": "/assets/logo/bbr-digital-logo.svg",
+        "bbr_events_vector": "/assets/logo/bbr-digital-vector.svg",
+        "bbr_events_image": "/assets/images/bbr-digital-image.png",
+        "alt": "bbr digital"
+      }
+    ]
+  },
+  "mission_secondary": {
+    "title": "WE ARE BBR",
+    "sub_title": "MISSION",
+    "content": "Life is a succession of moments, where in the ordinary lives the extraordinary, with the power to inspire, connect and empower consumers.",
+    "items": [
+      {
+        "icon": "assets/icons/events.svg",
+        "label": "EVENTS",
+        "link": "/events"
+      },
+      { "icon": "assets/icons/pr.svg", "label": "PR", "link": "/pr" },
+      {
+        "icon": "assets/icons/digital.svg",
+        "label": "DIGITAL",
+        "link": "/digital"
+      }
+    ]
+  },
+  "owned_events": {
+    "sub_title": "BBR OWNED EVENTS",
+    "title": "PROUDLY OWNED & PRODUCED",
+    "events": [
+      {
+        "name": "Bastille",
+        "name_mobile": "Bastille Festival",
+        "url": "/bastille",
+        "logo": "/assets/logo/mov-in-bed.svg",
+        "image": "/assets/images/bastille.png",
+        "stats": [
+          { "name": "Visitors over 4 days", "number": "100K" },
+          { "name": "Years running", "number": "11" },
+          { "name": "Combined followers", "number": "100" }
+        ]
+      },
+      {
+        "name": "Mov’in Bed",
+        "name_mobile": "Mov’in Bed",
+        "url": "/Mov-in-Bed",
+        "logo": "/assets/logo/mov-in-bed.svg",
+        "image": "/assets/images/Mov-in-Bed.png",
+        "stats": [
+          { "name": "Visitors over 4 days", "number": "200K" },
+          { "name": "Years running", "number": "12" },
+          { "name": "Combined followers", "number": "200K" }
+        ]
+      },
+      {
+        "name": "Rachlete Igloo",
+        "name_mobile": "Rachlete Igloo",
+        "url": "/Rachlete-Igloo",
+        "logo": "/assets/logo/mov-in-bed.svg",
+        "image": "/assets/images/Rachlete-Igloo.png",
+        "stats": [
+          { "name": "Visitors over 4 days", "number": "300K" },
+          { "name": "Years running", "number": "13" },
+          { "name": "Combined followers", "number": "300" }
+        ]
+      },
+      {
+        "name": "Christmas-in-July",
+        "name_mobile": "Christmas in July",
+        "url": "/Christmas-in-July",
+        "logo": "/assets/logo/mov-in-bed.svg",
+        "image": "/assets/images/Christmas-in-July.png",
+        "stats": [
+          { "name": "Visitors over 4 days", "number": "400" },
+          { "name": "Years running", "number": "14" },
+          { "name": "Combined followers", "number": "400K" }
+        ]
+      },
+      {
+        "name": "Ghost",
+        "name_mobile": "Ghost Festival",
+        "url": "/Ghost",
+        "logo": "/assets/logo/mov-in-bed.svg",
+        "image": "/assets/images/Ghost.png",
+        "stats": [
+          { "name": "Visitors over 4 days", "number": "500K" },
+          { "name": "Years running", "number": "15" },
+          { "name": "Combined followers", "number": "500" }
+        ]
+      }
+    ]
+  },
+  "partners": {
+    "title": "PARTNERS & SPONSORS",
+    "logos": [
+      "/assets/logo/Sponsor-Logos--43.svg",
+      "/assets/logo/Sponsor-Logos--44.svg",
+      "/assets/logo/Sponsor-Logos--45.svg",
+      "/assets/logo/Sponsor-Logos--46.svg",
+      "/assets/logo/Sponsor-Logos--47.svg",
+      "/assets/logo/Sponsor-Logos--48.svg",
+      "/assets/logo/Sponsor-Logos--49.svg",
+      "/assets/logo/Sponsor-Logos--50.svg",
+      "/assets/logo/Sponsor-Logos--51.svg",
+      "/assets/logo/Sponsor-Logos--52.svg",
+      "/assets/logo/Sponsor-Logos--53.svg",
+      "/assets/logo/Sponsor-Logos--54.svg",
+      "/assets/logo/Sponsor-Logos--55.svg",
+      "/assets/logo/Sponsor-Logos--56.svg",
+      "/assets/logo/Sponsor-Logos--57.svg",
+      "/assets/logo/Sponsor-Logos--58.svg",
+      "/assets/logo/Sponsor-Logos--59.svg",
+      "/assets/logo/Sponsor-Logos--60.svg",
+      "/assets/logo/Sponsor-Logos--61.svg",
+      "/assets/logo/Sponsor-Logos--62.svg",
+      "/assets/logo/Sponsor-Logos--63.svg",
+      "/assets/logo/Sponsor-Logos--64.svg"
+    ]
+  },
+  "latest": {
+    "title": "LATEST",
+    "items": []
+  }
+}
