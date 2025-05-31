@@ -60,7 +60,7 @@
         "name": "Bastille",
         "name_mobile": "Bastille Festival",
         "url": "/bastille",
-        "logo": "/assets/logo/bastille.svg",
+        "logo": "/assets/logo/event-bast.svg",
         "image": "/assets/images/bastille.png",
         "stats": [
           { "name": "Visitors over 4 days", "number": "100K" },
@@ -72,7 +72,7 @@
         "name": "Mov’in Bed",
         "name_mobile": "Mov’in Bed",
         "url": "/Mov-in-Bed",
-        "logo": "/assets/logo/bastille.svg",
+        "logo": "/assets/logo/event-bast.svg",
         "image": "/assets/images/Mov-in-Bed.png",
         "stats": [
           { "name": "Visitors over 4 days", "number": "200K" },
@@ -84,7 +84,7 @@
         "name": "Rachlete Igloo",
         "name_mobile": "Rachlete Igloo",
         "url": "/Rachlete-Igloo",
-        "logo": "/assets/logo/bastille.svg",
+        "logo": "/assets/logo/event-bast.svg",
         "image": "/assets/images/Rachlete-Igloo.png",
         "stats": [
           { "name": "Visitors over 4 days", "number": "300K" },
@@ -96,7 +96,7 @@
         "name": "Christmas-in-July",
         "name_mobile": "Christmas in July",
         "url": "/Christmas-in-July",
-        "logo": "/assets/logo/bastille.svg",
+        "logo": "/assets/logo/event-bast.svg",
         "image": "/assets/images/Christmas-in-July.png",
         "stats": [
           { "name": "Visitors over 4 days", "number": "400" },
@@ -108,7 +108,7 @@
         "name": "Ghost",
         "name_mobile": "Ghost Festival",
         "url": "/Ghost",
-        "logo": "/assets/logo/bastille.svg",
+        "logo": "/assets/logo/event-bast.svg",
         "image": "/assets/images/Ghost.png",
         "stats": [
           { "name": "Visitors over 4 days", "number": "500K" },
