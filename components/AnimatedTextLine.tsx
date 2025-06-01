@@ -7,12 +7,14 @@ interface AnimatedTextLinesProps {
   children: React.ReactNode;
   stagger?: number;
   className?: string;
+  delay?: number;
 }
 
 export default function AnimatedTextLines({
   children,
   stagger = 0.1,
   className = "", // не забудь дефолт
+  delay = 0,
 }: AnimatedTextLinesProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +38,7 @@ export default function AnimatedTextLines({
               y: 0,
               opacity: 1,
               duration: 1,
+              delay: delay,
               ease: "power3.out",
               stagger,
             });
@@ -51,10 +54,7 @@ export default function AnimatedTextLines({
   }, [stagger]);
 
   return (
-    <div
-      ref={wrapperRef}
-      className={`overflow-hidden w-full ${className}`}
-    >
+    <div ref={wrapperRef} className={`overflow-hidden w-full ${className}`}>
       {Array.isArray(children) ? (
         children.map((child, i) => (
           <div key={i} data-line className="overflow-hidden w-full">
@@ -69,4 +69,3 @@ export default function AnimatedTextLines({
     </div>
   );
 }
-

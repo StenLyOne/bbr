@@ -39,14 +39,13 @@ export default function OwnedEventsDesktop({ data }: Props) {
     if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)
       return;
 
-    const total = data.events.length;
-
+    const baseShift = 40;
     const tl = gsap.timeline({
       scrollTrigger: {
         id: "owned-events",
         trigger: wrapperRef.current,
         start: "top top",
-        end: `+=${total * 200}%`,
+        end: `+=${total * baseShift * 5}%`,
         scrub: true,
         pin: true,
         pinSpacing: false,
@@ -57,30 +56,22 @@ export default function OwnedEventsDesktop({ data }: Props) {
     ScrollTrigger.create({
       trigger: wrapperRef.current,
       start: "top top",
-      end: `+=${total * 200}%`,
+      end: `+=${total * baseShift * 5}%`,
       scrub: true,
       onUpdate: (self) => {
         const newIndex = Math.min(total - 1, Math.floor(self.progress * total));
-        setActiveIndex((prev) => {
-          if (prev !== newIndex) {
-            console.log("activeIndex updated:", newIndex); // ← СЮДА
-            return newIndex;
-          }
-          return prev;
-        });
+        setActiveIndex((prev) => (prev !== newIndex ? newIndex : prev));
       },
     });
 
-    ScrollTrigger.refresh();
-
-    const totalScrollDuration = total * 20;
+    const totalScrollDuration = total * baseShift;
 
     const steps = data.events.flatMap((_, i) => {
-      const base = i * 20;
+      const base = i * baseShift;
 
       return [
         {
-          range: [base + 2, base + 7],
+          range: [base + 2, base + 12],
           animation: (duration: number) =>
             gsap.fromTo(
               `.logo-line-${i}`,
@@ -89,7 +80,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
             ),
         },
         {
-          range: [base + 2, base + 7],
+          range: [base + 2, base + 12],
           animation: (duration: number) =>
             gsap.fromTo(
               `.image-${i}`,
@@ -98,7 +89,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
             ),
         },
         {
-          range: [base + 13, base + 16],
+          range: [base + 18, base + 19],
           animation: (duration: number) =>
             gsap.to(`.logo-line-${i}`, {
               y: -100,
@@ -108,7 +99,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
             }),
         },
         {
-          range: [base + 15, base + 18],
+          range: [base + 20, base + 24],
           animation: (duration: number) => {
             const lines = gsap.utils.toArray<HTMLElement>([
               `.stat-line-${i}-0`,
@@ -120,12 +111,12 @@ export default function OwnedEventsDesktop({ data }: Props) {
               opacity: 1,
               duration,
               ease: "power4.out",
-              stagger: 0.3, // ← Увеличенная задержка
+              stagger: 0.3,
             });
           },
         },
         {
-          range: [base + 18, base + 20],
+          range: [base + 35, base + 36],
           animation: (duration: number) =>
             gsap.to(`.stats-${i}`, { opacity: 0, y: -50, duration }),
         },
@@ -144,8 +135,8 @@ export default function OwnedEventsDesktop({ data }: Props) {
     ScrollTrigger.refresh();
 
     return () => {
-      tl.kill(); // уничтожить таймлайн
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // убрать все триггеры
+      tl.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [data.events, isDesktop]);
 
@@ -160,10 +151,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
       duration: 1,
       ease: "power2.inOut",
       onComplete: () => {
-        const total = data.events.length;
         const baseProgress = index / total;
-
-        // Добавляем 5% и ограничиваем максимумом 0.99
         const targetProgress = Math.min(baseProgress + 0.05, 0.99);
 
         gsap.to(timelineRef.current!, {
@@ -190,7 +178,6 @@ export default function OwnedEventsDesktop({ data }: Props) {
             <AnimatedTextLine stagger={0.1} className="w-full flex gap-[8px]">
               {data.events.map((event, index) => {
                 const isActive = activeIndex === index;
-                if (isActive) console.log("RENDER → active button:", index);
 
                 return (
                   <div key={index} className="w-full sm:w-auto flex" data-line>
@@ -199,6 +186,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
                         setActiveIndex(index);
                         scrollToEvent(index - 1);
                       }}
+                      className="hover:bg-blue text-blank"
                       style={{
                         width: "100%",
                         padding: "30px",

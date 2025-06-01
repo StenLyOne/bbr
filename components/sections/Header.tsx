@@ -6,7 +6,11 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useHeaderBgDetection } from "../../components/IntersectionObserver";
 import Image from "next/image";
 
-export default function Header() {
+export default function Header({
+  animationsReady,
+}: {
+  animationsReady: boolean;
+}) {
   const isDarkBackground = useHeaderBgDetection();
   const bbrRef = useRef(null);
   const groupRef = useRef(null);
@@ -41,9 +45,10 @@ export default function Header() {
   const logoEventsHeight = isDesktop ? 4 : 3;
 
   useEffect(() => {
+    if (!animationsReady) return;
+
     const images = [bbrRef.current, groupRef.current, prRef.current];
 
-    // Начальная анимация при загрузке
     gsap.set(images, { y: 30, opacity: 0 });
     gsap.to(images, {
       y: 0,
@@ -51,6 +56,7 @@ export default function Header() {
       duration: 0.6,
       ease: "power3.out",
       stagger: 0.15,
+      delay: 1,
     });
 
     let lastY = window.scrollY;
@@ -67,7 +73,6 @@ export default function Header() {
       }
 
       if (delta > 0 && !isHidden) {
-        // Скрываем при скролле вниз
         gsap.to(images, {
           y: 30,
           opacity: 0,
@@ -76,7 +81,6 @@ export default function Header() {
         });
         isHidden = true;
       } else if (delta < 0 && isHidden) {
-        // Показываем при скролле вверх
         gsap.to(images, {
           y: 0,
           opacity: 1,
@@ -100,13 +104,17 @@ export default function Header() {
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [animationsReady]); // 👈 обязательно добавь зависимость
 
   return (
     <header className="fixed top-0 left-0 w-full z-1000 px-[16px] md:px-[40px]">
       <div
         className={`w-full py-[30px] md:py-[40px] border-b-1 border-${border}`}
-        style={{ borderBottom: isDarkBackground ? "1px solid #fff" : "1px solid #21224b" }}
+        style={{
+          borderBottom: isDarkBackground
+            ? "1px solid #fff"
+            : "1px solid #21224b",
+        }}
       >
         <div className="flex items-end gap-[10px]">
           <span>

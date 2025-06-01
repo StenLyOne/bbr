@@ -19,6 +19,7 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [animationsReady, setAnimationsReady] = useState(false);
 
   // Принудительно прокручиваем в начало перед монтированием контента
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function Home() {
         duration: 1,
         ease: "power2.out",
         onComplete: () => {
+          setAnimationsReady(true); // ✅ запускаем флаг
           requestAnimationFrame(() => {
             ScrollTrigger.refresh();
           });
@@ -58,16 +60,16 @@ export default function Home() {
           showIntro ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <Header />
+        <Header animationsReady={animationsReady}/>
         <div className="pinned-section relative z-[101]" data-bg="dark">
-          <Hero data={data.hero} />
+          <Hero data={data.hero} animationsReady={animationsReady}/>
         </div>
 
         <div className="pinned-section relative z-[101]" data-bg="light">
           <Mission data={data.mission} />
         </div>
 
-        <div className="page-content relative z-[101]" data-bg="light">
+        <div className="page-content relative z-[1001]" data-bg="light">
           <Events data={data.bbr_events} />
         </div>
 
@@ -87,7 +89,7 @@ export default function Home() {
           <Latest data={data.latest} />
         </div>
 
-        <div className="footer-trigger h-[40vh]" />
+        <div className="footer-trigger h-[50vh]" />
         <footer className="fixed bottom-0 left-0 w-full">
           <Footer />
         </footer>

@@ -1,9 +1,18 @@
 import Image from "next/image";
 import AnimatedTextLine from "../AnimatedTextLine";
 
-export default function Hero({ data }: { data: any }) {
+export default function Hero({
+  data,
+  animationsReady,
+}: {
+  data: any;
+  animationsReady: boolean;
+}) {
   return (
-    <main className="relative w-full h-screen overflow-hidden px-[16px] md:px-[40px]" data-bg="dark"> 
+    <main
+      className="relative w-full h-screen overflow-hidden px-[16px] md:px-[40px]"
+      data-bg="dark"
+    >
       {/* Video */}
       {data.video_url ? (
         <video
@@ -27,9 +36,13 @@ export default function Hero({ data }: { data: any }) {
 
       {/* TEXT */}
       <div className="w-full relative z-10 flex items-center  h-full break-all">
-        <AnimatedTextLine>
-          <h1 className="text-blank max-w-[800px] mt-[272px]">{data.title}</h1>
-        </AnimatedTextLine>
+        {animationsReady && (
+          <AnimatedTextLine>
+            <h1 className="text-blank max-w-[800px] mt-[100px]">
+              {data.title}
+            </h1>
+          </AnimatedTextLine>
+        )}
       </div>
     </main>
   );

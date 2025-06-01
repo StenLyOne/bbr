@@ -319,6 +319,13 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-1 w-full h-[1px] bg-blue z-[3]"></div>
+             <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-1 block translate-y-full text-blue">
+                  01
+                </span>
+              </div>
+            </h4>
           </div>
           <div className="w-[45%] h-max absolute flex items-center gap-[16px] z-[5] ">
             <h4 className=" h-[11px]">
@@ -329,9 +336,16 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-2 w-full h-[1px] bg-blue z-[3]"></div>
+             <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-2 block translate-y-full text-blue">
+                  02
+                </span>
+              </div>
+            </h4>
           </div>
           <div className="w-[45%] h-max absolute flex items-center gap-[16px] z-[7] ">
-            <h4 className=" h-[11px]">
+            <h4 className="h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-3 block translate-y-full text-blue">
                   EVENTS
@@ -339,6 +353,13 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-3 w-full h-[1px] bg-blue z-[3]"></div>
+            <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-3 block translate-y-full text-blue">
+                  03
+                </span>
+              </div>
+            </h4>
           </div>
           {/* IMAGE */}
           <Image
