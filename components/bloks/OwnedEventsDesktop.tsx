@@ -3,6 +3,7 @@ import SubTitleLine from "../ui/SubTitleLine";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import AnimatedTextLine from "../AnimatedTextLine";
 
 interface Stat {
   name: string;
@@ -30,6 +31,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
   const wrapperHeight = total * 2.2 * 100;
 
@@ -51,6 +53,25 @@ export default function OwnedEventsDesktop({ data }: Props) {
         anticipatePin: 1,
       },
     });
+
+    ScrollTrigger.create({
+      trigger: wrapperRef.current,
+      start: "top top",
+      end: `+=${total * 200}%`,
+      scrub: true,
+      onUpdate: (self) => {
+        const newIndex = Math.min(total - 1, Math.floor(self.progress * total));
+        setActiveIndex((prev) => {
+          if (prev !== newIndex) {
+            console.log("activeIndex updated:", newIndex); // ← СЮДА
+            return newIndex;
+          }
+          return prev;
+        });
+      },
+    });
+
+    ScrollTrigger.refresh();
 
     const totalScrollDuration = total * 20;
 
@@ -159,20 +180,48 @@ export default function OwnedEventsDesktop({ data }: Props) {
       <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine title={data.sub_title} />
-          <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[118px] text-center text-blue">
-            {data.title}
-          </h2>
+          <AnimatedTextLine>
+            <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
+              {data.title}
+            </h2>
+          </AnimatedTextLine>
 
-          <div className="w-full flex gap-[8px] mb-[40px]">
-            {data.events.map((event, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToEvent(index)}
-                className="w-full py-[30px] rounded-[8px] border border-black text-blue text-[18px] font-zabal font-[600] leading-[55%]"
-              >
-                {event.name}
-              </button>
-            ))}
+          <div className="w-full mb-[20px] ">
+            <AnimatedTextLine stagger={0.1} className="w-full flex gap-[8px]">
+              {data.events.map((event, index) => {
+                const isActive = activeIndex === index;
+                if (isActive) console.log("RENDER → active button:", index);
+
+                return (
+                  <div key={index} className="w-full sm:w-auto flex" data-line>
+                    <button
+                      onClick={() => {
+                        setActiveIndex(index);
+                        scrollToEvent(index - 1);
+                      }}
+                      style={{
+                        width: "100%",
+                        padding: "30px",
+                        borderRadius: "8px",
+                        border: isActive
+                          ? "1px solid #6276fb"
+                          : "1px solid black",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                        fontFamily: "Zabal",
+                        lineHeight: "55%",
+                        cursor: "pointer",
+                        backgroundColor: isActive ? "#6276fb" : "transparent",
+                        color: isActive ? "#fff" : "#21224b",
+                        transition: "all 0.3s ease",
+                      }}
+                    >
+                      {event.name}
+                    </button>
+                  </div>
+                );
+              })}
+            </AnimatedTextLine>
           </div>
 
           <div className="w-full flex gap-[16px] relative">

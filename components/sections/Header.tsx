@@ -3,13 +3,33 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useHeaderBgDetection } from "../../components/IntersectionObserver";
 import Image from "next/image";
 
 export default function Header() {
+  const isDarkBackground = useHeaderBgDetection();
   const bbrRef = useRef(null);
   const groupRef = useRef(null);
   const prRef = useRef(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const logoDuck = isDarkBackground
+    ? "/assets/logo/logo-duck-light.svg"
+    : "/assets/logo/logo-duck-dark.svg";
+
+  const logoBBR = isDarkBackground
+    ? "/assets/logo/logo-bbr-light.svg"
+    : "/assets/logo/logo-bbr-dark.svg";
+
+  const logoGroup = isDarkBackground
+    ? "/assets/logo/logo-group-light.svg"
+    : "/assets/logo/logo-group-dark.svg";
+
+  const logoEvents = isDarkBackground
+    ? "/assets/logo/logo-events-pr-digital-light.svg"
+    : "/assets/logo/logo-events-pr-digital-dark.svg";
+
+  const border = isDarkBackground ? "white" : "blue";
 
   const duckWidth = isDesktop ? 56 : 42;
   const duckHeight = isDesktop ? 55 : 41;
@@ -84,11 +104,14 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-1000 px-[16px] md:px-[40px]">
-      <div className="w-full py-[30px] md:py-[40px] border-b-1 border-white">
+      <div
+        className={`w-full py-[30px] md:py-[40px] border-b-1 border-${border}`}
+        style={{ borderBottom: isDarkBackground ? "1px solid #fff" : "1px solid #21224b" }}
+      >
         <div className="flex items-end gap-[10px]">
           <span>
             <Image
-              src="/assets/logo/logo-duck.svg"
+              src={logoDuck}
               width={duckWidth}
               height={duckHeight}
               alt="duck"
@@ -96,21 +119,21 @@ export default function Header() {
           </span>
           <span className="space-y-[4px]">
             <Image
-              src="/assets/logo/logo-bbr.svg"
+              src={logoBBR}
               width={logoBBRWidth}
               height={logoBBRHeight}
               alt="BBR"
               ref={bbrRef}
             />
             <Image
-              src="/assets/logo/logo-group.svg"
+              src={logoGroup}
               width={logoGroupWidth}
               height={logoGroupHeight}
               alt="Group"
               ref={groupRef}
             />
             <Image
-              src="/assets/logo/logo-events-pr-digital.svg"
+              src={logoEvents}
               width={logoEventsWidth}
               height={logoEventsHeight}
               alt="Events"

@@ -292,12 +292,12 @@ export default function Events({ sub_title, events }: Props) {
           <img
             src={events[0].bbr_events_vector}
             alt={events[0].alt}
-            className={`large-logo-1 absolute top-[100%] left-[70%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply`}
+            className={`large-logo-1 absolute top-[30%] left-[20%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply`}
           />
           <img
             src={events[1].bbr_events_vector}
             alt={events[1].alt}
-            className={`large-logo-2 absolute top-[46%] left-[25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
+            className={`large-logo-2 absolute top-[0%] left-[-25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
           />
           <Image
             src={events[2].bbr_events_vector}

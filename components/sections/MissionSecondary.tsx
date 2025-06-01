@@ -1,5 +1,6 @@
 import SubTitleLine from "../ui/SubTitleLine";
 import SquareIcons from "../ui/SquareIcons";
+import AnimatedTextLine from "../AnimatedTextLine";
 
 export default function MissionSecondary({ data }: { data: any }) {
   return (
@@ -8,9 +9,11 @@ export default function MissionSecondary({ data }: { data: any }) {
         <div className="px-[16px] md:px-[0px]">
           <SubTitleLine title={data.sub_title} />
         </div>
-        <p className="large max-w-[902px] px-[16px] md:px-[0px] mx-auto mt-[32px] mb-[67px] md:mt-[164px] md:mb-[164px]">
-          {data.content}
-        </p>
+        <AnimatedTextLine>
+          <p className="large max-w-[902px] px-[16px] md:px-[0px] mx-auto mt-[32px] mb-[67px] md:mt-[164px] md:mb-[164px] text-blue">
+            {data.content}
+          </p>
+        </AnimatedTextLine>
         <div className="mx-auto max-w-[910px] flex justify-between gap-[14px] pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide">
           {data.items.map((item: any, index: number) => (
             <SquareIcons
@@ -22,9 +25,11 @@ export default function MissionSecondary({ data }: { data: any }) {
           ))}
         </div>
         <div className="px-[16px] md:px-[0px] py-[64px] md:py-[164px]">
-          <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue mx-auto w-full">
-            {data.title}
-          </h2>
+          <AnimatedTextLine>
+            <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue mx-auto w-full">
+              {data.title}
+            </h2>
+          </AnimatedTextLine>
         </div>
       </div>
     </section>

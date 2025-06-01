@@ -2,7 +2,7 @@
 
 import SubTitleLine from "../ui/SubTitleLine";
 import { useEffect } from "react";
-import { gsap, ScrollTrigger } from "../../lib/gsap";
+import { gsap } from "../../lib/gsap";
 
 export default function Partners({ data }: { data: any }) {
   const logos = data.logos;
@@ -33,7 +33,7 @@ export default function Partners({ data }: { data: any }) {
   }, []);
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className=" bg-white overflow-hidden">
       <div className="px-[16px] md:px-[40px]">
         <SubTitleLine title={data.title} />
 

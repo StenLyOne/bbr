@@ -6,7 +6,7 @@ import EventsMobile from "../bloks/EventsMobile";
 export default function Events({ data }: any) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <section className="w-full bg-blank overflow-hidden ">
+    <section className="w-full  bg-blank overflow-hidden ">
       {isDesktop ? (
         <EventsDesktop sub_title={data.sub_title} events={data.events} />
       ) : (
