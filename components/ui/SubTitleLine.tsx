@@ -3,8 +3,17 @@
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 
+// Полифилл для Safari и старых браузеров
+const safeRequestIdleCallback = (cb: () => void) => {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(cb);
+  } else {
+    setTimeout(cb, 1); // fallback
+  }
+};
+
 export default function SubTitleLine({ title }: { title: string }) {
-  const titleRef = useRef<HTMLSpanElement>(null); // для текста внутри h4
+  const titleRef = useRef<HTMLSpanElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
   const trigerRef = useRef<HTMLDivElement>(null);
 
@@ -14,7 +23,7 @@ export default function SubTitleLine({ title }: { title: string }) {
     gsap.set(titleRef.current, { y: 30, opacity: 0 });
     gsap.set(lineRef.current, { scaleX: 0, transformOrigin: "left center" });
 
-    window.requestIdleCallback(() => {
+    safeRequestIdleCallback(() => {
       ScrollTrigger.create({
         trigger: trigerRef.current,
         start: "top 90%",
