@@ -44,7 +44,9 @@ export default function Hero({
           >
             {data.title}
           </HeroTitleFadeIn>
-        ) : null}
+        ) : (
+          <div></div>
+        )}
       </div>
     </main>
   );
