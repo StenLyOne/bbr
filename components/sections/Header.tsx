@@ -62,7 +62,7 @@ export default function Header({
       duration: 0.6,
       ease: "power3.out",
       stagger: 0.15,
-      delay: 1,
+      delay: 0.8,
     });
 
     let lastY = window.scrollY;

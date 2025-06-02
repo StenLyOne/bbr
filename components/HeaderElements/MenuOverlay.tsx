@@ -8,8 +8,8 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement[]>([]);
-  const servicesRef = useRef<HTMLDivElement[]>([]);
+  const aboutRef = useRef<(HTMLParagraphElement | null)[]>([]);
+  const servicesRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const arrowRef = useRef<(SVGSVGElement | null)[]>([]);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -44,7 +44,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
   }, [isOpen]);
 
   useEffect(() => {
-    const refsMap: Record<string, HTMLDivElement[]> = {
+    const refsMap: Record<string, (HTMLParagraphElement | null)[]> = {
       ABOUT: aboutRef.current,
       SERVICES: servicesRef.current,
     };
@@ -135,70 +135,80 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
       ref={overlayRef}
       className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] "
     >
-      <div className="flex flex-col justify-between h-full items-end space-y-6 text-right pt-[200px]">
-        <div className="flex gap-[21px]">
-          <div className="flex items-center justify-center gap-[8px]">
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M47.6258 0.374146L37.5077 21.6893C36.8156 23.1551 36.8156 24.8449 37.5077 26.3107L47.6258 47.6258L26.3107 37.5077C24.8449 36.8156 23.1551 36.8156 21.6893 37.5077L0.374146 47.6258L10.4922 26.3107C11.1844 24.8449 11.1844 23.1551 10.4922 21.6893L0.374146 0.374146L21.6893 10.4922C23.1551 11.1844 24.8449 11.1844 26.3107 10.4922L47.6258 0.374146Z"
-                fill="#6276FB"
-              />
-            </svg>
-            <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">EVENTS</p>
+      <div className="flex flex-col justify-between h-full md:items-end space-y-6 text-right md:pt-[200px]">
+        {isDesktop ? (
+          <div className="flex gap-[21px] ">
+            <div className="flex items-center justify-center gap-[8px]">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M47.6258 0.374146L37.5077 21.6893C36.8156 23.1551 36.8156 24.8449 37.5077 26.3107L47.6258 47.6258L26.3107 37.5077C24.8449 36.8156 23.1551 36.8156 21.6893 37.5077L0.374146 47.6258L10.4922 26.3107C11.1844 24.8449 11.1844 23.1551 10.4922 21.6893L0.374146 0.374146L21.6893 10.4922C23.1551 11.1844 24.8449 11.1844 26.3107 10.4922L47.6258 0.374146Z"
+                  fill="#6276FB"
+                />
+              </svg>
+              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+                EVENTS
+              </p>
+            </div>
+            <div className="flex items-center justify-cente gap-[8px]">
+              <svg
+                width="54"
+                height="42"
+                viewBox="0 0 54 42"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.340759 17.3355C0.340759 23.5245 1.60298 28.3901 4.14777 31.9732C6.69256 35.5562 11.0492 38.7118 17.2178 41.4398L21.8799 32.5229C18.0932 30.711 15.467 28.9194 14.0012 27.1279C12.5558 25.3364 11.7414 23.2191 11.5786 20.7965H21.8799V0.539917H0.340759V17.3355Z"
+                  fill="#E6E7E8"
+                />
+                <path
+                  d="M49.8523 10.0269C47.3075 6.44385 42.9508 3.28831 36.7822 0.560295L32.1201 9.47725C35.9272 11.2891 38.533 13.0807 39.9988 14.8722C41.4443 16.6637 42.2586 18.781 42.4215 21.2036H32.1201V41.4602H53.6593V24.6646C53.6593 18.4756 52.397 13.61 49.8523 10.0269Z"
+                  fill="#E6E7E8"
+                />
+              </svg>
+              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+                PR
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-[8px]">
+              <svg
+                width="58"
+                height="58"
+                viewBox="0 0 58 58"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M29.0055 43.1645L21.9163 50.2536L29.0055 57.3428L36.0947 50.2536L29.0055 43.1645Z"
+                  fill="#D72529"
+                />
+                <path
+                  d="M7.73972 21.9051L0.650543 28.9942L7.73972 36.0834L14.8289 28.9942L7.73972 21.9051Z"
+                  fill="#D72529"
+                />
+                <path
+                  d="M14.8307 28.9998L29.0036 43.1727L36.0901 36.0862L43.1765 43.1727L57.3494 28.9998L43.1765 14.8269L36.0901 21.9133L43.1765 28.9998L36.0901 36.0862L29.0036 28.9998L36.0901 21.9133L29.0036 14.8269L14.8307 28.9998Z"
+                  fill="#D72529"
+                />
+                <path
+                  d="M28.9991 0.657104L21.9099 7.74628L28.9991 14.8355L36.0882 7.74628L28.9991 0.657104Z"
+                  fill="#D72529"
+                />
+              </svg>
+              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+                DIGITAL
+              </p>
+            </div>
           </div>
-          <div className="flex items-center justify-cente gap-[8px]">
-            <svg
-              width="54"
-              height="42"
-              viewBox="0 0 54 42"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.340759 17.3355C0.340759 23.5245 1.60298 28.3901 4.14777 31.9732C6.69256 35.5562 11.0492 38.7118 17.2178 41.4398L21.8799 32.5229C18.0932 30.711 15.467 28.9194 14.0012 27.1279C12.5558 25.3364 11.7414 23.2191 11.5786 20.7965H21.8799V0.539917H0.340759V17.3355Z"
-                fill="#E6E7E8"
-              />
-              <path
-                d="M49.8523 10.0269C47.3075 6.44385 42.9508 3.28831 36.7822 0.560295L32.1201 9.47725C35.9272 11.2891 38.533 13.0807 39.9988 14.8722C41.4443 16.6637 42.2586 18.781 42.4215 21.2036H32.1201V41.4602H53.6593V24.6646C53.6593 18.4756 52.397 13.61 49.8523 10.0269Z"
-                fill="#E6E7E8"
-              />
-            </svg>
-            <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">PR</p>
-          </div>
-          <div className="flex items-center justify-center gap-[8px]">
-            <svg
-              width="58"
-              height="58"
-              viewBox="0 0 58 58"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M29.0055 43.1645L21.9163 50.2536L29.0055 57.3428L36.0947 50.2536L29.0055 43.1645Z"
-                fill="#D72529"
-              />
-              <path
-                d="M7.73972 21.9051L0.650543 28.9942L7.73972 36.0834L14.8289 28.9942L7.73972 21.9051Z"
-                fill="#D72529"
-              />
-              <path
-                d="M14.8307 28.9998L29.0036 43.1727L36.0901 36.0862L43.1765 43.1727L57.3494 28.9998L43.1765 14.8269L36.0901 21.9133L43.1765 28.9998L36.0901 36.0862L29.0036 28.9998L36.0901 21.9133L29.0036 14.8269L14.8307 28.9998Z"
-                fill="#D72529"
-              />
-              <path
-                d="M28.9991 0.657104L21.9099 7.74628L28.9991 14.8355L36.0882 7.74628L28.9991 0.657104Z"
-                fill="#D72529"
-              />
-            </svg>
-            <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">DIGITAL</p>
-          </div>
-        </div>
+        ) : (
+          <div></div>
+        )}
         <div className="space-y-[38px] w-full md:w-[70%]">
           {[
             { label: "HOME", href: "/" },
@@ -218,7 +228,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                 ? servicesRef
                 : null;
 
-            return (
+            return isDesktop ? (
               <div
                 key={section.label}
                 className={`flex ${
@@ -226,10 +236,8 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                     ? "justify-between items-end"
                     : "items-center justify-end"
                 } gap-[10px]`}
-                onMouseEnter={() => isDesktop && handleHover(section.label)}
-                onMouseLeave={() =>
-                  isDesktop && handleMouseLeave(section.label)
-                }
+                onMouseEnter={() => handleHover(section.label)}
+                onMouseLeave={() => handleMouseLeave(section.label)}
                 onClick={() => toggleSection(section.label)}
               >
                 {hasItems && (
@@ -252,7 +260,6 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                   </div>
                 )}
                 <div className="flex items-center justify-center gap-[10px] cursor-pointer">
-                  <ArrowIcon ref={(el) => (arrowRef.current[i] = el)} />
                   <p className="header hover:text-accent transition-colors duration-300">
                     {section.href ? (
                       <Link href={section.href}>{section.label}</Link>
@@ -261,6 +268,65 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                     )}
                   </p>
                 </div>
+              </div>
+            ) : (
+              <div
+                key={section.label}
+                className={`flex ${
+                  hasItems
+                    ? "justify-between flex-col items-start"
+                    : "items-center justify-start"
+                } gap-[0px] ${
+                  activeSection === section.label ? "gap-[32px]" : "gap-[0px]"
+                }`}
+                onClick={() => toggleSection(section.label)}
+              >
+                <div className="flex items-center justify-center gap-[10px] cursor-pointer">
+                  <p
+                    className={`header ${
+                      activeSection === section.label
+                        ? "text-accent"
+                        : "text-blue"
+                    } transition-colors duration-300`}
+                  >
+                    {section.href ? (
+                      <Link href={section.href}>{section.label}</Link>
+                    ) : (
+                      section.label
+                    )}
+                  </p>
+                </div>
+
+                {hasItems && (
+                  <div
+                    className={`flex flex-col gap-[16px] overflow-hidden transition-all duration-500 ${
+                      activeSection === section.label
+                        ? "max-h-[500px]"
+                        : "max-h-0"
+                    }`}
+                  >
+                    {section.items.map((text, j) => (
+                      <p
+                        key={text}
+                        ref={(el) => {
+                          if (sectionRefs) sectionRefs.current[j] = el;
+                        }}
+                        className={`!font-[600] text-blue hover:text-accent transition-all duration-300 ${
+                          activeSection === section.label
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-[30px] pointer-events-none"
+                        }`}
+                      >
+                        <Link
+                          href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
+                          className="flex"
+                        >
+                          {text}
+                        </Link>
+                      </p>
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}
