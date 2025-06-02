@@ -64,7 +64,7 @@ export default function Team() {
               </HeroTitleFadeIn>
             </div>
             <div>
-              <AnimatedTextLine>
+              <AnimatedTextLine delay={1}>
                 <Image
                   className="hidden md:block"
                   src={hero.background_image.src}
