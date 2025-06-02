@@ -175,7 +175,11 @@ export default function OwnedEventsDesktop({ data }: Props) {
           </AnimatedTextLine>
 
           <div className="w-full mb-[20px] ">
-            <AnimatedTextLine stagger={0.1} className="w-full flex gap-[8px]">
+            <AnimatedTextLine
+              stagger={0.1}
+              className="w-full flex gap-[8px]"
+              width={"full"}
+            >
               {data.events.map((event, index) => {
                 const isActive = activeIndex === index;
 

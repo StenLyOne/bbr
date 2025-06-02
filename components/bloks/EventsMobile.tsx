@@ -314,7 +314,7 @@ export default function Events({ sub_title, events }: Props) {
           <div className="rectangle-1 absolute inset-0 w-full h-full bg-blank z-[1] will-change-transform" />
           <div className="rectangle-2 absolute inset-0 w-full h-full bg-blank z-[4] will-change-transform" />
           <div className="rectangle-3 absolute inset-0 w-full h-full bg-blank z-[7] will-change-transform" />
-          <div className="w-full h-max absolute flex items-center gap-[16px] z-[3] ">
+          <div className="w-[90%] h-max absolute flex items-center gap-[16px] z-[3] ">
             <h4 className=" h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-1 block translate-y-full text-blank">
@@ -323,8 +323,15 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-1 w-full h-[1px] bg-blank z-[3]"></div>
+            <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-1 block translate-y-full text-blank">
+                  01
+                </span>
+              </div>
+            </h4>
           </div>
-          <div className="w-full h-max absolute flex items-center gap-[16px] z-[6] ">
+          <div className="w-[90%] h-max absolute flex items-center gap-[16px] z-[6] ">
             <h4 className=" h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-2 block translate-y-full text-blank">
@@ -333,8 +340,15 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-2 w-full h-[1px] bg-blank z-[3]"></div>
+            <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-2 block translate-y-full text-blank">
+                  02
+                </span>
+              </div>
+            </h4>
           </div>
-          <div className="w-full h-max absolute flex items-center gap-[16px] z-[10] ">
+          <div className="w-[90%] h-max absolute flex items-center gap-[16px] z-[10] ">
             <h4 className=" h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-3 block translate-y-full text-blank">
@@ -343,6 +357,13 @@ export default function Events({ sub_title, events }: Props) {
               </div>
             </h4>
             <div className="line-3 w-full h-[1px] bg-blank z-[3]"></div>
+            <h4 className="h-[11px]">
+              <div className="overflow-hidden">
+                <span className="event-line-3 block translate-y-full text-blank">
+                  03
+                </span>
+              </div>
+            </h4>
           </div>
           {/* IMAGE */}
           <Image

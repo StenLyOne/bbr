@@ -8,6 +8,7 @@ interface AnimatedTextLinesProps {
   stagger?: number;
   className?: string;
   delay?: number;
+  width?: string;
 }
 
 // Полифилл
@@ -24,6 +25,7 @@ export default function AnimatedTextLines({
   stagger = 0.1,
   className = "",
   delay = 0,
+  width = "",
 }: AnimatedTextLinesProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -64,7 +66,7 @@ export default function AnimatedTextLines({
     <div ref={wrapperRef} className={`overflow-hidden w-full ${className}`}>
       {Array.isArray(children) ? (
         children.map((child, i) => (
-          <div key={i} data-line className="overflow-hidden w-full">
+          <div key={i} data-line className={` w-${width}`}>
             {child}
           </div>
         ))

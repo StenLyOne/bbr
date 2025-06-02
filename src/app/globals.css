@@ -74,7 +74,7 @@ h2 {
 h3 {
   font-family: var(--zabal);
   font-size: 28px;
-  line-height: 67.5px;
+  line-height: 36px;
   font-weight: 700;
 }
 
@@ -110,6 +110,19 @@ p.small {
   letter-spacing: 0.01em;
 }
 
+p.header {
+  font-family: var(--zabal);
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 36px;
+
+  cursor: pointer;
+}
+
+p.hover:hover {
+  color: #6276fb;
+}
+
 a.text-link {
   position: relative;
   color: #21224b;
@@ -141,7 +154,7 @@ a.text-link:hover::after {
 
 /* 2. SVG иконки в ссылках */
 a svg {
-  fill: currentColor;
+  fill: var(--color-blue);
   transition: fill 0.3s ease;
 }
 
@@ -149,8 +162,21 @@ a:hover svg {
   fill: #6276fb;
 }
 
-@media (max-width: 767px) {
+a button svg {
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 767px) {
   h1 {
     font-size: 72px;
     line-height: 63px;
@@ -159,6 +185,11 @@ a:hover svg {
   h2 {
     font-size: 32px;
     line-height: 38px;
+  }
+
+  h3 {
+    font-size: 21px;
+    line-height: 27px;
   }
 
   h4 {

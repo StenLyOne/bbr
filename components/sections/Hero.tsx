@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AnimatedTextLine from "../AnimatedTextLine";
+import HeroTitleFadeIn from "../../components/HeroTitleFadeIn";
 
 export default function Hero({
   data,
@@ -36,13 +37,14 @@ export default function Hero({
 
       {/* TEXT */}
       <div className="w-full relative z-10 flex items-center  h-full break-all">
-        {animationsReady && (
-          <AnimatedTextLine>
-            <h1 className="text-blank max-w-[800px] mt-[100px]">
-              {data.title}
-            </h1>
-          </AnimatedTextLine>
-        )}
+        {animationsReady ? (
+          <HeroTitleFadeIn
+            delay={1}
+            className={"text-blank max-w-[800px] mt-[100px]"}
+          >
+            {data.title}
+          </HeroTitleFadeIn>
+        ) : null}
       </div>
     </main>
   );
