@@ -10,16 +10,16 @@ export default function Footer() {
             <img src="/assets/logo/BBR-Group-Logo-Footer.svg" alt="" />
           </div>
           <div className="space-y-[10px]">
-            <p className="small">
+            <p className="small text-blue">
               102 George St, The Rocks NSW 2000, Australia
             </p>
-            <p className="small">© Copyright 2025 BBR Group Australia</p>
+            <p className="small text-blue">© Copyright 2025 BBR Group Australia</p>
             <div className="flex gap-[16px]">
               <a href="" className="text-link">
-                <p className="small">Cookies</p>
+                <p className="small text-blue">Cookies</p>
               </a>
               <a href="" className="text-link">
-                <p className="small">Privacy Policy</p>
+                <p className="small text-blue">Privacy Policy</p>
               </a>
             </div>
           </div>

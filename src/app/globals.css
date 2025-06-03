@@ -54,7 +54,7 @@
 body {
   background: var(--color-blue);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--zabal);
 }
 
 h1 {

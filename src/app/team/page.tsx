@@ -10,7 +10,6 @@ import AnimatedTextLine from "../../../components/AnimatedTextLine";
 
 import Footer from "../../../components/sections/Footer";
 import Header from "../../../components/sections/Header";
-import PageIntro from "../../../components/sections/AnimatedIntro";
 import SubTitleLine from "../../../components/ui/SubTitleLine";
 import Button from "../../../components/ui/Button";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
@@ -64,7 +63,7 @@ export default function Team() {
               </HeroTitleFadeIn>
             </div>
             <div>
-              <AnimatedTextLine delay={1}>
+              <AnimatedTextLine delay={1.1}>
                 <Image
                   className="hidden md:block"
                   src={hero.background_image.src}

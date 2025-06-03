@@ -2,49 +2,74 @@ import Link from "next/link";
 
 interface ButtonProps {
   text: string;
-  link: string;
-  color: "white" | "black";
+  link?: string; // сделай link необязательным
+  color?: "white" | "black";
+  type?: "button" | "submit";
 }
 
-export default function Button({ text, link, color }: ButtonProps) {
-  const baseTextColor = color === "white" ? "text-white" : "text-[#21224B]";
-  const baseBorderColor = color === "white" ? "border-white" : "border-[#000000]";
+export default function Button({
+  text,
+  color = "black",
+  link,
+  type = "button",
+}: ButtonProps) {
+  const base =
+    "w-[272px] h-[71px] flex gap-[10px] items-center justify-center rounded-[8px] border font-semibold transition-all duration-300 group";
+  const baseBorderColor =
+    color === "white" ? "border-white" : "border-[#1a1a3f]";
+  const baseTextColor = color === "white" ? "text-white" : "text-[#1a1a3f]";
   const svgStrokeColor = color === "white" ? "#FFFFFF" : "#21224B";
 
-  return (
-    <Link href={link}>
-      <button
-        className={`w-[272px] h-[71px] flex gap-[10px] items-center justify-center rounded-[8px] border ${baseBorderColor} ${baseTextColor} 
-        hover:bg-[#6276FB] hover:text-white hover:border-transparent transition-all duration-300 group`}
+  const content = (
+    <>
+      {text}
+      <svg
+        width="20"
+        height="14"
+        viewBox="0 0 20 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        {text}
-        <svg
-          width="20"
-          height="14"
-          viewBox="0 0 20 14"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <path
+          d="M12.4297 0.930176L18.4997 7.00018L12.4297 13.0702"
+          stroke={svgStrokeColor}
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="group-hover:stroke-white transition-colors duration-300"
+        />
+        <path
+          d="M1.5 7H18.33"
+          stroke={svgStrokeColor}
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="group-hover:stroke-white transition-colors duration-300"
+        />
+      </svg>
+    </>
+  );
+
+  if (link) {
+    return (
+      <Link href={link}>
+        <button
+          className={`${base} ${baseBorderColor} ${baseTextColor} hover:bg-[#6276FB] hover:text-white hover:border-transparent`}
         >
-          <path
-            d="M12.4297 0.930176L18.4997 7.00018L12.4297 13.0702"
-            stroke={svgStrokeColor}
-            strokeWidth="1.5"
-            strokeMiterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="group-hover:stroke-white transition-colors duration-300"
-          />
-          <path
-            d="M1.5 7H18.33"
-            stroke={svgStrokeColor}
-            strokeWidth="1.5"
-            strokeMiterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="group-hover:stroke-white transition-colors duration-300"
-          />
-        </svg>
-      </button>
-    </Link>
+          {content}
+        </button>
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type={type}
+      className={`${base} ${baseBorderColor} ${baseTextColor} hover:bg-[#6276FB] hover:text-white hover:border-transparent`}
+    >
+      {content}
+    </button>
   );
 }
