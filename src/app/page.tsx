@@ -66,14 +66,15 @@ export default function Home() {
         </div>
 
         <div className="pinned-section relative z-[101]" data-bg="light">
-          <Mission data={data.mission} />
+          
         </div>
 
         <div className="page-content relative z-[1001]" data-bg="light">
+          <Mission data={data.mission} />
           <Events data={data.bbr_events} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light">
+        <div className="pinned-section relative z-[1002]" data-bg="light">
           <MissionSecondary data={data.mission_secondary} />
         </div>
 
