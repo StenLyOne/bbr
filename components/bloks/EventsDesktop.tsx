@@ -26,7 +26,6 @@ export default function Events({ sub_title, events }: Props) {
         start: "top center",
         end: "40% top",
         scrub: true,
-        markers: true,
         onLeave: () => {
           gsap.set(".circle-1", { scale: 10 });
         },
