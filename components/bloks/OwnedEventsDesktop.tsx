@@ -33,7 +33,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
-  const wrapperHeight = total * 2.2 * 100;
+  const wrapperHeight = total * 2.2 * 45;
 
   useEffect(() => {
     if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)
@@ -45,7 +45,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
         id: "owned-events",
         trigger: wrapperRef.current,
         start: "top top",
-        end: `+=${total * baseShift * 5}%`,
+        end: `+=${total * baseShift * 2}%`,
         scrub: true,
         pin: true,
         pinSpacing: false,
@@ -56,7 +56,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
     ScrollTrigger.create({
       trigger: wrapperRef.current,
       start: "top top",
-      end: `+=${total * baseShift * 5}%`,
+      end: `+=${total * baseShift * 2}%`,
       scrub: true,
       onUpdate: (self) => {
         const newIndex = Math.min(total - 1, Math.floor(self.progress * total));

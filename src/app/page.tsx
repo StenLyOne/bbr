@@ -48,6 +48,23 @@ export default function Home() {
     }
   }, [showIntro]);
 
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (showIntro) {
+      html.classList.add("no-scroll");
+      ScrollTrigger.getAll().forEach((trigger) => trigger.disable(false)); // Отключаем ScrollTrigger
+    } else {
+      html.classList.remove("no-scroll");
+      ScrollTrigger.getAll().forEach((trigger) => trigger.enable()); // Включаем ScrollTrigger
+    }
+
+    return () => {
+      html.classList.remove("no-scroll");
+      ScrollTrigger.getAll().forEach((trigger) => trigger.enable());
+    };
+  }, [showIntro]);
+
   if (!hasScrolledTop) return null; // Не рендерим DOM до scrollTop
 
   return (
@@ -60,21 +77,22 @@ export default function Home() {
           showIntro ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <Header animationsReady={animationsReady}/>
+        <Header animationsReady={animationsReady} />
         <div className="pinned-section relative z-[101]" data-bg="dark">
-          <Hero data={data.hero} animationsReady={animationsReady}/>
+          <Hero data={data.hero} animationsReady={animationsReady} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light">
-          
+        <div className="pinned-section relative z-[101]" data-bg="light"></div>
+
+        <div className="page-content relative z-[101]" data-bg="light">
+          <Mission data={data.mission} />
         </div>
 
         <div className="page-content relative z-[1001]" data-bg="light">
-          <Mission data={data.mission} />
           <Events data={data.bbr_events} />
         </div>
 
-        <div className="pinned-section relative z-[1002]" data-bg="light">
+        <div className="pinned-section relative z-[102]" data-bg="light">
           <MissionSecondary data={data.mission_secondary} />
         </div>
 

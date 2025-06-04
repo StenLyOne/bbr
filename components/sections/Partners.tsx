@@ -35,7 +35,7 @@ export default function Partners({ data }: { data: any }) {
   return (
     <section className=" bg-white overflow-hidden">
       <div className="px-[16px] md:px-[40px]">
-        <SubTitleLine title={data.title} />
+        <SubTitleLine title={data.sub_title} />
 
         <div className="space-y-[90px] md:space-y-[58px] mt-[33px] md:mt-[58px] mb-[90px] md:mb-[87px]">
           {chunkedLogos.map((logoRow: string[], rowIndex: number) => (
@@ -46,11 +46,11 @@ export default function Partners({ data }: { data: any }) {
             >
               {[...logoRow, ...logoRow, ...logoRow, ...logoRow].map(
                 (logo, index) => (
-                  <div key={`${rowIndex}-${index}`} className="flex-shrink-0">
+                  <div key={`${rowIndex}-${index}`} className="flex-shrink-0 h-[95px]">
                     <img
                       src={logo}
                       alt={`logo-${rowIndex}-${index}`}
-                      className="h-auto w-auto max-h-[60px] max-w-none"
+                      className="h-auto w-auto max-h-[95px] max-w-none"
                     />
                   </div>
                 )

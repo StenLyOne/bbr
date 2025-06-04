@@ -176,6 +176,11 @@ a button svg {
   scrollbar-width: none;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 @media (max-width: 767px) {
   h1 {
     font-size: 72px;

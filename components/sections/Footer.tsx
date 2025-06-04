@@ -13,8 +13,11 @@ export default function Footer() {
             <p className="small text-blue">
               102 George St, The Rocks NSW 2000, Australia
             </p>
-            <p className="small text-blue">© Copyright 2025 BBR Group Australia</p>
+
             <div className="flex gap-[16px]">
+              <p className="small text-blue">
+                © Copyright 2025 BBR Group Australia
+              </p>
               <a href="" className="text-link">
                 <p className="small text-blue">Cookies</p>
               </a>
@@ -23,7 +26,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="max-w-[228px] max-h-[20px] flex gap-[24px]">
+          <div className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center">
             <a href="">
               <svg
                 width="15"

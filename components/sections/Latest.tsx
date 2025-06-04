@@ -1,10 +1,23 @@
 import SubTitleLine from "../ui/SubTitleLine";
+import InstagramEmbed from "../ui/InstagramEmbed";
 
-export default function Latest(data: any) {
+interface Props {
+  data: {
+    sub_title: string;
+    instagram_links: string[];
+  };
+}
+
+export default function Latest({ data }: Props) {
   return (
-    <section className="w-full h-screen bg-white-gris">
-      <div className="h-[100vh] px-[16px] md:px-[40px]">
-        <SubTitleLine title={"Latest"} />
+    <section className="w-full min-h-screen bg-white-gris py-[40px]">
+      <div className="px-[16px] md:px-[40px]">
+        <SubTitleLine title={data.sub_title} />
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {data.instagram_links.map((link, i) => (
+            <InstagramEmbed key={i} url={link} />
+          ))}
+        </div> */}
       </div>
     </section>
   );

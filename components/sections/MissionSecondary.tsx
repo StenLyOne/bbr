@@ -1,6 +1,7 @@
 import SubTitleLine from "../ui/SubTitleLine";
 import SquareIcons from "../ui/SquareIcons";
 import AnimatedTextLine from "../AnimatedTextLine";
+import AnimatedTextWordByWord from "../AnimatedTextWordByWord";
 
 export default function MissionSecondary({ data }: { data: any }) {
   return (
@@ -14,22 +15,25 @@ export default function MissionSecondary({ data }: { data: any }) {
             {data.content}
           </p>
         </AnimatedTextLine>
-        <div className="mx-auto max-w-[910px] flex justify-between gap-[14px] pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide">
-          {data.items.map((item: any, index: number) => (
-            <SquareIcons
-              key={index}
-              link={item.src}
-              iconSrc={item.icon}
-              title={item.label}
-            />
-          ))}
+        <div className="">
+          <AnimatedTextLine
+            stagger={0.1}
+            className="mx-auto max-w-[910px] flex justify-between gap-[14px] pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide"
+          >
+            {data.items.map((item: any, index: number) => (
+              <SquareIcons
+                key={index}
+                link={item.src}
+                iconSrc={item.icon}
+                title={item.label}
+              />
+            ))}
+          </AnimatedTextLine>
         </div>
         <div className="px-[16px] md:px-[0px] py-[64px] md:py-[164px]">
-          <AnimatedTextLine>
-            <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue mx-auto w-full">
-              {data.title}
-            </h2>
-          </AnimatedTextLine>
+          <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue">
+            <AnimatedTextWordByWord text="WE ARE BBR" />
+          </h2>
         </div>
       </div>
     </section>

@@ -17,8 +17,28 @@ interface Props {
 
 export default function Events({ sub_title, events }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+    const introRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+
+    const tlCircle = gsap.timeline({
+      scrollTrigger: {
+        trigger: introRef.current,
+        start: "top center",
+        end: "40% top",
+        scrub: true,
+        onLeave: () => {
+          gsap.set(".circle-1", { scale: 10 });
+        },
+      },
+    });
+
+    tlCircle.fromTo(
+      ".circle-1",
+      { scale: 0 },
+      { scale: 1, ease: "power3.out", duration: 1 }
+    );
+    
     const total = events.length;
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -32,15 +52,15 @@ export default function Events({ sub_title, events }: Props) {
     });
 
     const steps = [
-      {
-        range: [0, 5],
-        animation: (duration: number) =>
-          gsap.fromTo(
-            ".circle-1",
-            { scale: 0, zIndex: 0 },
-            { scale: 1, duration, zIndex: 0 }
-          ),
-      },
+      // {
+      //   range: [0, 5],
+      //   animation: (duration: number) =>
+      //     gsap.fromTo(
+      //       ".circle-1",
+      //       { scale: 0, zIndex: 0 },
+      //       { scale: 1, duration, zIndex: 0 }
+      //     ),
+      // },
       {
         range: [4, 10],
         animation: (duration: number) =>
@@ -266,7 +286,13 @@ export default function Events({ sub_title, events }: Props) {
   }, []);
 
   return (
-    <div className=" w-full ">
+    <div className="relative w-full">
+      <div ref={introRef} className="absolute w-full h-screen ">
+        <div
+          className="circle-1 absolute top-1/2 left-1/2 
+      -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-blue z-0"
+        />
+      </div>
       <div
         ref={wrapperRef}
         className={`relative w-full h-screen flex transition-colors duration-500 overflow-visible`}
@@ -294,7 +320,7 @@ export default function Events({ sub_title, events }: Props) {
             alt={events[0].alt}
             width={2000}
             height={2000}
-            className={`large-logo-1 absolute top-[50%] left-[120%] scale-[2.5] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply`}
+            className={`large-logo-1 absolute top-[50%] left-[120%] scale-[2.5] -translate-x-1/2 -translate-y-1/2 `}
           />
           <Image
             src={events[1].bbr_events_vector}

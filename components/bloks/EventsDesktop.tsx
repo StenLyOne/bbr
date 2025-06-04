@@ -23,12 +23,12 @@ export default function Events({ sub_title, events }: Props) {
     const tlCircle = gsap.timeline({
       scrollTrigger: {
         trigger: introRef.current,
-        start: "top center",
-        end: "40% top",
+        start: "10% center",
+        end: "bottom top",
         scrub: true,
-        onLeave: () => {
-          gsap.set(".circle-1", { scale: 10 });
-        },
+        // onLeave: () => {
+        //   gsap.set(".circle-1", { scale: 10 });
+        // },
       },
     });
 
@@ -294,16 +294,16 @@ export default function Events({ sub_title, events }: Props) {
       </div>
       <div
         ref={wrapperRef}
-        className={`relative w-full h-screen flex p-[40px] transition-colors duration-500 overflow-visible`}
+        className={`relative w-full h-screen flex py-[40px] transition-colors duration-500 overflow-visible`}
       >
         <div
           className={`relative w-full h-full flex p-[40px] transition-colors duration-500 overflow-visible`}
         >
           {/* CIRCLE */}
-          {/* <div
+          <div
             className="circle-1 absolute top-1/2 left-1/2 
                 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-blue z-0"
-          /> */}
+          />
           <div
             className="circle-2 absolute top-1/2 left-1/2 
                 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-white-gris z-3"
@@ -317,12 +317,12 @@ export default function Events({ sub_title, events }: Props) {
           <img
             src={events[0].bbr_events_vector}
             alt={events[0].alt}
-            className={`large-logo-1 absolute top-[30%] left-[20%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply`}
+            className={`large-logo-1 absolute top-[110%] left-[75%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
           />
           <img
             src={events[1].bbr_events_vector}
             alt={events[1].alt}
-            className={`large-logo-2 absolute top-[0%] left-[-25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
+            className={`large-logo-2 absolute top-[45%] left-[25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
           />
           <Image
             src={events[2].bbr_events_vector}
@@ -388,21 +388,21 @@ export default function Events({ sub_title, events }: Props) {
           </div>
           {/* IMAGE */}
           <Image
-            className={`event-image-1 object-cover w-1/2 h-full ml-auto absolute inset-0 z-[2]`}
+            className={`event-image-1 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[2]`}
             src={events[0].bbr_events_image}
             width={680}
             height={936}
             alt={events[0].alt}
           />
           <Image
-            className={`event-image-2 w-1/2 h-full ml-auto absolute inset-0 z-[5]`}
+            className={`event-image-2 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[5]`}
             src={events[1].bbr_events_image}
             width={680}
             height={936}
             alt={events[1].alt}
           />
           <Image
-            className={`event-image-3 w-1/2 h-full ml-auto absolute inset-0 z-[8]`}
+            className={`event-image-3 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[8]`}
             src={events[2].bbr_events_image}
             width={680}
             height={936}
