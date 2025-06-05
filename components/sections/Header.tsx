@@ -129,14 +129,15 @@ export default function Header({
         className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]"
         style={{
           backgroundColor: !isDark ? "#fff" : "transparent", // 👈 динамический фон
-          borderBottom: !isDark ? `1px solid ${borderColor}` : `1px solid ${borderColor}`,
         }}
       >
         <div
           className={`w-full flex items-center justify-between py-[30px] md:py-[40px]`}
-          // style={{
-          //   borderBottom: `1px solid ${borderColor}`,
-          // }}
+          style={{
+            borderBottom: !isDark
+              ? ``
+              : `1px solid ${borderColor}`,
+          }}
         >
           <div className="flex items-end gap-[10px]">
             <span>
