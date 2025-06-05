@@ -52,13 +52,15 @@ export default function SubTitleLine({ title }: { title: string }) {
       ref={trigerRef}
       className="w-full flex justify-between gap-[24px] py-[35px]"
     >
-      <h4 className="w-max text-blue whitespace-nowrap">
-        <span className="block overflow-hidden">
-          <span ref={titleRef} className="block will-change-transform">
-            {title}
+      {title.trim() !== "" && (
+        <h4 className="w-max text-blue whitespace-nowrap">
+          <span className="block overflow-hidden">
+            <span ref={titleRef} className="block will-change-transform">
+              {title}
+            </span>
           </span>
-        </span>
-      </h4>
+        </h4>
+      )}
       <span
         ref={lineRef}
         className="w-full h-[1px] bg-blue my-auto will-change-transform origin-right"

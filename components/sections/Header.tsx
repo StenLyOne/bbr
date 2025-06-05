@@ -39,7 +39,7 @@ export default function Header({
     ? "/assets/logo/logo-events-pr-digital-light.svg"
     : "/assets/logo/logo-events-pr-digital-dark.svg";
 
-  const borderColor = isDark ? "#fff" : "#21224b";
+  const borderColor =  "#21224b";
 
   const duckWidth = isDesktop ? 56 : 42;
   const duckHeight = isDesktop ? 55 : 41;
@@ -114,17 +114,17 @@ export default function Header({
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]">
-        <div
-          className={`w-full flex items-center justify-between py-[30px] md:py-[40px]`}
-          style={{
+      <header className="fixed bg-blank  top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]" style={{
             borderBottom: `1px solid ${borderColor}`,
-          }}
+          }}>
+        <div
+          className={`w-full  flex items-center justify-between py-[30px] md:py-[40px]`}
+          
         >
           <div className="flex items-end gap-[10px]">
             <span>
               <Image
-                src={logoDuck}
+                src="/assets/logo/logo-duck-dark.svg"
                 width={duckWidth}
                 height={duckHeight}
                 alt="duck"
@@ -132,21 +132,21 @@ export default function Header({
             </span>
             <span className="space-y-[4px]">
               <Image
-                src={logoBBR}
+                src="/assets/logo/logo-bbr-dark.svg"
                 width={logoBBRWidth}
                 height={logoBBRHeight}
                 alt="BBR"
                 ref={bbrRef}
               />
               <Image
-                src={logoGroup}
+                src="/assets/logo/logo-group-dark.svg"
                 width={logoGroupWidth}
                 height={logoGroupHeight}
                 alt="Group"
                 ref={groupRef}
               />
               <Image
-                src={logoEvents}
+                src="/assets/logo/logo-events-pr-digital-dark.svg"
                 width={logoEventsWidth}
                 height={logoEventsHeight}
                 alt="Events"
@@ -156,7 +156,7 @@ export default function Header({
           </div>
           <BurgerButton
             onToggle={() => setMenuOpen((prev) => !prev)}
-            color={isDark}
+          
           />
         </div>
       </header>

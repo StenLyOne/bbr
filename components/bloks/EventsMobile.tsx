@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
+import TitleLines from "../ui/TitleLines";
 
 interface Event {
   title: string;
@@ -17,10 +18,9 @@ interface Props {
 
 export default function Events({ sub_title, events }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
-    const introRef = useRef<HTMLDivElement | null>(null);
+  const introRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-
     const tlCircle = gsap.timeline({
       scrollTrigger: {
         trigger: introRef.current,
@@ -38,7 +38,7 @@ export default function Events({ sub_title, events }: Props) {
       { scale: 0 },
       { scale: 1, ease: "power3.out", duration: 1 }
     );
-    
+
     const total = events.length;
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -96,7 +96,7 @@ export default function Events({ sub_title, events }: Props) {
             opacity: 1,
             duration,
             ease: "power4.out",
-            stagger: 0.1,
+            stagger: 1,
           }),
       },
       {
@@ -168,7 +168,7 @@ export default function Events({ sub_title, events }: Props) {
             opacity: 1,
             duration,
             ease: "power4.out",
-            stagger: 0.1,
+            stagger: 1,
           }),
       },
       {
@@ -240,7 +240,7 @@ export default function Events({ sub_title, events }: Props) {
             opacity: 1,
             duration,
             ease: "power4.out",
-            stagger: 0.1,
+            stagger: 1,
           }),
       },
       {
@@ -451,58 +451,17 @@ export default function Events({ sub_title, events }: Props) {
 
         {/* TITLE */}
         <h2 className="event-title-1 absolute top-1/2 left-[16px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blank">
-          <div className="overflow-hidden">
-            <span className="event-line-1 block translate-y-full ">
-              LIFE IS A
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-1 block translate-y-full">
-              SUCCESSFUL
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-1 block translate-y-full">
-              MOVEMENT
-            </span>
-          </div>
+          <TitleLines title={events[0].title} lineClass="event-line-1" />
         </h2>
+
+        {/* TITLE 2 */}
         <h2 className="event-title-2 absolute top-1/2 left-[16px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blank">
-          <div className="overflow-hidden">
-            <span className="event-line-2 block translate-y-full ">
-              EVERYTHING CAN
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-2 block translate-y-full">
-              BE VIEWED AS
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-2 block translate-y-full">
-              EXTRAORDINARY
-            </span>
-          </div>
+          <TitleLines title={events[1].title} lineClass="event-line-2" />
         </h2>
+
+        {/* TITLE 3 */}
         <h2 className="event-title-3 absolute top-1/2 left-[16px] -translate-y-1/2 max-w-[565px] text-left z-[8] space-y-[-3px] text-blank">
-          <div className="overflow-hidden">
-            <span className="event-line-3 block translate-y-full ">
-              THE EXPERTISE TO
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-3 block translate-y-full">
-              CONNECT,
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-3 block translate-y-full">
-              INSPIRE AND
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <span className="event-line-3 block translate-y-full">EMPOWER</span>
-          </div>
+          <TitleLines title={events[2].title} lineClass="event-line-3" />
         </h2>
         {/* <h2
             className={`event-title-1 absolute top-1/2 -translate-y-1/2 max-w-[565px] text-left z-[2]`}

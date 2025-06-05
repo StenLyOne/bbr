@@ -216,7 +216,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
             </AnimatedTextLine>
           </div>
 
-          <div className="w-full flex gap-[16px] relative">
+          <div className="w-full flex gap-[0px] relative">
             <div className="relative w-2/3 bg-blue flex items-center justify-center overflow-hidden">
               {data.events.map((event, index) => (
                 <div
@@ -237,7 +237,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
               {data.events.map((event, index) => (
                 <div
                   key={`stats-${index}`}
-                  className={`stats-${index} absolute inset-0 flex justify-center gap-[50px] ld:gap-[80px] items-center `}
+                  className={`stats-${index} absolute inset-0 flex justify-center gap-[65px] ld:gap-[80px] items-center `}
                 >
                   {event.stats.map((stat, statIdx) => (
                     <div

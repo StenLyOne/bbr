@@ -12,21 +12,21 @@
     "title": "",
     "events": [
       {
-        "title": "LIFE IS A SUCCESSION OF MOMENTS",
+        "title": "LIFE IS A|SUCCESSION|OF MOMENTS",
         "bbr_events_logo": "/assets/logo/bbr-events-logo.svg",
         "bbr_events_vector": "/assets/logo/bbr-events-vector.svg",
         "bbr_events_image": "/assets/images/bbr-events-image.png",
         "alt": "bbr events"
       },
       {
-        "title": "EVERYTHING CAN BE VIEWED AS EXTRAORDINARY",
+        "title": "EVERYTHING CAN|BE VIEWED AS|EXTRAORDINARY",
         "bbr_events_logo": "/assets/logo/bbr-pr-logo.svg",
         "bbr_events_vector": "/assets/logo/bbr-pr-vector.svg",
         "bbr_events_image": "/assets/images/bbr-pr-image.png",
         "alt": "bbr pr"
       },
       {
-        "title": "THE EXPERTISE TO CONNECT, INSPIRE AND EMPOWER",
+        "title": "THE EXPERTISE|TO CONNECT,|INSPIRE AND|EMPOWER",
         "bbr_events_logo": "/assets/logo/bbr-digital-logo.svg",
         "bbr_events_vector": "/assets/logo/bbr-digital-vector.svg",
         "bbr_events_image": "/assets/images/bbr-digital-image.png",

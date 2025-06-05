@@ -108,6 +108,7 @@ p.small {
   line-height: 100%;
   font-weight: 500;
   letter-spacing: 0.01em;
+  translate: 1s easy;
 }
 
 p.header {
@@ -144,7 +145,11 @@ a.text-link::after {
   transition: transform 0.3s ease;
 }
 
-a.text-link:hover {
+a.text-link p.small {
+  transition: color 0.3s ease;
+}
+
+a.text-link p.small:hover {
   color: #6276fb;
 }
 
