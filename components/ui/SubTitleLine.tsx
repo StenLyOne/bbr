@@ -12,10 +12,16 @@ const safeRequestIdleCallback = (cb: () => void) => {
   }
 };
 
-export default function SubTitleLine({ title }: { title: string }) {
+interface Prop {
+  title: string;
+  color?: string;
+}
+
+export default function SubTitleLine({ title, color }: Prop) {
   const titleRef = useRef<HTMLSpanElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
   const trigerRef = useRef<HTMLDivElement>(null);
+  const dark = color === "white" ? "blank" : "blue";
 
   useEffect(() => {
     if (!titleRef.current || !lineRef.current || !trigerRef.current) return;
@@ -53,7 +59,7 @@ export default function SubTitleLine({ title }: { title: string }) {
       className="w-full flex justify-between gap-[24px] py-[35px]"
     >
       {title.trim() !== "" && (
-        <h4 className="w-max text-blue whitespace-nowrap">
+        <h4 className={`w-max text-${dark}whitespace-nowrap`}>
           <span className="block overflow-hidden">
             <span ref={titleRef} className="block will-change-transform">
               {title}
@@ -63,7 +69,7 @@ export default function SubTitleLine({ title }: { title: string }) {
       )}
       <span
         ref={lineRef}
-        className="w-full h-[1px] bg-blue my-auto will-change-transform origin-right"
+        className={`w-full h-[1px] bg-${dark} my-auto will-change-transform origin-right`}
       ></span>
     </div>
   );

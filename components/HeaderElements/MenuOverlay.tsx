@@ -214,7 +214,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
             { label: "HOME", href: "/" },
             {
               label: "ABOUT",
-              items: ["Our Story", "Team", "Our Own Productions"],
+              items: ["Our Story", "Team", "Our owned events"],
             },
             { label: "SERVICES", items: ["Events", "Pr", "Digital"] },
             { label: "PORTFOLIO" },

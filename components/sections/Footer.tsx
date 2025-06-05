@@ -1,34 +1,80 @@
 import SubTitleLine from "../ui/SubTitleLine";
 
-export default function Footer() {
+interface Proop {
+  color?: string;
+}
+
+export default function Footer({ color }: Proop) {
+  const black = color;
+  const mask = color === "black" ? "-white" : "";
+  const logo = color === "black" ? "-white" : "";
+
   return (
-    <div className="bg-blank">
+    <div className={`${black === "black" ? "" : "bg-blank"}`}>
       <div className="mx-auto px-[16px] md:px-[40px]">
-        <SubTitleLine title="" />
+        <SubTitleLine title="" color="white" />
         <div className="flex justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
           <div className="block md:hidden">
-            <img src="/assets/logo/BBR-Group-Logo-Footer.svg" alt="" />
+            <img src={`/assets/logo/BBR-Group-Logo-Footer${logo}.svg`} alt="" />
           </div>
           <div className="space-y-[10px]">
-            <p className="small text-blue">
+            <p
+              className={`small ${
+                black === "black" ? "text-blank" : "text-blue"
+              }`}
+            >
               102 George St, The Rocks NSW 2000, Australia
             </p>
 
             <div className="flex gap-[16px]">
-              <p className="small text-blue">
+              <p
+                className={`small ${
+                  black === "black" ? "text-blank" : "text-blue"
+                }`}
+              >
                 © Copyright 2025 BBR Group Australia
               </p>
-              <a href="" className="text-link">
-                <p className="small text-blue">Cookies</p>
+              <a
+                href=""
+                className={`small ${
+                  black === "black" ? "text-blank" : "text-blue"
+                }`}
+              >
+                <p
+                  className={`small ${
+                    black === "black" ? "text-blank" : "text-blue"
+                  }`}
+                >
+                  Cookies
+                </p>
               </a>
-              <a href="" className="text-link">
-                <p className="small text-blue">Privacy Policy</p>
+              <a
+                href=""
+                className={`small ${
+                  black === "black" ? "text-blank" : "text-blue"
+                }`}
+              >
+                <p
+                  className={`small ${
+                    black === "black" ? "text-blank" : "text-blue"
+                  }`}
+                >
+                  Privacy Policy
+                </p>
               </a>
             </div>
           </div>
-          <div className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center">
+          <div
+            style={
+              {
+                "--color-blue": black === "black" ? "#ffffff" : "#0A1C2B",
+              } as React.CSSProperties
+            }
+            className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center"
+          >
             <a href="">
               <svg
+                className={black === "black" ? "text-white" : "text-blue"}
                 width="15"
                 height="15"
                 viewBox="0 0 15 15"
@@ -145,12 +191,12 @@ export default function Footer() {
             </a>
           </div>
           <div className="md:block hidden">
-            <img src="/assets/logo/BBR-Group-Logo-Footer.svg" alt="" />
+            <img src={`/assets/logo/BBR-Group-Logo-Footer${logo}.svg`} alt="" />
           </div>
         </div>
         <img
-          className="mt-[50px] md:mt-[130px] w-full"
-          src="/assets/logo/BBR-Group-Text-Mask.svg"
+          className={`mt-[50px] md:mt-[130px] w-full`}
+          src={`/assets/logo/BBR-Group-Text-Mask${mask}.svg`}
           alt=""
         />
       </div>
