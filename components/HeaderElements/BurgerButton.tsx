@@ -5,13 +5,13 @@ import { gsap } from "../../lib/gsap";
 
 interface BurgerButtonProps {
   onToggle: () => void;
-  // color: boolean;
+  color: boolean;
 }
 
-export default function BurgerButton({ onToggle }: BurgerButtonProps) {
+export default function BurgerButton({ onToggle, color }: BurgerButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const spansRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const lineColor =  "bg-black";
+  const lineColor = color ? "bg-white" : "bg-black";
 
   const toggle = () => {
     const newState = !isOpen;

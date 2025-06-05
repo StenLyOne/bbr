@@ -16,6 +16,7 @@ export default function Header({
   animationsReady: boolean;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showBg, setShowBg] = useState(false);
   const isDarkBackground = useHeaderBgDetection();
   const bbrRef = useRef(null);
   const groupRef = useRef(null);
@@ -39,7 +40,7 @@ export default function Header({
     ? "/assets/logo/logo-events-pr-digital-light.svg"
     : "/assets/logo/logo-events-pr-digital-dark.svg";
 
-  const borderColor =  "#21224b";
+  const borderColor = isDark ? "#fff" : "#21224b";
 
   const duckWidth = isDesktop ? 56 : 42;
   const duckHeight = isDesktop ? 55 : 41;
@@ -49,6 +50,16 @@ export default function Header({
   const logoGroupHeight = isDesktop ? 13 : 9;
   const logoEventsWidth = isDesktop ? 59 : 44;
   const logoEventsHeight = isDesktop ? 4 : 3;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      setShowBg(scrollTop > 10); // показываем фон, если прокрутили вниз
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!animationsReady) return;
@@ -114,17 +125,23 @@ export default function Header({
 
   return (
     <>
-      <header className="fixed bg-blank  top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]" style={{
-            borderBottom: `1px solid ${borderColor}`,
-          }}>
+      <header
+        className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]"
+        style={{
+          backgroundColor: !isDark ? "#fff" : "transparent", // 👈 динамический фон
+          borderBottom: !isDark ? `1px solid ${borderColor}` : `1px solid ${borderColor}`,
+        }}
+      >
         <div
-          className={`w-full  flex items-center justify-between py-[30px] md:py-[40px]`}
-          
+          className={`w-full flex items-center justify-between py-[30px] md:py-[40px]`}
+          // style={{
+          //   borderBottom: `1px solid ${borderColor}`,
+          // }}
         >
           <div className="flex items-end gap-[10px]">
             <span>
               <Image
-                src="/assets/logo/logo-duck-dark.svg"
+                src={logoDuck}
                 width={duckWidth}
                 height={duckHeight}
                 alt="duck"
@@ -132,21 +149,21 @@ export default function Header({
             </span>
             <span className="space-y-[4px]">
               <Image
-                src="/assets/logo/logo-bbr-dark.svg"
+                src={logoBBR}
                 width={logoBBRWidth}
                 height={logoBBRHeight}
                 alt="BBR"
                 ref={bbrRef}
               />
               <Image
-                src="/assets/logo/logo-group-dark.svg"
+                src={logoGroup}
                 width={logoGroupWidth}
                 height={logoGroupHeight}
                 alt="Group"
                 ref={groupRef}
               />
               <Image
-                src="/assets/logo/logo-events-pr-digital-dark.svg"
+                src={logoEvents}
                 width={logoEventsWidth}
                 height={logoEventsHeight}
                 alt="Events"
@@ -156,7 +173,7 @@ export default function Header({
           </div>
           <BurgerButton
             onToggle={() => setMenuOpen((prev) => !prev)}
-          
+            color={isDark}
           />
         </div>
       </header>
