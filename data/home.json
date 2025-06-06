@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "EXPERIENCES THAT INSPIRE, CONNECT AND EMPOWER",
+    "title": "EXPERIENCES THAT|INSPIRE, CONNECT|AND EMPOWER",
     "image_url": "/assets/images/Hero-Image.png"
   },
   "mission": {
@@ -54,7 +54,7 @@
   },
   "owned_events": {
     "sub_title": "BBR OWNED EVENTS",
-    "title": "PROUDLY OWNED & PRODUCED",
+    "title": "PROUDLY OWNED &|PRODUCED",
     "events": [
       {
         "name": "Bastille",

@@ -6,13 +6,14 @@ interface Proop {
 
 export default function Footer({ color }: Proop) {
   const black = color;
+  const line = color === "black" ? "white" : "black";
   const mask = color === "black" ? "-white" : "";
   const logo = color === "black" ? "-white" : "";
 
   return (
     <div className={`${black === "black" ? "" : "bg-blank"}`}>
       <div className="mx-auto px-[16px] md:px-[40px]">
-        <SubTitleLine title="" color="white" />
+        <SubTitleLine title="" color={line} />
         <div className="flex justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
           <div className="block md:hidden">
             <img src={`/assets/logo/BBR-Group-Logo-Footer${logo}.svg`} alt="" />

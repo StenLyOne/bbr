@@ -8,23 +8,24 @@ export default function HeroTitleFadeIn({
   className,
   delay = 0,
 }: {
-  children: React.ReactNode;
+  children: string;
   className: string;
-  delay: number
+  delay?: number;
 }) {
-  const spanRef = useRef<HTMLSpanElement>(null);
+  const linesRef = useRef<HTMLSpanElement[]>([]);
 
   useEffect(() => {
-    if (!spanRef.current) return;
+    if (!linesRef.current.length) return;
 
     gsap.fromTo(
-      spanRef.current,
-      { y: 90, opacity:0 },
+      linesRef.current,
+      { y: 60, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.6,
-        delay: delay,
+        delay,
+        stagger: 0.15,
         ease: "power3.out",
       }
     );
@@ -32,13 +33,17 @@ export default function HeroTitleFadeIn({
 
   return (
     <h1 className={`${className} relative overflow-hidden`}>
-      <span
-        ref={spanRef}
-        className="inline-block"
-        style={{ display: "inline-block", willChange: "transform" }}
-      >
-        {children}
-      </span>
+      {children.split("|").map((line, i) => (
+        <span
+          key={i}
+          ref={(el) => {
+            if (el) linesRef.current[i] = el;
+          }}
+          className="block will-change-transform"
+        >
+          {line}
+        </span>
+      ))}
     </h1>
   );
 }

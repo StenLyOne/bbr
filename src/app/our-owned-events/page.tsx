@@ -43,37 +43,59 @@ export default function OurOwnedEvents() {
   const visibleEvents = showAll ? events : events.slice(0, 9);
 
   const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const bgImagesRef = useRef<Array<HTMLImageElement | null>>([]);
+
+  const setBgImageRef = (index: number) => (el: HTMLImageElement | null) => {
+    bgImagesRef.current[index] = el;
+  };
 
   useLayoutEffect(() => {
     if (!cardsRef.current.length) return;
 
-    cardsRef.current.forEach((card, i) => {
-      if (!card) return;
+    gsap.fromTo(
+      cardsRef.current,
+      { opacity: 0, y: 50, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: {
+          amount: 1,
+          grid: "auto",
+          from: "start",
+        },
+        scrollTrigger: {
+          trigger: ".grid",
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
 
-      gsap.fromTo(
-        card,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          delay: i * 0.05, // 👈 чуть-чуть сдвиг
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 90%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        }
-      );
-    });
-  }, []);
+    gsap.fromTo(
+      bgImagesRef.current,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        delay: 1,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: bgImagesRef.current[0], // или обёртку, если хочешь привязать к container
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  }, [visibleEvents]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "auto" });
-      // Ждём следующий тик
       requestAnimationFrame(() => {
         setHasScrolledTop(true);
       });
@@ -87,7 +109,7 @@ export default function OurOwnedEvents() {
         duration: 1.2,
         ease: "power2.out",
         onComplete: () => {
-          setAnimationsReady(true); // ✅ запускаем флаг
+          setAnimationsReady(true);
           requestAnimationFrame(() => {
             ScrollTrigger.refresh();
           });
@@ -95,6 +117,7 @@ export default function OurOwnedEvents() {
       });
     }
   }, [showIntro]);
+
   return (
     <div
       ref={contentRef}
@@ -102,12 +125,14 @@ export default function OurOwnedEvents() {
     >
       <div className="fixed inset-0 z-[0]">
         <img
+          ref={setBgImageRef(0)}
           className="w-[770px] h-[770px] absolute top-[25%] left-[100%] 
       -translate-x-1/2 -translate-y-1/2"
           src="/assets/logo/bbr-events-vector.svg"
           alt=""
         />
         <img
+          ref={setBgImageRef(1)}
           className="w-[770px] h-[770px] absolute top-[102%] left-[46%] 
       -translate-x-1/2 -translate-y-1/2"
           src="/assets/logo/bbr-events-vector.svg"
@@ -115,7 +140,10 @@ export default function OurOwnedEvents() {
         />
       </div>
       <Header animationsReady={animationsReady} />
-      <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]" data-bg="dark">
+      <main
+        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+        data-bg="dark"
+      >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
             <HeroTitleFadeIn
@@ -135,7 +163,6 @@ export default function OurOwnedEvents() {
         </div>
       </main>
       <section className="p-[16px] md:p-[40px] mb-[135px]" data-bg="light">
-        {" "}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[12px] auto-rows-[354px]">
           {visibleEvents.map((event, i) => (
             <div
@@ -153,39 +180,18 @@ export default function OurOwnedEvents() {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              {/* Overlay */}
               <div className="absolute inset-0 bg-blue opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
-
-              {/* Logo */}
               <div
                 className="absolute top-1/2 left-1/2 
       -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               >
                 <img src={event.logo} alt="Event Logo" />
               </div>
-
-              {/* Arrow */}
-              {/* <div className="absolute bottom-6 right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                  strokeWidth="2"
-                >
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </div> */}
             </div>
           ))}
         </div>
-        {/* Показать ещё */}
         {!showAll && events.length > 9 && (
           <div className="flex justify-center mt-[158px]">
-            {/* <button className="border border-white px-6 py-2 rounded-md text-white hover:bg-white hover:text-black transition-all duration-300">
-              Load More
-            </button> */}
             <div className="z-[1]" onClick={() => setShowAll(true)}>
               <Button
                 text="Load More"

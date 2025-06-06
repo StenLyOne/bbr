@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 
@@ -19,7 +19,36 @@ export default function Team() {
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
+  const imageRefs = useRef<HTMLImageElement[]>([]);
+  const setImageRef = (el: HTMLImageElement | null) => {
+    if (el && !imageRefs.current.includes(el)) {
+      imageRefs.current.push(el);
+    }
+  };
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  useLayoutEffect(() => {
+    if (!imageRefs.current.length) return;
+
+    imageRefs.current.forEach((img) => {
+      gsap.fromTo(
+        img,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    });
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -52,13 +81,16 @@ export default function Team() {
     <>
       <div
         ref={contentRef}
-        className={`transition-opacity duration-1000 bg-blank z-[100000] `}
+        className={`transition-opacity duration-1000 bg-blank z-[100000] overflow-hidden`}
       >
         <Header animationsReady={animationsReady} />
         <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
           <div className="w-full flex justify-center md:justify-between items-center">
             <div>
-              <HeroTitleFadeIn delay={1} className={"text-blue text-center md:text-left"}>
+              <HeroTitleFadeIn
+                delay={1}
+                className={"text-blue text-center md:text-left"}
+              >
                 {hero.title}
               </HeroTitleFadeIn>
             </div>
@@ -86,7 +118,28 @@ export default function Team() {
             </AnimatedTextLine>
           </div>
         </section>
-        <section className="w-full bg-blank ">
+        <section className="relative w-full bg-blank ">
+          <img
+            ref={setImageRef}
+            className="absolute top-[200px] right-[-0px] md:top-[3%] right-[-500px]
+      -translate-x-1/2 -translate-y-1/2 md:scale-[1.5]"
+            src="assets/logo/events-border-vector.svg"
+            alt=""
+          />
+          <img
+            ref={setImageRef}
+            className="absolute top-1/2 right-[-400px]
+      -translate-x-1/2 -translate-y-1/2 scale-[1.2]"
+            src="assets/logo/pr-border-vector.svg"
+            alt=""
+          />
+          <img
+            ref={setImageRef}
+            className="absolute bottom-[-400px] md:bottom-[-600px] right-[-400px] md:right-[-560px]
+      -translate-x-1/2 -translate-y-1/2 scale-[1.2] z-[0]"
+            src="assets/logo/digital-border-vector.svg"
+            alt=""
+          />
           {isDesktop ? (
             <div className="px-[40px] pb-[155px] flex flex-col">
               {departments.map((department, index) => (
@@ -233,7 +286,7 @@ export default function Team() {
             </div>
           )}
         </section>
-        <section className="p-[16px] md:p-[40px]">
+        <section className="relative p-[16px] md:p-[40px] z-[1]">
           <div
             className="w-full h-full min-h-[496px] flex gap-[64px] flex-col items-center md:px-[115px] md:items-start justify-center text-white text-center"
             style={{

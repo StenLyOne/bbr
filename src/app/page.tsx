@@ -73,7 +73,7 @@ export default function Home() {
 
       <div
         ref={contentRef}
-        className={`transition-opacity duration-1000 ${
+        className={`transition-opacity duration-1000 bg-blank ${
           showIntro ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >

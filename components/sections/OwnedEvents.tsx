@@ -6,6 +6,8 @@ import { useState } from "react";
 import AnimatedTextLine from "../AnimatedTextLine";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import dynamic from "next/dynamic";
+import TitleLines from "../ui/TitleLines";
+import AnimatedStrokeByStroke from "../AnimatedStrokeByStroke";
 
 const OwnedEventsDesktop = dynamic(
   () => import("../bloks/OwnedEventsDesktop"),
@@ -48,11 +50,10 @@ export default function OwnedEvents({ data }: Props) {
         <div className="w-full">
           <div className=" px-[16px]">
             <SubTitleLine title={data.title} />
-            <AnimatedTextLine>
-              <h2 className="pt-[35px] pb-[54px] text-blue">
-                PROUDLY OWNED & PRODUCED
-              </h2>
-            </AnimatedTextLine>
+
+            <h2 className="pt-[35px] pb-[54px] text-blue event-title-1 ">
+              <AnimatedStrokeByStroke text={data.title} />
+            </h2>
           </div>
           <div className="pb-[70px]">
             {data.events.map((event, index) => (

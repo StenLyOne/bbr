@@ -3,6 +3,7 @@ import SubTitleLine from "../ui/SubTitleLine";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import AnimatedStrokeByStroke from "../AnimatedStrokeByStroke";
 import AnimatedTextLine from "../AnimatedTextLine";
 
 interface Stat {
@@ -168,11 +169,11 @@ export default function OwnedEventsDesktop({ data }: Props) {
       <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine title={data.sub_title} />
-          <AnimatedTextLine>
+       
             <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
-              {data.title}
+              <AnimatedStrokeByStroke text={data.title}  />
             </h2>
-          </AnimatedTextLine>
+         
 
           <div className="w-full mb-[20px] ">
             <AnimatedTextLine
