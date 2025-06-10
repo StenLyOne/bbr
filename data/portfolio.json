@@ -1225,7 +1225,7 @@
     },
     {
       "slug": "chroma",
-      "name": "Chroma",
+      "title": "Chroma",
       "tag": "Activation",
       "hero_image": "/assets/portfolio/croma.png",
       "event_information": {
@@ -1319,7 +1319,7 @@
     },
     {
       "slug": "bastille",
-      "titel": "Bastille",
+      "title": "Bastille",
       "tag": "Festival",
       "hero_image": "/assets/portfolio/bastille.png",
       "event_information": {
