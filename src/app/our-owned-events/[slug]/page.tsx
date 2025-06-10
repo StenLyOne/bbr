@@ -108,7 +108,7 @@ export default function EventPage() {
             </div>
             <div className="max-w-[787px] space-y-[50px]">
               <AnimatedTextLine>
-                <h2 className="text-blue">{event.event_information.text}</h2>
+                <h2 className="text-blue">{event.event_information.title}</h2>
               </AnimatedTextLine>
               <AnimatedTextLine>
                 <p className="text-blue hidden md:block">{event.event_information.text}</p>

@@ -16,9 +16,7 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const visibleEvents = events
-    .filter((event) => slug.includes(event.slug))
-    .slice(0, 3);
+ const visibleEvents = events.slice(0, 3);
 
   const scrollBy = (dir: "left" | "right") => {
     const width = containerRef.current?.offsetWidth || 0;
@@ -106,7 +104,7 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
           ))}
           <Link
             href={link}
-            className="md:hiddem text-blue font-medium hover:underline flex items-center gap-2"
+            className="md:hidden text-blue font-medium hover:underline flex items-center gap-2"
           >
             See all events
             <svg
