@@ -21,13 +21,17 @@ interface Stat {
   number: string;
 }
 
+interface MediaItem {
+  image_src: string;
+  logo_src: string;
+  alt: string;
+}
+
 interface EventItem {
   name: string;
-  name_mobile: string;
-  url: string;
-  logo: string;
-  image: string;
+  link: string;
   stats: Stat[];
+  media: MediaItem;
 }
 
 interface Props {
@@ -66,7 +70,7 @@ export default function OwnedEvents({ data }: Props) {
                     }
                   >
                     <p className="!font-[700] text-[16px] text-blue">
-                      {event.name_mobile}
+                      {event.name}
                     </p>
                     <img
                       className={`transition-transform duration-300 ${
@@ -87,15 +91,15 @@ export default function OwnedEvents({ data }: Props) {
                   <div className="space-y-[80px]">
                     <AnimatedTextLine>
                       <Image
-                        src={event.image}
-                        alt={event.name}
+                        src={event.media.image_src}
+                        alt={event.media.alt}
                         width={768}
                         height={765}
                       />
                     </AnimatedTextLine>
                     <AnimatedTextLine>
                       {" "}
-                      <img src={event.logo} alt="" className="mx-auto" />
+                      <img src={event.media.logo_src} alt="" className="mx-auto" />
                     </AnimatedTextLine>
                   </div>
                   <div className="space-y-[50px] py-[80px]">

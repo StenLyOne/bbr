@@ -8,7 +8,7 @@
   },
   "intro": {
     "sub_title": "OUR TEAM",
-    "section_title": "BBR GROUP AGENCY",
+    "title": "BBR GROUP AGENCY",
     "description": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival held on Circular Quay is in the Rocks a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts."
   },
   "departments": [
@@ -18,7 +18,7 @@
         {
           "name": "Tom Kennedy",
           "position": "FOUNDER, MD",
-          "image": "/assets/team/tom-kennedy.jpg",
+          "image_src": "/assets/team/tom-kennedy.jpg",
           "linkedin": "#/linkedin.com"
         }
       ]
@@ -29,13 +29,13 @@
         {
           "name": "James Patel",
           "position": "PRODUCTION MANAGER",
-          "image": "/assets/team/james-patel.jpg",
+          "image_src": "/assets/team/james-patel.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "FOREMAN",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         }
       ]
@@ -46,13 +46,13 @@
         {
           "name": "James Patel",
           "position": "MARKETING MANAGER",
-          "image": "/assets/team/james-patel.jpg",
+          "image_src": "/assets/team/james-patel.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "CONTENT CREATOR",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         }
       ]
@@ -63,13 +63,13 @@
         {
           "name": "James Patel",
           "position": "PROJECT MANAGER",
-          "image": "/assets/team/james-patel.jpg",
+          "image_src": "/assets/team/james-patel.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "PROJECT MANAGER",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         }
       ]
@@ -80,43 +80,43 @@
         {
           "name": "James Patel",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/james-patel.jpg",
+          "image_src": "/assets/team/james-patel.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         },
         {
           "name": "Chloe Bennett",
           "position": "DIR. PARTNERSHIPS",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#/linkedin.com"
         }
       ]
@@ -127,13 +127,13 @@
         {
           "name": "Rusty",
           "position": "BOSS MASCOT",
-          "image": "/assets/team/james-patel.jpg",
+          "image_src": "/assets/team/james-patel.jpg",
           "linkedin": "#"
         },
         {
           "name": "Luna",
           "position": "SUPRE LOVE",
-          "image": "/assets/team/chloe-bennett.jpg",
+          "image_src": "/assets/team/chloe-bennett.jpg",
           "linkedin": "#"
         }
       ]
@@ -143,7 +143,7 @@
     "title": "WORK WITH US",
     "button": {
       "text": "Careers",
-      "link": "/contact "
+      "link": "/contact"
     },
     "background_image": "/assets/images/cta_bg.png"
   }

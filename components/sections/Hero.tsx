@@ -15,7 +15,7 @@ export default function Hero({
       data-bg="dark"
     >
       {/* Video */}
-      {data.video_url ? (
+      {data.media.type === "video" ? (
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           autoPlay
@@ -23,19 +23,19 @@ export default function Hero({
           loop
           playsInline
         >
-          <source src={data.video_url} type="video/mp4" />
+          <source src={data.media.src} type="video/mp4" />
         </video>
       ) : (
         <Image
-          src={data.image_url}
+          src={data.media.src}
           width={1440}
           height={3000}
-          alt="Hero Background"
+          alt={data.media.alt}
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
       )}
 
-      {/* TEXT */}
+      {/* TITLE */}
       <div className="w-full relative z-10 flex items-center  h-full break-all">
         {animationsReady ? (
           <HeroTitleFadeIn

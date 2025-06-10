@@ -20,7 +20,7 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "src",
+    "baseUrl": "src 1",
     "paths": {
       "@/*": [
         "*"
@@ -34,7 +34,7 @@
     ]
   },
   "include": [
-    "src",
+    "src 1",
     ".next/types/**/*.ts"
   ],
   "exclude": [

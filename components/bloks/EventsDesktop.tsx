@@ -3,12 +3,17 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import TitleLines from "../ui/TitleLines";
 
+interface EventMedia {
+  type: "image" | "video";
+  src: string;
+  alt: string;
+}
+
 interface Event {
   title: string;
   bbr_events_logo: string;
   bbr_events_vector: string;
-  bbr_events_image: string;
-  alt: string;
+  bbr_events_media: EventMedia;
 }
 
 interface Props {
@@ -314,22 +319,21 @@ export default function Events({ sub_title, events }: Props) {
                 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-rouge z-6"
           />
           {/* LARGE LOGO */}
-
           <img
-            src={events[0].bbr_events_vector}
-            alt={events[0].alt}
+            src="/assets/logo/bbr-events-vector.svg"
+            alt={events[0].bbr_events_media.alt}
             className={`large-logo-1 absolute top-[110%] left-[75%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
           />
           <img
-            src={events[1].bbr_events_vector}
-            alt={events[1].alt}
+            src="/assets/logo/bbr-pr-vector.svg"
+            alt={events[1].bbr_events_media.alt}
             className={`large-logo-2 absolute top-[45%] left-[25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
           />
           <Image
-            src={events[2].bbr_events_vector}
+            src="/assets/logo/bbr-digital-vector.svg"
             width={2000}
             height={2000}
-            alt={events[2].alt}
+            alt={events[2].bbr_events_media.alt}
             className={`large-logo-3 absolute top-[70%] left-[60%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 z-[6] mix-blend-multiply`}
           />
           {/* RECTANGLE */}
@@ -388,56 +392,60 @@ export default function Events({ sub_title, events }: Props) {
             </h4>
           </div>
           {/* IMAGE */}
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className={`event-image-${
+                index + 1
+              } w-1/2 h-full ml-auto absolute inset-0 z-[${2 + index * 3}]`}
+            >
+              {event.bbr_events_media.type === "video" ? (
+                <video
+                  src={event.bbr_events_media.src}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <Image
+                  src={event.bbr_events_media.src}
+                  width={680}
+                  height={936}
+                  alt={event.bbr_events_media.alt}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+          ))}
+          ÷{/* lOGO */}
           <Image
-            className={`event-image-1 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[2]`}
-            src={events[0].bbr_events_image}
-            width={680}
-            height={936}
-            alt={events[0].alt}
-          />
-          <Image
-            className={`event-image-2 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[5]`}
-            src={events[1].bbr_events_image}
-            width={680}
-            height={936}
-            alt={events[1].alt}
-          />
-          <Image
-            className={`event-image-3 w-1/2 h-full ml-auto absolute inset-0 object-cover z-[8]`}
-            src={events[2].bbr_events_image}
-            width={680}
-            height={936}
-            alt={events[2].alt}
-          />
-
-          {/* lOGO */}
-          <Image
-            src={events[0].bbr_events_logo}
+            src="/assets/logo/bbr-events-logo.svg"
             width={250}
             height={150}
-            alt={events[0].alt}
+            alt="bbr logo"
             className={`small-logo-1 absolute top-1/2 left-1/2 
               -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] z-[1]`}
           />
           <Image
-            src={events[1].bbr_events_logo}
+            src="/assets/logo/bbr-pr-logo.svg"
             width={250}
             height={150}
-            alt={events[1].alt}
+            alt="bbr logo"
             className={`small-logo-2 absolute top-1/2 left-1/2 
               -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] z-[3]`}
           />
           <Image
-            src={events[2].bbr_events_logo}
+            src="/assets/logo/bbr-digital-logo.svg"
             width={250}
             height={150}
-            alt={events[2].alt}
+            alt="bbr logo"
             className={`small-logo-3 absolute top-1/2 left-1/2 
               -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] z-[6]`}
           />
-
           <Image
-            src={events[0].bbr_events_image}
+            src="/assets/images/bbr-events-image.png"
             alt="placeholder"
             width={680}
             height={936}

@@ -92,7 +92,7 @@ export default function Contact({}) {
             <AnimatedTextLine delay={1.1}>
               <Image
                 className="hidden md:block"
-                src={hero.image_big.src}
+                src={hero.image_big.link}
                 alt={hero.image_big.alt}
                 width={556}
                 height={308}
@@ -101,7 +101,7 @@ export default function Contact({}) {
             <AnimatedTextLine delay={1.2}>
               <Image
                 className="hidden md:block"
-                src={hero.image_small.src}
+                src={hero.image_small.link}
                 alt={hero.image_small.alt}
                 width={213}
                 height={171}
@@ -111,7 +111,7 @@ export default function Contact({}) {
         </div>
       </main>
       <section className="px-[16px] md:px-[40px]">
-        <SubTitleLine title={contact.sub_titile} />
+        <SubTitleLine title={contact.subtitile} />
         <div className="w-full max-w-[1130px] flex justify-between md:flex-row flex-col mx-auto py-[84px] md:py-[100px] gap-[80px]">
           <ContactForm />
           <div className="space-y-[64px]">

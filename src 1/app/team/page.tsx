@@ -111,7 +111,7 @@ export default function Team() {
           <SubTitleLine title={intro.sub_title} />
           <div className="max-w-[787px] space-y-[50px] pt-[32px] pb-[72px] md:pt-[118px] md:pb-[209px]">
             <AnimatedTextLine>
-              <h2 className=" text-blue">{intro.title}</h2>
+              <h2 className=" text-blue">{intro.section_title}</h2>
             </AnimatedTextLine>
             <AnimatedTextLine>
               <p className="text-blue">{intro.description}</p>
@@ -161,7 +161,7 @@ export default function Team() {
                         return (
                           <div key={idx} className={`${width} flex flex-col`}>
                             <Image
-                              src={member.image_src}
+                              src={member.image}
                               alt={member.name}
                               width={size}
                               height={size}
@@ -235,7 +235,7 @@ export default function Team() {
                             className={`${width} flex-shrink-0 flex flex-col`}
                           >
                             <Image
-                              src={member.image_src}
+                              src={member.image}
                               alt={member.name}
                               width={768}
                               height={768}

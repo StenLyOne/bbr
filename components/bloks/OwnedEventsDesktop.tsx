@@ -5,19 +5,24 @@ import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import AnimatedStrokeByStroke from "../AnimatedStrokeByStroke";
 import AnimatedTextLine from "../AnimatedTextLine";
+import Link from "next/link";
 
 interface Stat {
   name: string;
   number: string;
 }
 
+interface MediaItem {
+  image_src: string;
+  logo_src: string;
+  alt: string
+}
+
 interface EventItem {
   name: string;
-  name_mobile: string;
-  url: string;
-  logo: string;
-  image: string;
+  link: string;
   stats: Stat[];
+  media: MediaItem;
 }
 
 interface Props {
@@ -27,6 +32,7 @@ interface Props {
     events: EventItem[];
   };
 }
+
 
 export default function OwnedEventsDesktop({ data }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -169,11 +175,10 @@ export default function OwnedEventsDesktop({ data }: Props) {
       <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine title={data.sub_title} />
-       
-            <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
-              <AnimatedStrokeByStroke text={data.title}  />
-            </h2>
-         
+
+          <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
+            <AnimatedStrokeByStroke text={data.title} />
+          </h2>
 
           <div className="w-full mb-[20px] ">
             <AnimatedTextLine
@@ -185,32 +190,34 @@ export default function OwnedEventsDesktop({ data }: Props) {
                 const isActive = activeIndex === index;
 
                 return (
-                  <div key={index} className="w-full sm:w-auto flex" data-line>
-                    <button
-                      onClick={() => {
-                        setActiveIndex(index);
-                        scrollToEvent(index - 1);
-                      }}
-                      className="hover:bg-blue text-blank"
-                      style={{
-                        width: "100%",
-                        padding: "30px",
-                        borderRadius: "8px",
-                        border: isActive
-                          ? "1px solid #6276fb"
-                          : "1px solid black",
-                        fontSize: "18px",
-                        fontWeight: 600,
-                        fontFamily: "Zabal",
-                        lineHeight: "55%",
-                        cursor: "pointer",
-                        backgroundColor: isActive ? "#6276fb" : "transparent",
-                        color: isActive ? "#fff" : "#21224b",
-                        transition: "all 0.3s ease",
-                      }}
-                    >
-                      {event.name}
-                    </button>
+                  <div key={index} data-line>
+                    <Link href={event.link} className="w-full sm:w-auto flex">
+                      <button
+                        onClick={() => {
+                          setActiveIndex(index);
+                          scrollToEvent(index - 1);
+                        }}
+                        className="hover:bg-blue text-blank"
+                        style={{
+                          width: "100%",
+                          padding: "30px",
+                          borderRadius: "8px",
+                          border: isActive
+                            ? "1px solid #6276fb"
+                            : "1px solid black",
+                          fontSize: "18px",
+                          fontWeight: 600,
+                          fontFamily: "Zabal",
+                          lineHeight: "55%",
+                          cursor: "pointer",
+                          backgroundColor: isActive ? "#6276fb" : "transparent",
+                          color: isActive ? "#fff" : "#21224b",
+                          transition: "all 0.3s ease",
+                        }}
+                      >
+                        {event.name}
+                      </button>
+                    </Link>
                   </div>
                 );
               })}
@@ -226,8 +233,8 @@ export default function OwnedEventsDesktop({ data }: Props) {
                 >
                   <div className="overflow-hidden">
                     <Image
-                      src={event.logo}
-                      alt={event.name}
+                      src={event.media.logo_src}
+                      alt={event.media.alt}
                       width={300}
                       height={150}
                       className={`logo-${index} logo-line-${index} block translate-y-full opacity-0`}
@@ -269,8 +276,8 @@ export default function OwnedEventsDesktop({ data }: Props) {
               {data.events.map((event, index) => (
                 <Image
                   key={`image-${index}`}
-                  src={event.image}
-                  alt={event.name}
+                  src={event.media.image_src}
+                   alt={event.media.alt}
                   width={443}
                   height={443}
                   className={`image-${index} absolute object-cover w-full h-full opacity-1`}

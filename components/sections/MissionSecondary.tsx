@@ -3,7 +3,20 @@ import SquareIcons from "../ui/SquareIcons";
 import AnimatedTextLine from "../AnimatedTextLine";
 import AnimatedTextWordByWord from "../AnimatedTextWordByWord";
 
-export default function MissionSecondary({ data }: { data: any }) {
+interface MissionSecondaryItem {
+  icon: string;
+  label: string;
+  link: string;
+}
+
+interface MissionSecondaryData {
+  title: string;
+  sub_title: string;
+  content: string;
+  items: MissionSecondaryItem[];
+}
+
+export default function MissionSecondary({ data }: { data: MissionSecondaryData }) {
   return (
     <section className="w-full bg-white">
       <div className=" md:px-[0px] md:px-[40px]">
@@ -23,7 +36,7 @@ export default function MissionSecondary({ data }: { data: any }) {
             {data.items.map((item: any, index: number) => (
               <SquareIcons
                 key={index}
-                link={item.src}
+                link={item.link}
                 iconSrc={item.icon}
                 title={item.label}
               />
@@ -32,7 +45,7 @@ export default function MissionSecondary({ data }: { data: any }) {
         </div>
         <div className="px-[16px] md:px-[0px] py-[64px] md:py-[164px]">
           <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue">
-            <AnimatedTextWordByWord text="WE ARE BBR" />
+            <AnimatedTextWordByWord text={data.title} />
           </h2>
         </div>
       </div>

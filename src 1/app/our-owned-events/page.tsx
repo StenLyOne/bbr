@@ -5,11 +5,13 @@ import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 
 import data from "../../../data/owned-events.json";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import AnimatedTextLine from "../../../components/AnimatedTextLine";
 import { useLayoutEffect } from "react";
 
 import Footer from "../../../components/sections/Footer";
 import Header from "../../../components/sections/Header";
+import SubTitleLine from "../../../components/ui/SubTitleLine";
 import Button from "../../../components/ui/Button";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 import Link from "next/link";
@@ -17,6 +19,18 @@ import Link from "next/link";
 interface HeroData {
   title: string;
   description: string;
+}
+
+interface Events {
+  hero_image: string;
+  logo: string;
+  title: string;
+  slug: string;
+}
+
+interface Data {
+  hero: HeroData;
+  events: Event[];
 }
 
 export default function OurOwnedEvents() {
@@ -43,7 +57,7 @@ export default function OurOwnedEvents() {
 
     gsap.fromTo(
       cardsRef.current,
-      { opacity: 0, y: 60, scale: 0.95 },
+      { opacity: 0, y: 50, scale: 0.95 },
       {
         opacity: 1,
         y: 0,
@@ -155,7 +169,7 @@ export default function OurOwnedEvents() {
         </div>
       </main>
       <section className="p-[16px] md:p-[40px] mb-[135px]" data-bg="light">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] auto-rows-[354px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[12px] auto-rows-[354px]">
           {visibleEvents.map((event, i) => (
             <div
               key={i}

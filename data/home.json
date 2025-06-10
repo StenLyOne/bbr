@@ -1,7 +1,11 @@
 {
   "hero": {
     "title": "EXPERIENCES THAT|INSPIRE, CONNECT|AND EMPOWER",
-    "image_url": "/assets/images/Hero-Image.png"
+    "media": {
+      "type": "image",
+      "src": "/assets/images/Hero-Image.png",
+      "alt": "lorem ipsum"
+    }
   },
   "mission": {
     "sub_title": "MISSION",
@@ -13,24 +17,27 @@
     "events": [
       {
         "title": "LIFE IS A|SUCCESSION|OF MOMENTS",
-        "bbr_events_logo": "/assets/logo/bbr-events-logo.svg",
-        "bbr_events_vector": "/assets/logo/bbr-events-vector.svg",
-        "bbr_events_image": "/assets/images/bbr-events-image.png",
-        "alt": "bbr events"
+        "bbr_events_media": {
+          "type": "image",
+          "src": "/assets/images/bbr-events-image.png",
+          "alt": "bbr events"
+        }
       },
       {
         "title": "EVERYTHING CAN|BE VIEWED AS|EXTRAORDINARY",
-        "bbr_events_logo": "/assets/logo/bbr-pr-logo.svg",
-        "bbr_events_vector": "/assets/logo/bbr-pr-vector.svg",
-        "bbr_events_image": "/assets/images/bbr-pr-image.png",
-        "alt": "bbr pr"
+        "bbr_events_media": {
+          "type": "image",
+          "src": "/assets/images/bbr-pr-image.png",
+          "alt": "bbr events"
+        }
       },
       {
         "title": "THE EXPERTISE|TO CONNECT,|INSPIRE AND|EMPOWER",
-        "bbr_events_logo": "/assets/logo/bbr-digital-logo.svg",
-        "bbr_events_vector": "/assets/logo/bbr-digital-vector.svg",
-        "bbr_events_image": "/assets/images/bbr-digital-image.png",
-        "alt": "bbr digital"
+        "bbr_events_media": {
+          "type": "image",
+          "src": "/assets/images/bbr-digital-image.png",
+          "alt": "bbr events"
+        }
       }
     ]
   },
@@ -58,10 +65,12 @@
     "events": [
       {
         "name": "Bastille",
-        "name_mobile": "Bastille Festival",
-        "url": "/bastille",
-        "logo": "/assets/logo/event-bast.svg",
-        "image": "/assets/images/bastille.png",
+        "link": "/our-owned-events/bastille-festival/",
+        "media": {
+          "image_src": "/assets/images/bastille.png",
+          "logo_src": "/assets/logo/event-bast.svg",
+          "alt": "lorem ipsum"
+        },
         "stats": [
           { "name": "Visitors over 4 days", "number": "100K" },
           { "name": "Years running", "number": "11" },
@@ -70,10 +79,12 @@
       },
       {
         "name": "Mov’in Bed",
-        "name_mobile": "Mov’in Bed",
-        "url": "/Mov-in-Bed",
-        "logo": "/assets/logo/event-bast.svg",
-        "image": "/assets/images/Mov-in-Bed.png",
+        "link": "/our-owned-events/bastille-festival-1/",
+        "media": {
+          "image_src": "/assets/images/Mov-in-Bed.png",
+          "logo_src": "/assets/logo/event-bast.svg",
+          "alt": "lorem ipsum"
+        },
         "stats": [
           { "name": "Visitors over 4 days", "number": "200K" },
           { "name": "Years running", "number": "12" },
@@ -82,10 +93,12 @@
       },
       {
         "name": "Rachlete Igloo",
-        "name_mobile": "Rachlete Igloo",
-        "url": "/Rachlete-Igloo",
-        "logo": "/assets/logo/event-bast.svg",
-        "image": "/assets/images/Rachlete-Igloo.png",
+        "link": "/our-owned-events/bastille-festival-2/",
+        "media": {
+          "image_src": "/assets/images/Rachlete-Igloo.png",
+          "logo_src": "/assets/logo/event-bast.svg",
+          "alt": "lorem ipsum"
+        },
         "stats": [
           { "name": "Visitors over 4 days", "number": "300K" },
           { "name": "Years running", "number": "13" },
@@ -94,10 +107,12 @@
       },
       {
         "name": "Christmas-in-July",
-        "name_mobile": "Christmas in July",
-        "url": "/Christmas-in-July",
-        "logo": "/assets/logo/event-bast.svg",
-        "image": "/assets/images/Christmas-in-July.png",
+        "link": "/our-owned-events/bastille-festival-3/",
+        "media": {
+          "image_src": "/assets/images/Christmas-in-July.png",
+          "logo_src": "/assets/logo/event-bast.svg",
+          "alt": "lorem ipsum"
+        },
         "stats": [
           { "name": "Visitors over 4 days", "number": "400" },
           { "name": "Years running", "number": "14" },
@@ -106,10 +121,12 @@
       },
       {
         "name": "Ghost",
-        "name_mobile": "Ghost Festival",
-        "url": "/Ghost",
-        "logo": "/assets/logo/event-bast.svg",
-        "image": "/assets/images/Ghost.png",
+        "link": "/our-owned-events/bastille-festival-4/",
+        "media": {
+          "image_src": "/assets/images/Ghost.png",
+          "logo_src": "/assets/logo/event-bast.svg",
+          "alt": "lorem ipsum"
+        },
         "stats": [
           { "name": "Visitors over 4 days", "number": "500K" },
           { "name": "Years running", "number": "15" },
@@ -119,7 +136,6 @@
     ]
   },
   "partners": {
-    "title": "PARTNERS & SPONSORS",
     "sub_title": "PARTNERS & SPONSORS",
     "logos": [
       "/assets/logo/Sponsor-Logos--43.svg",
@@ -147,7 +163,6 @@
     ]
   },
   "latest": {
-    "title": "LATEST",
     "sub_title": "LATEST",
     "instagram_links": [
       "https://www.instagram.com/reel/C-8GQycN10y/?igsh=b2U0Y293aXNndHh5",

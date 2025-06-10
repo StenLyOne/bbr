@@ -217,7 +217,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
               items: ["Our Story", "Team", "Our owned events"],
             },
             { label: "SERVICES", items: ["Events", "Pr", "Digital"] },
-            { label: "PORTFOLIO" },
+            { label: "PORTFOLIO", href: "/portfolio" },
             { label: "CONTACT", href: "/contact" },
           ].map((section, i) => {
             const hasItems = !!section.items;

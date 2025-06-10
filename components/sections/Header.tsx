@@ -13,7 +13,7 @@ import Image from "next/image";
 export default function Header({
   animationsReady,
 }: {
-  animationsReady: boolean;
+  animationsReady?: boolean;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBg, setShowBg] = useState(false);

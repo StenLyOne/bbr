@@ -5,17 +5,34 @@
   },
   "events": [
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -26,6 +43,14 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -35,77 +60,36 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event2.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
         ]
       },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
       ],
       "preview": {
         "image": "/assets/events/bastille/preview.jpg",
@@ -115,402 +99,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event3.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event4.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event5.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event6.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event7.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event8.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
-      "title": "Bastille Festival",
-      "hero_image": "/assets/events/event9.png",
-      "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "video_block": {
-        "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
-      },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Involve Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -521,6 +137,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -530,19 +147,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -555,17 +177,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -576,6 +215,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -585,19 +225,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -610,17 +255,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -631,6 +293,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -640,19 +303,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -665,17 +333,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -686,6 +371,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -695,19 +381,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -720,17 +411,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -741,6 +449,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -750,19 +459,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -775,17 +489,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -796,6 +527,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -805,19 +537,24 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
-      ],
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -830,17 +567,34 @@
       }
     },
     {
-      "slug": "bastille-festival",
+      "slug": "bastille-festival-15",
       "title": "Bastille Festival",
       "hero_image": "/assets/events/bastille.jpg",
       "logo": "/assets/logo/event-bast.svg",
-      "description": "FOOD, WINE, ART REVOLUTION",
-      "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-      "details": {
-        "created_by": "BBR Group",
-        "years": "2015–2022",
-        "budget": "$1.5M",
-        "location": "Circular Quay & The Rocks, Sydney Australia"
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
       },
       "gallery": [
         "/assets/events/bastille-gallery-1.jpg",
@@ -851,6 +605,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
         "stats": [
           { "label": "Visitors over 4 days", "value": "650K" },
           { "label": "Years running", "value": "12" },
@@ -860,19 +615,648 @@
           { "label": "Brand activations", "value": "12" }
         ]
       },
-      "video_block": {
+      "media_block": {
         "title": "EAST CIRCULAR QUAY",
-        "link": "/assets/events/bastille-video.jpg"
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
       },
-      "sponsors": [
-        "/assets/logos/nsw.svg",
-        "/assets/logos/tefal.svg",
-        "/assets/logos/clubmed.svg",
-        "/assets/logos/valmorgan.svg",
-        "/assets/logos/peugeot.svg",
-        "/assets/logos/vmo.svg",
-        "/assets/logos/maille.svg"
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
       ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Involve Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille-festival-15",
+      "title": "Bastille Festival",
+      "hero_image": "/assets/events/bastille.jpg",
+      "logo": "/assets/logo/event-bast.svg",
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "video",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logos/nsw.svg",
+          "/assets/logos/tefal.svg",
+          "/assets/logos/clubmed.svg",
+          "/assets/logos/valmorgan.svg",
+          "/assets/logos/peugeot.svg",
+          "/assets/logos/vmo.svg",
+          "/assets/logos/maille.svg"
+        ]
+      },
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Involve Website", "link": "https://bastillefestival.com" }
@@ -884,5 +1268,10 @@
         "link": "/events/bastille-festival"
       }
     }
-  ]
+  ],
+  "more_events": {
+    "title": "MORE EVENTS",
+    "link": "/our-owned-events/",
+    "slug": ["bastille-festival", "bastille-festival-1", "bastille-festival-2"]
+  }
 }
