@@ -127,7 +127,7 @@ export default function Portfolio() {
         </div>
       </section>
       <section className="bg-white-gris px-[16px] md:px-[40px] py-[36px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[16px] gap-y-[46px]">
           {paginatedWorks.map((work, index) => (
             <div key={index} ref={(el) => setCardRef(el, index)}>
               <Link
@@ -141,7 +141,7 @@ export default function Portfolio() {
                   height={278}
                   className="w-full"
                 />
-                <h3 className="pt-[30px] pb-[4px]">{work.name}</h3>
+                <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
                 <p>{work.tag}</p>
               </Link>
             </div>

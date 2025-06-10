@@ -8,14 +8,17 @@ interface Props {
   title: string;
   link: string;
   slug: any[];
+  flag: "work" | "event";
 }
 
-export default function MoreEvents({ events, title, link, slug }: Props) {
+export default function MoreEvents({ events, title, link, slug, flag }: Props) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const visibleEvents = events.filter((event) => slug.includes(event.slug));
+  const visibleEvents = events
+    .filter((event) => slug.includes(event.slug))
+    .slice(0, 3);
 
   const scrollBy = (dir: "left" | "right") => {
     const width = containerRef.current?.offsetWidth || 0;
@@ -34,7 +37,7 @@ export default function MoreEvents({ events, title, link, slug }: Props) {
           <h2 className="text-[32px] font-[900] text-blue">{title}</h2>
           <Link
             href={link}
-            className="text-blue font-medium hover:underline flex items-center gap-2"
+            className="hidden md:flex text-blue font-medium hover:underline  items-center gap-2"
           >
             See all events
             <svg
@@ -70,7 +73,7 @@ export default function MoreEvents({ events, title, link, slug }: Props) {
           ref={containerRef}
           className={`transition-all duration-300 ${
             isMobile
-              ? "flex flex-col gap-[16px]"
+              ? "flex flex-col gap-[46px]"
               : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory"
           }`}
         >
@@ -78,7 +81,9 @@ export default function MoreEvents({ events, title, link, slug }: Props) {
             <Link
               key={i}
               className="flex flex-col gap-[40px]"
-              href={`/our-owned-events/${slug[i]}`}
+              href={`${
+                flag === "event" ? "/our-owned-events/" : "/portfolio/"
+              }${slug[i]}`}
             >
               <div
                 className={`${
@@ -95,10 +100,42 @@ export default function MoreEvents({ events, title, link, slug }: Props) {
                 <h3 className=" text-blue mt-[30px] mb-[20px]">
                   {event.title}
                 </h3>
-                <p className="text-blue">{event.text}</p>
+                <p className="text-blue">{event.event_information.text}</p>
               </div>
             </Link>
           ))}
+          <Link
+            href={link}
+            className="md:hiddem text-blue font-medium hover:underline flex items-center gap-2"
+          >
+            See all events
+            <svg
+              width="20"
+              height="14"
+              viewBox="0 0 20 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4297 0.930176L18.4997 7.00018L12.4297 13.0702"
+                stroke=""
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="group-hover:stroke-white transition-colors duration-300"
+              />
+              <path
+                d="M1.5 7H18.33"
+                stroke="#21224B"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="group-hover:stroke-white transition-colors duration-300"
+              />
+            </svg>
+          </Link>
         </div>
 
         {!isMobile && (

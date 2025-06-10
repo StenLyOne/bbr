@@ -243,6 +243,7 @@ export default function EventPage() {
         title={data.more_events.title}
         link={data.more_events.link}
         slug={data.more_events.slug}
+        flag="work"
       />
 
       <Footer />

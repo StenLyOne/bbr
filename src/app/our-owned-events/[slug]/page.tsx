@@ -187,7 +187,7 @@ export default function EventPage() {
       </section>
 
       {/* Full Width Image Block */}
-      <section className="relative h-[60vh] w-full">
+      <section className="relative h-[100vh] w-full">
         {event.media_block.type === "video" ? (
           <video
             src={event.media_block.src}
@@ -242,6 +242,7 @@ export default function EventPage() {
         title={data.more_events.title}
         link={data.more_events.link}
         slug={data.more_events.slug}
+        flag="event"
       />
 
       <Footer />

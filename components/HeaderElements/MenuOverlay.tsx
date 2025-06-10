@@ -6,40 +6,56 @@ import Link from "next/link";
 import { forwardRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
+interface Prop {
+  menuFun: Function;
+  isOpen: boolean;
+}
+
+export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const servicesRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const arrowRef = useRef<(SVGSVGElement | null)[]>([]);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const hasMounted = useRef(false);
 
   useEffect(() => {
-    if (overlayRef.current) {
-      if (isOpen) {
-        gsap.set(overlayRef.current, {
-          visibility: "visible",
-          pointerEvents: "auto",
-        });
-        gsap.fromTo(
-          overlayRef.current,
-          { y: "-100%" },
-          { y: "0%", duration: 0.6, ease: "power3.out" }
-        );
-      } else {
-        gsap.to(overlayRef.current, {
-          y: "-100%",
-          duration: 0.6,
-          ease: "power3.in",
-          onComplete: () => {
-            gsap.set(overlayRef.current, {
-              visibility: "hidden",
-              pointerEvents: "none",
-            });
-          },
-        });
-        setActiveSection(null);
-      }
+    if (!overlayRef.current) return;
+
+    const el = overlayRef.current;
+
+    if (!hasMounted.current) {
+      // Устанавливаем начальные значения БЕЗ анимации
+      gsap.set(el, {
+        y: "-100%",
+        opacity: 0,
+        pointerEvents: "none",
+      });
+      hasMounted.current = true;
+      return;
+    }
+
+    if (isOpen) {
+      gsap.set(el, {
+        pointerEvents: "auto",
+      });
+      gsap.to(el, {
+        y: "0%",
+        opacity: 1,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+    } else {
+      gsap.to(el, {
+        y: "-100%",
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.in",
+        onComplete: () => {
+          gsap.set(el, { pointerEvents: "none" });
+        },
+      });
     }
   }, [isOpen]);
 
@@ -133,7 +149,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] "
+      className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none"
     >
       <div className="flex flex-col justify-between h-full md:items-end space-y-6 text-right md:pt-[200px]">
         {isDesktop ? (
@@ -252,6 +268,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                       >
                         <Link
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
+                          onClick={() => menuFun()}
                         >
                           {text}
                         </Link>
@@ -262,7 +279,9 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                 <div className="flex items-center justify-center gap-[10px] cursor-pointer">
                   <p className="header hover:text-accent transition-colors duration-300">
                     {section.href ? (
-                      <Link href={section.href}>{section.label}</Link>
+                      <Link href={section.href} onClick={() => menuFun()}>
+                        {section.label}
+                      </Link>
                     ) : (
                       section.label
                     )}
@@ -290,7 +309,9 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                     } transition-colors duration-300`}
                   >
                     {section.href ? (
-                      <Link href={section.href}>{section.label}</Link>
+                      <Link href={section.href} onClick={() => menuFun()}>
+                        {section.label}
+                      </Link>
                     ) : (
                       section.label
                     )}
@@ -320,6 +341,7 @@ export default function MenuOverlay({ isOpen }: { isOpen: boolean }) {
                         <Link
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
                           className="flex"
+                          onClick={() => menuFun()}
                         >
                           {text}
                         </Link>

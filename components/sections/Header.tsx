@@ -62,7 +62,7 @@ export default function Header({
   }, []);
 
   useEffect(() => {
-    if (!animationsReady) return;
+
 
     const images = [bbrRef.current, groupRef.current, prRef.current];
 
@@ -121,7 +121,7 @@ export default function Header({
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [animationsReady]); // 👈 обязательно добавь зависимость
+  }, []); // 👈 обязательно добавь зависимость
 
   return (
     <>
@@ -178,7 +178,7 @@ export default function Header({
           />
         </div>
       </header>
-      <MenuOverlay isOpen={menuOpen} />
+      <MenuOverlay isOpen={menuOpen} menuFun={() => setMenuOpen(false)}/>
     </>
   );
 }
