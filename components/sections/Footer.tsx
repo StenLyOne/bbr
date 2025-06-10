@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SubTitleLine from "../ui/SubTitleLine";
 
 interface Proop {
@@ -60,7 +61,7 @@ export default function Footer({ color }: Proop) {
                     black === "black" ? "text-blank" : "text-blue"
                   }`}
                 >
-                  Privacy Policy
+                  <Link href="/privacy-policy/">Privacy Policy </Link>
                 </p>
               </a>
             </div>
