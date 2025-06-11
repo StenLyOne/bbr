@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Link from "next/link";
+import AnimatedTextLine from "../AnimatedTextLine";
 
 interface Props {
   events: any[]; // массив ивентов
@@ -16,7 +17,7 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
- const visibleEvents = events.slice(0, 3);
+  const visibleEvents = events.slice(0, 3);
 
   const scrollBy = (dir: "left" | "right") => {
     const width = containerRef.current?.offsetWidth || 0;
@@ -32,10 +33,12 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
     <section className="bg-white-gris py-[75px]">
       <div className="mx-auto px-4 md:px-[40px]">
         <div className="flex justify-between items-end mb-10">
-          <h2 className="text-[32px] font-[900] text-blue">{title}</h2>
+          <AnimatedTextLine >
+            <h2 className="text-[32px] font-[900] text-blue">{title}</h2>
+          </AnimatedTextLine>
           <Link
             href={link}
-            className="hidden md:flex text-blue font-medium hover:underline  items-center gap-2"
+            className="hidden md:flex text-blue font-medium hover:underline  items-center gap-2 whitespace-nowrap"
           >
             See all events
             <svg
