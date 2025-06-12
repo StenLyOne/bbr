@@ -21,7 +21,7 @@ export default function InfiniteGallery({ images }: GalleryProps) {
       gsap.to(trackRef.current, {
         xPercent: -100,
         ease: "none",
-        duration: 20,
+        duration: 100,
         repeat: -1,
       });
     }, wrapperRef);
@@ -45,7 +45,7 @@ export default function InfiniteGallery({ images }: GalleryProps) {
             alt={`gallery-${index}`}
             width={536}
             height={336}
-            className="w-[536px] h-[336px] object-cover rounded-md flex-shrink-0"
+            className="w-[536px] h-[336px] object-cover flex-shrink-0"
           />
         ))}
       </div>

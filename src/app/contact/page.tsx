@@ -72,6 +72,20 @@ export default function Contact({}) {
     setTimeout(() => setSent(false), 4000); // сообщение исчезает
   };
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div
       ref={contentRef}
@@ -79,7 +93,7 @@ export default function Contact({}) {
     >
       <Header animationsReady={animationsReady} />
       <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
-        <div className="w-full flex justify-center md:justify-between items-center gap-[16px]">
+        <div className="w-full flex justify-center md:justify-between items-center gap-[48px]">
           <div>
             <HeroTitleFadeIn
               delay={1}
@@ -89,28 +103,60 @@ export default function Contact({}) {
             </HeroTitleFadeIn>
           </div>
           <div className="flex items-center flex-col justify-start gap-[4px]">
-            <AnimatedTextLine delay={1.1}>
-              <Image
-                className="hidden md:block"
-                src={hero.image_big.src}
-                alt={hero.image_big.alt}
-                width={556}
-                height={308}
-              />
-            </AnimatedTextLine>
-            <AnimatedTextLine delay={1.2}>
-              <Image
-                className="hidden md:block"
-                src={hero.image_small.src}
-                alt={hero.image_small.alt}
-                width={213}
-                height={171}
-              />
-            </AnimatedTextLine>
+            <div>
+              <AnimatedTextLine delay={1.1}>
+                <Image
+                  className="hidden md:block"
+                  src={hero.image_big.src}
+                  alt={hero.image_big.alt}
+                  width={728}
+                  height={326}
+                />
+              </AnimatedTextLine>
+            </div>
           </div>
         </div>
+        <button
+          onClick={scrollToNextSection}
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        >
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#21224b"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </main>
-      <section className="px-[16px] md:px-[40px]">
+      <section data-scroll-target className="px-[16px] md:px-[40px]">
         <SubTitleLine title={contact.sub_titile} />
         <div className="w-full max-w-[1130px] flex justify-between md:flex-row flex-col mx-auto py-[84px] md:py-[100px] gap-[80px]">
           <ContactForm />
@@ -125,9 +171,10 @@ export default function Contact({}) {
             </div>
             <div className="space-y-[44px]">
               <h2 className="text-blue">Connect</h2>
-              <div className="max-w-[228px] max-h-[20px] flex gap-[24px]">
+              <div className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center">
                 <a href="">
                   <svg
+                    className="icon"
                     width="15"
                     height="15"
                     viewBox="0 0 15 15"
@@ -142,6 +189,7 @@ export default function Contact({}) {
                 </a>
                 <a href="">
                   <svg
+                    className="icon"
                     width="17"
                     height="13"
                     viewBox="0 0 17 13"
@@ -160,6 +208,7 @@ export default function Contact({}) {
                 </a>
                 <a href="">
                   <svg
+                    className="icon"
                     width="21"
                     height="21"
                     viewBox="0 0 21 21"
@@ -186,6 +235,7 @@ export default function Contact({}) {
                 </a>
                 <a href="">
                   <svg
+                    className="icon"
                     width="15"
                     height="15"
                     viewBox="0 0 15 15"
@@ -208,6 +258,7 @@ export default function Contact({}) {
                 </a>
                 <a href="">
                   <svg
+                    className="icon"
                     width="19"
                     height="19"
                     viewBox="0 0 19 19"
@@ -230,6 +281,7 @@ export default function Contact({}) {
                 </a>
                 <a href="">
                   <svg
+                    className="icon"
                     width="25"
                     height="17"
                     viewBox="0 0 25 17"

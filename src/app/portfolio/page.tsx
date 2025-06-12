@@ -33,10 +33,8 @@ export default function Portfolio() {
   );
 
   const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
-  const paginatedWorks = filteredWorks.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const paginatedWorks = filteredWorks.slice(0, currentPage * itemsPerPage);
+
 
   const scrollBy = (dir: "left" | "right") => {
     if (dir === "right" && currentPage < totalPages) {
@@ -79,13 +77,27 @@ export default function Portfolio() {
     );
   }, [paginatedWorks]);
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div
       ref={contentRef}
       className={`transition-opacity duration-1000 bg-blank z-[100000] overflow-hidden`}
     >
       <Header animationsReady={animationsReady} />
-      <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
+      <main className="relative w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
         <div className="w-full flex flex-col md:flex-row justify-center md:justify-between gap-[48px]">
           <div>
             <HeroTitleFadeIn
@@ -99,8 +111,47 @@ export default function Portfolio() {
             <p className="large max-w-[788px]">{hero.description}</p>
           </AnimatedTextLine>
         </div>
+        <button
+          onClick={scrollToNextSection}
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        >
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#21224b"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </main>
-      <section className="" data-bg="light">
+      <section data-scroll-target className="" data-bg="light">
         <div className="overflow-x-auto">
           <div className="">
             {tags.length > 0 && (
@@ -112,10 +163,10 @@ export default function Portfolio() {
                   <button
                     key={i}
                     onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                    className={`w-[200px] md:w-[272px] py-[21px] flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 group ${
+                    className={`w-[200px] md:w-[272px] py-[21px] flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 group cursor-pointer ${
                       activeTag === tag
                         ? "bg-accent text-white"
-                        : "bg-blank text-blue hover:bg-blue-200"
+                        : "bg-blank text-blue hover:bg-accent hover:text-white"
                     }`}
                   >
                     {tag}
@@ -147,33 +198,15 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-10 gap-4">
-          <button
-            onClick={() => scrollBy("left")}
-            className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300"
-          >
-            <Image
-              src="/assets/icons/BTN-Main-Positive.svg"
-              width={38}
-              height={38}
-              alt="Prev"
-            />
-          </button>
-          <button
-            onClick={() => scrollBy("right")}
-            className="w-[38px] h-[38px] transition-colors duration-300"
-          >
-            <Image
-              src="/assets/icons/BTN-Main-Positive.svg"
-              width={38}
-              height={38}
-              alt="Next"
-              className="rotate-180 "
-            />
-          </button>
-        </div>
-        <div className="flex items-center justify-center py-[50px]">
-          <Button text="Let’s Talk" link="/contact" />
+        <div className="flex gap-[32px] items-center justify-center py-[100px]">
+          {totalPages > 1 && currentPage < totalPages && (
+            <div onClick={() => setCurrentPage((prev) => prev + 1)}> 
+              <Button text="Load More" arrow={false} />
+            </div>
+          )}
+          <div>
+            <Button text="Let’s Talk" link="/contact" />
+          </div>
         </div>
       </section>
       <Footer />

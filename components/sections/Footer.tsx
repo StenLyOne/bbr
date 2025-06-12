@@ -12,10 +12,10 @@ export default function Footer({ color }: Proop) {
   const logo = color === "black" ? "-white" : "";
 
   return (
-    <div className={`${black === "black" ? "" : "bg-blank"}`}>
+    <div className={`${black === "black" ? "bg-blue" : "bg-blank"}`}>
       <div className="mx-auto px-[16px] md:px-[40px]">
         <SubTitleLine title="" color={line} />
-        <div className="flex justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
+        <div className="flex items-center justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
           <div className="block md:hidden">
             <img src={`/assets/logo/BBR-Group-Logo-Footer${logo}.svg`} alt="" />
           </div>
@@ -36,34 +36,22 @@ export default function Footer({ color }: Proop) {
               >
                 © Copyright 2025 BBR Group Australia
               </p>
-              <a
-                href=""
-                className={`small ${
+              <Link
+                href="/privacy-policy/"
+                className={`text-link small-a ${
                   black === "black" ? "text-blank" : "text-blue"
                 }`}
               >
-                <p
-                  className={`small ${
-                    black === "black" ? "text-blank" : "text-blue"
-                  }`}
-                >
-                  Cookies
-                </p>
-              </a>
-              <a
-                href=""
-                className={`small ${
+                Cookies
+              </Link>
+              <Link
+                href="/privacy-policy/"
+                className={`text-link small-a ${
                   black === "black" ? "text-blank" : "text-blue"
                 }`}
               >
-                <p
-                  className={`small ${
-                    black === "black" ? "text-blank" : "text-blue"
-                  }`}
-                >
-                  <Link href="/privacy-policy/">Privacy Policy </Link>
-                </p>
-              </a>
+                Privacy Policy
+              </Link>
             </div>
           </div>
           <div
@@ -76,7 +64,9 @@ export default function Footer({ color }: Proop) {
           >
             <a href="">
               <svg
-                className={black === "black" ? "text-white" : "text-blue"}
+                className={`icon ${
+                  black === "black" ? "text-white" : "text-blue"
+                }`}
                 width="15"
                 height="15"
                 viewBox="0 0 15 15"
@@ -91,6 +81,7 @@ export default function Footer({ color }: Proop) {
             </a>
             <a href="">
               <svg
+                className="icon"
                 width="17"
                 height="13"
                 viewBox="0 0 17 13"
@@ -109,6 +100,7 @@ export default function Footer({ color }: Proop) {
             </a>
             <a href="">
               <svg
+                className="icon"
                 width="21"
                 height="21"
                 viewBox="0 0 21 21"
@@ -135,6 +127,7 @@ export default function Footer({ color }: Proop) {
             </a>
             <a href="">
               <svg
+                className="icon"
                 width="15"
                 height="15"
                 viewBox="0 0 15 15"
@@ -157,6 +150,7 @@ export default function Footer({ color }: Proop) {
             </a>
             <a href="">
               <svg
+                className="icon"
                 width="19"
                 height="19"
                 viewBox="0 0 19 19"
@@ -179,6 +173,7 @@ export default function Footer({ color }: Proop) {
             </a>
             <a href="">
               <svg
+                className="icon"
                 width="25"
                 height="17"
                 viewBox="0 0 25 17"

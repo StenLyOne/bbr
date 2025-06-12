@@ -78,33 +78,33 @@ export default function Home() {
         }`}
       >
         <Header animationsReady={animationsReady} />
-        <div className="pinned-section relative z-[101]" data-bg="dark">
+        <div className="relative z-[101]" data-bg="dark">
           <Hero data={data.hero} animationsReady={animationsReady} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light"></div>
+        <div className=" relative z-[101]" data-bg="light"></div>
 
-        <div className="page-content relative z-[101]" data-bg="light">
+        <div data-scroll-target className=" relative z-[101]" data-bg="light">
           <Mission data={data.mission} />
         </div>
 
-        <div className="page-content relative z-[1001]" data-bg="light">
+        <div className=" relative z-[1001]" data-bg="light">
           <Events data={data.bbr_events} />
         </div>
 
-        <div className="pinned-section relative z-[102]" data-bg="light">
+        <div className=" relative z-[102]" data-bg="light">
           <MissionSecondary data={data.mission_secondary} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light">
+        <div className=" relative z-[101]" data-bg="light">
           <OwnedEvents data={data.owned_events} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light">
+        <div className="relative z-[101]" data-bg="light">
           <Partners data={data.partners} />
         </div>
 
-        <div className="pinned-section relative z-[101]" data-bg="light">
+        <div className="relative z-[101]" data-bg="light">
           <Latest data={data.latest} />
         </div>
 

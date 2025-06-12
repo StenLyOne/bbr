@@ -59,7 +59,7 @@ export default function SubTitleLine({ title, color }: Prop) {
       className="w-full flex justify-between gap-[24px] py-[35px]"
     >
       {title.trim() !== "" && (
-        <h4 className={`w-max text-${dark}whitespace-nowrap`}>
+        <h4 className={`w-max text-${dark} whitespace-nowrap`}>
           <span className="block overflow-hidden">
             <span ref={titleRef} className="block will-change-transform">
               {title}

@@ -26,7 +26,6 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
     const el = overlayRef.current;
 
     if (!hasMounted.current) {
-      // Устанавливаем начальные значения БЕЗ анимации
       gsap.set(el, {
         y: "-100%",
         opacity: 0,
@@ -151,48 +150,54 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
       ref={overlayRef}
       className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none"
     >
-      <div className="flex flex-col justify-between h-full md:items-end space-y-6 text-right md:pt-[200px]">
-        {isDesktop ? (
-          <div className="flex gap-[21px] ">
-            <div className="flex items-center justify-center gap-[8px]">
+      <div className="flex flex-col md:justify-between h-full md:items-end space-y-6 text-right justify-end md:pt-[200px]">
+        <div className="space-y-[38px] w-full md:w-auto ">
+          <div className="flex flex-col items-start md:items-center gap-[21px] md:flex-row pb-[10%] md:pb-[5%]">
+            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
               <svg
                 width="48"
                 height="48"
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="group-hover:[&>path]:fill-accent"
               >
                 <path
                   d="M47.6258 0.374146L37.5077 21.6893C36.8156 23.1551 36.8156 24.8449 37.5077 26.3107L47.6258 47.6258L26.3107 37.5077C24.8449 36.8156 23.1551 36.8156 21.6893 37.5077L0.374146 47.6258L10.4922 26.3107C11.1844 24.8449 11.1844 23.1551 10.4922 21.6893L0.374146 0.374146L21.6893 10.4922C23.1551 11.1844 24.8449 11.1844 26.3107 10.4922L47.6258 0.374146Z"
-                  fill="#6276FB"
+                  fill="#21224B"
+                  className="transition-colors duration-300"
                 />
               </svg>
-              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+              <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 EVENTS
               </p>
             </div>
-            <div className="flex items-center justify-cente gap-[8px]">
+            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
               <svg
                 width="54"
                 height="42"
                 viewBox="0 0 54 42"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="transition-colors duration-300 group-hover:[&>path]:fill-accent"
               >
                 <path
                   d="M0.340759 17.3355C0.340759 23.5245 1.60298 28.3901 4.14777 31.9732C6.69256 35.5562 11.0492 38.7118 17.2178 41.4398L21.8799 32.5229C18.0932 30.711 15.467 28.9194 14.0012 27.1279C12.5558 25.3364 11.7414 23.2191 11.5786 20.7965H21.8799V0.539917H0.340759V17.3355Z"
                   fill="#E6E7E8"
+                  className="transition-colors duration-300"
                 />
                 <path
                   d="M49.8523 10.0269C47.3075 6.44385 42.9508 3.28831 36.7822 0.560295L32.1201 9.47725C35.9272 11.2891 38.533 13.0807 39.9988 14.8722C41.4443 16.6637 42.2586 18.781 42.4215 21.2036H32.1201V41.4602H53.6593V24.6646C53.6593 18.4756 52.397 13.61 49.8523 10.0269Z"
                   fill="#E6E7E8"
+                  className="transition-colors duration-300"
                 />
               </svg>
-              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+              <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 PR
               </p>
             </div>
-            <div className="flex items-center justify-center gap-[8px]">
+
+            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
               <svg
                 width="58"
                 height="58"
@@ -203,36 +208,37 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                 <path
                   d="M29.0055 43.1645L21.9163 50.2536L29.0055 57.3428L36.0947 50.2536L29.0055 43.1645Z"
                   fill="#D72529"
+                  className="transition-colors duration-300 group-hover:fill-accent"
                 />
                 <path
                   d="M7.73972 21.9051L0.650543 28.9942L7.73972 36.0834L14.8289 28.9942L7.73972 21.9051Z"
                   fill="#D72529"
+                  className="transition-colors duration-300 group-hover:fill-accent"
                 />
                 <path
                   d="M14.8307 28.9998L29.0036 43.1727L36.0901 36.0862L43.1765 43.1727L57.3494 28.9998L43.1765 14.8269L36.0901 21.9133L43.1765 28.9998L36.0901 36.0862L29.0036 28.9998L36.0901 21.9133L29.0036 14.8269L14.8307 28.9998Z"
                   fill="#D72529"
+                  className="transition-colors duration-300 group-hover:fill-accent"
                 />
                 <path
                   d="M28.9991 0.657104L21.9099 7.74628L28.9991 14.8355L36.0882 7.74628L28.9991 0.657104Z"
                   fill="#D72529"
+                  className="transition-colors duration-300 group-hover:fill-accent"
                 />
               </svg>
-              <p className="!text-[64px] !font-[900] text-blue hover:text-accent transition-colors duration-300">
+              <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 DIGITAL
               </p>
             </div>
           </div>
-        ) : (
-          <div></div>
-        )}
-        <div className="space-y-[38px] w-full md:w-[70%]">
+
           {[
             { label: "HOME", href: "/" },
             {
               label: "ABOUT",
               items: ["Our Story", "Team", "Our owned events"],
             },
-            { label: "SERVICES", items: ["Events", "Pr", "Digital"] },
+            { label: "SERVICES", items: ["Events", "PR", "Digital"] },
             { label: "PORTFOLIO", href: "/portfolio" },
             { label: "CONTACT", href: "/contact" },
           ].map((section, i) => {
@@ -268,7 +274,6 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                       >
                         <Link
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
-                          onClick={() => menuFun()}
                         >
                           {text}
                         </Link>
@@ -277,6 +282,35 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                   </div>
                 )}
                 <div className="flex items-center justify-center gap-[10px] cursor-pointer">
+                  <svg
+                    ref={(el) => {
+                      arrowRef.current[i] = el;
+                    }}
+                    width="38"
+                    height="28"
+                    viewBox="0 0 38 28"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="opacity-0 translate-y-[30px]"
+                  >
+                    <path
+                      d="M14.14 1.86011L2.00002 14.0001L14.14 26.1401"
+                      stroke="#6276FB"
+                      strokeWidth="3"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M36 14.0001H2.34"
+                      stroke="#6276FB"
+                      strokeWidth="3"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+
                   <p className="header hover:text-accent transition-colors duration-300">
                     {section.href ? (
                       <Link href={section.href} onClick={() => menuFun()}>
@@ -353,9 +387,10 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
             );
           })}
         </div>
-        <div className="max-w-[228px] max-h-[20px] flex gap-[24px]">
+        <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
           <a href="">
             <svg
+              className="icon"
               width="15"
               height="15"
               viewBox="0 0 15 15"
@@ -370,6 +405,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
+             className="icon"
               width="17"
               height="13"
               viewBox="0 0 17 13"
@@ -388,6 +424,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
+             className="icon"
               width="21"
               height="21"
               viewBox="0 0 21 21"
@@ -414,6 +451,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
+             className="icon"
               width="15"
               height="15"
               viewBox="0 0 15 15"
@@ -436,6 +474,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
+             className="icon"
               width="19"
               height="19"
               viewBox="0 0 19 19"
@@ -458,6 +497,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
+             className="icon"
               width="25"
               height="17"
               viewBox="0 0 25 17"

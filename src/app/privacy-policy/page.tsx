@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
     >
       <Header />
       <section className="p-[16px] md:p-[40px] mb-[100px] text-blue">
-        <h1 className="md:pt-[132px] pt-[100px] pb-[50px] md:pb-[50px]">PRIVACY POLICY</h1>
+        <h2 className="md:pt-[132px] pt-[100px] pb-[50px] md:pb-[50px] text-blue">PRIVACY POLICY</h2>
         <p>
           BBR Agency Pty Ltd (ABN 93 121 083 805), including its associated
           entities BBR Group Events PR Digital (ABN 93 121 083 805) and BBR

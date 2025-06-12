@@ -9,6 +9,7 @@ import BurgerButton from "../HeaderElements/BurgerButton";
 import MenuOverlay from "../HeaderElements/MenuOverlay";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header({
   animationsReady,
@@ -42,14 +43,14 @@ export default function Header({
 
   const borderColor = isDark ? "#fff" : "#21224b";
 
-  const duckWidth = isDesktop ? 56 : 42;
-  const duckHeight = isDesktop ? 55 : 41;
-  const logoBBRWidth = isDesktop ? 67 : 50;
-  const logoBBRHeight = isDesktop ? 23 : 17;
-  const logoGroupWidth = isDesktop ? 59 : 45;
-  const logoGroupHeight = isDesktop ? 13 : 9;
-  const logoEventsWidth = isDesktop ? 59 : 44;
-  const logoEventsHeight = isDesktop ? 4 : 3;
+  const duckWidth = isDesktop ? 62 : 42;
+  const duckHeight = isDesktop ? 61 : 41;
+  const logoBBRWidth = isDesktop ? 74 : 50;
+  const logoBBRHeight = isDesktop ? 25 : 17;
+  const logoGroupWidth = isDesktop ? 65 : 45;
+  const logoGroupHeight = isDesktop ? 14 : 9;
+  const logoEventsWidth = isDesktop ? 65 : 44;
+  const logoEventsHeight = isDesktop ? 5 : 3;
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,8 +63,6 @@ export default function Header({
   }, []);
 
   useEffect(() => {
-
-
     const images = [bbrRef.current, groupRef.current, prRef.current];
 
     gsap.set(images, { y: 30, opacity: 0 });
@@ -134,51 +133,51 @@ export default function Header({
         <div
           className={`w-full flex items-center justify-between py-[30px] md:py-[40px]`}
           style={{
-            borderBottom: !isDark
-              ? ``
-              : `1px solid ${borderColor}`,
+            borderBottom: !isDark ? `` : `1px solid ${borderColor}`,
           }}
         >
-          <div className="flex items-end gap-[10px]">
-            <span>
-              <Image
-                src={logoDuck}
-                width={duckWidth}
-                height={duckHeight}
-                alt="duck"
-              />
-            </span>
-            <span className="space-y-[4px]">
-              <Image
-                src={logoBBR}
-                width={logoBBRWidth}
-                height={logoBBRHeight}
-                alt="BBR"
-                ref={bbrRef}
-              />
-              <Image
-                src={logoGroup}
-                width={logoGroupWidth}
-                height={logoGroupHeight}
-                alt="Group"
-                ref={groupRef}
-              />
-              <Image
-                src={logoEvents}
-                width={logoEventsWidth}
-                height={logoEventsHeight}
-                alt="Events"
-                ref={prRef}
-              />
-            </span>
-          </div>
+          <Link href={"/"} className="cursor-pointer">
+            <div className="flex items-end gap-[10px]">
+              <span>
+                <Image
+                  src={logoDuck}
+                  width={duckWidth}
+                  height={duckHeight}
+                  alt="duck"
+                />
+              </span>
+              <span className="space-y-[4px]">
+                <Image
+                  src={logoBBR}
+                  width={logoBBRWidth}
+                  height={logoBBRHeight}
+                  alt="BBR"
+                  ref={bbrRef}
+                />
+                <Image
+                  src={logoGroup}
+                  width={logoGroupWidth}
+                  height={logoGroupHeight}
+                  alt="Group"
+                  ref={groupRef}
+                />
+                <Image
+                  src={logoEvents}
+                  width={logoEventsWidth}
+                  height={logoEventsHeight}
+                  alt="Events"
+                  ref={prRef}
+                />
+              </span>
+            </div>
+          </Link>
           <BurgerButton
             onToggle={() => setMenuOpen((prev) => !prev)}
             color={isDark}
           />
         </div>
       </header>
-      <MenuOverlay isOpen={menuOpen} menuFun={() => setMenuOpen(false)}/>
+      <MenuOverlay isOpen={menuOpen} menuFun={() => setMenuOpen(false)} />
     </>
   );
 }

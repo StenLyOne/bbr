@@ -3,7 +3,7 @@ import AnimatedTextLine from "../AnimatedTextLine";
 
 export default function Mission({ data }: { data: any }) {
   return (
-    <section className="w-full bg-white-gris" >
+    <section className="w-full bg-white-gris bg-blank" >
       <div className="px-[16px] md:px-[40px]">
         <SubTitleLine title={data.sub_title} />
         <AnimatedTextLine>

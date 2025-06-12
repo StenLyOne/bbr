@@ -41,7 +41,7 @@ export default function BurgerButton({ onToggle, color }: BurgerButtonProps) {
   return (
     <button
       onClick={toggle}
-      className="w-auto h-auto relative z-[1001] flex items-center justify-center"
+      className="w-auto h-auto relative z-[1001] flex items-center justify-center cursor-pointer"
       aria-label="Toggle menu"
     >
       <div className="relative w-[30px] h-[20px]">

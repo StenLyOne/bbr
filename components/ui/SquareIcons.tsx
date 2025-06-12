@@ -11,8 +11,8 @@ export default function SquareIcons({ link, iconSrc, title }: SquareIconProps) {
   return (
     <a href={link}>
       <AnimatedTextLine stagger={0}>
-        <div className="w-[230px] h-[230px] space-y-[26px] py-[40.5px] px-[60px] bg-white-gris md:bg-white hover:bg-white-gris transition-colors duration-300 ease-in-out">
-          <div className="w-[110px] h-[110px] flex items-center justify-center">
+        <div className="w-[230px] h-[230px] md:w-[260px] md:h-[260px] space-y-[26px] py-[40.5px] px-[60px] bg-white-gris md:bg-white hover:bg-white-gris transition-colors duration-300 ease-in-out">
+          <div className="w-[110px] h-[110px] flex items-center justify-center mx-auto">
             <AnimatedTextLine stagger={0.2}>
               <Image
                 src={iconSrc}

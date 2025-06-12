@@ -18,7 +18,7 @@ interface MissionSecondaryData {
 
 export default function MissionSecondary({ data }: { data: MissionSecondaryData }) {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-blank">
       <div className=" md:px-[0px] md:px-[40px]">
         <div className="px-[16px] md:px-[0px]">
           <SubTitleLine title={data.sub_title} />

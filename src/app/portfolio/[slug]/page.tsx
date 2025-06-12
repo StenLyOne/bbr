@@ -62,6 +62,20 @@ export default function EventPage() {
 
   console.log("[EventPage] Rendering event:", work.title);
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="bg-white text-foreground">
       <Header animationsReady={animationsReady} />
@@ -82,34 +96,84 @@ export default function EventPage() {
             {work.title}
           </HeroTitleFadeIn>
         </div>
+        <button
+          onClick={scrollToNextSection}
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        >
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#FFF"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </main>
 
       {/* Info Section */}
-      <section className="mx-auto  px-[16px] md:px-[40px]" data-bg="light">
+      <section
+        data-scroll-target
+        className="mx-auto  px-[16px] md:px-[40px]"
+        data-bg="light"
+      >
         <div className="w-full ">
           <SubTitleLine title={work.event_information.sub_title} />
-          <div className="w-full flex flex-col-reverse lg:flex-row justify-between gap-[40px] pt-[32px] md:pt-[118px] pb-[72px] md:pb-[141px]">
-            <AnimatedTextLine className="text-blue md:hidden">
+          <div className="w-full flex flex-col-reverse lg:flex-row justify-start md:gap-[130px] pt-[32px] md:pt-[118px] pb-[72px] md:pb-[141px]">
+            <AnimatedTextLine className="text-blue pt-[46px] md:hidden">
               <p className="">{work.event_information.text}</p>{" "}
             </AnimatedTextLine>
-            <div className="w-full md:w-1/2">
+            <div className="md:w-[443px]">
               <AnimatedTextLine
                 stagger={0.2}
-                className="text-blue space-y-0 divide-y divide-blue border-t border-blue w-full max-w-[443px]"
+                className="text-blue space-y-0 divide-y divide-blue border-t border-blue w-[443px]"
               >
-                {work.event_information.info_block?.items.map((item, i) => (
-                  <div key={i} className="py-[26px]">
-                    <p className="!font-bold">{item.title}</p>
-                    <p className="whitespace-pre-line">{item.value}</p>
-                  </div>
-                ))}
+                {work.event_information.info_block?.items.map(
+                  (item, i, arr) => (
+                    <div
+                      key={i}
+                      className={`py-[26px] ${
+                        i === arr.length - 1 ? "border-b border-blue" : ""
+                      }`}
+                    >
+                      <p className="!font-bold">{item.title}</p>
+                      <p className="whitespace-pre-line">{item.value}</p>
+                    </div>
+                  )
+                )}
               </AnimatedTextLine>
             </div>
-            <div className="max-w-[787px] space-y-[50px]">
-              <AnimatedTextLine>
+            <div className="space-y-[50px] w-full md:max-w-[60%]">
+              <AnimatedTextLine className="w-full">
                 <h2 className="text-blue">{work.event_information.title}</h2>
               </AnimatedTextLine>
-              <AnimatedTextLine width="full">
+              <AnimatedTextLine>
                 <p className="text-blue hidden md:block">
                   {work.event_information.text}
                 </p>
@@ -133,22 +197,29 @@ export default function EventPage() {
             </h2>
           </AnimatedTextLine>
           {/* Indicators */}
-          <div className="hidden md:flex  ">
+          <div className="hidden md:flex">
             <AnimatedTextLine
               stagger={0.2}
               className="flex w-full justify-center mb-[16px] text-blue text-center"
-              width={"full"}
+              width="full"
             >
-              {work.stats_block.indicators?.map((indicator, index) => (
-                <div
-                  key={index}
-                  className=" w-full px-[24px] py-[10px]  border border-blue border-x-[2px] border-y-[4px] min-w-[140px]"
-                >
-                  <p className="!font-[700]">{indicator}</p>
-                </div>
-              ))}
+              {work.stats_block.indicators?.map((indicator, index, arr) => {
+                const isFirst = index === 0;
+                const isLast = index === arr.length - 1;
+                return (
+                  <div
+                    key={index}
+                    className={`w-full px-[24px] py-[10px] min-w-[140px] border-blue border-y-[4px] ${
+                      isFirst ? "border-l-[4px]" : "border-l-[4px]"
+                    } ${isLast ? "border-r-[4px]" : ""}`}
+                  >
+                    <p className="!font-[700]">{indicator}</p>
+                  </div>
+                );
+              })}
             </AnimatedTextLine>
           </div>
+
           <div className="block md:hidden ">
             <AnimatedTextLine
               stagger={0.2}
@@ -177,7 +248,7 @@ export default function EventPage() {
                   <p className="!text-[40px] md:!text-[84px] !leading-[60px] md:!leading-[90px] !font-[900] mb-[10px] md:mb-[24px]">
                     {stat.value}
                   </p>
-                  <p className="text-[16px] leading-[24px] font-[500]">
+                  <p className="large text-[16px] leading-[24px] font-[500]">
                     {stat.label}
                   </p>
                 </div>

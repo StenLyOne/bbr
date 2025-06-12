@@ -76,6 +76,20 @@ export default function Team() {
     }
   }, [showIntro]);
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const { departments, hero, intro, cta } = data;
   return (
     <>
@@ -106,8 +120,47 @@ export default function Team() {
               </AnimatedTextLine>
             </div>
           </div>
+          <button
+            onClick={scrollToNextSection}
+            className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          >
+            <svg
+              className="rotate-270"
+              width="38"
+              height="38"
+              viewBox="0 0 38 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.75"
+                y="0.75"
+                width="36.5"
+                height="36.5"
+                rx="18.25"
+                stroke="#21224b"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+                stroke="#21224b"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M27.5 19H10.67"
+                stroke="#21224b"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </main>
-        <section className="px-[16px] md:px-[40px] bg-white-gris">
+        <section data-scroll-target className="px-[16px] md:px-[40px] bg-white-gris">
           <SubTitleLine title={intro.sub_title} />
           <div className="max-w-[787px] space-y-[50px] pt-[32px] pb-[72px] md:pt-[118px] md:pb-[209px]">
             <AnimatedTextLine>
@@ -153,10 +206,9 @@ export default function Team() {
                       className="flex flex-wrap gap-x-[16px] gap-y-[88px] "
                     >
                       {department.members.map((member, idx) => {
-                        const isManaging =
-                          department.title === "MANAGING DIRECTOR";
-                        const width = isManaging ? "w-[410px]" : "w-[328px]";
-                        const size = isManaging ? 410 : 328;
+                  
+                        const width =  "w-[328px]";
+                        const size =  328;
 
                         return (
                           <div key={idx} className={`${width} flex flex-col`}>

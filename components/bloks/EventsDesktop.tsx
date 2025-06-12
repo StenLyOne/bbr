@@ -295,7 +295,7 @@ export default function Events({ sub_title, events }: Props) {
       <div ref={introRef} className="absolute w-full h-screen ">
         <div
           className="circle-1 absolute top-1/2 left-1/2 
-      -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-blue z-0"
+      -translate-x-1/2 -translate-y-1/2  rounded-full bg-blue z-0"
         />
       </div>
       <div
@@ -419,7 +419,7 @@ export default function Events({ sub_title, events }: Props) {
               )}
             </div>
           ))}
-          ÷{/* lOGO */}
+          {/* lOGO */}
           <Image
             src="/assets/logo/bbr-events-logo.svg"
             width={250}

@@ -22,8 +22,6 @@ interface HeroData {
 export default function OurOwnedEvents() {
   const { hero, events }: { hero: HeroData; events: any[] } = data;
 
-  const [showIntro, setShowIntro] = useState(true);
-  const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
   const [showAll, setShowAll] = useState(false);
@@ -38,33 +36,54 @@ export default function OurOwnedEvents() {
     bgImagesRef.current[index] = el;
   };
 
-  useLayoutEffect(() => {
-    if (!cardsRef.current.length) return;
+  const gridRef = useRef<HTMLDivElement | null>(null); // 👉🏻 новый ref
 
-    gsap.fromTo(
-      cardsRef.current,
-      { opacity: 0, y: 60, scale: 0.95 },
-      {
+  useLayoutEffect(() => {
+    if (!cardsRef.current.length || !gridRef.current) return;
+
+    const cards = cardsRef.current.filter(
+      (el): el is HTMLDivElement => el !== null
+    );
+
+    const width = window.innerWidth;
+    const cols = width >= 1024 ? 3 : width >= 640 ? 2 : 1;
+    const rows = Math.ceil(cards.length / cols);
+
+    gsap.set(cards, {
+      opacity: 0,
+      y: 80,
+      scale: 0.9,
+    });
+
+    const tl = gsap.timeline({
+      delay: 0.5, // ⏱️ 1 секунда задержки перед стартом
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: "top 80%", // 🔥 когда 20% секции дойдут до верха экрана
+        toggleActions: "play none none none",
+        once: true,
+      },
+    });
+
+    cards.forEach((card, index) => {
+      const row = Math.floor(index / cols);
+      const col = index % cols;
+      const delay = (row + col) * 0.1; // медленнее stagger
+
+      const subTl = gsap.timeline();
+      subTl.to(card, {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
+        duration: 1.6, // 🐢 плавнее
         ease: "power3.out",
-        stagger: {
-          amount: 1,
-          grid: "auto",
-          from: "start",
-        },
-        scrollTrigger: {
-          trigger: ".grid",
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+      });
+
+      tl.add(subTl, delay);
+    });
 
     gsap.fromTo(
-      bgImagesRef.current,
+      bgImagesRef.current.filter(Boolean),
       { opacity: 0, y: 100 },
       {
         opacity: 1,
@@ -74,7 +93,7 @@ export default function OurOwnedEvents() {
         ease: "power2.out",
         stagger: 0.3,
         scrollTrigger: {
-          trigger: bgImagesRef.current[0], // или обёртку, если хочешь привязать к container
+          trigger: bgImagesRef.current[0],
           start: "top 80%",
           once: true,
         },
@@ -82,59 +101,56 @@ export default function OurOwnedEvents() {
     );
   }, [visibleEvents]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "auto" });
-      requestAnimationFrame(() => {
-        setHasScrolledTop(true);
+  console.log(
+    "[Grid] Event slugs:",
+    visibleEvents.map((e) => e.slug)
+  );
+
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
       });
     }
-  }, []);
-
-  useEffect(() => {
-    if (!showIntro && contentRef.current) {
-      gsap.to(contentRef.current, {
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        onComplete: () => {
-          setAnimationsReady(true);
-          requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
-          });
-        },
-      });
-    }
-  }, [showIntro]);
-
-  console.log("[Grid] Event slugs:", visibleEvents.map(e => e.slug));
-
+  };
 
   return (
     <div
       ref={contentRef}
       className={`transition-opacity duration-1000 bg-blue z-[100000] `}
     >
-      <div className="fixed inset-0 z-[0]">
-        <img
-          ref={setBgImageRef(0)}
-          className="w-[770px] h-[770px] absolute top-[25%] left-[100%] 
-      -translate-x-1/2 -translate-y-1/2"
-          src="/assets/logo/bbr-events-vector.svg"
-          alt=""
-        />
-        <img
-          ref={setBgImageRef(1)}
-          className="w-[770px] h-[770px] absolute top-[102%] left-[46%] 
-      -translate-x-1/2 -translate-y-1/2"
-          src="/assets/logo/bbr-events-vector.svg"
-          alt=""
-        />
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="fixed top-0 right-0 translate-x-1/2 -translate-y-1/2">
+          <div className="relative w-[770px] h-[770px]">
+            {/* Верхняя звезда — половина видна */}
+            <img
+              ref={setBgImageRef(0)}
+              src="/assets/logo/bbr-events-vector.svg"
+              alt=""
+              className="absolute top-[1100px] md:top-[300px] right-[350px] md:right-[100px] w-[770px] h-[770px]"
+            />
+
+            {/* Нижняя звезда — соприкасается правым верхним углом с нижним левым углом первой */}
+            <img
+              ref={setBgImageRef(1)}
+              src="/assets/logo/bbr-events-vector.svg"
+              alt=""
+              className="absolute top-[1089px] right-[884px] w-[770px] h-[770px] opacity-50"
+            />
+          </div>
+        </div>
       </div>
+
       <Header animationsReady={animationsReady} />
       <main
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
         data-bg="dark"
+        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
@@ -153,13 +169,59 @@ export default function OurOwnedEvents() {
             </AnimatedTextLine>
           </div>
         </div>
+        <button
+          onClick={scrollToNextSection}
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        >
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#fff"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#fff"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#fff"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </main>
-      <section className="p-[16px] md:p-[40px] mb-[135px]" data-bg="light">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] auto-rows-[354px]">
+      <section
+        data-bg="light"
+        data-scroll-target
+        className="relative z-[101] p-[16px] md:p-[40px] mb-[135px]"
+      >
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] auto-rows-[354px]"
+        >
           {visibleEvents.map((event, i) => (
             <div
               key={i}
-              className={`event-card relative group cursor-pointer overflow-hidden rounded-md ${
+              className={`event-card relative group cursor-pointer overflow-hidden  ${
                 i === 0 ? "lg:col-span-2 lg:row-span-2" : ""
               }`}
               ref={(el: HTMLDivElement | null) => {

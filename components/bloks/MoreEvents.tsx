@@ -33,12 +33,12 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
     <section className="bg-white-gris py-[75px]">
       <div className="mx-auto px-4 md:px-[40px]">
         <div className="flex justify-between items-end mb-10">
-          <AnimatedTextLine >
+          <AnimatedTextLine>
             <h2 className="text-[32px] font-[900] text-blue">{title}</h2>
           </AnimatedTextLine>
           <Link
             href={link}
-            className="hidden md:flex text-blue font-medium hover:underline  items-center gap-2 whitespace-nowrap"
+            className="hidden md:flex text-blue font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300"
           >
             See all events
             <svg
@@ -50,21 +50,21 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
             >
               <path
                 d="M12.4297 0.930176L18.4997 7.00018L12.4297 13.0702"
-                stroke=""
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:stroke-white transition-colors duration-300"
+                className="transition-colors duration-300"
               />
               <path
                 d="M1.5 7H18.33"
-                stroke="#21224B"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:stroke-white transition-colors duration-300"
+                className="transition-colors duration-300"
               />
             </svg>
           </Link>
@@ -75,7 +75,7 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
           className={`transition-all duration-300 ${
             isMobile
               ? "flex flex-col gap-[46px]"
-              : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory"
+              : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar "
           }`}
         >
           {visibleEvents.map((event, i) => (
@@ -88,9 +88,9 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
             >
               <div
                 className={`${
-                  !isMobile
-                    ? "max-w-[672px] w-[50%] snap-start shrink-0 min-w-[672px]"
-                    : "w-full"
+                  isMobile
+                    ? "w-full"
+                    : "snap-start shrink-0 w-[calc(47.5vw-8px)]" // 2 карточки + 16px gap
                 }`}
               >
                 <img
@@ -98,19 +98,19 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
                   alt={event.title}
                   className="w-full h-[300px] object-cover"
                 />
-                <h3 className=" text-blue mt-[30px] mb-[20px]">
-                  {event.title}
-                </h3>
+                <h3 className="text-blue mt-[30px] mb-[20px]">{event.title}</h3>
                 <p className="text-blue">{event.event_information.text}</p>
               </div>
             </Link>
           ))}
+
           <Link
             href={link}
-            className="md:hidden text-blue font-medium hover:underline flex items-center gap-2"
+            className="md:hidden flex text-blue font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300"
           >
             See all events
             <svg
+            
               width="20"
               height="14"
               viewBox="0 0 20 14"
@@ -119,31 +119,31 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
             >
               <path
                 d="M12.4297 0.930176L18.4997 7.00018L12.4297 13.0702"
-                stroke=""
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:stroke-white transition-colors duration-300"
+                className="transition-colors duration-300"
               />
               <path
                 d="M1.5 7H18.33"
-                stroke="#21224B"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeMiterlimit="10"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:stroke-white transition-colors duration-300"
+                className="transition-colors duration-300"
               />
             </svg>
           </Link>
         </div>
 
         {!isMobile && (
-          <div className="flex justify-center mt-10 gap-4">
+          <div className="flex justify-center my-[70px] gap-4">
             <button
               onClick={() => scrollBy("left")}
-              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300"
+              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer"
             >
               <Image
                 src="/assets/icons/BTN-Main-Positive.svg"
@@ -154,7 +154,7 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
             </button>
             <button
               onClick={() => scrollBy("right")}
-              className="w-[38px] h-[38px] transition-colors duration-300"
+              className="w-[38px] h-[38px] transition-colors duration-300 cursor-pointer"
             >
               <Image
                 src="/assets/icons/BTN-Main-Positive.svg"
