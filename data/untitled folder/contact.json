@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "title": "CONTACT",
+    "image_big": {
+      "src": "/assets/images/contact_big_image.png",
+      "alt": "big image contact page"
+    },
+    "image_small": {
+      "src": "/assets/images/contact_small_image.png",
+      "alt": "big image contact page"
+    }
+  },
+  "contact": {
+    "sub_titile": "contact"
+  }
+}

@@ -25,7 +25,8 @@ export default function Hero({
 
   return (
     <main
-      className="relative w-full h-screen overflow-hidden px-[16px] md:px-[40px] bg-blank"
+      style={{ backfaceVisibility: "hidden" }}
+      className="fix-gpu relative w-full h-screen  px-[16px] md:px-[40px] bg-blank"
       data-bg="dark"
     >
       {/* SCROLL BUTTON */}
@@ -72,6 +73,7 @@ export default function Hero({
       {/* BACKGROUND */}
       {data.media.type === "video" ? (
         <video
+          style={{ contain: "layout paint", transform: "translateZ(0)" }}
           className="absolute top-0 left-0 w-full h-full object-cover"
           autoPlay
           muted
@@ -86,6 +88,7 @@ export default function Hero({
           width={1440}
           height={3000}
           alt={data.media.alt}
+          style={{ transform: "translateZ(0)" }}
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
       )}

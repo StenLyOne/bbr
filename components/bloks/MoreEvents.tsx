@@ -1,23 +1,42 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Link from "next/link";
 import AnimatedTextLine from "../AnimatedTextLine";
+import data from "../../data/owned-events.json";
 
 interface Props {
-  events: any[]; // массив ивентов
   title: string;
   link: string;
-  slug: any[];
+  events?: any[];
+  slug?: string[];
   flag: "work" | "event";
+  color?: string;
 }
 
-export default function MoreEvents({ events, title, link, slug, flag }: Props) {
+export default function MoreEvents({
+  events,
+  title,
+  link,
+  slug,
+  flag,
+  color,
+}: Props) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const visibleEvents = events.slice(0, 3);
+  let visibleEvents = events;
+  let eventSlugs = slug;
+
+  // Автоматическая подгрузка из owned-events.json, если не переданы events и slug
+  if (flag === "event" && (!events || !slug)) {
+    const rawEvents = data.events.slice(0, 3);
+    visibleEvents = rawEvents;
+    eventSlugs = rawEvents.map((e) => e.slug);
+  } else {
+    visibleEvents = events?.slice(0, 3) || [];
+  }
 
   const scrollBy = (dir: "left" | "right") => {
     const width = containerRef.current?.offsetWidth || 0;
@@ -30,15 +49,27 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
   };
 
   return (
-    <section className="bg-white-gris py-[75px]">
-      <div className="mx-auto px-4 md:px-[40px]">
+    <section
+      className={`${
+        color === "transporent" ? "" : "bg-white-gris"
+      }  py-[75px] `}
+    >
+      <div className="mx-auto ">
         <div className="flex justify-between items-end mb-10">
           <AnimatedTextLine>
-            <h2 className="text-[32px] font-[900] text-blue">{title}</h2>
+            <h2
+              className={`text-[32px] font-[900] ${
+                color === "transporent" ? "text-blank" : "text-blue"
+              }`}
+            >
+              {title}
+            </h2>
           </AnimatedTextLine>
           <Link
             href={link}
-            className="hidden md:flex text-blue font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300"
+            className={`hidden md:flex ${
+              color === "transporent" ? "text-blank" : "text-blue"
+            } font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300`}
           >
             See all events
             <svg
@@ -84,13 +115,13 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
               className="flex flex-col gap-[40px]"
               href={`${
                 flag === "event" ? "/our-owned-events/" : "/portfolio/"
-              }${slug[i]}`}
+              }${eventSlugs?.[i]}`}
             >
               <div
-                className={`${
+                className={`$${
                   isMobile
                     ? "w-full"
-                    : "snap-start shrink-0 w-[calc(47.5vw-8px)]" // 2 карточки + 16px gap
+                    : "snap-start shrink-0 w-[calc(47.5vw-8px)]"
                 }`}
               >
                 <img
@@ -98,19 +129,32 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
                   alt={event.title}
                   className="w-full h-[300px] object-cover"
                 />
-                <h3 className="text-blue mt-[30px] mb-[20px]">{event.title}</h3>
-                <p className="text-blue">{event.event_information.text}</p>
+                <h3
+                  className={`${
+                    color === "transporent" ? "text-blank" : "text-blue"
+                  } mt-[30px] mb-[20px]`}
+                >
+                  {event.title}
+                </h3>
+                <p
+                  className={`${
+                    color === "transporent" ? "text-blank" : "text-blue"
+                  } `}
+                >
+                  {event.event_information.text}
+                </p>
               </div>
             </Link>
           ))}
 
           <Link
             href={link}
-            className="md:hidden flex text-blue font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300"
+            className={`md:hidden flex ${
+              color === "transporent" ? "text-blank" : "text-blue"
+            }  font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300`}
           >
             See all events
             <svg
-            
               width="20"
               height="14"
               viewBox="0 0 20 14"
@@ -146,7 +190,9 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
               className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer"
             >
               <Image
-                src="/assets/icons/BTN-Main-Positive.svg"
+                src={`/assets/icons/BTN-Main-Positive${
+                  color === "transporent" ? "-White" : ""
+                }.svg`}
                 width={38}
                 height={38}
                 alt="Prev"
@@ -157,7 +203,9 @@ export default function MoreEvents({ events, title, link, slug, flag }: Props) {
               className="w-[38px] h-[38px] transition-colors duration-300 cursor-pointer"
             >
               <Image
-                src="/assets/icons/BTN-Main-Positive.svg"
+                src={`/assets/icons/BTN-Main-Positive${
+                  color === "transporent" ? "-White" : ""
+                }.svg`}
                 width={38}
                 height={38}
                 alt="Next"

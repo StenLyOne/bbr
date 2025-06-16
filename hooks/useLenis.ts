@@ -10,20 +10,23 @@ gsap.registerPlugin(ScrollTrigger);
 export const useLenis = () => {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // ← длительность скролла (можно увеличить)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      lerp: 0.04, // ← значение по умолчанию 0.1, меньше = длиннее инерция
+      duration: 1.2,
+      easing: (t) => t,
+      lerp: 0.1, // можно сделать 0.05 или 0.08 — меньше = плавнее
+      smooth: true,
+      smoothTouch: false, // отключи если не нужен
     });
 
-    const raf = (time: number) => {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    };
+    }
 
     requestAnimationFrame(raf);
 
-    // Подключение Lenis к ScrollTrigger
-    ScrollTrigger.scrollerProxy(document.body, {
+    // ❌ Без scrollerProxy — ScrollTrigger будет работать по window
+    // ❗ Но если нужен GSAP scrub → оставим scrollProxy, но без transform
+    ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
         return arguments.length
           ? lenis.scrollTo(value as number, { immediate: true })

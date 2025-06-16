@@ -1,0 +1,226 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+import Image from "next/image";
+
+import data from "../../../data/digital.json";
+import AnimatedTextLine from "../../../components/AnimatedTextLine";
+
+import Footer from "../../../components/sections/Footer";
+import Button from "../../../components/ui/Button";
+import Header from "../../../components/sections/Header";
+import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
+import SubTitleLine from "../../../components/ui/SubTitleLine";
+import TimelineSection from "../../../components/bloks/TimelineSection";
+import EventCaroursel from "../../../components/bloks/EventCaroursel";
+import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
+import MoreEvents from "../../../components/bloks/MoreEvents";
+
+export default function EventManagement() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [animationsReady, setAnimationsReady] = useState(false);
+
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector("[data-scroll-target]");
+    if (nextSection) {
+      const offset = 142;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const { hero, communications, what_we_offer, visibility, latest } = data;
+  return (
+    <div
+      ref={contentRef}
+      className={`transition-opacity duration-1000 bg-rouge z-[100000] text-blank`}
+    >
+      <Header animationsReady={animationsReady} />
+      <main
+        data-bg="dark"
+        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+      >
+        <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
+          <div>
+            <HeroTitleFadeIn
+              delay={1}
+              className={"max-w-[600px] text-blank text-left"}
+            >
+              {hero.title}
+            </HeroTitleFadeIn>
+          </div>
+          <div>
+            <AnimatedTextLine delay={1.1}>
+              <p className="large text-blank max-w-[788px]">
+                {hero.description}
+              </p>
+            </AnimatedTextLine>
+          </div>
+        </div>
+        <button
+          onClick={scrollToNextSection}
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        >
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#fff"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#fff"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#fff"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </main>
+      <section data-scroll-target className=" px-[16px] md:px-[40px] "  data-bg="light">
+        <SubTitleLine color="white" title={communications.sub_title} />
+        <div className="pt-[50px] space-y-[90px]">
+          <div className="space-y-[30px] max-w-[787px]">
+            <h2>{communications.title}</h2>
+            <p>{communications.description}</p>
+          </div>
+          <div className="flex gap-[22px]">
+            <video
+              src={communications.media.video_src}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+        </div>
+      </section>
+      <section className="space-y-[100px]">
+        <div>
+          <div className="flex flex-col gap-[130px]">
+            {what_we_offer.content.map((block, index) => (
+              <div key={index}>
+                <TwoColumnBlock {...block} reverse={index % 2 == 0} />
+              </div>
+            ))}
+
+            <h2 className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
+              <AnimatedStrokeByStroke
+                text={what_we_offer.title}
+                className="!text-[128px] !leading-[129px] text-center !font-[900] px-[16px] md:px-[40px] "
+              ></AnimatedStrokeByStroke>
+            </h2>
+
+            {what_we_offer.content.map((block, index) => (
+              <div key={index}>
+                <TwoColumnBlock
+                  key={index}
+                  {...block}
+                  reverse={index % 2 !== 0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className=" px-[16px] md:px-[40px] py-[90px]">
+        <SubTitleLine color="white" title={visibility.sub_title} />
+        <div className="max-w-[1100px] mx-auto">
+          <h2 className="text-center">
+            <AnimatedStrokeByStroke
+              text={visibility.title}
+            ></AnimatedStrokeByStroke>
+          </h2>
+          <div className="grid gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {visibility.content.map((ele, index) => (
+              <div key={index} className=" w-full gap-[40px]">
+                <img src={ele.media.icon_src} />
+                <div className="w-full space-y-[30px]">
+                  <h3>{ele.title}</h3>
+                  <p>{ele.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="large max-w-[936px] text-left mb-[100px] mx-auto">{visibility.description}</p>
+          <div className="flex justify-center">
+            <Button
+              text="Let’s Talk"
+              type="button"
+              link="/contact"
+              color="white"
+            />
+          </div>
+        </div>
+      </section>
+      <section className=" px-[16px] md:px-[40px] pb-[51px]">
+        <MoreEvents
+        color="transporent"
+          flag="event"
+          title={latest.title}
+          link="/our-owned-events"
+        />
+      </section>
+      <Footer color="rouge" />
+    </div>
+  );
+}
+
+const TwoColumnBlock = ({
+  title,
+  description,
+  media_small,
+  reverse = false,
+}) => {
+  return (
+    <div
+      className={`flex flex-col md:flex-row ${
+        reverse ? "md:flex-row-reverse" : ""
+      } items-center justify-between gap-[40px]`}
+    >
+      {/* Text */}
+      <div className="w-full md:w-1/2 md:py-[16px] px-[40px]">
+        <h2 className="text-[24px] font-[800] mb-[40px]">{title}</h2>
+        <p className="text-[16px] leading-[1.5]">{description}</p>
+      </div>
+
+      {/* Image */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <div className="w-full max-w-[500px]">
+          <img
+            src={media_small.image_src}
+            alt={media_small.alt}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

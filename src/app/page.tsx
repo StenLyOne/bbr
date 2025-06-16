@@ -78,7 +78,7 @@ export default function Home() {
         }`}
       >
         <Header animationsReady={animationsReady} />
-        <div className="relative z-[101]" data-bg="dark">
+        <div className="relative z-[101] fix-gpu" data-bg="dark">
           <Hero data={data.hero} animationsReady={animationsReady} />
         </div>
 
