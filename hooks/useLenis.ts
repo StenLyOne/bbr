@@ -13,8 +13,6 @@ export const useLenis = () => {
       duration: 1.2,
       easing: (t) => t,
       lerp: 0.1, // можно сделать 0.05 или 0.08 — меньше = плавнее
-      smooth: true,
-      smoothTouch: false, // отключи если не нужен
     });
 
     function raf(time: number) {
