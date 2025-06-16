@@ -193,12 +193,22 @@ export default function EventManagement() {
   );
 }
 
-const TwoColumnBlock = ({
+interface TwoColumnBlockProps {
+  title: string;
+  description: string | string[];
+  media_small: {
+    image_src: string;
+    alt?: string;
+  };
+  reverse?: boolean;
+}
+
+const TwoColumnBlock =({
   title,
   description,
   media_small,
   reverse = false,
-}) => {
+}: TwoColumnBlockProps) => {
   return (
     <div
       className={`flex flex-col md:flex-row ${
