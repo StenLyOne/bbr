@@ -48,7 +48,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",
         "media": {
           "image_src": "/assets/images/timeline-1.png",
-          "logo_src": "/assets/logo/event-bast.svg",
+          "logo_src": "/assets/logo/tefal.svg",
           "alt": "Lorem Ipsum"
         }
       },
@@ -57,7 +57,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",
         "media": {
           "image_src": "/assets/images/timeline-2.png",
-          "logo_src": "/assets/logo/event-bast.svg",
+          "logo_src": "/assets/logo/tefal.svg",
           "alt": "Lorem Ipsum"
         }
       },
@@ -66,7 +66,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",
         "media": {
           "image_src": "/assets/images/timeline-3.png",
-          "logo_src": "/assets/logo/event-bast.svg",
+          "logo_src": "/assets/logo/tefal.svg",
           "alt": "Lorem Ipsum"
         }
       }

@@ -198,9 +198,12 @@ a:hover svg.icon {
   height: 100vh;
 }
 
-img {
-  object-fit: cover;
+/* глобально или в Tailwind можно добавить через @layer utilities */
+.parallax-bg {
+  transform: translateY(0%);
+  will-change: transform;
 }
+
 
 @media (max-width: 767px) {
   h1 {
@@ -214,8 +217,8 @@ img {
   }
 
   h3 {
-    font-size: 21px;
-    line-height: 27px;
+    font-size: 24px;
+    line-height: 34px;
   }
 
   h4 {

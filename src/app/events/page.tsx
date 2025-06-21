@@ -12,7 +12,6 @@ import Button from "../../../components/ui/Button";
 import Header from "../../../components/sections/Header";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 import SubTitleLine from "../../../components/ui/SubTitleLine";
-import TimelineSection from "../../../components/bloks/TimelineSection";
 import EventCaroursel from "../../../components/bloks/EventCaroursel";
 import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import SomeWorks from "../../../components/bloks/SomeWorks";
@@ -50,7 +49,7 @@ export default function EventManagement() {
           <div>
             <HeroTitleFadeIn
               delay={1}
-              className={"max-w-[600px] text-blank text-left"}
+              className={"max-w-[600px] text-blank text-left break-all"}
             >
               {hero.title}
             </HeroTitleFadeIn>
@@ -108,109 +107,133 @@ export default function EventManagement() {
         className=" text-blank px-[16px] md:px-[40px] "
       >
         <SubTitleLine color="white" title={management.sub_title} />
-        <div className="pt-[50px] space-y-[90px]">
-          <div className="space-y-[30px] max-w-[787px]">
-            <h2>{management.title}</h2>
-            <p>{management.description}</p>
-          </div>
-          <div className="flex gap-[22px]">
-            <div className="relative w-2/3 h-[500px]">
-              <Image
-                src={management.media_large.image_src}
-                alt={management.media_large.alt}
-                fill
-                className="object-cover"
-              ></Image>
+        <div className="pt-[30px] md:pt-[50px] space-y-[70px] md:space-y-[170px]">
+          <div className="space-y-[70px] md:space-y-[120px]">
+            <div className="space-y-[30px] max-w-[787px]">
+              <h2>
+                <AnimatedStrokeByStroke text={management.title} />
+              </h2>
+              <AnimatedTextLine>
+                <p>{management.description}</p>
+              </AnimatedTextLine>
             </div>
-            <div className="relative w-1/3 h-[500px]">
-              <Image
-                src={management.media_large.image_src}
-                alt={management.media_large.alt}
-                fill
-                className="object-cover"
-              ></Image>
+            <div className="flex flex-col md:flex-row gap-[22px]">
+              <div className="relative w-full md:w-2/3 h-[201] md:h-[500px]">
+                <Image
+                  src={management.media_large.image_src}
+                  alt={management.media_large.alt}
+                  fill
+                  className="object-cover"
+                ></Image>
+              </div>
+              <div className="relative w-full w-1/3 h-[400px] md:h-[500px]">
+                <Image
+                  src={management.media_large.image_src}
+                  alt={management.media_large.alt}
+                  fill
+                  className="object-cover"
+                ></Image>
+              </div>
             </div>
           </div>
           <div>
-            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-10">
-              {/* Левая колонка — изображения */}
-              <div className="flex flex-col gap-[80px]">
-                {management.content.map((block, i) =>
-                  block.media_small ? (
-                    <div key={i} className="relative w-[443px] h-[494px]">
-                      <Image
-                        src={block.media_small.image_src}
-                        alt={block.media_small.alt}
-                        width={443}
-                        height={498}
-                        className=" object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div key={i} className="h-[300px]" /> // Заглушка если нет картинки
-                  )
-                )}
+            <div className="flex flex-col md:flex-row max-[1200px]:gap-[24px] min-[1200px]:gap-[133px] min-[1200px]:pl-[154px]">
+              {/* Левая колонка — одно изображение */}
+              <div className="relative hidden md:block w-full max-w-[443px] h-[500px]">
+                <Image
+                  src={management.content[0].media_small!.image_src}
+                  alt={management.content[0].media_small!.alt}
+                  fill
+                  className="object-cover"
+                />
               </div>
-
-              {/* Правая колонка — текст и заголовки */}
-              <div className="flex flex-col gap-[80px]">
-                {management.content.map((block, i) => (
-                  <div key={i} className="space-y-4">
-                    <h2 className="text-[32px] font-bold text-white">
-                      {block.title}
-                    </h2>
-                    {typeof block.description === "string" ? (
-                      <p className="text-white text-base leading-relaxed">
-                        {block.description}
-                      </p>
-                    ) : (
-                      block.description.map((para: string, idx: number) => (
-                        <p
-                          key={idx}
-                          className="text-white text-base leading-relaxed"
-                        >
+              {/* Правая колонка — все текстовые блоки */}
+              <div className="flex md:w-max flex-col gap-[70px] md:gap-[80px]">
+                {/* Первый блок */}
+                <div className="space-y-[38px]">
+                  <h2 className="text-[32px] font-bold text-white">
+                    <AnimatedStrokeByStroke
+                      text={management.content[0].title}
+                    />
+                  </h2>
+                  <AnimatedTextLine>
+                    <p className="text-white text-base leading-relaxed">
+                      {management.content[0].description}
+                    </p>
+                  </AnimatedTextLine>
+                </div>
+                <div className="relative  md:hidden w-full  h-[400px]">
+                  <Image
+                    src={management.content[0].media_small!.image_src}
+                    alt={management.content[0].media_small!.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                {/* Второй блок */}
+                <div className="space-y-[38px]">
+                  <h3 className="text-[24px] font-bold text-white">
+                    <AnimatedStrokeByStroke
+                      text={management.content[1].title}
+                    />
+                  </h3>
+                  {Array.isArray(management.content[1].description) ? (
+                    management.content[1].description.map((para, idx) => (
+                      <AnimatedTextLine key={idx}>
+                        <p className="text-white text-base leading-relaxed">
                           {para}
                         </p>
-                      ))
-                    )}
-                  </div>
-                ))}
+                      </AnimatedTextLine>
+                    ))
+                  ) : (
+                    <AnimatedTextLine>
+                      <p className="text-white text-base leading-relaxed">
+                        {management.content[1].description}
+                      </p>
+                    </AnimatedTextLine>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="space-y-[100px] text-blank">
+      <section className="space-y-[60px] md:space-y-[100px] mt-[70px] md:mt-[140px] text-blank">
         <AnimatedStrokeByStroke
           text={carousel.title}
-          className="!text-[128px] !leading-[129px] text-center !font-[900] px-[16px] md:px-[40px] "
+          className="break-all !text-[72px] md:!text-[128px] !leading-[72px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px] "
         ></AnimatedStrokeByStroke>
         <EventCaroursel images={carousel.gallery} />
       </section>
-      <section className=" px-[16px] md:px-[40px] py-[90px] text-blank">
+      <section className=" px-[16px] md:px-[40px] pb-[90px] text-blank">
         <SubTitleLine color="white" title={services.sub_title} />
-        <h2>
+        <h2 className="mt-[30px] md:mt-[70px]">
           <AnimatedStrokeByStroke
             text={services.title}
-            className="text-left"
+            className="text-left "
           ></AnimatedStrokeByStroke>
         </h2>
-        <div className="space-y-[40px] my-[90px]">
+        <div className="space-y-[70px] md:space-y-[40px] my-[90px]">
           {services.content.map((ele, index) => (
             <div
               key={index}
               className=" w-full md:w-[85%] flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
             >
               <div className="w-full md:w-2/3 space-y-[30px]">
-                <h3>{ele.title}</h3>
-                <p>{ele.description}</p>
+                <h3>
+                  {" "}
+                  <AnimatedStrokeByStroke text={ele.title} />
+                </h3>
+                <AnimatedTextLine>
+                  <p>{ele.description}</p>
+                </AnimatedTextLine>
               </div>
               <div className="relative w-full md:w-[443px] h-[278px]">
                 <Image
                   src={ele.media.image_src}
                   alt={ele.media.alt}
                   fill
-                  className="object-fill"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -226,7 +249,10 @@ export default function EventManagement() {
         </div>
       </section>
       <section className=" px-[16px] md:px-[40px] pb-[51px] text-blank">
-        <h2 className="pb-[46px]">{some_of_our_work.title}</h2>
+        <h2 className="pb-[46px]">
+          {" "}
+          <AnimatedStrokeByStroke text={some_of_our_work.title} />
+        </h2>
         <SomeWorks />
       </section>
       <Footer color="black" />

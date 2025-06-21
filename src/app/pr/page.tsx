@@ -12,8 +12,6 @@ import Button from "../../../components/ui/Button";
 import Header from "../../../components/sections/Header";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 import SubTitleLine from "../../../components/ui/SubTitleLine";
-import TimelineSection from "../../../components/bloks/TimelineSection";
-import EventCaroursel from "../../../components/bloks/EventCaroursel";
 import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
@@ -81,12 +79,12 @@ export default function EventManagement() {
               width="36.5"
               height="36.5"
               rx="18.25"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
             />
             <path
               d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
               strokeMiterlimit="10"
               strokeLinecap="round"
@@ -94,7 +92,7 @@ export default function EventManagement() {
             />
             <path
               d="M27.5 19H10.67"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
               strokeMiterlimit="10"
               strokeLinecap="round"
@@ -103,34 +101,42 @@ export default function EventManagement() {
           </svg>
         </button>
       </main>
-      <section data-scroll-target className=" px-[16px] md:px-[40px] ">
-        <video
-          src={hero.media.video_src}
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+      <section data-scroll-target className=" ">
+        <div className="flex gap-[22px]">
+          <video
+            src={hero.media.video_src}
+            className="w-screen h-screen md:w-full md:h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </div>
       </section>
       <section className=" px-[16px] md:px-[40px] text-blue">
-        <div className="space-y-[40px] md:space-y-[100px]">
+        <div className="space-y-[40px] md:space-y-[130px]">
           <SubTitleLine title={where_we_started.sub_title} />
           <div className="flex flex-col gap-[75px] md:gap-[130px]">
             <div className="flex flex-col md:flex-row gap-[40px] md:gap-[26px]">
               <div className=" w-full md:max-w-[439px] space-y-[50px]">
-                <h2>{where_we_started.content[0].title}</h2>
+                <h2>
+                  <AnimatedStrokeByStroke
+                    text={where_we_started.content[0].title}
+                  />
+                </h2>
                 <div className="space-y-[24px]">
                   {Array.isArray(where_we_started.content[0].description) ? (
                     where_we_started.content[0].description.map((p, i) => (
-                      <p key={i} className="]">
-                        {p}
-                      </p>
+                      <AnimatedTextLine key={i}>
+                        <p className="]">{p}</p>{" "}
+                      </AnimatedTextLine>
                     ))
                   ) : (
-                    <p className="">
-                      {where_we_started.content[0].description}
-                    </p>
+                    <AnimatedTextLine>
+                      <p className="">
+                        {where_we_started.content[0].description}
+                      </p>
+                    </AnimatedTextLine>
                   )}
                 </div>
               </div>
@@ -139,6 +145,7 @@ export default function EventManagement() {
                   src={where_we_started.content[0].media.image_src}
                   alt={where_we_started.content[0].media.alt}
                   fill
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -151,26 +158,34 @@ export default function EventManagement() {
             </h2>
 
             <div className="flex flex-col md:flex-row gap-[40px] md:gap-[76px] justify-center">
-              <div className="relative w-full max-w-[556px] h-[494px]">
+              <div className="relative w-full max-w-[556px] h-[344px]">
                 <Image
                   src={where_we_started.content[1].media.image_src}
                   alt={where_we_started.content[1].media.alt}
                   fill
+                  className="object-cover"
                 />
               </div>
               <div className=" w-full md:max-w-[670px] space-y-[50px]">
-                <h3>{where_we_started.content[1].title}</h3>
+                <h3>
+                  <AnimatedStrokeByStroke
+                    text={where_we_started.content[1].title}
+                  />
+                </h3>
                 <div className="space-y-[24px]">
                   {Array.isArray(where_we_started.content[0].description) ? (
                     where_we_started.content[0].description.map((p, i) => (
-                      <p key={i} className="]">
-                        {p}
-                      </p>
+                      <AnimatedTextLine key={i}>
+                        <p className="]">{p}</p>
+                      </AnimatedTextLine>
                     ))
                   ) : (
-                    <p className="">
-                      {where_we_started.content[0].description}
-                    </p>
+                    <AnimatedTextLine>
+                      {" "}
+                      <p className="">
+                        {where_we_started.content[0].description}
+                      </p>
+                    </AnimatedTextLine>
                   )}
                 </div>
               </div>
@@ -194,15 +209,20 @@ export default function EventManagement() {
                 className=" w-full md:w-[85%] flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
               >
                 <div className="w-full md:w-2/3 space-y-[30px]">
-                  <h3>{ele.title}</h3>
-                  <p>{ele.description}</p>
+                  <h3>
+                    {" "}
+                    <AnimatedStrokeByStroke text={ele.title} />
+                  </h3>
+                  <AnimatedTextLine>
+                    <p>{ele.description}</p>
+                  </AnimatedTextLine>
                 </div>
                 <div className="relative w-full md:w-[443px] h-[278px]">
                   <Image
                     src={ele.media.image_src}
                     alt={ele.media.alt}
                     fill
-                    className="object-fill"
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -239,13 +259,12 @@ export default function EventManagement() {
       </section>
       <section className="bg-white-gris px-[16px] md:px-[40px] pb-[51px]">
         <MoreEvents
-        
           flag="event"
           title={latest.title}
           link="/our-owned-events"
         />
       </section>
-      <Footer  />
+      <Footer />
     </div>
   );
 }

@@ -408,14 +408,23 @@ export default function Events({ sub_title, events }: Props) {
               }]`}
             >
               {event.bbr_events_media.type === "video" ? (
-                <video
-                  src={event.bbr_events_media.src}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
+                event.bbr_events_media.src.endsWith(".mp4") ? (
+                  <video
+                    src={event.bbr_events_media.src}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <iframe
+                    src={`${event.bbr_events_media.src}?autoplay=1&muted=1&loop=1&background=1`}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    className="w-full h-full object-cover"
+                  />
+                )
               ) : (
                 <Image
                   src={event.bbr_events_media.src}

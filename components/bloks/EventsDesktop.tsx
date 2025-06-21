@@ -399,7 +399,8 @@ export default function Events({ sub_title, events }: Props) {
                 index + 1
               } w-1/2 h-full ml-auto absolute inset-0 z-[${2 + index * 3}]`}
             >
-              {event.bbr_events_media.type === "video" ? (
+              {event.bbr_events_media.type === "video" &&
+              event.bbr_events_media.src.endsWith(".mp4") ? (
                 <video
                   src={event.bbr_events_media.src}
                   className="w-full h-full object-cover"
@@ -407,6 +408,13 @@ export default function Events({ sub_title, events }: Props) {
                   muted
                   loop
                   playsInline
+                />
+              ) : event.bbr_events_media.type === "video" ? (
+                <iframe
+                  src={`${event.bbr_events_media.src}?autoplay=1&muted=1&loop=1&background=1`}
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  className="w-full h-full object-cover"
                 />
               ) : (
                 <Image

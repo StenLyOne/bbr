@@ -32,7 +32,7 @@ export default function MoreEvents({ testimonial }: Props) {
 
   return (
     <div className="">
-      <div className="mx-auto px-4 md:px-[40px]">
+      <div className="mx-auto  md:px-[40px]">
         <div
           ref={containerRef}
           className="transition-all duration-300 flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
@@ -40,7 +40,7 @@ export default function MoreEvents({ testimonial }: Props) {
           {testimonial.map((ele, i) => (
             <div
               key={i}
-              className={`snap-start shrink-0 bg-blank p-[30px] text-blue ${
+              className={`snap-start shrink-0 bg-blank p-[24px] md:p-[30px] text-blue ${
                 isMobile ? "w-[90vw]" : "w-[calc(31.5vw-28px)]"
               } flex flex-col gap-[20px]`}
             >
@@ -53,8 +53,8 @@ export default function MoreEvents({ testimonial }: Props) {
                 />
               </div>
               <p className="pb-[78px] pt-[30px]">{ele.description}</p>
-              <div className="">
-                <h3>{ele.name}</h3>
+              <div className="text-blue">
+                <h3 className="!font-[900]">{ele.name}</h3>
                 <p>{ele.job}</p>
                 <p>{ele.company}</p>
               </div>

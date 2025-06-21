@@ -71,25 +71,35 @@ export default function Hero({
       </button>
 
       {/* BACKGROUND */}
-      {data.media.type === "video" ? (
-        <video
-          style={{ contain: "layout paint", transform: "translateZ(0)" }}
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src={data.media.src} type="video/mp4" />
-        </video>
+      {data.media?.type === "video" ? (
+        data.media.src.endsWith(".mp4") ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{ contain: "layout paint", transform: "translateZ(0)" }}
+          >
+            <source src={data.media.src} type="video/mp4" />
+          </video>
+        ) : (
+          <iframe
+            src={`${data.media.src}?autoplay=1&muted=1&loop=1&background=1`}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{ transform: "translateZ(0)" }}
+          />
+        )
       ) : (
         <Image
           src={data.media.src}
-          width={1440}
-          height={3000}
-          alt={data.media.alt}
-          style={{ transform: "translateZ(0)" }}
+          width={3500}
+          height={3500}
+          alt={data.media.alt || ""}
           className="absolute top-0 left-0 w-full h-full object-cover"
+          style={{ transform: "translateZ(0)" }}
         />
       )}
 

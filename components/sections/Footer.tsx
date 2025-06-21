@@ -37,7 +37,7 @@ export default function Footer({ color }: Proop) {
                 © Copyright 2025 BBR Group Australia
               </p>
               <Link
-                href="/privacy-policy/"
+                href="/cookies/"
                 className={`text-link small-a ${textColor}`}
               >
                 Cookies

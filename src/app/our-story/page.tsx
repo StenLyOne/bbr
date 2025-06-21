@@ -13,6 +13,7 @@ import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 import SubTitleLine from "../../../components/ui/SubTitleLine";
 import TimelineSection from "../../../components/bloks/TimelineSection";
 import TestimonialCarousel from "../../../components/bloks/TestimonialCarousel";
+import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 
 export default function OurStory() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -41,7 +42,7 @@ export default function OurStory() {
     >
       <Header animationsReady={animationsReady} />
       <main
-        data-bg="dark"
+        data-bg="light"
         className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
@@ -79,12 +80,12 @@ export default function OurStory() {
               width="36.5"
               height="36.5"
               rx="18.25"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
             />
             <path
               d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
               strokeMiterlimit="10"
               strokeLinecap="round"
@@ -92,7 +93,7 @@ export default function OurStory() {
             />
             <path
               d="M27.5 19H10.67"
-              stroke="#fff"
+              stroke="#21224b"
               strokeWidth="1.5"
               strokeMiterlimit="10"
               strokeLinecap="round"
@@ -106,33 +107,44 @@ export default function OurStory() {
         className="bg-white-gris px-[16px] md:px-[40px]"
       >
         <SubTitleLine title={what_we_do.sub_title} />
-        <div className="flex flex-col md:flex-row gap-[48px] md:gap-[77px] py-[60px] md:py-[130px] max-[1300px]:pl-[0px] pl-[100px]">
+        <div className="flex flex-col-reverse md:flex-row gap-[48px] md:gap-[77px] pе-[30px] md:py-[130px] max-[1300px]:pl-[0px] pl-[100px]">
           <Image
-            className="w-[100%] md:w-[556px] h-[350px]"
+            className="w-[100%] md:w-[556px] h-[244px] md:h-[350px] object-cover"
             width={556}
             height={350}
             src={what_we_do.media.image_src}
             alt={what_we_do.media.alt}
           />
           <div className="w-full md:w-1/2 text-blue space-y-[36px] md:space-y-[52px]">
-            <h2>{what_we_do.title}</h2>
-            <p>{what_we_do.description}</p>
+            <h2>
+              {" "}
+              <AnimatedStrokeByStroke text={what_we_do.title} />
+            </h2>
+            <AnimatedTextLine>
+              <p>{what_we_do.description}</p>
+            </AnimatedTextLine>
           </div>
         </div>
       </section>
       <section className="bg-blank px-[16px] md:px-[40px] ">
         <SubTitleLine title={where_we_started.sub_title} />
-        <div className="py-[60px] md:py-[130px] space-y-[120px]">
-          <div className="flex flex-col-reverse md:flex-row justify-between gap-[60px] md:gap-[24px] text-blue ">
+        <div className="py-[30px] md:py-[130px] space-y-[60px] md:space-y-[120px]">
+          <div className="flex flex-col md:flex-row justify-between gap-[60px] md:gap-[24px] text-blue ">
             <div className="w-full md:w-1/3 space-y-[28px] md:space-y-[50px]">
-              <h2>{where_we_started.content[0].title}</h2>
+              <h2>
+                <AnimatedStrokeByStroke
+                  text={where_we_started.content[0].title}
+                />
+              </h2>
               <div className="space-y-[20px]">
                 {where_we_started.content[0].description.map((ele, index) => (
-                  <p key={index}>{ele}</p>
+                  <AnimatedTextLine key={index}>
+                    <p>{ele}</p>
+                  </AnimatedTextLine>
                 ))}
               </div>
             </div>
-            <div className="relative w-full md:w-2/3 h-[500px]">
+            <div className="relative w-full md:w-2/3 h-[226px] md:h-[500px]">
               <Image
                 src={where_we_started.content[0].media.image_src}
                 alt={where_we_started.content[0].media.alt}
@@ -144,7 +156,7 @@ export default function OurStory() {
           {where_we_started.content.slice(1).map((ele, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row gap-[50px] md:gap-[76px]"
+              className="flex flex-col-reverse md:flex-row gap-[60px] md:gap-[76px]"
             >
               <div className="relative w-full md:w-2/3 h-[350px] ml-[0px] md:ml-[60px]">
                 <Image
@@ -155,12 +167,21 @@ export default function OurStory() {
                 />
               </div>
               <div className="w-full md:w-2/3 space-y-[37px]">
-                <h3>{ele.title}</h3>
+                <h3>
+                  {" "}
+                  <AnimatedStrokeByStroke text={ele.title} />
+                </h3>
                 <div className="space-y-[18px] ">
                   {Array.isArray(ele.description) ? (
-                    ele.description.map((text, i) => <p key={i}>{text}</p>)
+                    ele.description.map((text, i) => (
+                      <AnimatedTextLine key={i}>
+                        <p>{text}</p>
+                      </AnimatedTextLine>
+                    ))
                   ) : (
-                    <p>{ele.description}</p>
+                    <AnimatedTextLine>
+                      <p>{ele.description}</p>
+                    </AnimatedTextLine>
                   )}
                 </div>
               </div>
@@ -168,12 +189,22 @@ export default function OurStory() {
           ))}
         </div>
       </section>
-      <TimelineSection data={timeline} />
+      <section className="bg-white-gris">
+        <div className="px-[16px] md:px-[40px]">
+          <SubTitleLine title={timeline.sub_title} />
+
+          <h2 className="text-blue py-[40px] md:py-[100px] text-center">
+            {" "}
+            <AnimatedStrokeByStroke text={timeline.title} />
+          </h2>
+        </div>
+        <TimelineSection data={timeline} />
+      </section>
       <section className="bg-white-gris px-[16px] md:px-[40px] ">
         <SubTitleLine title={testimonial.sub_title} />
         <div className="pt-[50px] md:pt-[100px] pb-[40px]">
           <h2 className="mb-[64px] md:mb-[108px] mx-auto text-center text-blue">
-            {testimonial.title}
+            <AnimatedStrokeByStroke text={testimonial.title} />
           </h2>
           <TestimonialCarousel testimonial={testimonial.testimonials} />
         </div>

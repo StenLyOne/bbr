@@ -24,45 +24,45 @@ export default function TimelineSection({
 
   useEffect(() => {
     sectionRefs.current.forEach((section, index) => {
-      const tl = gsap.timeline({
+      const image = bgRefs.current[index];
+      const content = section.querySelector(".content");
+
+      if (!image || !content) return;
+
+      // Параллакс на фон
+      gsap.to(image, {
+        y: "20%", // было 10%
+        ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "top center",
-          end: "bottom center",
-          toggleActions: "play reverse play reverse",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
       });
 
-      // Контент появляется
-      tl.fromTo(
-        section.querySelector(".content"),
-        { autoAlpha: 0, y: 50 },
-        { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" },
-      );
-
-      // Фон плавно появляется
-      tl.to(
-        bgRefs.current.map((bg, i) => ({
-          element: bg,
-          opacity: i === index ? 1 : 0,
-        })),
+      // Появление контента
+      gsap.fromTo(
+        content,
+        { autoAlpha: 1, y: 0 },
         {
-          opacity: (target: any) => target.opacity,
-          duration: 0.8,
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
           ease: "power2.out",
-          onUpdate: () => {
-            bgRefs.current.forEach((bg, i) => {
-              bg.style.opacity = i === index ? "1" : "0";
-            });
+          scrollTrigger: {
+            trigger: section,
+            start: "top center",
+            end: "bottom center",
+            toggleActions: "play reverse play reverse",
           },
-        },
-        "<",
+        }
       );
     });
   }, [data.content]);
 
   return (
-    <section className="relative">
+    <div className="relative">
       {data.content.map((item, i) => (
         <div
           key={i}
@@ -72,7 +72,7 @@ export default function TimelineSection({
           className="relative min-h-screen overflow-hidden"
         >
           {/* Локальный фон внутри секции */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 z-0 overflow-hidden">
             <Image
               ref={(el) => {
                 if (el) bgRefs.current[i] = el;
@@ -80,31 +80,56 @@ export default function TimelineSection({
               src={item.media.image_src}
               alt={item.media.alt}
               fill
-              className="object-cover opacity-0 transition-opacity duration-500"
+              className="object-cover parallax-bg scale-[1.2]"
             />
           </div>
 
-          {/* Контент */}
-          <div className="relative z-10 flex items-center justify-center h-full px-6">
-            <div className="content bg-white bg-opacity-90 p-8 rounded-xl max-w-[800px] w-full text-black shadow-xl opacity-0">
-              <div className="text-right text-lg font-semibold mb-4">
-                {item.date}
-              </div>
-              {item.media.logo_src && (
-                <div className="mb-4">
-                  <Image
-                    src={item.media.logo_src}
-                    width={150}
-                    height={60}
-                    alt="Event Logo"
-                  />
+          <div className="relative z-10 h-screen flex items-center justify-center px-6">
+            <div className="relative  h-full flex items-center max-w-[1000px] w-full">
+              {/* Дата + точка */}
+              <div className="hidden md:block">
+                <p className="w-[200px] max-w-[200px] text-white !font-[900] text-right large whitespace-nowrap -translate-x-[120px]">
+                  {item.date.split(" ")[0]}
+                  <br />
+                  {item.date.split(" ")[1]}
+                </p>
+
+                {/* Палочка + точка */}
+                <div className="absolute left-[120px] top-0 w-[3px] h-full bg-blank z-20">
+                  {/* Точка по центру линии */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-4 border-white/50 z-10" />
                 </div>
-              )}
-              <p className="text-base leading-relaxed">{item.description}</p>
+
+                {/* Дата слева */}
+                {/* <div className="w-[200px] pr-[90px] flex items-center relative">
+                
+              </div> */}
+              </div>
+
+              {/* Карточка */}
+              <div className="content bg-white space-y-[60px] p-[24px] md:p-[52px] max-w-[787px] w-full md:h-[366px]">
+                {item.media.logo_src && (
+                  <div className="mb-4">
+                    <Image
+                      src={item.media.logo_src}
+                      width={150}
+                      height={60}
+                      alt="Event Logo"
+                      className="mx-auto"
+                    />
+                  </div>
+                )}
+                <div className="space-y-[18px]">
+                  <h3 className="text-center text-blue">{item.date}</h3>
+                  <p className="text-blue text-center md:text-left">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
 }

@@ -39,7 +39,7 @@ export default function EventManagement() {
   return (
     <div
       ref={contentRef}
-      className={`transition-opacity duration-1000 bg-rouge z-[100000] text-blank`}
+      className={`transition-opacity duration-1000 bg-rouge z-[100000] `}
     >
       <Header animationsReady={animationsReady} />
       <main
@@ -50,7 +50,7 @@ export default function EventManagement() {
           <div>
             <HeroTitleFadeIn
               delay={1}
-              className={"max-w-[600px] text-blank text-left"}
+              className={"max-w-[600px] text-blank text-left break-all"}
             >
               {hero.title}
             </HeroTitleFadeIn>
@@ -103,17 +103,25 @@ export default function EventManagement() {
           </svg>
         </button>
       </main>
-      <section data-scroll-target className=" px-[16px] md:px-[40px] "  data-bg="light">
-        <SubTitleLine color="white" title={communications.sub_title} />
-        <div className="pt-[50px] space-y-[90px]">
-          <div className="space-y-[30px] max-w-[787px]">
-            <h2>{communications.title}</h2>
-            <p>{communications.description}</p>
+      <section data-scroll-target className="text-blank  " data-bg="light">
+        <div className="px-[16px] md:px-[40px]">
+          {" "}
+          <SubTitleLine color="white" title={communications.sub_title} />
+        </div>
+
+        <div className="pt-[20px] md:pt-[50px] space-y-[90px] ">
+          <div className="space-y-[30px] max-w-[787px] px-[16px] md:px-[40px]">
+            <h2>
+              <AnimatedStrokeByStroke text={communications.title} />
+            </h2>
+            <AnimatedTextLine>
+              <p>{communications.description}</p>
+            </AnimatedTextLine>
           </div>
           <div className="flex gap-[22px]">
             <video
               src={communications.media.video_src}
-              className="w-full h-full object-cover"
+              className="w-screen h-screen md:w-full md:h-full object-cover"
               autoPlay
               muted
               loop
@@ -122,54 +130,73 @@ export default function EventManagement() {
           </div>
         </div>
       </section>
-      <section className="space-y-[100px]">
-        <div>
-          <div className="flex flex-col gap-[130px]">
-            {what_we_offer.content.map((block, index) => (
-              <div key={index}>
-                <TwoColumnBlock {...block} reverse={index % 2 == 0} />
-              </div>
-            ))}
+      <section className="space-y-[100px] text-blank">
+        <div className="px-[16px] md:px-[40px]">
+          <SubTitleLine color="white" title={what_we_offer.sub_title} />
+          <div className="flex mt-[40px]  md:mt-[0px] flex-col gap-[70px] md:gap-[130px]">
+            {what_we_offer.content.map((block, index) => {
+              if (index == 1 || index == 0)
+                return (
+                  <div key={index}>
+                    <TwoColumnBlock {...block} reverse={index % 2 !== 0} />
+                  </div>
+                );
+            })}
 
-            <h2 className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
+            <div className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
               <AnimatedStrokeByStroke
                 text={what_we_offer.title}
-                className="!text-[128px] !leading-[129px] text-center !font-[900] px-[16px] md:px-[40px] "
+                className="!text-[72px]  md:!text-[128px] !leading-[72px]  md:!leading-[129px] text-center !font-[900]  break-all"
               ></AnimatedStrokeByStroke>
-            </h2>
+            </div>
 
-            {what_we_offer.content.map((block, index) => (
-              <div key={index}>
-                <TwoColumnBlock
-                  key={index}
-                  {...block}
-                  reverse={index % 2 !== 0}
-                />
-              </div>
-            ))}
+            {what_we_offer.content.map((block, index) => {
+              if (index !== 0 && index !== 1)
+                return (
+                  <div key={index}>
+                    <TwoColumnBlock
+                      key={index}
+                      {...block}
+                      reverse={index % 2 !== 0}
+                    />
+                  </div>
+                );
+            })}
           </div>
         </div>
       </section>
-      <section className=" px-[16px] md:px-[40px] py-[90px]">
+      <section className=" px-[16px] md:px-[40px] py-[40px] md:py-[90px] text-blank">
         <SubTitleLine color="white" title={visibility.sub_title} />
         <div className="max-w-[1100px] mx-auto">
-          <h2 className="text-center">
+          <h2 className="text-center mt-[30px] md:mt-[100px]">
             <AnimatedStrokeByStroke
               text={visibility.title}
             ></AnimatedStrokeByStroke>
           </h2>
-          <div className="grid gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {visibility.content.map((ele, index) => (
-              <div key={index} className=" w-full gap-[40px]">
-                <img src={ele.media.icon_src} />
+              <div key={index} className=" w-full gap-[40px] ">
+                <AnimatedTextLine className="max-[769px]:flex flex-col items-center justify-center">
+                  <img src={ele.media.icon_src} className="" />
+                </AnimatedTextLine>
                 <div className="w-full space-y-[30px]">
-                  <h3>{ele.title}</h3>
-                  <p>{ele.description}</p>
+                  <h3 className="text-center md:text-left mb-[21px] mt-[21px] md:mt-[45px]">
+                    <AnimatedStrokeByStroke text={ele.title} />
+                  </h3>
+                  <AnimatedTextLine>
+                    <p className="text-center md:text-left">
+                      {ele.description}
+                    </p>
+                  </AnimatedTextLine>
                 </div>
               </div>
             ))}
-          </div>
-          <p className="large max-w-[936px] text-left mb-[100px] mx-auto">{visibility.description}</p>
+          </div>{" "}
+          <AnimatedTextLine>
+            <p className="large text-center  max-w-[936px] md:text-left mb-[100px] mx-auto">
+              {visibility.description}
+            </p>{" "}
+          </AnimatedTextLine>
           <div className="flex justify-center">
             <Button
               text="Let’s Talk"
@@ -180,9 +207,9 @@ export default function EventManagement() {
           </div>
         </div>
       </section>
-      <section className=" px-[16px] md:px-[40px] pb-[51px]">
+      <section className=" px-[16px] md:px-[40px] text-blank">
         <MoreEvents
-        color="transporent"
+          color="transporent"
           flag="event"
           title={latest.title}
           link="/our-owned-events"
@@ -203,7 +230,7 @@ interface TwoColumnBlockProps {
   reverse?: boolean;
 }
 
-const TwoColumnBlock =({
+const TwoColumnBlock = ({
   title,
   description,
   media_small,
@@ -216,18 +243,23 @@ const TwoColumnBlock =({
       } items-center justify-between gap-[40px]`}
     >
       {/* Text */}
-      <div className="w-full md:w-1/2 md:py-[16px] px-[40px]">
-        <h2 className="text-[24px] font-[800] mb-[40px]">{title}</h2>
-        <p className="text-[16px] leading-[1.5]">{description}</p>
+
+      <div className="w-full md:w-1/2 ">
+        <h2 className="text-[24px] font-[800] mb-[30px] md:mb-[40px]">
+          <AnimatedStrokeByStroke text={title} />
+        </h2>
+        <AnimatedTextLine>
+          <p className="text-[16px] leading-[1.5]">{description}</p>
+        </AnimatedTextLine>
       </div>
 
       {/* Image */}
       <div className="w-full md:w-1/2 flex justify-center">
-        <div className="w-full max-w-[500px]">
+        <div className="w-full md:max-w-max">
           <img
             src={media_small.image_src}
             alt={media_small.alt}
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-cover"
           />
         </div>
       </div>
