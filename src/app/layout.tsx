@@ -30,7 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ScrollToTop />
-        <LenisProvider />
+        {/* <LenisProvider /> */}
         {children}
       </body>
     </html>
