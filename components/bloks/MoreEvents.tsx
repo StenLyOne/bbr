@@ -50,12 +50,12 @@ export default function MoreEvents({
 
   return (
     <section
-      className={`${
+      className={` ${
         color === "transporent" ? "" : "bg-white-gris"
       }  py-[75px] `}
     >
       <div className="mx-auto ">
-        <div className="flex justify-between items-end mb-10">
+        <div className="flex justify-between items-end mb-10  px-[16px] md:px-[40px]">
           <AnimatedTextLine>
             <h2
               className={`text-[32px] font-[900] ${
@@ -103,7 +103,7 @@ export default function MoreEvents({
 
         <div
           ref={containerRef}
-          className={`transition-all duration-300 ${
+          className={`transition-all duration-300  px-[16px] md:px-[40px] ${
             isMobile
               ? "flex flex-col gap-[46px]"
               : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar "

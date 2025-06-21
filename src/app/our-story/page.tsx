@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 import Image from "next/image";
 
@@ -16,6 +17,8 @@ import TestimonialCarousel from "../../../components/bloks/TestimonialCarousel";
 import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 
 export default function OurStory() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
@@ -33,6 +36,31 @@ export default function OurStory() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { hero, what_we_do, where_we_started, timeline, testimonial } = data;
 
   return (
@@ -43,7 +71,10 @@ export default function OurStory() {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="light"
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+        className={`w-full h-[100vh] flex items-center justify-center px-[16px] 
+          md:px-[40px] transition-opacity duration-1000 relative ${
+          contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>

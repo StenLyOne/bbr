@@ -5,6 +5,9 @@ import { gsap } from "../../lib/gsap";
 import Link from "next/link";
 import { forwardRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { usePointerType } from "../../hooks/usePointerType";
+import { useRouter } from "next/navigation";
+
 
 interface Prop {
   menuFun: Function;
@@ -12,6 +15,8 @@ interface Prop {
 }
 
 export default function MenuOverlay({ isOpen, menuFun }: Prop) {
+  const router = useRouter();
+  const isTouch = usePointerType();
   const overlayRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<(HTMLParagraphElement | null)[]>([]);
   const servicesRef = useRef<(HTMLParagraphElement | null)[]>([]);
@@ -143,12 +148,14 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
     </svg>
   ));
 
+  
+
   ArrowIcon.displayName = "ArrowIcon";
 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none"
+      className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none text-blue"
     >
       <div className="flex flex-col md:justify-between h-full md:items-end space-y-6 text-right justify-end md:pt-[200px]">
         <div className="space-y-[38px] w-full md:w-auto ">
@@ -258,9 +265,19 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                     ? "justify-between items-end"
                     : "items-center justify-end"
                 } gap-[10px]`}
-                onMouseEnter={() => handleHover(section.label)}
-                onMouseLeave={() => handleMouseLeave(section.label)}
-                onClick={() => toggleSection(section.label)}
+                onMouseEnter={
+                  !isTouch ? () => handleHover(section.label) : undefined
+                }
+                onMouseLeave={
+                  !isTouch ? () => handleMouseLeave(section.label) : undefined
+                }
+                onClick={() => {
+                  if (hasItems) {
+                    toggleSection(section.label);
+                  } else if (section.href) {
+                    menuFun();
+                  }
+                }}
               >
                 {hasItems && (
                   <div className="flex gap-[30px] overflow-hidden">
@@ -274,6 +291,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                       >
                         <Link
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
+                          onClick={() => menuFun()}
                         >
                           {text}
                         </Link>
@@ -405,7 +423,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
-             className="icon"
+              className="icon"
               width="17"
               height="13"
               viewBox="0 0 17 13"
@@ -424,7 +442,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
-             className="icon"
+              className="icon"
               width="21"
               height="21"
               viewBox="0 0 21 21"
@@ -451,7 +469,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
-             className="icon"
+              className="icon"
               width="15"
               height="15"
               viewBox="0 0 15 15"
@@ -474,7 +492,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
-             className="icon"
+              className="icon"
               width="19"
               height="19"
               viewBox="0 0 19 19"
@@ -497,7 +515,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           </a>
           <a href="">
             <svg
-             className="icon"
+              className="icon"
               width="25"
               height="17"
               viewBox="0 0 25 17"

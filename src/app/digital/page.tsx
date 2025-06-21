@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import data from "../../../data/digital.json";
 import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 import Footer from "../../../components/sections/Footer";
 import Button from "../../../components/ui/Button";
@@ -18,6 +19,8 @@ import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
 export default function EventManagement() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
@@ -35,6 +38,31 @@ export default function EventManagement() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { hero, communications, what_we_offer, visibility, latest } = data;
   return (
     <div
@@ -44,19 +72,30 @@ export default function EventManagement() {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="dark"
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+        className={`
+        transition-opacity duration-1000 relative w-full h-[100vh]
+        flex items-center justify-center px-[16px] md:px-[40px] 
+        ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
+      `}
       >
+        <AnimatedTextLine delay={1.1} className="absolute mx-auto">
+          <img
+            className=" w-[100%] md:w-[100%] mx-auto"
+            src="/assets/logo/bbr-digital-vector-2.svg"
+            alt=""
+          />
+        </AnimatedTextLine>
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
             <HeroTitleFadeIn
-              delay={1}
+              delay={1.3}
               className={"max-w-[600px] text-blank text-left break-all"}
             >
               {hero.title}
             </HeroTitleFadeIn>
           </div>
           <div>
-            <AnimatedTextLine delay={1.1}>
+            <AnimatedTextLine delay={1.5}>
               <p className="large text-blank max-w-[788px]">
                 {hero.description}
               </p>
@@ -103,7 +142,11 @@ export default function EventManagement() {
           </svg>
         </button>
       </main>
-      <section data-scroll-target className="text-blank  " data-bg="light">
+      <section
+        data-scroll-target
+        className="text-blank relative z-[1] bg-rouge"
+        data-bg="light"
+      >
         <div className="px-[16px] md:px-[40px]">
           {" "}
           <SubTitleLine color="white" title={communications.sub_title} />
@@ -207,14 +250,14 @@ export default function EventManagement() {
           </div>
         </div>
       </section>
-      <section className=" px-[16px] md:px-[40px] text-blank">
-        <MoreEvents
-          color="transporent"
-          flag="event"
-          title={latest.title}
-          link="/our-owned-events"
-        />
-      </section>
+
+      <MoreEvents
+        color="transporent"
+        flag="event"
+        title={latest.title}
+        link="/our-owned-events"
+      />
+
       <Footer color="rouge" />
     </div>
   );

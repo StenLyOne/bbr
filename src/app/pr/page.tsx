@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 import data from "../../../data/pr.json";
 import AnimatedTextLine from "../../../components/AnimatedTextLine";
@@ -16,6 +17,8 @@ import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
 export default function EventManagement() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
@@ -33,6 +36,31 @@ export default function EventManagement() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { hero, where_we_started, services, featured_on, latest } = data;
   return (
     <div
@@ -42,8 +70,18 @@ export default function EventManagement() {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="light"
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+        className={`w-full h-[100vh] flex items-center justify-center px-[16px]
+           md:px-[40px] transition-opacity duration-1000 relative ${
+             contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+           }`}
       >
+        <AnimatedTextLine delay={1.1} className="absolute mx-auto">
+          <img
+            className=" w-[100%] md:w-[65%] mx-auto "
+            src="/assets/logo/bbr-pr-vector.svg"
+            alt=""
+          />
+        </AnimatedTextLine>
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
             <HeroTitleFadeIn
@@ -257,13 +295,9 @@ export default function EventManagement() {
           })}
         </div>
       </section>
-      <section className="bg-white-gris px-[16px] md:px-[40px] pb-[51px]">
-        <MoreEvents
-          flag="event"
-          title={latest.title}
-          link="/our-owned-events"
-        />
-      </section>
+
+      <MoreEvents flag="event" title={latest.title} link="/our-owned-events" />
+
       <Footer />
     </div>
   );

@@ -136,7 +136,7 @@ export default function Header({
             borderBottom: !isDark ? `` : `1px solid ${borderColor}`,
           }}
         >
-          <Link href={"/"} className="cursor-pointer">
+          <Link href={"/"} className="cursor-pointer" >
             <div className="flex items-end gap-[10px]">
               <span>
                 <Image

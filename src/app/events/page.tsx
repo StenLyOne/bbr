@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 import Image from "next/image";
 
@@ -17,6 +18,8 @@ import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import SomeWorks from "../../../components/bloks/SomeWorks";
 
 export default function EventManagement() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
@@ -34,6 +37,31 @@ export default function EventManagement() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+           setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { hero, management, carousel, services, some_of_our_work } = data;
   return (
     <div
@@ -43,19 +71,31 @@ export default function EventManagement() {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="dark"
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] text-blank"
+        className={`
+    transition-opacity duration-1000 relative w-full h-[100vh]
+    flex items-center justify-center px-[16px] md:px-[40px] text-blank
+    ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
+  `}
       >
+        {" "}
+        <AnimatedTextLine delay={1.1} className="absolute mx-auto">
+          <img
+            className=" w-[100%] md:w-[65%] mx-auto "
+            src="/assets/logo/bbr-events-vector.svg"
+            alt=""
+          />
+        </AnimatedTextLine>
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
             <HeroTitleFadeIn
-              delay={1}
+              delay={1.3}
               className={"max-w-[600px] text-blank text-left break-all"}
             >
               {hero.title}
             </HeroTitleFadeIn>
           </div>
           <div>
-            <AnimatedTextLine delay={1.1}>
+            <AnimatedTextLine delay={1.5}>
               <p className="large text-blank max-w-[788px]">
                 {hero.description}
               </p>

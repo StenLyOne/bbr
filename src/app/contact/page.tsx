@@ -18,6 +18,7 @@ const { hero, contact } = data;
 
 export default function Contact({}) {
   const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
@@ -63,15 +64,6 @@ export default function Contact({}) {
     reset,
   } = useForm<FormData>();
 
-  const [sent, setSent] = useState(false);
-
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    setSent(true);
-    reset(); // очищаем форму
-    setTimeout(() => setSent(false), 4000); // сообщение исчезает
-  };
-
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("[data-scroll-target]");
     if (nextSection) {
@@ -86,13 +78,43 @@ export default function Contact({}) {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div
       ref={contentRef}
       className={`transition-opacity duration-1000 bg-blank z-[100000] `}
     >
       <Header animationsReady={animationsReady} />
-      <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
+      <main
+        className={`
+    transition-opacity duration-1000 w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] ${
+      contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+    }`}
+      >
         <div className="w-full flex justify-center md:justify-between items-center gap-[48px]">
           <div>
             <HeroTitleFadeIn

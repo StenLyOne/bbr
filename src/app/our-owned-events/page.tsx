@@ -22,6 +22,8 @@ interface HeroData {
 export default function OurOwnedEvents() {
   const { hero, events }: { hero: HeroData; events: any[] } = data;
 
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
   const [showAll, setShowAll] = useState(false);
@@ -58,6 +60,7 @@ export default function OurOwnedEvents() {
     const tl = gsap.timeline({
       delay: 0.5, // ⏱️ 1 секунда задержки перед стартом
       scrollTrigger: {
+        id: "owned-events-cards",
         trigger: gridRef.current,
         start: "top 80%", // 🔥 когда 20% секции дойдут до верха экрана
         toggleActions: "play none none none",
@@ -99,6 +102,12 @@ export default function OurOwnedEvents() {
         },
       }
     );
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+    gsap.globalTimeline.clear();
+    cardsRef.current = [];
+    bgImagesRef.current = [];
   }, [visibleEvents]);
 
   console.log(
@@ -119,6 +128,31 @@ export default function OurOwnedEvents() {
       });
     }
   };
+
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div
@@ -150,7 +184,10 @@ export default function OurOwnedEvents() {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="dark"
-        className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]"
+        className={`
+    transition-opacity duration-1000 w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]  ${
+      contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+    }`}
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>

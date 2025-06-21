@@ -16,6 +16,7 @@ import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 
 export default function Team() {
   const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
@@ -60,22 +61,6 @@ export default function Team() {
     }
   }, []);
 
-  useEffect(() => {
-    if (!showIntro && contentRef.current) {
-      gsap.to(contentRef.current, {
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        onComplete: () => {
-          setAnimationsReady(true); // ✅ запускаем флаг
-          requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
-          });
-        },
-      });
-    }
-  }, [showIntro]);
-
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("[data-scroll-target]");
     if (nextSection) {
@@ -90,6 +75,31 @@ export default function Team() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { departments, hero, intro, cta } = data;
   return (
     <>
@@ -98,7 +108,12 @@ export default function Team() {
         className={`transition-opacity duration-1000 bg-blank z-[100000] overflow-hidden`}
       >
         <Header animationsReady={animationsReady} />
-        <main className="w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
+        <main
+          className={`
+    transition-opacity duration-1000 w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]  ${
+      contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+    }`}
+        >
           <div className="w-full flex justify-center md:justify-between items-center">
             <div>
               <HeroTitleFadeIn
@@ -160,7 +175,10 @@ export default function Team() {
             </svg>
           </button>
         </main>
-        <section data-scroll-target className="px-[16px] md:px-[40px] bg-white-gris">
+        <section
+          data-scroll-target
+          className="px-[16px] md:px-[40px] bg-white-gris"
+        >
           <SubTitleLine title={intro.sub_title} />
           <div className="max-w-[787px] space-y-[50px] pt-[32px] pb-[72px] md:pt-[118px] md:pb-[209px]">
             <AnimatedTextLine>
@@ -206,9 +224,8 @@ export default function Team() {
                       className="flex flex-wrap gap-x-[16px] gap-y-[88px] "
                     >
                       {department.members.map((member, idx) => {
-                  
-                        const width =  "w-[328px]";
-                        const size =  328;
+                        const width = "w-[328px]";
+                        const size = 328;
 
                         return (
                           <div key={idx} className={`${width} flex flex-col`}>

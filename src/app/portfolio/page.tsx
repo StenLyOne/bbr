@@ -9,21 +9,32 @@ import SubTitleLine from "../../../components/ui/SubTitleLine";
 import EventCaroursel from "../../../components/bloks/EventCaroursel";
 import Button from "../../../components/ui/Button";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
-import { useEffect, useRef, useState, useLayoutEffect } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import AnimatedTextLine from "../../../components/AnimatedTextLine";
 
 export default function Portfolio() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
   const { hero, works } = data;
   const [tags, setTags] = useState<string[]>([]);
   const [activeTag, setActiveTag] = useState<string | null>(null);
-
+  const gridRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
   const cardsRef = useRef<HTMLDivElement[]>([]);
-  const setCardRef = (el: HTMLDivElement | null, index: number) => {
-    if (el) cardsRef.current[index] = el;
-  };
+  const setCardRef = useCallback(
+    (index: number) => (el: HTMLDivElement | null) => {
+      if (el) cardsRef.current[index] = el;
+    },
+    []
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -35,46 +46,37 @@ export default function Portfolio() {
   const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
   const paginatedWorks = filteredWorks.slice(0, currentPage * itemsPerPage);
 
-
-  const scrollBy = (dir: "left" | "right") => {
-    if (dir === "right" && currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    } else if (dir === "left" && currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const isDesktop = useMediaQuery("(min-width: 768px)");
-
   useEffect(() => {
     const uniqueTags = Array.from(new Set(works.map((work) => work.tag)));
     setTags(uniqueTags);
   }, [works]);
 
   useLayoutEffect(() => {
-    if (!cardsRef.current.length) return;
+    requestAnimationFrame(() => {
+      if (!cardsRef.current.length) return;
 
-    gsap.fromTo(
-      cardsRef.current,
-      { opacity: 0, y: 60, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: {
-          amount: 1,
-          grid: "auto",
-          from: "start",
-        },
-        scrollTrigger: {
-          trigger: ".grid",
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+      gsap.fromTo(
+        cardsRef.current,
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: {
+            amount: 1,
+            grid: "auto",
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    });
   }, [paginatedWorks]);
 
   const scrollToNextSection = () => {
@@ -91,13 +93,43 @@ export default function Portfolio() {
     }
   };
 
+  useEffect(() => {
+    if (!showIntro && contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          setContentVisible(true);
+          setAnimationsReady(true); // ✅ запускаем флаг
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        },
+      });
+    }
+  }, [showIntro]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowIntro(false); // <-- интро завершается
+    }, 500); // через полсекунды
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div
       ref={contentRef}
       className={`transition-opacity duration-1000 bg-blank z-[100000] overflow-hidden`}
     >
       <Header animationsReady={animationsReady} />
-      <main className="relative w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]">
+      <main
+        className={`
+    transition-opacity duration-1000 relative w-full h-[100vh] 
+    flex items-center justify-center px-[16px] md:px-[40px]
+    ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
         <div className="w-full flex flex-col md:flex-row justify-center md:justify-between gap-[48px]">
           <div>
             <HeroTitleFadeIn
@@ -178,9 +210,12 @@ export default function Portfolio() {
         </div>
       </section>
       <section className="bg-white-gris px-[16px] md:px-[40px] py-[36px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[16px] gap-y-[46px]">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[16px] gap-y-[46px]"
+        >
           {paginatedWorks.map((work, index) => (
-            <div key={index} ref={(el) => setCardRef(el, index)}>
+            <div key={`${work.slug}-${index}`} ref={setCardRef(index)}>
               <Link
                 href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
                 onClick={() => console.log("[Link] Clicked slug:", work.slug)}
@@ -200,7 +235,7 @@ export default function Portfolio() {
         </div>
         <div className="flex gap-[32px] items-center justify-center py-[100px]">
           {totalPages > 1 && currentPage < totalPages && (
-            <div onClick={() => setCurrentPage((prev) => prev + 1)}> 
+            <div onClick={() => setCurrentPage((prev) => prev + 1)}>
               <Button text="Load More" arrow={false} />
             </div>
           )}
