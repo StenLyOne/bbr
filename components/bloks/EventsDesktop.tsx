@@ -322,19 +322,19 @@ export default function Events({ sub_title, events }: Props) {
           <img
             src="/assets/logo/bbr-events-vector.svg"
             alt={events[0].bbr_events_media.alt}
-            className={`large-logo-1 absolute top-[110%] left-[75%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
+            className={`large-logo-1 absolute top-[45vh] left-[45vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
           />
           <img
             src="/assets/logo/bbr-pr-vector.svg"
             alt={events[1].bbr_events_media.alt}
-            className={`large-logo-2 absolute top-[45%] left-[25%] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
+            className={`large-logo-2 absolute top-[-15vh] left-[-40vh] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
           />
           <Image
             src="/assets/logo/bbr-digital-vector.svg"
             width={2000}
             height={2000}
             alt={events[2].bbr_events_media.alt}
-            className={`large-logo-3 absolute top-[70%] left-[60%] scale-[1.5] -translate-x-1/2 -translate-y-1/2 z-[6] mix-blend-multiply`}
+            className={`large-logo-3 absolute top-[55vh] left-[100vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 z-[6] mix-blend-multiply`}
           />
           {/* RECTANGLE */}
           <div className="rectangle-1 absolute inset-0 w-full h-full bg-blank z-[1] will-change-transform" />
