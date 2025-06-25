@@ -8,7 +8,10 @@
       "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -90,19 +93,16 @@
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
+      ]
     },
     {
       "slug": "chroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -196,7 +196,10 @@
       "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -231,7 +234,7 @@
       ],
       "stats_block": {
         "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
+        "sub_title": "STATS AND FACTS",
         "indicators": [
           "5 VILLAGES",
           "8 BARS",
@@ -250,7 +253,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -290,7 +293,10 @@
       "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -344,7 +350,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-      "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -384,7 +390,11 @@
       "slug": "hroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png","event_information": {
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
         "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
@@ -437,7 +447,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -477,7 +487,11 @@
       "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png","event_information": {
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
         "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
@@ -570,7 +584,10 @@
       "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -664,7 +681,10 @@
       "slug": "chroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -718,7 +738,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -758,7 +778,10 @@
       "slug": "Bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -852,7 +875,10 @@
       "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -946,7 +972,10 @@
       "slug": "chroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1000,288 +1029,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
-        "src": "/assets/events/bastille-video.jpg",
-        "alt": "Lorem Ipsum"
-      },
-      "sponsors": {
-        "sub_title": "SPONSORS",
-        "items": [
-          "/assets/logo/Sponsor-Logos--43.svg",
-          "/assets/logo/Sponsor-Logos--44.svg",
-          "/assets/logo/Sponsor-Logos--45.svg",
-          "/assets/logo/Sponsor-Logos--46.svg",
-          "/assets/logo/Sponsor-Logos--47.svg",
-          "/assets/logo/Sponsor-Logos--48.svg",
-          "/assets/logo/Sponsor-Logos--49.svg",
-          "/assets/logo/Sponsor-Logos--50.svg",
-          "/assets/logo/Sponsor-Logos--51.svg",
-          "/assets/logo/Sponsor-Logos--52.svg",
-          "/assets/logo/Sponsor-Logos--53.svg",
-          "/assets/logo/Sponsor-Logos--54.svg",
-          "/assets/logo/Sponsor-Logos--55.svg",
-          "/assets/logo/Sponsor-Logos--56.svg",
-          "/assets/logo/Sponsor-Logos--57.svg",
-          "/assets/logo/Sponsor-Logos--58.svg"
-        ]
-      },
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug":"bastille",
-      "title": "Bastille",
-      "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png","event_information": {
-        "sub_title": "EVENT INFORMATION",
-        "title": "FOOD, WINE, ART REVOLUTION",
-        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-        "info_block": {
-          "items": [
-            {
-              "title": "Created & Produced by:",
-              "value": "BBR Group"
-            },
-            {
-              "title": "Yearly Event Since:",
-              "value": "2015–2022"
-            },
-            {
-              "title": "Budget:",
-              "value": "$1.5M"
-            },
-            {
-              "title": "Location:",
-              "value": "Circular Quay & The Rocks,\nSydney Australia"
-            }
-          ]
-        }
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
-        "indicators": [
-          "5 VILLAGES",
-          "8 BARS",
-          "2 STAGES",
-          "100+ PERFORMERS",
-          "4 DAYS"
-        ],
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "media_block": {
-        "title": "EAST CIRCULAR QUAY",
-       "type": "image",
-        "src": "/assets/events/bastille-video.jpg",
-        "alt": "Lorem Ipsum"
-      },
-      "sponsors": {
-        "sub_title": "SPONSORS",
-        "items": [
-          "/assets/logo/Sponsor-Logos--43.svg",
-          "/assets/logo/Sponsor-Logos--44.svg",
-          "/assets/logo/Sponsor-Logos--45.svg",
-          "/assets/logo/Sponsor-Logos--46.svg",
-          "/assets/logo/Sponsor-Logos--47.svg",
-          "/assets/logo/Sponsor-Logos--48.svg",
-          "/assets/logo/Sponsor-Logos--49.svg",
-          "/assets/logo/Sponsor-Logos--50.svg",
-          "/assets/logo/Sponsor-Logos--51.svg",
-          "/assets/logo/Sponsor-Logos--52.svg",
-          "/assets/logo/Sponsor-Logos--53.svg",
-          "/assets/logo/Sponsor-Logos--54.svg",
-          "/assets/logo/Sponsor-Logos--55.svg",
-          "/assets/logo/Sponsor-Logos--56.svg",
-          "/assets/logo/Sponsor-Logos--57.svg",
-          "/assets/logo/Sponsor-Logos--58.svg"
-        ]
-      },
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "mov-in-bed",
-      "title": "Mov’in Bed",
-      "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
-      "event_information": {
-        "sub_title": "EVENT INFORMATION",
-        "title": "FOOD, WINE, ART REVOLUTION",
-        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-        "info_block": {
-          "items": [
-            {
-              "title": "Created & Produced by:",
-              "value": "BBR Group"
-            },
-            {
-              "title": "Yearly Event Since:",
-              "value": "2015–2022"
-            },
-            {
-              "title": "Budget:",
-              "value": "$1.5M"
-            },
-            {
-              "title": "Location:",
-              "value": "Circular Quay & The Rocks,\nSydney Australia"
-            }
-          ]
-        }
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
-        "indicators": [
-          "5 VILLAGES",
-          "8 BARS",
-          "2 STAGES",
-          "100+ PERFORMERS",
-          "4 DAYS"
-        ],
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "media_block": {
-        "title": "EAST CIRCULAR QUAY",
-       "type": "image",
-        "src": "/assets/events/bastille-video.jpg",
-        "alt": "Lorem Ipsum"
-      },
-      "sponsors": {
-        "sub_title": "SPONSORS",
-        "items": [
-          "/assets/logo/Sponsor-Logos--43.svg",
-          "/assets/logo/Sponsor-Logos--44.svg",
-          "/assets/logo/Sponsor-Logos--45.svg",
-          "/assets/logo/Sponsor-Logos--46.svg",
-          "/assets/logo/Sponsor-Logos--47.svg",
-          "/assets/logo/Sponsor-Logos--48.svg",
-          "/assets/logo/Sponsor-Logos--49.svg",
-          "/assets/logo/Sponsor-Logos--50.svg",
-          "/assets/logo/Sponsor-Logos--51.svg",
-          "/assets/logo/Sponsor-Logos--52.svg",
-          "/assets/logo/Sponsor-Logos--53.svg",
-          "/assets/logo/Sponsor-Logos--54.svg",
-          "/assets/logo/Sponsor-Logos--55.svg",
-          "/assets/logo/Sponsor-Logos--56.svg",
-          "/assets/logo/Sponsor-Logos--57.svg",
-          "/assets/logo/Sponsor-Logos--58.svg"
-        ]
-      },
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug": "chroma",
-      "title": "Chroma",
-      "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
-      "event_information": {
-        "sub_title": "EVENT INFORMATION",
-        "title": "FOOD, WINE, ART REVOLUTION",
-        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-        "info_block": {
-          "items": [
-            {
-              "title": "Created & Produced by:",
-              "value": "BBR Group"
-            },
-            {
-              "title": "Yearly Event Since:",
-              "value": "2015–2022"
-            },
-            {
-              "title": "Budget:",
-              "value": "$1.5M"
-            },
-            {
-              "title": "Location:",
-              "value": "Circular Quay & The Rocks,\nSydney Australia"
-            }
-          ]
-        }
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
-        "indicators": [
-          "5 VILLAGES",
-          "8 BARS",
-          "2 STAGES",
-          "100+ PERFORMERS",
-          "4 DAYS"
-        ],
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "media_block": {
-        "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -1321,7 +1069,10 @@
       "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1375,7 +1126,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -1415,101 +1166,10 @@
       "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
-      "event_information": {
-        "sub_title": "EVENT INFORMATION",
-        "title": "FOOD, WINE, ART REVOLUTION",
-        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-        "info_block": {
-          "items": [
-            {
-              "title": "Created & Produced by:",
-              "value": "BBR Group"
-            },
-            {
-              "title": "Yearly Event Since:",
-              "value": "2015–2022"
-            },
-            {
-              "title": "Budget:",
-              "value": "$1.5M"
-            },
-            {
-              "title": "Location:",
-              "value": "Circular Quay & The Rocks,\nSydney Australia"
-            }
-          ]
-        }
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
-        "indicators": [
-          "5 VILLAGES",
-          "8 BARS",
-          "2 STAGES",
-          "100+ PERFORMERS",
-          "4 DAYS"
-        ],
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "media_block": {
-        "title": "EAST CIRCULAR QUAY",
-       "type": "image",
-        "src": "/assets/events/bastille-video.jpg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
         "alt": "Lorem Ipsum"
       },
-      "sponsors": {
-        "sub_title": "SPONSORS",
-        "items": [
-          "/assets/logo/Sponsor-Logos--43.svg",
-          "/assets/logo/Sponsor-Logos--44.svg",
-          "/assets/logo/Sponsor-Logos--45.svg",
-          "/assets/logo/Sponsor-Logos--46.svg",
-          "/assets/logo/Sponsor-Logos--47.svg",
-          "/assets/logo/Sponsor-Logos--48.svg",
-          "/assets/logo/Sponsor-Logos--49.svg",
-          "/assets/logo/Sponsor-Logos--50.svg",
-          "/assets/logo/Sponsor-Logos--51.svg",
-          "/assets/logo/Sponsor-Logos--52.svg",
-          "/assets/logo/Sponsor-Logos--53.svg",
-          "/assets/logo/Sponsor-Logos--54.svg",
-          "/assets/logo/Sponsor-Logos--55.svg",
-          "/assets/logo/Sponsor-Logos--56.svg",
-          "/assets/logo/Sponsor-Logos--57.svg",
-          "/assets/logo/Sponsor-Logos--58.svg"
-        ]
-      },
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug":"chroma",
-      "title": "Chroma",
-      "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1600,10 +1260,13 @@
       }
     },
     {
-      "slug":"bastille",
-      "title": "Bastille",
-      "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "slug": "chroma",
+      "title": "Chroma",
+      "tag": "Activation",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1657,7 +1320,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -1694,10 +1357,110 @@
       }
     },
     {
-      "slug":"mov-in-bed",
+      "slug": "bastille",
+      "title": "Bastille",
+      "tag": "Festival",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "image",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1788,10 +1551,13 @@
       }
     },
     {
-      "slug":"chroma",
+      "slug": "chroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1845,7 +1611,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -1882,10 +1648,13 @@
       }
     },
     {
-      "slug":"bastille",
+      "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1939,7 +1708,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -1976,10 +1745,13 @@
       }
     },
     {
-      "slug":"mov-in-bed",
+      "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -2070,10 +1842,13 @@
       }
     },
     {
-      "slug":"chroma",
+      "slug": "chroma",
       "title": "Chroma",
       "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -2127,7 +1902,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -2164,10 +1939,13 @@
       }
     },
     {
-      "slug":"bastille",
+      "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -2221,7 +1999,7 @@
       },
       "media_block": {
         "title": "EAST CIRCULAR QUAY",
-       "type": "image",
+        "type": "image",
         "src": "/assets/events/bastille-video.jpg",
         "alt": "Lorem Ipsum"
       },
@@ -2258,104 +2036,13 @@
       }
     },
     {
-      "slug":"mov-in-bed",
+      "slug": "mov-in-bed",
       "title": "Mov’in Bed",
       "tag": "Experience",
-      "hero_image": "/assets/portfolio/mov’in-bed.png",
-      "event_information": {
-        "sub_title": "EVENT INFORMATION",
-        "title": "FOOD, WINE, ART REVOLUTION",
-        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
-        "info_block": {
-          "items": [
-            {
-              "title": "Created & Produced by:",
-              "value": "BBR Group"
-            },
-            {
-              "title": "Yearly Event Since:",
-              "value": "2015–2022"
-            },
-            {
-              "title": "Budget:",
-              "value": "$1.5M"
-            },
-            {
-              "title": "Location:",
-              "value": "Circular Quay & The Rocks,\nSydney Australia"
-            }
-          ]
-        }
-      },
-      "gallery": [
-        "/assets/events/bastille-gallery-1.jpg",
-        "/assets/events/bastille-gallery-2.jpg",
-        "/assets/events/bastille-gallery-3.jpg",
-        "/assets/events/bastille-gallery-4.jpg",
-        "/assets/events/bastille-gallery-5.jpg"
-      ],
-      "stats_block": {
-        "title": "One of Australia's largest food & wine festivals",
-        "sub_title": "SPONSORS",
-        "indicators": [
-          "5 VILLAGES",
-          "8 BARS",
-          "2 STAGES",
-          "100+ PERFORMERS",
-          "4 DAYS"
-        ],
-        "stats": [
-          { "label": "Visitors over 4 days", "value": "650K" },
-          { "label": "Years running", "value": "12" },
-          { "label": "Followers + events", "value": "150K" },
-          { "label": "Combined followers", "value": "940K" },
-          { "label": "Exhibitors", "value": "113" },
-          { "label": "Brand activations", "value": "12" }
-        ]
-      },
-      "media_block": {
-        "title": "EAST CIRCULAR QUAY",
-       "type": "image",
-        "src": "/assets/events/bastille-video.jpg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
         "alt": "Lorem Ipsum"
       },
-      "sponsors": {
-        "sub_title": "SPONSORS",
-        "items": [
-          "/assets/logo/Sponsor-Logos--43.svg",
-          "/assets/logo/Sponsor-Logos--44.svg",
-          "/assets/logo/Sponsor-Logos--45.svg",
-          "/assets/logo/Sponsor-Logos--46.svg",
-          "/assets/logo/Sponsor-Logos--47.svg",
-          "/assets/logo/Sponsor-Logos--48.svg",
-          "/assets/logo/Sponsor-Logos--49.svg",
-          "/assets/logo/Sponsor-Logos--50.svg",
-          "/assets/logo/Sponsor-Logos--51.svg",
-          "/assets/logo/Sponsor-Logos--52.svg",
-          "/assets/logo/Sponsor-Logos--53.svg",
-          "/assets/logo/Sponsor-Logos--54.svg",
-          "/assets/logo/Sponsor-Logos--55.svg",
-          "/assets/logo/Sponsor-Logos--56.svg",
-          "/assets/logo/Sponsor-Logos--57.svg",
-          "/assets/logo/Sponsor-Logos--58.svg"
-        ]
-      },
-      "cta": [
-        { "label": "Let's Talk", "link": "/contact" },
-        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
-    },
-    {
-      "slug":"chroma",
-      "title": "Chroma",
-      "tag": "Activation",
-      "hero_image": "/assets/portfolio/croma.png",
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -2446,10 +2133,401 @@
       }
     },
     {
-      "slug":"bastille",
+      "slug": "chroma",
+      "title": "Chroma",
+      "tag": "Activation",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "image",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille",
       "title": "Bastille",
       "tag": "Festival",
-      "hero_image": "/assets/portfolio/bastille.png",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "image",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "mov-in-bed",
+      "title": "Mov’in Bed",
+      "tag": "Experience",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "image",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "chroma",
+      "title": "Chroma",
+      "tag": "Activation",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "event_information": {
+        "sub_title": "EVENT INFORMATION",
+        "title": "FOOD, WINE, ART REVOLUTION",
+        "text": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney...",
+        "info_block": {
+          "items": [
+            {
+              "title": "Created & Produced by:",
+              "value": "BBR Group"
+            },
+            {
+              "title": "Yearly Event Since:",
+              "value": "2015–2022"
+            },
+            {
+              "title": "Budget:",
+              "value": "$1.5M"
+            },
+            {
+              "title": "Location:",
+              "value": "Circular Quay & The Rocks,\nSydney Australia"
+            }
+          ]
+        }
+      },
+      "gallery": [
+        "/assets/events/bastille-gallery-1.jpg",
+        "/assets/events/bastille-gallery-2.jpg",
+        "/assets/events/bastille-gallery-3.jpg",
+        "/assets/events/bastille-gallery-4.jpg",
+        "/assets/events/bastille-gallery-5.jpg"
+      ],
+      "stats_block": {
+        "title": "One of Australia's largest food & wine festivals",
+        "sub_title": "SPONSORS",
+        "indicators": [
+          "5 VILLAGES",
+          "8 BARS",
+          "2 STAGES",
+          "100+ PERFORMERS",
+          "4 DAYS"
+        ],
+        "stats": [
+          { "label": "Visitors over 4 days", "value": "650K" },
+          { "label": "Years running", "value": "12" },
+          { "label": "Followers + events", "value": "150K" },
+          { "label": "Combined followers", "value": "940K" },
+          { "label": "Exhibitors", "value": "113" },
+          { "label": "Brand activations", "value": "12" }
+        ]
+      },
+      "media_block": {
+        "title": "EAST CIRCULAR QUAY",
+        "type": "image",
+        "src": "/assets/events/bastille-video.jpg",
+        "alt": "Lorem Ipsum"
+      },
+      "sponsors": {
+        "sub_title": "SPONSORS",
+        "items": [
+          "/assets/logo/Sponsor-Logos--43.svg",
+          "/assets/logo/Sponsor-Logos--44.svg",
+          "/assets/logo/Sponsor-Logos--45.svg",
+          "/assets/logo/Sponsor-Logos--46.svg",
+          "/assets/logo/Sponsor-Logos--47.svg",
+          "/assets/logo/Sponsor-Logos--48.svg",
+          "/assets/logo/Sponsor-Logos--49.svg",
+          "/assets/logo/Sponsor-Logos--50.svg",
+          "/assets/logo/Sponsor-Logos--51.svg",
+          "/assets/logo/Sponsor-Logos--52.svg",
+          "/assets/logo/Sponsor-Logos--53.svg",
+          "/assets/logo/Sponsor-Logos--54.svg",
+          "/assets/logo/Sponsor-Logos--55.svg",
+          "/assets/logo/Sponsor-Logos--56.svg",
+          "/assets/logo/Sponsor-Logos--57.svg",
+          "/assets/logo/Sponsor-Logos--58.svg"
+        ]
+      },
+      "cta": [
+        { "label": "Let's Talk", "link": "/contact" },
+        { "label": "Bastille Website", "link": "https://bastillefestival.com" }
+      ],
+      "preview": {
+        "image": "/assets/events/bastille/preview.jpg",
+        "title": "Bastille Festival",
+        "excerpt": "An immersive French experience in Sydney...",
+        "link": "/events/bastille-festival"
+      }
+    },
+    {
+      "slug": "bastille",
+      "title": "Bastille",
+      "tag": "Festival",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -2542,7 +2620,6 @@
   ],
   "more_events": {
     "title": "MORE WORKS",
-    "link": "/portfolio/",
     "slug": ["bastille", "chroma", "mov-in-bed"]
   }
 }

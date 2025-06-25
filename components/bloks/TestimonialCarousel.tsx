@@ -7,9 +7,8 @@ interface Testimonial {
   name: string;
   job: string;
   company: string;
-  media: {
-    logo_src: string;
-  };
+
+  logo_src: string;
 }
 
 interface Props {
@@ -46,7 +45,7 @@ export default function MoreEvents({ testimonial }: Props) {
             >
               <div className="w-[200px] h-[160px] relative mx-auto">
                 <Image
-                  src={ele.media.logo_src}
+                  src={ele.logo_src}
                   alt={`icon of ${ele.company}`}
                   fill
                   className="object-cover rounded-[12px]"

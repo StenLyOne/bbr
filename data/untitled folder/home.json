@@ -1,46 +1,29 @@
 {
   "hero": {
     "title": "EXPERIENCES THAT|INSPIRE, CONNECT|AND EMPOWER",
-    "media": {
-      "type": "image",
-      "src": "/assets/images/Hero-Image.png",
-      "alt": "lorem ipsum"
-    }
+    "video": "/assets/images/Hero-Image.png"
   },
   "mission": {
     "sub_title": "MISSION",
     "content": "Our job is to create joy, for it to be contagious, impactful, and memorable. We are a creative machine engineered to bring the most complex and fun projects to life. A solution partner; through research, work & creativity. We bring an idea to a reality."
   },
-  "bbr_events": {
-    "sub_title": "EVENTS",
-    "title": "",
-    "events": [
-      {
-        "title": "LIFE IS A|SUCCESSION|OF MOMENTS",
-        "bbr_events_media": {
-          "type": "image",
-          "src": "/assets/images/bbr-events-image.png",
-          "alt": "bbr events"
-        }
-      },
-      {
-        "title": "EVERYTHING CAN|BE VIEWED AS|EXTRAORDINARY",
-        "bbr_events_media": {
-          "type": "image",
-          "src": "/assets/images/bbr-pr-image.png",
-          "alt": "bbr events"
-        }
-      },
-      {
-        "title": "THE EXPERTISE|TO CONNECT,|INSPIRE AND|EMPOWER",
-        "bbr_events_media": {
-          "type": "image",
-          "src": "/assets/images/bbr-digital-image.png",
-          "alt": "bbr events"
-        }
-      }
-    ]
-  },
+  "bbr_events": [
+    {
+      "title": "LIFE IS A|SUCCESSION|OF MOMENTS",
+      "sub_title": "events",
+      "video": "/assets/images/bbr-digital-image.mp4"
+    },
+    {
+      "title": "EVERYTHING CAN|BE VIEWED AS|EXTRAORDINARY",
+      "sub_title": "events",
+      "video": "/assets/images/bbr-digital-image.mp4"
+    },
+    {
+      "title": "THE EXPERTISE|TO CONNECT,|INSPIRE AND|EMPOWER",
+      "sub_title": "events",
+      "video": "/assets/images/bbr-digital-image.mp4"
+    }
+  ],
   "mission_secondary": {
     "title": "WE ARE BBR",
     "sub_title": "MISSION",

@@ -221,7 +221,7 @@ export default function Portfolio() {
                 onClick={() => console.log("[Link] Clicked slug:", work.slug)}
               >
                 <Image
-                  src={work.hero_image}
+                  src={work.media.hero_image}
                   alt=""
                   width={443}
                   height={278}
@@ -233,7 +233,7 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-        <div className="flex gap-[32px] items-center justify-center py-[100px]">
+        <div className="flex flex-wrap gap-[32px] items-center justify-center py-[100px]">
           {totalPages > 1 && currentPage < totalPages && (
             <div onClick={() => setCurrentPage((prev) => prev + 1)}>
               <Button text="Load More" arrow={false} />

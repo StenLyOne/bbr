@@ -7,8 +7,11 @@
     {
       "slug": "bastille-festival-1",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -90,19 +93,16 @@
       "cta": [
         { "label": "Let's Talk", "link": "/contact" },
         { "label": "Bastille Website", "link": "https://bastillefestival.com" }
-      ],
-      "preview": {
-        "image": "/assets/events/bastille/preview.jpg",
-        "title": "Bastille Festival",
-        "excerpt": "An immersive French experience in Sydney...",
-        "link": "/events/bastille-festival"
-      }
+      ]
     },
     {
       "slug": "bastille-festival-2",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -179,8 +179,11 @@
     {
       "slug": "bastille-festival-3",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -257,8 +260,11 @@
     {
       "slug": "bastille-festival-4",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -335,8 +341,11 @@
     {
       "slug": "bastille-festival-5",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -413,8 +422,11 @@
     {
       "slug": "bastille-festival-6",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -491,8 +503,11 @@
     {
       "slug": "bastille-festival-7",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -569,8 +584,11 @@
     {
       "slug": "bastille-festival-8",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -647,8 +665,11 @@
     {
       "slug": "bastille-festival-9",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -725,8 +746,11 @@
     {
       "slug": "bastille-festival-10",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -803,8 +827,11 @@
     {
       "slug": "bastille-festival-11",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -881,8 +908,11 @@
     {
       "slug": "bastille-festival-12",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -959,8 +989,11 @@
     {
       "slug": "bastille-festival-13",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1037,8 +1070,11 @@
     {
       "slug": "bastille-festival-14",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1115,8 +1151,11 @@
     {
       "slug": "bastille-festival-15",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1193,8 +1232,11 @@
     {
       "slug": "bastille-festival-16",
       "title": "Bastille Festival",
-      "hero_image": "/assets/events/bastille.jpg",
-      "logo": "/assets/logo/event-bast.svg",
+      "media": {
+        "hero_image": "/assets/events/bastille.jpg",
+        "logo": "/assets/logo/event-bast.svg",
+        "alt": "Lorem Ipsum"
+      },
       "event_information": {
         "sub_title": "EVENT INFORMATION",
         "title": "FOOD, WINE, ART REVOLUTION",
@@ -1271,7 +1313,10 @@
   ],
   "more_events": {
     "title": "MORE EVENTS",
-    "link": "/our-owned-events/",
-    "slug": ["bastille-festival-3", "bastille-festival-1", "bastille-festival-2"]
+    "slug": [
+      "bastille-festival-3",
+      "bastille-festival-1",
+      "bastille-festival-2"
+    ]
   }
 }

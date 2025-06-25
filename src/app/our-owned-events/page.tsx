@@ -273,7 +273,7 @@ export default function OurOwnedEvents() {
                 onClick={() => console.log("[Link] Clicked slug:", event.slug)}
               >
                 <Image
-                  src={event.hero_image}
+                  src={event.media.hero_image}
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

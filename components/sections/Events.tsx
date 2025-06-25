@@ -8,9 +8,9 @@ export default function Events({ data }: any) {
   return (
     <section className="w-full  bg-blank overflow-hidden ">
       {isDesktop ? (
-        <EventsDesktop sub_title={data.sub_title} events={data.events} />
+        <EventsDesktop bbr_events={data} />
       ) : (
-        <EventsMobile sub_title={data.sub_title} events={data.events} />
+        <EventsMobile bbr_events={data} />
       )}
     </section>
   );

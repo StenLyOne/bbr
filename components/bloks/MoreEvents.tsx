@@ -125,7 +125,7 @@ export default function MoreEvents({
                 }`}
               >
                 <img
-                  src={event.hero_image}
+                  src={event.media.hero_image}
                   alt={event.title}
                   className="w-full h-[300px] object-cover"
                 />

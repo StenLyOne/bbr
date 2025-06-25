@@ -181,8 +181,8 @@ export default function EventManagement() {
               {/* Левая колонка — одно изображение */}
               <div className="relative hidden md:block w-full max-w-[443px] h-[500px]">
                 <Image
-                  src={management.content[0].media_small!.image_src}
-                  alt={management.content[0].media_small!.alt}
+                  src={management.content[0].media!.image_src}
+                  alt={management.content[0].media!.alt}
                   fill
                   className="object-cover"
                 />
@@ -204,8 +204,8 @@ export default function EventManagement() {
                 </div>
                 <div className="relative  md:hidden w-full  h-[400px]">
                   <Image
-                    src={management.content[0].media_small!.image_src}
-                    alt={management.content[0].media_small!.alt}
+                    src={management.content[0]!.media!.image_src}
+                    alt={management.content[0].media!.alt}
                     fill
                     className="object-cover"
                   />

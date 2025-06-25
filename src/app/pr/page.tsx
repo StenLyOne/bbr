@@ -61,7 +61,7 @@ export default function EventManagement() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const { hero, where_we_started, services, featured_on, latest } = data;
+  const { hero, where_we_started, services, featured_on } = data;
   return (
     <div
       ref={contentRef}
@@ -142,7 +142,7 @@ export default function EventManagement() {
       <section data-scroll-target className=" ">
         <div className="flex gap-[22px]">
           <video
-            src={hero.media.video_src}
+            src={hero.video}
             className="w-screen h-screen md:w-full md:h-full object-cover"
             autoPlay
             muted
@@ -296,7 +296,7 @@ export default function EventManagement() {
         </div>
       </section>
 
-      <MoreEvents flag="event" title={latest.title} link="/our-owned-events" />
+      <MoreEvents flag="event" title="LATEST" link="/our-owned-events" />
 
       <Footer />
     </div>

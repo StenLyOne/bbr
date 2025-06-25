@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import data from "../../../data/contact.json";
 import Image from "next/image";
 
-const { hero, contact } = data;
+const { hero } = data;
 
 export default function Contact({}) {
   const [showIntro, setShowIntro] = useState(true);
@@ -129,8 +129,8 @@ export default function Contact({}) {
               <AnimatedTextLine delay={1.1}>
                 <Image
                   className="hidden md:block"
-                  src={hero.image_big.src}
-                  alt={hero.image_big.alt}
+                  src={hero.media.image_src}
+                  alt={hero.media.alt}
                   width={728}
                   height={326}
                 />
@@ -179,7 +179,7 @@ export default function Contact({}) {
         </button>
       </main>
       <section data-scroll-target className="px-[16px] md:px-[40px]">
-        <SubTitleLine title={contact.sub_titile} />
+        <SubTitleLine title="CONTACT" />
         <div className="w-full max-w-[1130px] flex justify-between md:flex-row flex-col mx-auto py-[84px] md:py-[100px] gap-[80px]">
           <ContactForm />
           <div className="space-y-[64px]">

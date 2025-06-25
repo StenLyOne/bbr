@@ -127,8 +127,8 @@ export default function Team() {
               <AnimatedTextLine delay={1.1}>
                 <Image
                   className="hidden md:block"
-                  src={hero.background_image.src}
-                  alt={hero.background_image.alt}
+                  src={hero.media.image_src}
+                  alt={hero.media.alt}
                   width={728}
                   height={326}
                 />

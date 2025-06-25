@@ -1,8 +1,8 @@
 {
   "hero": {
     "title": "OUR TEAM",
-    "background_image": {
-      "src": "/assets/images/our_team_hero_img.png",
+    "media": {
+      "image_src": "/assets/images/our_team_hero_img.png",
       "alt": "Seo title"
     }
   },

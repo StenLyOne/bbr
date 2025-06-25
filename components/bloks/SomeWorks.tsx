@@ -14,7 +14,7 @@ export default function SomeWorks() {
           key={index}
         >
           <Image
-            src={work.hero_image}
+            src={work.media.hero_image}
             alt=""
             width={443}
             height={278}

@@ -19,22 +19,20 @@
       {
         "title": "EVENT DNA",
         "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",
-        "media_small": {
+        "media": {
           "image_src": "/assets/images/bbr-events-image.png",
           "alt": "Lorem Ipsum"
         }
       },
       {
         "title": "End-to-end Management & Planning ",
-        "description": [
-          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",
+        "description": 
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo."
-        ]
       }
     ]
   },
   "carousel": {
-    "title": "WE ARE PLACEMAKERS",
+    "title": "WE ARE | PLACEMAKERS",
     "gallery": [
       "/assets/events/bastille-gallery-1.jpg",
       "/assets/events/bastille-gallery-2.jpg",
@@ -45,7 +43,7 @@
   },
   "services": {
     "sub_title": "SERVICES",
-    "title": "PROGRAM CURATION & OPERATIONAL DELIVERY",
+    "title": "PROGRAM CURATION | & OPERATIONAL | DELIVERY",
     "content": [
       {
         "title": "Small to large event operationst",

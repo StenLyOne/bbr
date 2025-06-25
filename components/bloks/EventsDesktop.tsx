@@ -3,25 +3,17 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import TitleLines from "../ui/TitleLines";
 
-interface EventMedia {
-  type: "image" | "video";
-  src: string;
-  alt: string;
-}
-
 interface Event {
   title: string;
-  bbr_events_logo: string;
-  bbr_events_vector: string;
-  bbr_events_media: EventMedia;
+  sub_title: string;
+  video: string;
 }
 
 interface Props {
-  sub_title: string;
-  events: Event[];
+  bbr_events: Event[];
 }
 
-export default function Events({ sub_title, events }: Props) {
+export default function Events({ bbr_events }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
 
@@ -44,7 +36,7 @@ export default function Events({ sub_title, events }: Props) {
       { scale: 1, ease: "power3.out", duration: 1 }
     );
 
-    const total = events.length;
+    const total = bbr_events.length;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrapperRef.current,
@@ -321,19 +313,19 @@ export default function Events({ sub_title, events }: Props) {
           {/* LARGE LOGO */}
           <img
             src="/assets/logo/bbr-events-vector.svg"
-            alt={events[0].bbr_events_media.alt}
+            alt="bbr event logo"
             className={`large-logo-1 absolute top-[45vh] left-[45vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
           />
           <img
             src="/assets/logo/bbr-pr-vector.svg"
-            alt={events[1].bbr_events_media.alt}
+            alt="bbr pr logo"
             className={`large-logo-2 absolute top-[-15vh] left-[-40vh] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
           />
           <Image
             src="/assets/logo/bbr-digital-vector.svg"
             width={2000}
             height={2000}
-            alt={events[2].bbr_events_media.alt}
+            alt="bbr digital logo"
             className={`large-logo-3 absolute top-[55vh] left-[100vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 z-[6] mix-blend-multiply`}
           />
           {/* RECTANGLE */}
@@ -344,7 +336,7 @@ export default function Events({ sub_title, events }: Props) {
             <h4 className=" h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-1 block translate-y-full text-blue">
-                  EVENTS
+                  {bbr_events[0].sub_title}
                 </span>
               </div>
             </h4>
@@ -361,7 +353,7 @@ export default function Events({ sub_title, events }: Props) {
             <h4 className=" h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-2 block translate-y-full text-blue">
-                  EVENTS
+                  {bbr_events[1].sub_title}
                 </span>
               </div>
             </h4>
@@ -378,7 +370,7 @@ export default function Events({ sub_title, events }: Props) {
             <h4 className="h-[11px]">
               <div className="overflow-hidden">
                 <span className="event-line-3 block translate-y-full text-blue">
-                  EVENTS
+                  {bbr_events[2].sub_title}
                 </span>
               </div>
             </h4>
@@ -392,39 +384,21 @@ export default function Events({ sub_title, events }: Props) {
             </h4>
           </div>
           {/* IMAGE */}
-          {events.map((event, index) => (
+          {bbr_events.map((event, index) => (
             <div
               key={index}
               className={`event-image-${
                 index + 1
               } w-1/2 h-full ml-auto absolute inset-0 z-[${2 + index * 3}]`}
             >
-              {event.bbr_events_media.type === "video" &&
-              event.bbr_events_media.src.endsWith(".mp4") ? (
-                <video
-                  src={event.bbr_events_media.src}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              ) : event.bbr_events_media.type === "video" ? (
-                <iframe
-                  src={`${event.bbr_events_media.src}?autoplay=1&muted=1&loop=1&background=1`}
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={event.bbr_events_media.src}
-                  width={680}
-                  height={936}
-                  alt={event.bbr_events_media.alt}
-                  className="w-full h-full object-cover"
-                />
-              )}
+              <video
+                src={event.video}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
             </div>
           ))}
           {/* lOGO */}
@@ -462,17 +436,17 @@ export default function Events({ sub_title, events }: Props) {
         </div>
 
         <h2 className="event-title-1 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blue">
-          <TitleLines title={events[0].title} lineClass="event-line-1" />
+          <TitleLines title={bbr_events[0].title} lineClass="event-line-1" />
         </h2>
 
         {/* TITLE 2 */}
         <h2 className="event-title-2 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blue">
-          <TitleLines title={events[1].title} lineClass="event-line-2" />
+          <TitleLines title={bbr_events[1].title} lineClass="event-line-2" />
         </h2>
 
         {/* TITLE 3 */}
         <h2 className="event-title-3 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[7] space-y-[-3px] text-blue">
-          <TitleLines title={events[2].title} lineClass="event-line-3" />
+          <TitleLines title={bbr_events[2].title} lineClass="event-line-3" />
         </h2>
         {/* <h2
             className={`event-title-1 absolute top-1/2 -translate-y-1/2 max-w-[565px] text-left z-[2]`}

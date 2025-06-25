@@ -13,8 +13,6 @@ import Button from "../../../components/ui/Button";
 import Header from "../../../components/sections/Header";
 import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
 import SubTitleLine from "../../../components/ui/SubTitleLine";
-import TimelineSection from "../../../components/bloks/TimelineSection";
-import EventCaroursel from "../../../components/bloks/EventCaroursel";
 import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
@@ -63,7 +61,7 @@ export default function EventManagement() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const { hero, communications, what_we_offer, visibility, latest } = data;
+  const { hero, communications, what_we_offer } = data;
   return (
     <div
       ref={contentRef}
@@ -163,7 +161,7 @@ export default function EventManagement() {
           </div>
           <div className="flex gap-[22px]">
             <video
-              src={communications.media.video_src}
+              src={communications.video_src}
               className="w-screen h-screen md:w-full md:h-full object-cover"
               autoPlay
               muted
@@ -177,7 +175,7 @@ export default function EventManagement() {
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine color="white" title={what_we_offer.sub_title} />
           <div className="flex mt-[40px]  md:mt-[0px] flex-col gap-[70px] md:gap-[130px]">
-            {what_we_offer.content.map((block, index) => {
+            {communications.content.map((block, index) => {
               if (index == 1 || index == 0)
                 return (
                   <div key={index}>
@@ -188,12 +186,12 @@ export default function EventManagement() {
 
             <div className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
               <AnimatedStrokeByStroke
-                text={what_we_offer.title}
+                text={communications.title_big}
                 className="!text-[72px]  md:!text-[128px] !leading-[72px]  md:!leading-[129px] text-center !font-[900]  break-all"
               ></AnimatedStrokeByStroke>
             </div>
 
-            {what_we_offer.content.map((block, index) => {
+            {communications.content.map((block, index) => {
               if (index !== 0 && index !== 1)
                 return (
                   <div key={index}>
@@ -209,18 +207,18 @@ export default function EventManagement() {
         </div>
       </section>
       <section className=" px-[16px] md:px-[40px] py-[40px] md:py-[90px] text-blank">
-        <SubTitleLine color="white" title={visibility.sub_title} />
+        <SubTitleLine color="white" title={what_we_offer.sub_title} />
         <div className="max-w-[1100px] mx-auto">
           <h2 className="text-center mt-[30px] md:mt-[100px]">
             <AnimatedStrokeByStroke
-              text={visibility.title}
+              text={what_we_offer.title}
             ></AnimatedStrokeByStroke>
           </h2>
           <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {visibility.content.map((ele, index) => (
+            {what_we_offer.content.map((ele, index) => (
               <div key={index} className=" w-full gap-[40px] ">
                 <AnimatedTextLine className="max-[769px]:flex flex-col items-center justify-center">
-                  <img src={ele.media.icon_src} className="" />
+                  <img src={ele.icon_src} className="" />
                 </AnimatedTextLine>
                 <div className="w-full space-y-[30px]">
                   <h3 className="text-center md:text-left mb-[21px] mt-[21px] md:mt-[45px]">
@@ -237,7 +235,7 @@ export default function EventManagement() {
           </div>{" "}
           <AnimatedTextLine>
             <p className="large text-center  max-w-[936px] md:text-left mb-[100px] mx-auto">
-              {visibility.description}
+              {what_we_offer.description}
             </p>{" "}
           </AnimatedTextLine>
           <div className="flex justify-center">
@@ -250,14 +248,12 @@ export default function EventManagement() {
           </div>
         </div>
       </section>
-
       <MoreEvents
         color="transporent"
         flag="event"
-        title={latest.title}
+        title="LATEST"
         link="/our-owned-events"
       />
-
       <Footer color="rouge" />
     </div>
   );
@@ -266,7 +262,7 @@ export default function EventManagement() {
 interface TwoColumnBlockProps {
   title: string;
   description: string | string[];
-  media_small: {
+  media: {
     image_src: string;
     alt?: string;
   };
@@ -276,7 +272,7 @@ interface TwoColumnBlockProps {
 const TwoColumnBlock = ({
   title,
   description,
-  media_small,
+  media,
   reverse = false,
 }: TwoColumnBlockProps) => {
   return (
@@ -300,8 +296,8 @@ const TwoColumnBlock = ({
       <div className="w-full md:w-1/2 flex justify-center">
         <div className="w-full md:max-w-max">
           <img
-            src={media_small.image_src}
-            alt={media_small.alt}
+            src={media.image_src}
+            alt={media.alt}
             className="w-full h-auto object-cover"
           />
         </div>

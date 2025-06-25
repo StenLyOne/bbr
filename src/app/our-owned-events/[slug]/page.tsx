@@ -87,7 +87,7 @@ export default function EventPage() {
         data-bg="dark"
       >
         <Image
-          src={event.hero_image}
+          src={event.media.hero_image}
           alt={event.title}
           fill
           className="object-cover z-0"
@@ -260,23 +260,14 @@ export default function EventPage() {
 
       {/* Full Width Image Block */}
       <section className="relative h-[100vh] w-full">
-        {event.media_block.type === "video" ? (
-          <video
-            src={event.media_block.src}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <Image
-            src={event.media_block.src}
-            alt={event.media_block.title}
-            fill
-            className="object-cover"
-          />
-        )}
+        <video
+          src={event.media.video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
       </section>
 
       {/* Sponsors */}
@@ -312,7 +303,7 @@ export default function EventPage() {
       <MoreEvents
         events={data.events}
         title={data.more_events.title}
-        link={data.more_events.link}
+        link="/our-owned-events/"
         slug={data.more_events.slug}
         flag="event"
       />
