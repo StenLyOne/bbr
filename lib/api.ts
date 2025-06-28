@@ -180,7 +180,7 @@ export async function fetchHomeContent(): Promise<{
     sub_title: oe.subtittle ?? oe.sub_title ?? "",
     title:     oe.tittle   ?? oe.title     ?? "",
     events:    Array.isArray(oe.events)
-      ? oe.events.map((id: any) => Number(id)).filter((n) => !isNaN(n))
+      ? oe.events.map((id: any) => Number(id)).filter((n: number) => !isNaN(n))
       : [],
   };
 

@@ -86,6 +86,8 @@ export default function Hero({
       </button>
 
       <video
+              ref={videoRef}
+
         autoPlay
         muted
         loop
