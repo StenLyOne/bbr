@@ -1,3 +1,6 @@
+// src/components/sections/Hero.tsx
+
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import AnimatedTextLine from "../AnimatedTextLine";
 import HeroTitleFadeIn from "../../components/HeroTitleFadeIn";
@@ -9,6 +12,18 @@ export default function Hero({
   data: any;
   animationsReady: boolean;
 }) {
+  // Ref na video element da bismo mogli da ga reload-ujemo
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Kad se promeni data.video, nateraj video element da reload-uje i pusti novi izvor
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (vid) {
+      vid.load();
+      vid.play().catch(() => {});
+    }
+  }, [data.video]);
+
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("[data-scroll-target]");
     if (nextSection) {
