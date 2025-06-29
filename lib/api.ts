@@ -380,3 +380,79 @@ export async function fetchOurStoryContent(): Promise<OurStoryData> {
     },
   };
 }
+
+export interface CookiesData {
+  title_cookies: string;
+  description_cookies: string;
+  seo_cookies: {
+    title: string;
+    meta_description: string;
+    seo_image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+export async function fetchCookiesContent(): Promise<CookiesData> {
+  const res = await fetch(
+    `${API_DOMAIN}/wp-json/bbr/v1/options/cookies`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) {
+    throw new Error(`Failed to fetch Cookies: ${res.status}`);
+  }
+  const json = await res.json();
+  const acf = json.acf || {};
+
+  return {
+    title_cookies: acf.title_cookies ?? "",
+    description_cookies: acf.description_cookies ?? "",
+    seo_cookies: {
+      title: acf.seo_cookies?.title ?? "",
+      meta_description: acf.seo_cookies?.meta_description ?? "",
+      seo_image: {
+        url: acf.seo_cookies?.seo_image?.url ?? "",
+        alt: acf.seo_cookies?.seo_image?.alt ?? "",
+      },
+    },
+  };
+}
+
+export interface PrivacyData {
+  title_privacy: string;
+  description_privacy: string;
+  seo_privacy: {
+    tittle: string;
+    meta_description: string;
+    seo_image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+export async function fetchPrivacyContent(): Promise<PrivacyData> {
+  const res = await fetch(
+    `${API_DOMAIN}/wp-json/bbr/v1/options/privacy`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) {
+    throw new Error(`Failed to fetch Privacy: ${res.status}`);
+  }
+  const json = await res.json();
+  const acf = json.acf || {};
+
+  return {
+    title_privacy: acf.title_privacy ?? "",
+    description_privacy: acf.description_privacy ?? "",
+    seo_privacy: {
+      tittle: acf.seo_privacy?.tittle ?? "",
+      meta_description: acf.seo_privacy?.meta_description ?? "",
+      seo_image: {
+        url: acf.seo_privacy?.seo_image?.url ?? "",
+        alt: acf.seo_privacy?.seo_image?.alt ?? "",
+      },
+    },
+  };
+}
