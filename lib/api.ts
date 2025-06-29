@@ -1,3 +1,5 @@
+// lib\api.ts
+
 export const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN!;
 
 async function fetchHomeOptions(): Promise<any> {
@@ -202,5 +204,179 @@ export async function fetchHomeContent(): Promise<{
     latest,
     owned_events_meta,
     seo_settings,
+  };
+}
+
+
+export interface OurStoryData {
+  hero: {
+    title: string;
+    description: string;
+  };
+  what_we_do: {
+    sub_title: string;
+    title: string;
+    description: string;
+    media: { image_src: string; alt: string };
+  };
+  where_we_started: {
+    sub_title: string;
+    content: Array<{
+      title: string;
+      description: string[];
+      media: { image_src: string; alt: string };
+    }>;
+  };
+  timeline: {
+    sub_title: string;
+    title: string;
+    content: Array<{
+      date: string;
+      description: string;
+      media: { image_src: string; alt: string; logo_src: string };
+    }>;
+  };
+  testimonial: {
+    sub_title: string;
+    title: string;
+    testimonials: Array<{
+      description: string;
+      name: string;
+      job: string;
+      company: string;
+      logo_src: string;
+    }>;
+  };
+  
+}
+
+export interface OurStoryData {
+  hero: {
+    title: string;
+    description: string;
+  };
+  what_we_do: {
+    sub_title: string;
+    title: string;
+    description: string;
+    media: { image_src: string; alt: string };
+  };
+  where_we_started: {
+    sub_title: string;
+    content: Array<{
+      title: string;
+      description: string[];
+      media: { image_src: string; alt: string };
+    }>;
+  };
+  timeline: {
+    sub_title: string;
+    title: string;
+    content: Array<{
+      date: string;
+      description: string;
+      media: { image_src: string; alt: string; logo_src: string };
+    }>;
+  };
+  testimonial: {
+    sub_title: string;
+    title: string;
+    testimonials: Array<{
+      description: string;
+      name: string;
+      job: string;
+      company: string;
+      logo_src: string;
+    }>;
+  };
+  // Додато за SEO
+  seo_our_story: {
+    title:            string;
+    meta_description: string;
+    // мапирамо seo_image (string или објекат) у social_image
+    social_image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+export async function fetchOurStoryContent(): Promise<OurStoryData> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/our-story`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Failed to fetch Our Story: ${res.status}`);
+  const json = await res.json();
+  const acf = json.acf || {};
+
+  return {
+    hero: {
+      title: acf["hero-os"]?.["title-os"] ?? "",
+      description: acf["hero-os"]?.["description-os"] ?? "",
+    },
+
+    what_we_do: {
+      sub_title: acf.what_we_do?.sub_title ?? "",
+      title: acf.what_we_do?.title ?? "",
+      description: acf.what_we_do?.description ?? "",
+      media: {
+        image_src: acf.what_we_do?.media?.image?.url ?? "",
+        alt: acf.what_we_do?.media?.image?.alt ?? "",
+      },
+    },
+
+    where_we_started: {
+      sub_title: acf.where_we_started_our_story?.sub_title ?? "",
+      content: (acf.where_we_started_our_story?.content ?? []).map((item: any) => ({
+        title: item.title ?? "",
+        description: Array.isArray(item.description)
+          ? item.description
+          : [item.description ?? ""],
+        media: {
+          image_src: item.media?.image?.url ?? "",
+          alt: item.media?.image?.alt ?? "",
+        },
+      })),
+    },
+
+    timeline: {
+      sub_title: acf.timeline?.sub_title ?? "",
+      title: acf.timeline?.title ?? "",
+      content: (acf.timeline?.content ?? []).map((item: any) => ({
+        date: item.date ?? "",
+        description: item.description ?? "",
+        media: {
+          image_src: item.media?.image?.url ?? "",
+          alt: item.media?.image?.alt ?? "",
+          logo_src: item.media?.logo?.url ?? "",
+        },
+      })),
+    },
+
+    testimonial: {
+      sub_title: acf.testimonial?.sub_title ?? "",
+      title: acf.testimonial?.title ?? "",
+      testimonials: (acf.testimonial?.testimonials ?? []).map((item: any) => ({
+        description: item.description ?? "",
+        name: item.name ?? "",
+        job: item.job ?? "",
+        company: item.company ?? "",
+        logo_src: item.media?.url ?? "",
+      })),
+    },
+
+    // Овде смо додали SEO поља
+    seo_our_story: {
+      title:            acf.seo_our_story?.title            ?? "",
+      meta_description: acf.seo_our_story?.meta_description ?? "",
+      social_image: {
+        // АCF ти вероватно враћа само стринг у seo_image, па га узимаш директно
+        url: typeof acf.seo_our_story?.seo_image === "string"
+             ? acf.seo_our_story.seo_image
+             : acf.seo_our_story?.seo_image?.url ?? "",
+        // Ако имаш посебно alt поље, узмеш га, иначе оставиш празан
+        alt: acf.seo_our_story?.seo_image?.alt ?? "",
+      },
+    },
   };
 }
