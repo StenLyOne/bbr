@@ -373,17 +373,13 @@ export default function Events({ bbr_events = [] }: Props) {
 
           {/* IMAGE */}
 
-          {bbr_events.map((event, index) => (
+      
             <div
-              key={index}
-              className={`event-image-${
-                index + 1
-              } w-full h-full ml-auto absolute object-cover inset-0 z-[${
-                2 + index * 3
-              }]`}
+        
+              className={`event-image-1 w-full h-full ml-auto absolute object-cover inset-0 z-[2]`}
             >
               <video
-                src={event.video}
+                 src={bbr_events[0].video}
                 className="w-full h-full object-cover"
                 autoPlay
                 muted
@@ -391,7 +387,34 @@ export default function Events({ bbr_events = [] }: Props) {
                 playsInline
               />
             </div>
-          ))}
+            <div
+             
+              className={`event-image-2 w-full h-full ml-auto absolute object-cover inset-0 z-[4]`}
+            >
+              <video
+                 src={bbr_events[1].video}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+            <div
+       
+              className={`event-image-3
+               w-full h-full ml-auto absolute object-cover inset-0 z-[8]`}
+            >
+              <video
+                 src={bbr_events[2].video}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+     
 
           {/* lOGO */}
           <Image
