@@ -456,3 +456,88 @@ export async function fetchPrivacyContent(): Promise<PrivacyData> {
     },
   };
 }
+
+
+export interface ContactData {
+  contact_hero_title: string;
+  contact_hero_image: { url: string; alt: string };
+  contact_section_sub_title: string;
+contact_section_tittle: string;
+social_tittle: string;
+
+
+  contact_info: {
+    phone_number:  string;
+    phone_link:    string;
+    email_address: string;
+    email_link:    string;
+    postal_address: string;
+  };
+  social_links: Array<{
+    link_url:    string;
+    icon_image:  { url: string; alt: string };
+  }>;
+  contact_form_labels: {
+    name_label:    string;
+    email_label:   string;
+    phone_label:   string;
+    enquiry_label: string;
+    message_label: string;
+  };
+  enquiry_types: Array<{ label: string; value: string }>;
+  seo_contact: {
+    title:            string;
+    meta_description: string;
+    seo_image:        { url: string; alt: string };
+  };
+}
+
+export async function fetchContactContent(): Promise<ContactData> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/contact`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Failed to fetch Contact: ${res.status}`);
+  const json = await res.json();
+  const acf = json.acf || {};
+
+  return {
+    contact_hero_title: acf.contact_hero_title ?? "",
+    contact_hero_image: {
+      url: acf.contact_hero_image?.url ?? "",
+      alt: acf.contact_hero_image?.alt ?? "",
+    },
+    contact_section_sub_title: acf.contact_section_sub_title ?? "",
+    contact_section_tittle:     acf.contact_section_tittle   ?? "",
+    social_tittle:     acf.contact_social_tittle   ?? "",
+    contact_info: {
+      phone_number:  acf.contact_info?.phone_number  ?? "",
+      phone_link:    acf.contact_info?.phone_link    ?? "",
+      email_address: acf.contact_info?.email_address ?? "",
+      email_link:    acf.contact_info?.email_link    ?? "",
+      postal_address:acf.contact_info?.postal_address ?? "",
+    },
+    social_links: (acf.social_links ?? []).map((sl: any) => ({
+      link_url:   sl.link_url,
+      icon_image: { url: sl.icon_image.url, alt: sl.icon_image.alt },
+    })),
+    contact_form_labels: {
+      name_label:    acf.contact_form_labels?.name_label    ?? "Name*",
+      email_label:   acf.contact_form_labels?.email_label   ?? "Email*",
+      phone_label:   acf.contact_form_labels?.phone_label   ?? "Phone Number",
+      enquiry_label: acf.contact_form_labels?.enquiry_label ?? "Enquiry Type*",
+      message_label: acf.contact_form_labels?.message_label ?? "Message",
+    },
+    enquiry_types: (acf.enquiry_types ?? []).map((e: any) => ({
+      label: e.label,
+      value: e.value,
+    })),
+    seo_contact: {
+      title:            acf.seo_contact?.title            ?? "",
+      meta_description: acf.seo_contact?.meta_description ?? "",
+      seo_image: {
+        url: acf.seo_contact?.seo_image?.url ?? "",
+        alt: acf.seo_contact?.seo_image?.alt ?? "",
+      },
+    },
+  };
+}

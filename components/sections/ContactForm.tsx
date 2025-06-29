@@ -1,27 +1,33 @@
+// components/sections/ContactForm.tsx
 "use client";
 
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
-
 import Button from "../ui/Button";
 
+export type ContactFormProps = {
+  labels: {
+    name_label:    string;
+    email_label:   string;
+    phone_label:   string;
+    enquiry_label: string;
+    message_label: string;
+  };
+  enquiryOptions: Array<{ label: string; value: string }>;
+};
+
 type FormData = {
-  name: string;
-  email: string;
-  phone?: string;
+  name:    string;
+  email:   string;
+  phone?:  string;
   enquiry: string;
   message?: string;
 };
 
-const enquiryOptions = [
-  { label: "Events", value: "Events" },
-  { label: "PR", value: "PR" },
-  { label: "Digital", value: "Digital" },
-  { label: "Quote", value: "Quote" },
-  { label: "Other", value: "Other" },
-];
-
-export default function ContactForm() {
+export default function ContactForm({
+  labels,
+  enquiryOptions,
+}: ContactFormProps) {
   const {
     register,
     handleSubmit,
@@ -44,19 +50,18 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
       if (!res.ok) throw new Error("Failed to send");
-
       setSent(true);
       reset();
       setTimeout(() => setSent(false), 4000);
-    } catch (err) {
+    } catch {
       alert("Submission error.");
     }
   };
 
+  // close dropdown on outside click
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const onClick = (e: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
@@ -64,8 +69,8 @@ export default function ContactForm() {
         setDropdownOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
   return (
@@ -75,7 +80,7 @@ export default function ContactForm() {
     >
       {/* Name */}
       <div className="relative space-y-[15px]">
-        <label className="block font-medium">Name*</label>
+        <label className="block font-medium">{labels.name_label}</label>
         <input
           {...register("name", { required: "Name is required" })}
           className={`w-full h-[42px] border px-4 py-2 rounded-[8px] ${
@@ -91,7 +96,7 @@ export default function ContactForm() {
 
       {/* Email */}
       <div className="relative space-y-[15px]">
-        <label className="block font-medium">Email*</label>
+        <label className="block font-medium">{labels.email_label}</label>
         <input
           {...register("email", {
             required: "Email is required",
@@ -103,14 +108,16 @@ export default function ContactForm() {
         />
         {errors.email && (
           <span className="absolute bottom-[3px] left-[10px] px-[8px] py-[4px] bg-blank rounded-full">
-            <p className="small text-red-500 ">{errors.email.message}</p>
+            <p className="small text-red-500 ">
+              {errors.email.message}
+            </p>
           </span>
         )}
       </div>
 
       {/* Phone */}
       <div className="space-y-[15px]">
-        <label className="block font-medium">Phone Number</label>
+        <label className="block font-medium">{labels.phone_label}</label>
         <input
           {...register("phone")}
           className="w-full h-[42px] border px-4 py-2 rounded-[8px] border-[#1a1a3f]"
@@ -119,10 +126,12 @@ export default function ContactForm() {
 
       {/* Enquiry Type */}
       <div className="space-y-[15px]">
-        <label className="block  font-medium">Enquiry Type*</label>
+        <label className="block font-medium">
+          {labels.enquiry_label}
+        </label>
         <div ref={dropdownRef} className="relative">
           <div
-            onClick={() => setDropdownOpen((prev) => !prev)}
+            onClick={() => setDropdownOpen((o) => !o)}
             className={`border px-4 py-2 rounded-[8px] cursor-pointer text-[16px] text-silver ${
               errors.enquiry ? "border-red-500" : "border-[#1a1a3f]"
             }`}
@@ -131,31 +140,37 @@ export default function ContactForm() {
           </div>
           {dropdownOpen && (
             <div className="absolute left-0 right-0 bg-white border mt-1 rounded-[8px] z-10 max-h-60 overflow-y-auto border-[#1a1a3f]">
-              {enquiryOptions.map((option) => (
+              {enquiryOptions.map((opt) => (
                 <div
-                  key={option.value}
+                  key={opt.value}
                   onClick={() => {
-                    setValue("enquiry", option.value, { shouldValidate: true });
+                    setValue("enquiry", opt.value, {
+                      shouldValidate: true,
+                    });
                     setDropdownOpen(false);
                   }}
                   className={`px-4 py-2 hover:bg-gray-100 cursor-pointer ${
-                    enquiry === option.value ? "bg-gray-100" : ""
+                    enquiry === opt.value ? "bg-gray-100" : ""
                   }`}
                 >
-                  {option.label}
+                  {opt.label}
                 </div>
               ))}
             </div>
           )}
         </div>
         {errors.enquiry && (
-          <p className="text-red-500 text-sm mt-1">{errors.enquiry.message}</p>
+          <p className="text-red-500 text-sm mt-1">
+            {errors.enquiry.message}
+          </p>
         )}
       </div>
 
       {/* Message */}
       <div className="space-y-[15px]">
-        <label className="block font-medium">Message</label>
+        <label className="block font-medium">
+          {labels.message_label}
+        </label>
         <textarea
           {...register("message")}
           className="w-full h-[165px] border px-4 py-2 rounded-[8px] border-[#1a1a3f]"
