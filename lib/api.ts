@@ -541,3 +541,105 @@ export async function fetchContactContent(): Promise<ContactData> {
     },
   };
 }
+
+// --- na vrhu fajla, ispod ostalih export interface-ova ---
+export interface TeamMember {
+  name:       string;
+  position:   string;
+  image_src:  string;
+  linkedin:   string;
+}
+
+export interface Department {
+  title:    string;
+  members:  TeamMember[];
+}
+
+export interface TeamCTA {
+  title:             string;
+  button:            { text: string; link: string };
+  background_image:  string;
+}
+
+export interface TeamSEO {
+  meta_title:       string;
+  meta_description: string;
+  seo_image:        string;
+}
+
+export interface TeamContent {
+  hero: {
+    title: string;
+    media: { image_src: string; alt: string };
+  };
+  intro: {
+    sub_title:   string;
+    title:       string;
+    description: string;
+  };
+  departments: Department[];
+  cta:         TeamCTA;
+  seo:         TeamSEO;
+}
+
+// --- na dnu fajla ---
+export async function fetchTeamContent(): Promise<TeamContent> {
+  const res = await fetch(
+    `${API_DOMAIN}/wp-json/bbr/v1/options/team`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) throw new Error(`Failed to fetch team: ${res.status}`);
+  const json = await res.json();
+  const acf  = json.acf || {};
+
+  return {
+    // HERO: uzimamo title_tm i media_tm.image_src_tm / alt_tm
+     hero: {
+          title: acf.hero_tm?.title_tm ?? "",
+          media: {
+            image_src: acf.hero_tm?.media_tm?.image_src_tm ?? "",
+            alt:       acf.hero_tm?.media_tm?.alt_tm      ?? ""
+          }
+        },
+
+    // INTRO
+    intro: {
+      sub_title:   acf.intro?.sub_title   ?? "",
+      title:       acf.intro?.title       ?? "",
+      description: acf.intro?.description ?? ""
+    },
+
+    // DEPARTMENTS
+    departments: Array.isArray(acf.departments)
+      ? acf.departments.map((dep: any) => ({
+          title: dep.title ?? "",
+          members: Array.isArray(dep.members)
+            ? dep.members.map((m: any) => ({
+                name:      m.name ?? "",
+                position:  m.position ?? "",
+                image_src: m.image_src ?? "",
+                linkedin:  m.linkedin ?? ""
+              }))
+            : []
+        }))
+      : [],
+
+    // CTA: pravimo ugnježdeni `button` objekat
+    cta: {
+      title:            acf.cta?.title            ?? "",
+      button: {
+        text: acf.cta?.button_text ?? "",
+        link: acf.cta?.button_link ?? ""
+      },
+      background_image: acf.cta?.background_image ?? ""
+    },
+
+    // SEO
+    seo: {
+      meta_title:       acf.seo?.meta_title       ?? "",
+      meta_description: acf.seo?.meta_description ?? "",
+      seo_image:        acf.seo?.seo_image        ?? ""
+    }
+  };
+}
+
