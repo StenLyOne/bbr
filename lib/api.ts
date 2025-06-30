@@ -233,8 +233,12 @@ export interface OurStoryData {
     content: Array<{
       date: string;
       description: string;
-      media: { image_src: string; alt: string; logo_src: string };
-    }>;
+media: {
+      image_src: string;
+      alt:       string;
+      logo_src:  string;    // ← NOVO
+    };    
+}>;
   };
   testimonial: {
     sub_title: string;
@@ -346,10 +350,13 @@ export async function fetchOurStoryContent(): Promise<OurStoryData> {
         date: item.date ?? "",
         description: item.description ?? "",
         media: {
-          image_src: item.media?.image?.url ?? "",
-          alt: item.media?.image?.alt ?? "",
-          logo_src: item.media?.logo?.url ?? "",
-        },
+      image_src: item.media?.image?.url ?? "",
+      alt:       item.media?.image?.alt ?? "",
+      /* ➊ uzmi logo sa “timetable_logo”; ako nema, probaj media.logo */
+      logo_src:  item.timetable_logo       ??
+                 item.media?.logo?.url    ??
+                 "",
+    },
       })),
     },
 
