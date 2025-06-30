@@ -643,3 +643,141 @@ export async function fetchTeamContent(): Promise<TeamContent> {
   };
 }
 
+// lib/api.ts
+
+// … постојећи код …
+
+// ---- Events page types & fetcher ----
+
+export interface EventHeroData {
+  title:        string;
+  description:  string;
+}
+
+export interface EventManagementBlock {
+  sub_title:    string;
+  title:        string;
+  description:  string;
+  media_large:  { url: string; alt: string; };
+  media_small:  { url: string; alt: string; };
+  content: Array<{
+    title:       string;
+    description: string;
+    media?:      { url: string; alt: string; };
+  }>;
+}
+
+export interface EventCarousel {
+  title:   string;
+  gallery: string[];
+}
+
+export interface EventServiceItem {
+  title:       string;
+  description: string;
+  media:       { url: string; alt: string; };
+}
+
+export interface EventServicesBlock {
+  sub_title: string;
+  title:     string;
+  content:   EventServiceItem[];
+}
+
+export interface SomeWorkItem {
+  id:         number;
+  slug:       string;
+  title:      string;
+  hero_image: { url: string; alt?: string; [key:string]: any };
+  work_type:  string;
+}
+
+export interface SomeOfOurWorkBlock {
+  title: string;
+  works: SomeWorkItem[];
+}
+
+export interface EventPageData {
+  hero:           EventHeroData;
+  management:     EventManagementBlock;
+  carousel:       EventCarousel;
+  services:       EventServicesBlock;
+  some_of_our_work: SomeOfOurWorkBlock;
+  seo:            SeoSettings;
+}
+
+export async function fetchEventPageContent(): Promise<EventPageData> {
+  // истовремено дохватамо опције и списак радова
+  const [optsRes, worksRes] = await Promise.all([
+    fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/eventmanagemet`, { cache: 'no-store' }),
+    fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/eventmanagemet/works`, { cache: 'no-store' }),
+  ]);
+
+  if (!optsRes.ok)  throw new Error(`Failed to fetch event page: ${optsRes.status}`);
+  if (!worksRes.ok) throw new Error(`Failed to fetch event works: ${worksRes.status}`);
+
+  const optsJson  = await optsRes.json();
+  const worksJson: SomeWorkItem[] = await worksRes.json();
+  const acf = optsJson.acf || {};
+
+  return {
+    hero: {
+      title:       acf.hero_event?.title_event       ?? '',
+      description: acf.hero_event?.description_event ?? '',
+    },
+    management: {
+      sub_title:   acf.management?.sub_title        ?? '',
+      title:       acf.management?.title            ?? '',
+      description: acf.management?.description      ?? '',
+      media_large: {
+        url: acf.management?.media_large?.image?.url ?? '',
+        alt: acf.management?.media_large?.image?.alt ?? '',
+      },
+      media_small: {
+        url: acf.management?.media_small?.image?.url ?? '',
+        alt: acf.management?.media_small?.image?.alt ?? '',
+      },
+      content: Array.isArray(acf.management?.content)
+        ? acf.management.content.map((item: any) => ({
+            title:       item.title       ?? '',
+            description: item.description ?? '',
+            media: item.media?.image
+              ? { url: item.media.image.url ?? '', alt: item.media.image.alt ?? '' }
+              : undefined,
+          }))
+        : [],
+    },
+    carousel: {
+      title:   acf.carousel?.title   ?? '',
+      gallery: Array.isArray(acf.carousel?.gallery)
+        ? acf.carousel.gallery.map((img: any) => img.url ?? '').filter(Boolean)
+        : [],
+    },
+    services: {
+      sub_title: acf.services_event?.sub_title ?? '',
+      title:     acf.services_event?.title     ?? '',
+      content: Array.isArray(acf.services_event?.content)
+        ? acf.services_event.content.map((item: any) => ({
+            title:       item.title       ?? '',
+            description: item.description ?? '',
+            media: {
+              url: item.media?.image?.url ?? '',
+              alt: item.media?.image?.alt ?? '',
+            },
+          }))
+        : [],
+    },
+    some_of_our_work: {
+      title: acf.some_of_our_work?.title ?? '',
+      works: worksJson,
+    },
+    seo: {
+      meta_title:       acf.seo_event_management?.title            ?? '',
+      meta_description: acf.seo_event_management?.meta_description ?? '',
+      social_image: {
+        url: acf.seo_event_management?.seo_image?.url ?? '',
+        alt: acf.seo_event_management?.seo_image?.alt ?? '',
+      },
+    },
+  };
+}
