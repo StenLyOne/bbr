@@ -91,7 +91,7 @@ export default function ContactClient({ data }: { data: ContactData }) {
               <Image
                 className="hidden md:block"
                 src={contact_hero_image.url}
-                alt={contact_hero_image.alt}
+                alt="Contact"
                 width={728}
                 height={326}
               />
