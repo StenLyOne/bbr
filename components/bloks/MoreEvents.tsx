@@ -116,7 +116,7 @@ export default function MoreEvents({
               key={i}
               className="flex flex-col gap-[40px]"
               href={`${
-                flag === "event" ? "/our-owned-events/" : "/portfolio/"
+                flag === "event" ? "/portfolio/" : "/our-owned-events/"
               }${eventSlugs[i]}`}
             >
               <div
