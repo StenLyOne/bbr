@@ -1067,3 +1067,68 @@ export async function fetchDigitalContent(): Promise<DigitalContent> {
     seo,
   };
 }
+
+// lib/api.ts
+
+// --- 1) Portfolio Settings интерфејс и фетч ---
+export interface PortfolioSettings {
+  hero_port: {
+    title_port:       string;
+    description_port: string;
+  };
+  more_events: {
+    title: string;
+    link:  string;
+  };
+  seo: {
+    title:            string;
+    meta_description: string;
+    image:            string;
+  };
+}
+
+export async function fetchPortfolioSettings(): Promise<PortfolioSettings> {
+  const res  = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/porfoliosettings`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to fetch Portfolio settings: ${res.status}`);
+  const json = await res.json();
+  const acf  = json.acf || {};
+  return {
+    hero_port: {
+      title_port:       acf.hero_port?.title_port       ?? "",
+      description_port: acf.hero_port?.description_port ?? "",
+    },
+    more_events: {
+      title: acf.more_events?.title ?? "",
+      link:  acf.more_events?.link  ?? "",
+    },
+    seo: {
+      title:            acf.seo_portfolio?.title            ?? "",
+      meta_description: acf.seo_portfolio?.meta_description ?? "",
+      image:            acf.seo_portfolio?.seo_image        ?? "",
+    },
+  };
+}
+
+// --- 2) SimpleWork тип и фетч за све портфолио item-е ---
+export interface SimpleWork {
+  id:        number;
+  slug:      string;
+  title:     string;
+  work_type: string;
+  tag:       string;
+  media:     { hero_image: string };
+}
+
+export async function fetchPortfolioItems(): Promise<SimpleWork[]> {
+  const res  = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/portfolio-items`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to fetch Portfolio items: ${res.status}`);
+  const json = await res.json();
+  return (json as any[]).map(item => ({
+    id:        item.id,
+    slug:      item.slug,
+    title:     item.title,
+    work_type: item.acf.work_type,
+    tag:       item.acf.tag,
+    media:     { hero_image: item.acf.media.hero_image.url },
+  }));
+}
