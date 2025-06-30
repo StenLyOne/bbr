@@ -1,9 +1,10 @@
+// src/app/layout.tsx
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import LenisProvider from "../../components/LenisProvider";
 import ScrollToTop from "../../components/ScrollToTop";
-import { fetchHomeContent } from "../../lib/api";
+import { fetchHomeContent, fetchSiteLogos } from "../../lib/api";   // ← dodato fetchSiteLogos
 import { Metadata } from "next";
 
 const geistSans = Geist({
@@ -18,9 +19,14 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const { seo_settings } = await fetchHomeContent();
+    /* povlačimo paralelno SEO i favicon */
+    const [{ seo_settings }, { favicon }] = await Promise.all([
+      fetchHomeContent(),
+      fetchSiteLogos(),
+    ]);
+
     return {
-      title: seo_settings.meta_title,
+      title:       seo_settings.meta_title,
       description: seo_settings.meta_description,
       openGraph: {
         title:       seo_settings.meta_title,
@@ -33,6 +39,14 @@ export async function generateMetadata(): Promise<Metadata> {
         title:       seo_settings.meta_title,
         description: seo_settings.meta_description,
         images:      [seo_settings.social_image.url],
+      },
+      /* globalni favicon iz WP‑a */
+      icons: {
+        icon: [
+          { url: favicon,             rel: "icon" },
+          { url: favicon,             rel: "shortcut icon" },
+          { url: favicon,             rel: "apple-touch-icon" },
+        ],
       },
     };
   } catch {

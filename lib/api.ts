@@ -1592,3 +1592,26 @@ export async function fetchOwnedEventTeasers(): Promise<OwnedEventTeaser[]> {
   }));
 }
 
+/* =======================================================================
+ *  GLOBAL GENERAL INFO  (logo + favicon)
+ * =====================================================================*/
+export interface SiteLogos {
+  logo:    string;
+  favicon: string;
+}
+
+/**  /bbr/v1/options/generalinfo  */
+export async function fetchSiteLogos(): Promise<SiteLogos> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/generalinfo`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch site logos: ${res.status}`);
+  }
+  const json = await res.json();
+  const logos = json.acf?.site_logos || {};
+  return {
+    logo:    logos.logo    ?? "",
+    favicon: logos.favicon ?? "/favicon.ico",   // fallback na default
+  };
+}
