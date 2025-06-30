@@ -1199,3 +1199,36 @@ export async function fetchAllOwnedEvents(): Promise<OwnedEvent[]> {
     hero_image: evt.hero_image,
   }));
 }
+
+
+export interface ContactSettings {
+  postal_address: string;
+  copyright:      string;
+  social_links: Array<{
+    link_url: string;
+    icon_url: string;
+    icon_alt: string;
+  }>;
+}
+
+/** Fetch only the needed fields from ACF contact options */
+export async function fetchContactSettings(): Promise<ContactSettings> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/contact`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch contact settings: ${res.status}`);
+  }
+  const json = await res.json();
+  const acf  = json.acf || {};
+
+  return {
+    postal_address: acf.contact_info?.postal_address ?? "",
+    copyright:      acf.copyright               ?? "",
+    social_links:   (acf.social_links || []).map((item: any) => ({
+      link_url: item.link_url,
+      icon_url: item.icon_image?.url   ?? "",
+      icon_alt: item.icon_image?.alt   ?? "",
+    })),
+  };
+}
