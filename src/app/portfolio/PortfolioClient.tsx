@@ -232,7 +232,7 @@ export default function PortfolioClient({ settings, works }: Props) {
               >
                 <Image
                   src={work.media.hero_image}
-                  alt=""
+                  alt={work.title}
                   width={443}
                   height={278}
                   className="w-full"
