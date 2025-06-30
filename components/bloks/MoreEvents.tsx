@@ -1,4 +1,6 @@
-import { useRef, useState, useEffect } from "react";
+// components/bloks/MoreEvents.tsx
+
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Link from "next/link";
@@ -23,25 +25,25 @@ export default function MoreEvents({
   color,
 }: Props) {
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  let visibleEvents = events;
-  let eventSlugs = slug;
+  let visibleEvents: any[] = [];
+  let eventSlugs: string[] = [];
 
-  // Автоматическая подгрузка из owned-events.json, если не переданы events и slug
   if (flag === "event" && (!events || !slug)) {
-    const rawEvents = data.events.slice(0, 3);
+    // fallback: узми све из static owned-events.json
+    const rawEvents = data.events;
     visibleEvents = rawEvents;
     eventSlugs = rawEvents.map((e) => e.slug);
   } else {
-    visibleEvents = events?.slice(0, 3) || [];
+    // користимо прослеђене events/slug из пропса, приказуј све
+    visibleEvents = events || [];
+    eventSlugs = slug || [];
   }
 
   const scrollBy = (dir: "left" | "right") => {
     const width = containerRef.current?.offsetWidth || 0;
     if (!containerRef.current) return;
-
     containerRef.current.scrollBy({
       left: dir === "right" ? width : -width,
       behavior: "smooth",
@@ -52,10 +54,10 @@ export default function MoreEvents({
     <section
       className={`px-[16px] md:px-[40px] ${
         color === "transporent" ? "" : "bg-white-gris"
-      }  py-[75px] `}
+      } py-[75px]`}
     >
-      <div className="mx-auto ">
-        <div className="flex justify-between items-end mb-10  ">
+      <div className="mx-auto">
+        <div className="flex justify-between items-end mb-10">
           <AnimatedTextLine>
             <h2
               className={`text-[32px] font-[900] ${
@@ -103,10 +105,10 @@ export default function MoreEvents({
 
         <div
           ref={containerRef}
-          className={`transition-all duration-300  ${
+          className={`transition-all duration-300 ${
             isMobile
               ? "flex flex-col gap-[46px]"
-              : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar "
+              : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
           }`}
         >
           {visibleEvents.map((event, i) => (
@@ -115,17 +117,17 @@ export default function MoreEvents({
               className="flex flex-col gap-[40px]"
               href={`${
                 flag === "event" ? "/our-owned-events/" : "/portfolio/"
-              }${eventSlugs?.[i]}`}
+              }${eventSlugs[i]}`}
             >
               <div
-                className={`$${
+                className={`${
                   isMobile
                     ? "w-full"
                     : "snap-start shrink-0 w-[calc(47.5vw-8px)]"
                 }`}
               >
                 <img
-                  src={event.media.hero_image}
+                  src={event.media.hero_image.url || event.media.hero_image}
                   alt={event.title}
                   className="w-full h-[300px] object-cover"
                 />
@@ -139,7 +141,7 @@ export default function MoreEvents({
                 <p
                   className={`${
                     color === "transporent" ? "text-blank" : "text-blue"
-                  } `}
+                  }`}
                 >
                   {event.event_information.text}
                 </p>
@@ -151,7 +153,7 @@ export default function MoreEvents({
             href={link}
             className={`md:hidden flex ${
               color === "transporent" ? "text-blank" : "text-blue"
-            }  font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300`}
+            } font-medium items-center gap-2 whitespace-nowrap group hover:text-accent transition-colors duration-300`}
           >
             See all events
             <svg

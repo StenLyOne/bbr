@@ -781,3 +781,163 @@ export async function fetchEventPageContent(): Promise<EventPageData> {
     },
   };
 }
+
+export interface PortfolioItemRaw {
+  id:   number;
+  slug: string;
+  title: string; 
+  acf: {
+    event_information: {
+      title: string;
+      text:  string;
+    };
+    media: {
+      hero_image: {
+        url:  string;
+        alt?: string;
+      };
+    };
+  };
+}
+
+export interface PrContent {
+  hero: {
+    title:       string;
+    description: string;
+    video_src:   string;
+  };
+  where_we_started: {
+    sub_title: string;
+    title:     string;
+    content: Array<{
+      title:       string;
+      description: string[];
+      media:       { image_src: string; alt: string };
+    }>;
+  };
+  services: {
+    sub_title: string;
+    title:     string;
+    content: Array<{
+      title:       string;
+      description: string;
+      media:       { image_src: string; alt: string };
+    }>;
+  };
+  featured_on: {
+    sub_title: string;
+    gallery:   string[];
+  };
+  latest_meta: {
+    title: string;
+    ids:   number[];
+  };
+  seo: {
+    title:            string;
+    meta_description: string;
+    image:            { url: string; alt: string };
+  };
+}
+
+/** Дохвата ACF податке за PR страницу */
+export async function fetchPrContent(): Promise<PrContent> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/prservices`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Failed to fetch PR services: ${res.status}`);
+  const json = await res.json();
+  const acf = json.acf || {};
+
+  // Hero
+  const hero = {
+    title:       acf.hero_pr?.title       ?? "",
+    description: acf.hero_pr?.description ?? "",
+    video_src:   acf.hero_pr?.video?.url  ?? "",
+  };
+
+  // Where We Started
+  const wws = acf.where_we_started || {};
+  const where_we_started = {
+    sub_title: wws.sub_title ?? "",
+    title:     wws.title     ?? "",
+    content: Array.isArray(wws.content)
+      ? wws.content.map((item: any) => ({
+          title: item.title ?? "",
+          description: (item.description ?? "")
+            .split(/\r?\n/)
+            .filter((s: string) => s.trim().length > 0),
+          media: {
+            image_src: item.media?.image?.url ?? "",
+            alt:       item.media?.image?.alt ?? "",
+          },
+        }))
+      : [],
+  };
+
+  // Services
+  const srv = acf.services_pr || {};
+  const services = {
+    sub_title: srv.sub_title ?? "",
+    title:     srv.title     ?? "",
+    content: Array.isArray(srv.content)
+      ? srv.content.map((item: any) => ({
+          title:       item.title       ?? "",
+          description: item.description ?? "",
+          media: {
+            image_src: item.media?.image?.url ?? "",
+            alt:       item.media?.image?.alt ?? "",
+          },
+        }))
+      : [],
+  };
+
+  // Featured On
+  const feat = acf.featured_on || {};
+  const featured_on = {
+    sub_title: feat.sub_title ?? "",
+    gallery:   Array.isArray(feat.gallery)
+      ? feat.gallery.map((img: any) =>
+          typeof img === "string" ? img : img.url
+        )
+      : [],
+  };
+
+  // Latest IDs
+  const latest_meta = {
+    title: acf.latest_pr?.tittle ?? "",
+    ids: Array.isArray(acf.latest_pr?.latest_prr)
+      ? acf.latest_pr.latest_prr
+          .map((v: unknown): number => Number(v))
+          .filter((n: number): n is number => !isNaN(n))
+      : [],
+  };
+
+  // SEO
+  const seo = {
+    title:            acf.seo_pr?.title            ?? "",
+    meta_description: acf.seo_pr?.meta_description ?? "",
+    image: {
+      url:
+        typeof acf.seo_pr?.seo_image === "string"
+          ? acf.seo_pr.seo_image
+          : acf.seo_pr?.seo_image?.url ?? "",
+      alt: acf.seo_pr?.seo_image?.alt ?? "",
+    },
+  };
+
+  return { hero, where_we_started, services, featured_on, latest_meta, seo };
+}
+
+/** Дохвата portfolio‐items само оне са ID-јевима из latest_meta.ids */
+export async function fetchPortfolioItemsByIds(
+  ids: number[]
+): Promise<PortfolioItemRaw[]> {
+  if (ids.length === 0) return [];
+  const res = await fetch(
+    `${API_DOMAIN}/wp-json/bbr/v1/portfolio-items?include=${ids.join(",")}`,
+    { cache: "no-store" }
+  );
+  if (!res.ok)
+    throw new Error(`Failed to fetch portfolio items: ${res.status}`);
+  return res.json();
+}
