@@ -384,24 +384,49 @@ export default function Events({ bbr_events }: Props) {
             </h4>
           </div>
           {/* IMAGE */}
-          {bbr_events.map((event, index) => (
-            <div
-              key={index}
-              className={`event-image-${
-                index + 1
-              } w-1/2 h-full ml-auto absolute inset-0 z-[${2 + index * 3}]`}
-            >
-              <video
-                src={event.video}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
-          ))}
-          {/* lOGO */}
+          <div
+            className={`event-image-1
+         
+              w-1/2 h-full ml-auto absolute inset-0 z-[2]`}
+          >
+            <video
+              src={bbr_events[0].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          <div
+            className={`event-image-2
+         
+              w-1/2 h-full ml-auto absolute inset-0 z-[4]`}
+          >
+            <video
+              src={bbr_events[1].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          <div
+            className={`event-image-3
+         
+              w-1/2 h-full ml-auto absolute inset-0 z-[7]`}
+          >
+            <video
+              src={bbr_events[2].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          \{/* lOGO */}
           <Image
             src="/assets/logo/bbr-events-logo.svg"
             width={250}
@@ -435,17 +460,17 @@ export default function Events({ bbr_events }: Props) {
           />
         </div>
 
-        <h2 className="event-title-1 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blue">
+        <h2 className="event-title-1 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blue">
           <TitleLines title={bbr_events[0].title} lineClass="event-line-1" />
         </h2>
 
         {/* TITLE 2 */}
-        <h2 className="event-title-2 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blue">
+        <h2 className="event-title-2 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blue">
           <TitleLines title={bbr_events[1].title} lineClass="event-line-2" />
         </h2>
 
         {/* TITLE 3 */}
-        <h2 className="event-title-3 absolute top-1/2 left-[80px] -translate-y-1/2 max-w-[565px] text-left z-[7] space-y-[-3px] text-blue">
+        <h2 className="event-title-3 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[7] space-y-[-3px] text-blue">
           <TitleLines title={bbr_events[2].title} lineClass="event-line-3" />
         </h2>
         {/* <h2

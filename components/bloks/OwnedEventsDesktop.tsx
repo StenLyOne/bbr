@@ -40,7 +40,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
-  const wrapperHeight = total * 2.2 * 45;
+  const wrapperHeight = total * 2.6 * 45;
 
   useEffect(() => {
     if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)
@@ -147,28 +147,28 @@ export default function OwnedEventsDesktop({ data }: Props) {
     };
   }, [data.events, isDesktop]);
 
-  const scrollToEvent = (index: number) => {
-    const section = wrapperRef.current;
-    if (!section || !timelineRef.current) return;
+  // const scrollToEvent = (index: number) => {
+  //   const section = wrapperRef.current;
+  //   if (!section || !timelineRef.current) return;
 
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+  //   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
 
-    gsap.to(window, {
-      scrollTo: sectionTop,
-      duration: 1,
-      ease: "power2.inOut",
-      onComplete: () => {
-        const baseProgress = index / total;
-        const targetProgress = Math.min(baseProgress + 0.05, 0.99);
+  //   gsap.to(window, {
+  //     scrollTo: sectionTop,
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //     onComplete: () => {
+  //       const baseProgress = index / total;
+  //       const targetProgress = Math.min(baseProgress + 0.05, 0.99);
 
-        gsap.to(timelineRef.current!, {
-          progress: targetProgress,
-          duration: 1,
-          ease: "power2.inOut",
-        });
-      },
-    });
-  };
+  //       gsap.to(timelineRef.current!, {
+  //         progress: targetProgress,
+  //         duration: 1,
+  //         ease: "power2.inOut",
+  //       });
+  //     },
+  //   });
+  // };
 
   return (
     <div className="relative w-full overflow-hidden ">
@@ -195,7 +195,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
                       <button
                         onClick={() => {
                           setActiveIndex(index);
-                          scrollToEvent(index - 1);
+                          // scrollToEvent(index - 1);
                         }}
                         className="hover:bg-blue text-blank"
                         style={{
