@@ -19,7 +19,7 @@ export default function SomeWorks({ works }: SomeWorksProps) {
         >
           <Image
             src={work.hero_image.url}
-            alt={work.hero_image.alt || work.title}
+            alt={work.title}
             width={443}
             height={278}
             className="w-full"

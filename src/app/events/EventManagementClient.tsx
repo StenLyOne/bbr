@@ -73,7 +73,7 @@ export default function EventManagementClient({ data }: Props) {
           <img
             className="w-[100%] md:w-[65%] mx-auto"
             src="/assets/logo/bbr-events-vector.svg"
-            alt=""
+            alt={hero.title}
           />
         </AnimatedTextLine>
         <div className="w-full flex gap-[46px] flex-col md:flex-row md:justify-between items-start">
@@ -152,7 +152,7 @@ export default function EventManagementClient({ data }: Props) {
               <div className="relative w-full md:w-2/3 h-[201px] md:h-[500px]">
                 <Image
                   src={management.media_large.url}
-                  alt={management.media_large.alt}
+                  alt={management.title}
                   fill
                   className="object-cover"
                 />
@@ -160,7 +160,7 @@ export default function EventManagementClient({ data }: Props) {
               <div className="relative w-full md:w-1/3 h-[400px] md:h-[500px]">
                 <Image
                   src={management.media_small.url}
-                  alt={management.media_small.alt}
+                  alt={management.sub_title}
                   fill
                   className="object-cover"
                 />
@@ -173,7 +173,7 @@ export default function EventManagementClient({ data }: Props) {
               {management.content[0].media && (
                 <Image
                   src={management.content[0].media.url}
-                  alt={management.content[0].media.alt}
+                  alt={management.content[0].title}
                   fill
                   className="object-cover"
                 />
@@ -194,7 +194,7 @@ export default function EventManagementClient({ data }: Props) {
                 {management.content[0].media && (
                   <Image
                     src={management.content[0].media.url}
-                    alt={management.content[0].media.alt}
+                    alt={management.content[0].title}
                     fill
                     className="object-cover"
                   />
@@ -247,7 +247,7 @@ export default function EventManagementClient({ data }: Props) {
               <div className="relative w-full md:w-[443px] h-[278px]">
                 <Image
                   src={ele.media.url}
-                  alt={ele.media.alt}
+                  alt={ele.title}
                   fill
                   className="object-cover"
                 />

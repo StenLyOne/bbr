@@ -146,7 +146,7 @@ export default function OurStory() {
         <div className="flex flex-col-reverse md:flex-row gap-[48px] md:gap-[77px] py-[30px] md:py-[130px] pl-[100px] md:pl-0">
           <Image
             src={what_we_do.media.image_src}
-            alt={what_we_do.media.alt}
+            alt={what_we_do.sub_title}
             width={556}
             height={350}
             className="object-cover w-full md:w-[556px] h-[244px] md:h-[350px]"
@@ -184,7 +184,7 @@ export default function OurStory() {
             <div className="relative w-full md:w-2/3 h-[226px] md:h-[500px]">
               <Image
                 src={where_we_started.content[0].media.image_src}
-                alt={where_we_started.content[0].media.alt}
+                alt={where_we_started.content[0].title}
                 fill
                 className="object-cover"
               />
@@ -198,7 +198,7 @@ export default function OurStory() {
               <div className="relative w-full md:w-2/3 h-[350px] md:ml-[60px]">
                 <Image
                   src={ele.media.image_src}
-                  alt={ele.media.alt}
+                  alt={ele.title} 
                   fill
                   className="object-cover"
                 />

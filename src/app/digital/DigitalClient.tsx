@@ -92,7 +92,7 @@ export default function DigitalClient({
           <img
             className=" w-[100%] md:w-[100%] mx-auto"
             src="/assets/logo/bbr-digital-vector-2.svg"
-            alt=""
+            alt={hero.title}
           />
         </AnimatedTextLine>
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
@@ -235,7 +235,7 @@ export default function DigitalClient({
             {what_we_offer.content.map((blk, i) => (
               <div key={i} className="flex flex-col items-center gap-[30px]">
                 <AnimatedTextLine>
-                  <img src={blk.icon_src} alt="" />
+                  <img src={blk.icon_src} alt={blk.title} />
                 </AnimatedTextLine>
                 <h3 className="text-center md:text-left mt-[21px] mb-[21px]">
                   <AnimatedStrokeByStroke text={blk.title} />
@@ -299,7 +299,7 @@ const TwoColumnBlock = ({
     </div>
     <div className="w-full md:w-1/2 flex justify-center">
       <div className="w-full md:max-w-max">
-        <img src={media.image_src} alt={media.alt} className="w-full h-auto object-cover" />
+        <img src={media.image_src} alt={title} className="w-full h-auto object-cover" />
       </div>
     </div>
   </div>

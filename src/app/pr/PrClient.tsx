@@ -90,7 +90,7 @@ title: item.title,
           <img
             className="w-[100%] md:w-[65%] mx-auto"
             src="/assets/logo/bbr-pr-vector.svg"
-            alt=""
+            alt= {hero.title}
           />
         </AnimatedTextLine>
 
@@ -166,7 +166,7 @@ title: item.title,
               <div className="relative w-full h-[494px]">
                 <Image
                   src={where_we_started.content[0].media.image_src}
-                  alt={where_we_started.content[0].media.alt}
+                  alt={where_we_started.title}
                   fill
                   className="object-cover"
                 />
@@ -189,7 +189,7 @@ title: item.title,
               <div className="relative w-full max-w-[556px] h-[344px]">
                 <Image
                   src={where_we_started.content[1].media.image_src}
-                  alt={where_we_started.content[1].media.alt}
+                  alt={where_we_started.content[1].title}
                   fill
                   className="object-cover"
                 />
@@ -238,7 +238,7 @@ title: item.title,
                 <div className="relative w-full md:w-[443px] h-[278px]">
                   <Image
                     src={ele.media.image_src}
-                    alt={ele.media.alt}
+                    alt={ele.title}
                     fill
                     className="object-cover"
                   />
