@@ -1232,3 +1232,177 @@ export async function fetchContactSettings(): Promise<ContactSettings> {
     })),
   };
 }
+/** Fetch the list of all portfolio item slugs */
+export async function fetchPortfolioSlugs(): Promise<{ id: number; slug: string }[]> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/portfolio-slugs`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to fetch portfolio slugs: ${res.status}`);
+  return res.json();
+}
+
+/*------------------------------------------------------------------
+ *  PORTFOLIO ITEM  (individualni /slug)
+ *-----------------------------------------------------------------*/
+
+export interface PortfolioItemData {
+  id:    number;
+  slug:  string;
+  title: string;
+
+  media: {
+    hero_image: string;
+    video:      string;
+  };
+
+  event_information: {
+    sub_title: string;
+    title:     string;
+    text:      string;
+    info_block: {
+      items: Array<{ title: string; value: string }>;
+    };
+  };
+
+  gallery:     string[];
+  stats_block: {
+    sub_title:  string;
+    title:      string;
+    indicators: string[];
+    stats:      Array<{ label: string; value: string }>;
+  };
+
+  sponsors: {
+    sub_title: string;
+    items:     string[];
+  };
+
+  cta: Array<{ label: string; link: string }>;
+
+  /* ───── SEO (novo) ───── */
+  seo_work: {
+    title:            string;
+    meta_description: string;
+    seo_image: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+/** Дохвата податке за /portfolio-items/:slug + SEO */
+export async function fetchPortfolioItem(slug: string): Promise<PortfolioItemData> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/portfolio-items/${slug}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Portfolio item ${slug} → ${res.status}`);
+
+  const js  = await res.json();
+  const acf = js.acf || {};
+
+  return {
+    id:    js.id,
+    slug:  js.slug,
+    title: js.title,
+
+    media: {
+      hero_image: acf.media?.hero_image?.url ?? "",
+      video:      acf.video?.url             ?? "",
+    },
+
+    event_information: {
+      sub_title: acf.event_information?.sub_title ?? "",
+      title:     acf.event_information?.title     ?? "",
+      text:      acf.event_information?.text      ?? "",
+      info_block: {
+        items: Array.isArray(acf.event_information?.info_block)
+          ? acf.event_information.info_block
+          : [],
+      },
+    },
+
+    gallery: Array.isArray(acf.gallery)
+      ? acf.gallery.map((g: any) => (typeof g === "string" ? g : g.url ?? ""))
+      : [],
+
+    stats_block: {
+      sub_title:  acf.stats_block?.sub_title ?? "",
+      title:      acf.stats_block?.title     ?? "",
+      indicators: Array.isArray(acf.stats_block?.indicators)
+        ? acf.stats_block.indicators.map((i: any) => i.indicator_text ?? i ?? "")
+        : [],
+      stats: Array.isArray(acf.stats_block?.stats)
+        ? acf.stats_block.stats
+        : [],
+    },
+
+    sponsors: {
+      sub_title: acf.sponsors?.sub_title ?? "",
+      items: Array.isArray(acf.sponsors?.items)
+        ? acf.sponsors.items.map((l: any) => l.url ?? "")
+        : [],
+    },
+
+    cta: Array.isArray(acf.cta)
+      ? acf.cta.map((btn: any) => ({
+          label: btn.label ?? "",
+          link:  btn.link?.url ?? "",
+        }))
+      : [],
+
+    /* ───────────── SEO ───────────── */
+    seo_work: {
+      title:            acf.seo_work?.title            ?? "",
+      meta_description: acf.seo_work?.meta_description ?? "",
+      seo_image: {
+        url:
+          typeof acf.seo_work?.seo_image === "string"
+            ? acf.seo_work.seo_image
+            : acf.seo_work?.seo_image?.url ?? "",
+        alt: acf.seo_work?.seo_image?.alt ?? "",
+      },
+    },
+  };
+}
+
+
+export interface PortfolioTeaser {
+  id:   number;
+  slug: string;
+  title: string;
+
+  /* MoreEvents u JSX‑u čita baš ovo ↓ */
+  work_type: string;
+  tag:       string;
+  media: {
+    hero_image: string;          // ili objekat sa .url – oba rade
+  };
+  event_information: {           // ← ovo je falilo
+    text: string;
+  };
+}
+
+export async function fetchPortfolioTeasers(): Promise<PortfolioTeaser[]> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/portfolio-teasers`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Failed to fetch teasers: ${res.status}`);
+
+  const data = await res.json();
+  return (data as any[]).map((item) => ({
+    id:   item.id,
+    slug: item.slug,
+    title: item.title,
+
+    work_type: "",      // popuni ako budeš imao
+    tag:       "",
+
+    media: {
+      hero_image: item.image,          // MoreEvents prvo pokuša .url, pa string
+    },
+
+    event_information: {               //  ✔ sprečava “reading 'text'” grešku
+      text: item.description ?? "",
+    },
+  }));
+}
+
+

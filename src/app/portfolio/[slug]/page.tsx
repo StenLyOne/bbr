@@ -1,90 +1,99 @@
 "use client";
+export const dynamic = "force-dynamic";
 
-import MoreEvents from "../../../../components/bloks/MoreEvents";
-
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import data from "../../../../data/portfolio.json";
-import Header from "../../../../components/sections/Header";
-import Footer from "../../../../components/sections/Footer";
-import SubTitleLine from "../../../../components/ui/SubTitleLine";
+import Image   from "next/image";
+import Header  from "../../../../components/sections/Header";
+import Footer  from "../../../../components/sections/Footer";
+import SubTitleLine   from "../../../../components/ui/SubTitleLine";
 import EventCaroursel from "../../../../components/bloks/EventCaroursel";
-import Button from "../../../../components/ui/Button";
+import Button         from "../../../../components/ui/Button";
 import HeroTitleFadeIn from "../../../../components/HeroTitleFadeIn";
-import { useEffect, useRef, useState } from "react";
 import AnimatedTextLine from "../../../../components/AnimatedTextLine";
+import MoreEvents      from "../../../../components/bloks/MoreEventsSlider";
+
+import {
+  fetchPortfolioItem,
+  fetchPortfolioTeasers,   // ➊ NOVO
+  PortfolioItemData,
+  PortfolioTeaser,  
+} from "../../../../lib/api";
 
 export default function EventPage() {
-  const { slug } = useParams();
-  const [work, setWork] = useState<(typeof data.works)[0] | null>(null);
-  const [animationsReady, setAnimationsReady] = useState(false);
+  /* -------------------------------------------------- */
+  /* 1) slug                                            */
+  /* -------------------------------------------------- */
+  const rawSlug = useParams().slug;
+  const slug = Array.isArray(rawSlug) ? rawSlug.join("/") : rawSlug;
+
+  /* -------------------------------------------------- */
+  /* 2) state                                           */
+  /* -------------------------------------------------- */
+  const [work,  setWork]  = useState<PortfolioItemData | null>(null);
+const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]); 
   const [loading, setLoading] = useState(true);
-  const filteredEvents = data.works
-    .filter((e) => e.slug !== slug)
-    .slice(-3)
-    .reverse();
+  const [animationsReady, setAnimationsReady] = useState(false);
 
-  console.log("[EventPage] useParams.slug:", slug);
-  console.log("✅ [slug]/page.tsx loaded");
-
+  /* -------------------------------------------------- */
+  /* 3) fetch data on slug change                       */
+  /* -------------------------------------------------- */
   useEffect(() => {
-    console.log("[EventPage] useEffect triggered. Slug:", slug);
+  if (!slug) return;
 
-    if (typeof slug === "string") {
-      const matched = data.works.find((ev) => ev.slug === slug);
-      if (matched) {
-        console.log("[EventPage] Matching event found:", matched.title);
-      } else {
-        console.warn("[EventPage] No matching event found for slug:", slug);
-      }
-      setWork(matched ?? null);
-    } else {
-      console.warn("[EventPage] Slug is not a valid string:", slug);
+  (async () => {
+    try {
+      const [itm, allTeasers] = await Promise.all([
+        fetchPortfolioItem(slug as string),
+        fetchPortfolioTeasers(),            // ➍ NOVO
+      ]);
+
+      setWork(itm);
+
+      // izbaci trenutni slug
+      setTeasers(allTeasers.filter((t) => t.slug !== slug));
+    } catch (err) {
+      console.error(err);
+      setWork(null);
+    } finally {
+      setLoading(false);
     }
+  })();
+}, [slug]);
 
-    setLoading(false);
-  }, [slug]);
-
-  if (loading) {
-    console.log("[EventPage] Loading...");
-    return null;
-  }
+  /* -------------------------------------------------- */
+  /* 4) loading / 404                                   */
+  /* -------------------------------------------------- */
+  if (loading) return null;
 
   if (!work) {
-    console.error("[EventPage] 404 – Event not found");
     return (
-      <div className="min-h-screen flex items-center justify-center text-white bg-black">
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
         <h1 className="text-3xl">404 – Event not found</h1>
       </div>
     );
   }
 
-  console.log("[EventPage] Rendering event:", work.title);
+  /* -------------------------------------------------- */
+  /* 5) helper                                          */
+  /* -------------------------------------------------- */
+  function scrollToNextSection() {
+    const next = document.querySelector("[data-scroll-target]");
+    if (!next) return;
+    const offset = 142;
+    const top = next.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
 
-  const scrollToNextSection = () => {
-    const nextSection = document.querySelector("[data-scroll-target]");
-    if (nextSection) {
-      const offset = 142;
-      const top =
-        nextSection.getBoundingClientRect().top + window.scrollY - offset;
-
-      window.scrollTo({
-        top,
-        behavior: "smooth",
-      });
-    }
-  };
-
+  /* -------------------------------------------------- */
+  /* 6) render                                          */
+  /* -------------------------------------------------- */
   return (
     <div className="bg-white text-foreground">
       <Header animationsReady={animationsReady} />
 
-      {/* Hero Section */}
-      <main
-        className="relative w-full h-[100vh] overflow-hidden "
-        data-bg="dark"
-      >
+      {/* ── HERO ────────────────────────────────────── */}
+      <main className="relative w-full h-[100vh] overflow-hidden" data-bg="dark">
         <Image
           src={work.media.hero_image}
           alt={work.title}
@@ -96,79 +105,50 @@ export default function EventPage() {
             {work.title}
           </HeroTitleFadeIn>
         </div>
+
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
         >
-          <svg
-            className="rotate-270"
-            width="38"
-            height="38"
-            viewBox="0 0 38 38"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="0.75"
-              y="0.75"
-              width="36.5"
-              height="36.5"
-              rx="18.25"
-              stroke="#FFF"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
-              stroke="#FFF"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M27.5 19H10.67"
-              stroke="#FFF"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          {/* strelica */}
+          <svg className="rotate-270" width="38" height="38" viewBox="0 0 38 38" fill="none">
+            <rect x="0.75" y="0.75" width="36.5" height="36.5" rx="18.25" stroke="#FFF" strokeWidth="1.5" />
+            <path d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M27.5 19H10.67" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </main>
 
-      {/* Info Section */}
-      <section
-        data-scroll-target
-        className="mx-auto  px-[16px] md:px-[40px]"
-        data-bg="light"
-      >
-        <div className="w-full ">
+      {/* ── INFO ────────────────────────────────────── */}
+      <section data-scroll-target className="mx-auto px-[16px] md:px-[40px]" data-bg="light">
+        <div className="w-full">
           <SubTitleLine title={work.event_information.sub_title} />
-          <div className="w-full flex flex-col-reverse lg:flex-row justify-start md:gap-[130px] pt-[32px] md:pt-[118px] pb-[72px] md:pb-[141px]">
+
+          <div className="w-full flex flex-col-reverse lg:flex-row md:gap-[130px] pt-[32px] md:pt-[118px] pb-[72px] md:pb-[141px]">
+            {/* tekst samo na мобилу */}
             <AnimatedTextLine className="text-blue pt-[46px] md:hidden">
-              <p className="">{work.event_information.text}</p>{" "}
+              <p>{work.event_information.text}</p>
             </AnimatedTextLine>
+
+            {/* info блок */}
             <div className="md:w-[443px]">
               <AnimatedTextLine
                 stagger={0.2}
                 className="text-blue space-y-0 divide-y divide-blue border-t border-blue w-[443px]"
               >
-                {work.event_information.info_block?.items.map(
-                  (item, i, arr) => (
-                    <div
-                      key={i}
-                      className={`py-[26px] ${
-                        i === arr.length - 1 ? "border-b border-blue" : ""
-                      }`}
-                    >
-                      <p className="!font-bold">{item.title}</p>
-                      <p className="whitespace-pre-line">{item.value}</p>
-                    </div>
-                  )
-                )}
+                {work.event_information.info_block.items.map((it, i, arr) => (
+                  <div
+                    key={i}
+                    className={`py-[26px] ${i === arr.length - 1 ? "border-b border-blue" : ""}`}
+                  >
+                    <p className="!font-bold">{it.title}</p>
+                    <p className="whitespace-pre-line">{it.value}</p>
+                  </div>
+                ))}
               </AnimatedTextLine>
             </div>
+
+            {/* десна колона */}
             <div className="space-y-[50px] w-full md:max-w-[60%]">
               <AnimatedTextLine className="w-full">
                 <h2 className="text-blue">{work.event_information.title}</h2>
@@ -183,82 +163,78 @@ export default function EventPage() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* ── GALLERY ─────────────────────────────────── */}
       <EventCaroursel images={work.gallery} />
 
-      {/* Stats Block */}
+      {/* ── STATS BLOCK ─────────────────────────────── */}
       <section className="pb-[16px] md:pb-[40px]">
-        <div className=" mx-auto px-[16px] md:px-[40px]">
+        <div className="mx-auto px-[16px] md:px-[40px]">
           <SubTitleLine title={work.stats_block.sub_title} />
-          {/* Title */}
+
           <AnimatedTextLine>
             <h2 className="max-w-[800px] uppercase mr-auto pt-[32px] md:pt-[116px] pb-[46px] md:pb-[134px] text-blue">
               {work.stats_block.title}
             </h2>
           </AnimatedTextLine>
-          {/* Indicators */}
+
+          {/* indictors */}
           <div className="hidden md:flex">
             <AnimatedTextLine
               stagger={0.2}
               className="flex w-full justify-center mb-[16px] text-blue text-center"
               width="full"
             >
-              {work.stats_block.indicators?.map((indicator, index, arr) => {
-                const isFirst = index === 0;
-                const isLast = index === arr.length - 1;
-                return (
-                  <div
-                    key={index}
-                    className={`w-full px-[24px] py-[10px] min-w-[140px] border-blue border-y-[4px] ${
-                      isFirst ? "border-l-[4px]" : "border-l-[4px]"
-                    } ${isLast ? "border-r-[4px]" : ""}`}
-                  >
-                    <p className="!font-[700]">{indicator}</p>
-                  </div>
-                );
-              })}
+              {work.stats_block.indicators.map((ind, idx, arr) => (
+                <div
+                  key={idx}
+                  className={`w-full px-[24px] py-[10px] min-w-[140px] border-blue border-y-[4px] border-l-[4px] ${
+                    idx === arr.length - 1 ? "border-r-[4px]" : ""
+                  }`}
+                >
+                  <p className="!font-[700]">{ind}</p>
+                </div>
+              ))}
             </AnimatedTextLine>
           </div>
 
-          <div className="block md:hidden ">
+          {/* mobile indicators */}
+          <div className="block md:hidden">
             <AnimatedTextLine
               stagger={0.2}
               className="space-y-[24px] justify-center mb-[16px] py-[31px] text-blue text-center border-1 border-blue"
-              width={"full"}
+              width="full"
             >
-              {work.stats_block.indicators?.map((indicator, index) => (
-                <p key={index} className="!font-[700]">
-                  {indicator}
+              {work.stats_block.indicators.map((ind, idx) => (
+                <p key={idx} className="!font-[700]">
+                  {ind}
                 </p>
               ))}
             </AnimatedTextLine>
           </div>
 
-          {/* Stats */}
-          <div className="">
-            <AnimatedTextLine
-              stagger={0.2}
-              className="grid grid-cols-2 md:grid-cols-3 gap-[16px] text-blue"
-            >
-              {work.stats_block.stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white-gris py-[70px] md:py-[169px] flex flex-col items-center justify-center text-center"
-                >
-                  <p className="!text-[40px] md:!text-[84px] !leading-[60px] md:!leading-[90px] !font-[900] mb-[10px] md:mb-[24px]">
-                    {stat.value}
-                  </p>
-                  <p className="large text-[16px] leading-[24px] font-[500]">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </AnimatedTextLine>
-          </div>
+          {/* stats numbers */}
+          <AnimatedTextLine
+            stagger={0.2}
+            className="grid grid-cols-2 md:grid-cols-3 gap-[16px] text-blue"
+          >
+            {work.stats_block.stats.map((st, idx) => (
+              <div
+                key={idx}
+                className="bg-white-gris py-[70px] md:py-[169px] flex flex-col items-center justify-center text-center"
+              >
+                <p className="!text-[40px] md:!text-[84px] !leading-[60px] md:!leading-[90px] !font-[900] mb-[10px] md:mb-[24px]">
+                  {st.value}
+                </p>
+                <p className="large text-[16px] leading-[24px] font-[500]">
+                  {st.label}
+                </p>
+              </div>
+            ))}
+          </AnimatedTextLine>
         </div>
       </section>
 
-      {/* Full Width Image Block */}
+      {/* ── VIDEO (full height) ─────────────────────── */}
       <section className="relative h-[100vh] w-full">
         <video
           src={work.media.video}
@@ -270,44 +246,39 @@ export default function EventPage() {
         />
       </section>
 
-      {/* Sponsors */}
-      <section className=" mx-auto px-4 md:px-[40px] py-16">
+      {/* ── SPONSORS ────────────────────────────────── */}
+      <section className="mx-auto px-4 md:px-[40px] py-16">
         <SubTitleLine title={work.sponsors.sub_title} />
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
-          {work.sponsors.items?.map((logo, index) => {
-            console.log(`[Sponsor] Logo ${index}:`, logo);
-            return (
-              <Image
-                key={index}
-                src={logo}
-                alt={`sponsor-${index}`}
-                width={120}
-                height={60}
-                className="object-contain mx-auto"
-              />
-            );
-          })}
+          {work.sponsors.items.map((logo, idx) => (
+            <Image
+              key={idx}
+              src={logo}
+              alt={`sponsor-${idx}`}
+              width={120}
+              height={60}
+              className="object-contain mx-auto"
+            />
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className=" mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
-        {work.cta.map((item, index) => {
-          console.log(`[CTA] Button ${index}:`, item.label, item.link);
-          return (
-            <Button key={index} text={item.label} link={item.link}></Button>
-          );
-        })}
+      {/* ── CTA ─────────────────────────────────────── */}
+      <section className="mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
+        {work.cta.map((btn, idx) => (
+          <Button key={idx} text={btn.label} link={btn.link} />
+        ))}
       </section>
 
       <MoreEvents
-        events={data.works}
-        title={data.more_events.title}
-        link="/portfolio/"
-        slug={data.more_events.slug}
-        flag="work"
-      />
+  events={teasers}                 /* niz objekata sa media + text                  */
+  title="More events"
+  link="/portfolio/"               /* “Vidite sve” vodi na portfolio listing        */
+  slug={teasers.map(t => t.slug)}  /* niz slug‑ova svake kartice                    */
+  flag="event"                     /*  ✅  ‘event’ → Link inside postaje /portfolio/ */
+ />
 
+      
       <Footer />
     </div>
   );
