@@ -1132,3 +1132,70 @@ export async function fetchPortfolioItems(): Promise<SimpleWork[]> {
     media:     { hero_image: item.acf.media.hero_image.url },
   }));
 }
+
+
+export interface OwnedEventSettings {
+  hero: {
+    title:       string;
+    description: string;
+  };
+  seo: {
+    title:            string;
+    meta_description: string;
+    image:            { url: string; alt?: string };
+  };
+}
+
+export interface OwnedEvent {
+  id:         number;
+  slug:       string;
+  title:      string;
+  logo:       string;
+  hero_image: string;
+}
+
+/** Fetch the ACF options for owned‑events page */
+export async function fetchOwnedEventSettings(): Promise<OwnedEventSettings> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/options/ownedeventssettings`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Failed to fetch Owned Events settings: ${res.status}`);
+  const json = await res.json();
+  const acf  = json.acf || {};
+
+  const hero = {
+    title:       acf.hero_oe?.title_oe       ?? '',
+    description: acf.hero_oe?.description_oe ?? '',
+  };
+
+  // ОВДЕ: узимамо из seo_ownedev, а не из seo
+  const seoacf = acf.seo_ownedev || {};
+  const seo = {
+    title:            seoacf.title            ?? '',
+    meta_description: seoacf.meta_description ?? '',
+    image: {
+      url: seoacf.seo_image   ?? '',
+      alt: '',
+    },
+  };
+
+  return { hero, seo };
+}
+
+/** Fetch the array of all owned events (id, slug, title, logo, hero_image) */
+export async function fetchAllOwnedEvents(): Promise<OwnedEvent[]> {
+  const res = await fetch(`${API_DOMAIN}/wp-json/bbr/v1/allevents`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Failed to fetch all owned events: ${res.status}`);
+  const data = await res.json() as Array<{
+    id:         number;
+    slug:       string;
+    title:      string;
+    logo:       string;
+    hero_image: string;
+  }>;
+  return data.map(evt => ({
+    id:         evt.id,
+    slug:       evt.slug,
+    title:      evt.title,
+    logo:       evt.logo,
+    hero_image: evt.hero_image,
+  }));
+}
