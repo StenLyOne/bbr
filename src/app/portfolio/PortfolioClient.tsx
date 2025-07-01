@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -235,7 +241,7 @@ export default function PortfolioClient({ settings, works }: Props) {
                   alt={work.title}
                   width={443}
                   height={278}
-                  className="w-full"
+                  className="w-[443] h-[278]"
                 />
                 <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
                 <p>{work.work_type}</p>
