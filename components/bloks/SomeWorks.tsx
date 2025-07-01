@@ -22,7 +22,7 @@ export default function SomeWorks({ works }: SomeWorksProps) {
             alt={work.title}
             width={443}
             height={278}
-            className="w-full"
+            className="w-full h-[278px]"
           />
           <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
           <p>{work.work_type}</p>

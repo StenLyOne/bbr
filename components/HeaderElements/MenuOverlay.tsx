@@ -26,8 +26,10 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const hasMounted = useRef(false);
 
-   // new: load social_links
-  const [socialLinks, setSocialLinks] = useState<ContactSettings["social_links"]>([]);
+  // new: load social_links
+  const [socialLinks, setSocialLinks] = useState<
+    ContactSettings["social_links"]
+  >([]);
   useEffect(() => {
     fetchContactSettings()
       .then((cfg) => setSocialLinks(cfg.social_links))
@@ -156,8 +158,6 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
       />
     </svg>
   ));
-
-  
 
   ArrowIcon.displayName = "ArrowIcon";
 
@@ -415,22 +415,22 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           })}
         </div>
         <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
-  {socialLinks.map((s) => (
-    <a
-      key={s.link_url}
-      href={s.link_url}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        src={s.icon_url}
-        alt={s.icon_alt}
-        className="w-[20px] h-[20px] object-contain"
-      />
-    </a>
-  ))}
-</div>
-
+          {socialLinks.map((s) => (
+            <a
+              key={s.link_url}
+              href={s.link_url}
+              target="_blank"
+              rel="noopener noreferrer "
+              className="icon-wrapper"
+            >
+              <img
+                src={s.icon_url}
+                alt={s.icon_alt}
+                className="w-[20px] h-[20px] object-contain icon-hover"
+              />
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

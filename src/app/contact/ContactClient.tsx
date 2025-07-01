@@ -33,6 +33,7 @@ export default function ContactClient({ data }: { data: ContactData }) {
   const [contentVisible, setContentVisible] = useState(false);
   const contentRef                      = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
+   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -134,12 +135,13 @@ export default function ContactClient({ data }: { data: ContactData }) {
               <h2 className="text-blue">{social_tittle}</h2>
               <div className="flex gap-[24px] items-center">
                 {social_links.map((sl, i) => (
-                  <a key={i} href={sl.link_url}>
+                  <a key={i} href={sl.link_url} className="icon-wrapper">
                     <Image
                       src={sl.icon_image.url}
                       alt={sl.icon_image.alt}
                       width={20}
                       height={20}
+                       className="transition-all icon-hover"
                     />
                   </a>
                 ))}

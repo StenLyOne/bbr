@@ -426,7 +426,7 @@ export default function Events({ bbr_events }: Props) {
               playsInline
             />
           </div>
-          \{/* lOGO */}
+          {/* lOGO */}
           <Image
             src="/assets/logo/bbr-events-logo.svg"
             width={250}

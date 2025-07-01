@@ -31,7 +31,7 @@ export default function MoreEvents({ testimonial }: Props) {
 
   return (
     <div className="">
-      <div className="mx-auto  md:px-[40px]">
+      <div className="mx-auto ">
         <div
           ref={containerRef}
           className="transition-all duration-300 flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
@@ -40,7 +40,7 @@ export default function MoreEvents({ testimonial }: Props) {
             <div
               key={i}
               className={`snap-start shrink-0 bg-blank p-[24px] md:p-[30px] text-blue ${
-                isMobile ? "w-[90vw]" : "w-[calc(31.5vw-28px)]"
+                isMobile ? "w-[90vw]" : "w-[calc(33vw-28px)]"
               } flex flex-col gap-[20px]`}
             >
               <div className="w-[200px] h-[160px] relative mx-auto">
@@ -48,7 +48,7 @@ export default function MoreEvents({ testimonial }: Props) {
                   src={ele.logo_src}
                   alt={`icon of ${ele.company}`}
                   fill
-                  className="object-cover rounded-[12px]"
+                  className=""
                 />
               </div>
               <p className="pb-[78px] pt-[30px]">{ele.description}</p>

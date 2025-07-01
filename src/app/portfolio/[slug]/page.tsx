@@ -5,21 +5,21 @@ export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Image   from "next/image";
-import Header  from "../../../../components/sections/Header";
-import Footer  from "../../../../components/sections/Footer";
-import SubTitleLine   from "../../../../components/ui/SubTitleLine";
+import Image from "next/image";
+import Header from "../../../../components/sections/Header";
+import Footer from "../../../../components/sections/Footer";
+import SubTitleLine from "../../../../components/ui/SubTitleLine";
 import EventCaroursel from "../../../../components/bloks/EventCaroursel";
-import Button         from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button";
 import HeroTitleFadeIn from "../../../../components/HeroTitleFadeIn";
 import AnimatedTextLine from "../../../../components/AnimatedTextLine";
-import MoreEvents      from "../../../../components/bloks/MoreEventsSlider";
+import MoreEvents from "../../../../components/bloks/MoreEventsSlider";
 
 import {
   fetchPortfolioItem,
-  fetchPortfolioTeasers,   // ➊ NOVO
+  fetchPortfolioTeasers, // ➊ NOVO
   PortfolioItemData,
-  PortfolioTeaser,  
+  PortfolioTeaser,
 } from "../../../../lib/api";
 
 export default function EventPage() {
@@ -32,8 +32,8 @@ export default function EventPage() {
   /* -------------------------------------------------- */
   /* 2) state                                           */
   /* -------------------------------------------------- */
-  const [work,  setWork]  = useState<PortfolioItemData | null>(null);
-const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]); 
+  const [work, setWork] = useState<PortfolioItemData | null>(null);
+  const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
   const [loading, setLoading] = useState(true);
   const [animationsReady, setAnimationsReady] = useState(false);
 
@@ -41,27 +41,27 @@ const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
   /* 3) fetch data on slug change                       */
   /* -------------------------------------------------- */
   useEffect(() => {
-  if (!slug) return;
+    if (!slug) return;
 
-  (async () => {
-    try {
-      const [itm, allTeasers] = await Promise.all([
-        fetchPortfolioItem(slug as string),
-        fetchPortfolioTeasers(),            // ➍ NOVO
-      ]);
+    (async () => {
+      try {
+        const [itm, allTeasers] = await Promise.all([
+          fetchPortfolioItem(slug as string),
+          fetchPortfolioTeasers(), // ➍ NOVO
+        ]);
 
-      setWork(itm);
+        setWork(itm);
 
-      // izbaci trenutni slug
-      setTeasers(allTeasers.filter((t) => t.slug !== slug));
-    } catch (err) {
-      console.error(err);
-      setWork(null);
-    } finally {
-      setLoading(false);
-    }
-  })();
-}, [slug]);
+        // izbaci trenutni slug
+        setTeasers(allTeasers.filter((t) => t.slug !== slug));
+      } catch (err) {
+        console.error(err);
+        setWork(null);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [slug]);
 
   /* -------------------------------------------------- */
   /* 4) loading / 404                                   */
@@ -95,7 +95,10 @@ const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
       <Header animationsReady={animationsReady} />
 
       {/* ── HERO ────────────────────────────────────── */}
-      <main className="relative w-full h-[100vh] overflow-hidden" data-bg="dark">
+      <main
+        className="relative w-full h-[100vh] overflow-hidden"
+        data-bg="dark"
+      >
         <Image
           src={work.media.hero_image}
           alt={work.title}
@@ -113,16 +116,46 @@ const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
           className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
         >
           {/* strelica */}
-          <svg className="rotate-270" width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect x="0.75" y="0.75" width="36.5" height="36.5" rx="18.25" stroke="#FFF" strokeWidth="1.5" />
-            <path d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M27.5 19H10.67" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#FFF"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </main>
 
       {/* ── INFO ────────────────────────────────────── */}
-      <section data-scroll-target className="mx-auto px-[16px] md:px-[40px]" data-bg="light">
+      <section
+        data-scroll-target
+        className="mx-auto px-[16px] md:px-[40px]"
+        data-bg="light"
+      >
         <div className="w-full">
           <SubTitleLine title={work.event_information.sub_title} />
 
@@ -141,7 +174,9 @@ const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
                 {work.event_information.info_block.items.map((it, i, arr) => (
                   <div
                     key={i}
-                    className={`py-[26px] ${i === arr.length - 1 ? "border-b border-blue" : ""}`}
+                    className={`py-[26px] ${
+                      i === arr.length - 1 ? "border-b border-blue" : ""
+                    }`}
                   >
                     <p className="!font-bold">{it.title}</p>
                     <p className="whitespace-pre-line">{it.value}</p>
@@ -273,14 +308,15 @@ const [teasers, setTeasers] = useState<PortfolioTeaser[]>([]);
       </section>
 
       <MoreEvents
-  events={teasers}                 /* niz objekata sa media + text                  */
-  title="More events"
-  link="/portfolio/"               /* “Vidite sve” vodi na portfolio listing        */
-  slug={teasers.map(t => t.slug)}  /* niz slug‑ova svake kartice                    */
-  flag="event"                     /*  ✅  ‘event’ → Link inside postaje /portfolio/ */
- />
+        events={teasers} /* niz objekata sa media + text                  */
+        title="More events"
+        link="/portfolio/" /* “Vidite sve” vodi na portfolio listing        */
+        slug={teasers.map(
+          (t) => t.slug
+        )} /* niz slug‑ova svake kartice                    */
+        flag="event" /*  ✅  ‘event’ → Link inside postaje /portfolio/ */
+      />
 
-      
       <Footer />
     </div>
   );

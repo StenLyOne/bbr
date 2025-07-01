@@ -107,7 +107,7 @@ export default function TimelineSection({
               </div>
 
               {/* Карточка */}
-              <div className="content bg-white space-y-[60px] p-[24px] md:p-[52px] max-w-[787px] w-full md:h-[366px]">
+              <div className="content bg-white space-y-[60px] p-[24px] md:p-[52px] max-w-[787px] w-full ">
                 {item.media.logo_src && (
                   <div className="mb-4">
                     <Image
@@ -120,7 +120,7 @@ export default function TimelineSection({
                   </div>
                 )}
                 <div className="space-y-[18px]">
-                  <h3 className="text-center text-blue">{item.date}</h3>
+                  <h3 className="text-center text-blue md:hidden">{item.date}</h3>
                   <p className="text-blue text-center md:text-left">
                     {item.description}
                   </p>

@@ -143,7 +143,7 @@ export default function OurStory() {
         className="bg-white-gris px-[16px] md:px-[40px]"
       >
         <SubTitleLine title={what_we_do.sub_title} />
-        <div className="flex flex-col-reverse md:flex-row gap-[48px] md:gap-[77px] py-[30px] md:py-[130px] pl-[100px] md:pl-0">
+        <div className="flex flex-col-reverse md:flex-row gap-[48px] md:gap-[77px] py-[30px] md:py-[130px] xl:pl-[100px] md:pl-0">
           <Image
             src={what_we_do.media.image_src}
             alt={what_we_do.sub_title}

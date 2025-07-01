@@ -204,6 +204,14 @@ a:hover svg.icon {
   will-change: transform;
 }
 
+.icon-hover {
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
+.icon-wrapper:hover .icon-hover {
+  filter: invert(34%) sepia(91%) saturate(1406%) hue-rotate(215deg) brightness(97%) contrast(93%);
+}
 
 @media (max-width: 767px) {
   h1 {
