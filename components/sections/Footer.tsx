@@ -1,4 +1,3 @@
-
 // "use client";
 
 // import { useState, useEffect } from "react";
@@ -175,7 +174,7 @@ export default function Footer({ color }: Props) {
       <div className="mx-auto px-[16px] md:px-[40px]">
         <SubTitleLine title="" color={lineColor} />
 
-        <div className="flex items-center justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
+        <div className="flex md:items-center justify-between flex-col gap-[30px] md:flex-row md:gap-[0px]">
           {/* mobile logo */}
           <div className="block md:hidden">
             <img
@@ -239,8 +238,7 @@ export default function Footer({ color }: Props) {
             })}
           </div>
 
-
-{/* desktop logo */}
+          {/* desktop logo */}
           <div className="md:block hidden">
             <img
               src={`/assets/logo/BBR-Group-Logo-Footer${logoSuffix}.svg`}

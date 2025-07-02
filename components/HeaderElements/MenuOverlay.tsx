@@ -9,11 +9,42 @@ import { usePointerType } from "../../hooks/usePointerType";
 import { useRouter } from "next/navigation";
 import { fetchContactSettings } from "../../lib/api";
 import type { ContactSettings } from "../../lib/api";
+import { usePathname } from "next/navigation";
 
 interface Prop {
-  menuFun: Function;
+  menuFun: () => void;
   isOpen: boolean;
 }
+
+const SmartLink = ({
+  href,
+  children,
+  menuFun,
+  ...props
+}: {
+  href: string;
+  children: React.ReactNode;
+  menuFun: () => void;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <Link
+      href={href}
+      onClick={(e) => {
+        if (isActive) {
+          e.preventDefault();
+          return;
+        }
+        // menuFun();
+      }}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   const router = useRouter();
@@ -25,6 +56,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const hasMounted = useRef(false);
+  const pathname = usePathname();
 
   // new: load social_links
   const [socialLinks, setSocialLinks] = useState<
@@ -284,7 +316,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                   if (hasItems) {
                     toggleSection(section.label);
                   } else if (section.href) {
-                    menuFun();
+                    // menuFun();
                   }
                 }}
               >
@@ -298,12 +330,12 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                         }}
                         className="!font-[600] text-blue hover:text-accent transition-colors duration-300 opacity-0 translate-y-[30px]"
                       >
-                        <Link
+                        <SmartLink
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
-                          onClick={() => menuFun()}
+                          menuFun={menuFun}
                         >
                           {text}
-                        </Link>
+                        </SmartLink>
                       </p>
                     ))}
                   </div>
@@ -340,9 +372,9 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
 
                   <p className="header hover:text-accent transition-colors duration-300">
                     {section.href ? (
-                      <Link href={section.href} onClick={() => menuFun()}>
+                      <SmartLink href={section.href} menuFun={menuFun}>
                         {section.label}
-                      </Link>
+                      </SmartLink>
                     ) : (
                       section.label
                     )}
@@ -370,9 +402,9 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                     } transition-colors duration-300`}
                   >
                     {section.href ? (
-                      <Link href={section.href} onClick={() => menuFun()}>
+                      <SmartLink href={section.href}  menuFun={menuFun}>
                         {section.label}
-                      </Link>
+                      </SmartLink>
                     ) : (
                       section.label
                     )}
@@ -399,13 +431,12 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                             : "opacity-0 translate-y-[30px] pointer-events-none"
                         }`}
                       >
-                        <Link
+                        <SmartLink
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
-                          className="flex"
-                          onClick={() => menuFun()}
+                          menuFun={menuFun}
                         >
                           {text}
-                        </Link>
+                        </SmartLink>
                       </p>
                     ))}
                   </div>

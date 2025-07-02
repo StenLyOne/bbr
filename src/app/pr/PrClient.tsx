@@ -144,7 +144,7 @@ title: item.title,
       </section>
 
       <section className="px-[16px] md:px-[40px] text-blue">
-        <div className="space-y-[40px] md:space-y-[130px]">
+        <div className="space-y-[40px] md:space-y-[130px] md:pb-[108px]">
           <SubTitleLine title={where_we_started.sub_title} />
           <div className="flex flex-col gap-[75px] md:gap-[130px]">
             {/* први блок */}
@@ -185,8 +185,8 @@ title: item.title,
             </h2>
 
             {/* други блок */}
-            <div className="flex flex-col md:flex-row gap-[40px] md:gap-[76px] justify-center">
-              <div className="relative w-full max-w-[556px] h-[344px]">
+            <div className="flex flex-col md:flex-row w-full md:w-[90%] mx-auto gap-[40px] md:gap-[76px] justify-center">
+               <div className="relative w-full  md:max-w-[556px] h-[350px] ">
                 <Image
                   src={where_we_started.content[1].media.image_src}
                   alt={where_we_started.content[1].title}
@@ -194,7 +194,7 @@ title: item.title,
                   className="object-cover"
                 />
               </div>
-              <div className="w-full md:max-w-[670px] space-y-[50px]">
+              <div className="w-full md:w-4/6 space-y-[50px]">
                 <h3>
                   <AnimatedStrokeByStroke
                     text={where_we_started.content[1].title}

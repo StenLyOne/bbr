@@ -233,11 +233,11 @@ export default function DigitalClient({
           </h2>
           <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {what_we_offer.content.map((blk, i) => (
-              <div key={i} className="flex flex-col items-center gap-[30px]">
+              <div key={i} className="flex flex-col ">
                 <AnimatedTextLine>
-                  <img src={blk.icon_src} alt={blk.title} />
+                  <img src={blk.icon_src} alt={blk.title} className="mx-auto md:mx-0"/>
                 </AnimatedTextLine>
-                <h3 className="text-center md:text-left mt-[21px] mb-[21px]">
+                <h3 className="!text-[19px] text-center md:text-left mt-[41px] mb-[21px]">
                   <AnimatedStrokeByStroke text={blk.title} />
                 </h3>
                 <AnimatedTextLine>

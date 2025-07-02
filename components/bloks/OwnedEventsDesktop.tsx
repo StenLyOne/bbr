@@ -15,7 +15,7 @@ interface Stat {
 interface MediaItem {
   image_src: string;
   logo_src: string;
-  alt: string
+  alt: string;
 }
 
 interface EventItem {
@@ -33,14 +33,13 @@ interface Props {
   };
 }
 
-
 export default function OwnedEventsDesktop({ data }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
-  const wrapperHeight = total * 2.2 * 45;
+  const wrapperHeight = Math.min(Math.max(total * 95), 1000);
 
   useEffect(() => {
     if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)
@@ -145,7 +144,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
       tl.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [data.events, isDesktop]);
+  }, [data.events, isDesktop, total]);
 
   // const scrollToEvent = (index: number) => {
   //   const section = wrapperRef.current;
@@ -277,7 +276,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
                 <Image
                   key={`image-${index}`}
                   src={event.media.image_src}
-                   alt={event.media.alt}
+                  alt={event.media.alt}
                   width={443}
                   height={443}
                   className={`image-${index} absolute object-cover w-full h-full opacity-1`}

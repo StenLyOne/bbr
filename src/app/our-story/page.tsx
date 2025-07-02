@@ -62,7 +62,8 @@ export default function OurStory() {
     const nextSection = document.querySelector("[data-scroll-target]");
     if (!nextSection) return;
     const offset = 142;
-    const top = nextSection.getBoundingClientRect().top + window.scrollY - offset;
+    const top =
+      nextSection.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: "smooth" });
   };
 
@@ -144,13 +145,15 @@ export default function OurStory() {
       >
         <SubTitleLine title={what_we_do.sub_title} />
         <div className="flex flex-col-reverse md:flex-row gap-[48px] md:gap-[77px] py-[30px] md:py-[130px] xl:pl-[100px] md:pl-0">
-          <Image
-            src={what_we_do.media.image_src}
-            alt={what_we_do.sub_title}
-            width={556}
-            height={350}
-            className="object-cover w-full md:w-[556px] h-[244px] md:h-[350px]"
-          />
+          <div className="relative object-cover w-full md:max-w-[556px] h-[244px] md:h-[350px]">
+            <Image
+              src={what_we_do.media.image_src}
+              alt={what_we_do.sub_title}
+           
+              fill
+              className="object-cover"
+            />
+          </div>
           <div className="w-full md:w-1/2 text-blue space-y-[36px] md:space-y-[52px]">
             <h2>
               <AnimatedStrokeByStroke text={what_we_do.title} />
@@ -193,17 +196,17 @@ export default function OurStory() {
           {where_we_started.content.slice(1).map((ele, idx) => (
             <div
               key={idx}
-              className="flex flex-col-reverse md:flex-row gap-[60px] md:gap-[76px]"
+              className="flex flex-col-reverse w-full md:w-[90%] mx-auto md:flex-row gap-[60px] md:gap-[76px]"
             >
-              <div className="relative w-full md:w-2/3 h-[350px] md:ml-[60px]">
+              <div className="relative w-full  md:max-w-[556px] h-[350px] ">
                 <Image
                   src={ele.media.image_src}
-                  alt={ele.title} 
+                  alt={ele.title}
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="w-full md:w-1/3 space-y-[37px]">
+              <div className="w-full md:w-4/6 space-y-[37px]">
                 <h3>
                   <AnimatedStrokeByStroke text={ele.title} />
                 </h3>
