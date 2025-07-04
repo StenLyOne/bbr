@@ -201,7 +201,7 @@ export default function EventPage() {
       </section>
 
       {/* ── GALLERY ─────────────────────────────────── */}
-      <EventCaroursel images={work.gallery} />
+      {work.gallery.length !== 0 && <EventCaroursel images={work.gallery} />}
 
       {/* ── STATS BLOCK ─────────────────────────────── */}
       <section className="pb-[16px] md:pb-[40px]">
@@ -272,16 +272,18 @@ export default function EventPage() {
       </section>
 
       {/* ── VIDEO (full height) ─────────────────────── */}
-      <section className="relative h-[100vh] w-full">
-        <video
-          src={work.media.video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        />
-      </section>
+      {work.media.video !== "" && (
+        <section className="relative h-[100vh] w-full">
+          <video
+            src={work.media.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        </section>
+      )}
 
       {/* ── SPONSORS ────────────────────────────────── */}
       <section className="mx-auto px-4 md:px-[40px] py-16">
@@ -301,11 +303,13 @@ export default function EventPage() {
       </section>
 
       {/* ── CTA ─────────────────────────────────────── */}
-      <section className="mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
-        {work.cta.map((btn, idx) => (
-          <Button key={idx} text={btn.label} link={btn.link} />
-        ))}
-      </section>
+      {work.cta.length !== 0 && (
+        <section className="mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
+          {work.cta.map((btn, idx) => (
+            <Button key={idx} text={btn.label} link={btn.link} />
+          ))}
+        </section>
+      )}
 
       <MoreEvents
         events={teasers} /* niz objekata sa media + text                  */

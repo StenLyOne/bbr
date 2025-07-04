@@ -161,7 +161,7 @@ export default function PortfolioClient({ settings, works }: Props) {
         </div>
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-100 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
             className="rotate-270"
@@ -241,7 +241,7 @@ export default function PortfolioClient({ settings, works }: Props) {
                   alt={work.title}
                   width={443}
                   height={278}
-                  className="w-[443] h-[278]"
+                  className="w-full h-[278] object-cover"
                 />
                 <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
                 <p>{work.work_type}</p>
