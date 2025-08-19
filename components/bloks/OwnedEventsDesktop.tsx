@@ -1,10 +1,10 @@
 import Image from "next/image";
-import SubTitleLine from "../ui/SubTitleLine";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import AnimatedStrokeByStroke from "../AnimatedStrokeByStroke";
-import AnimatedTextLine from "../AnimatedTextLine";
+import AnimatedStrokeByStroke from "../ui/typography/AnimatedStrokeByStroke";
+import AnimatedTextLine from "../ui/typography/AnimatedTextLine";
 import Link from "next/link";
 
 interface Stat {

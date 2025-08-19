@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../../lib/gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { useHeaderBgDetection } from "../../components/IntersectionObserver";
+import { useHeaderBgDetection } from "../ui/utils/IntersectionObserver";
 
 import BurgerButton from "../HeaderElements/BurgerButton";
 import MenuOverlay from "../HeaderElements/MenuOverlay";

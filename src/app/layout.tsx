@@ -2,8 +2,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
-import LenisProvider from "../../components/LenisProvider";
-import ScrollToTop from "../../components/ScrollToTop";
+import LenisProvider from "../../components/ui/layout/LenisProvider";
+import ScrollToTop from "../../components/ui/utils/ScrollToTop";
 import { fetchHomeContent, fetchSiteLogos } from "../../lib/api";   // ← dodato fetchSiteLogos
 import { Metadata } from "next";
 

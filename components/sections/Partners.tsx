@@ -1,6 +1,6 @@
 "use client";
 
-import SubTitleLine from "../ui/SubTitleLine";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 import { useEffect } from "react";
 import { gsap } from "../../lib/gsap";
 

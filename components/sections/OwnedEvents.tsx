@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import SubTitleLine from "../ui/SubTitleLine";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 import { useState } from "react";
-import AnimatedTextLine from "../AnimatedTextLine";
+import AnimatedTextLine from "../ui/typography/AnimatedTextLine";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import dynamic from "next/dynamic";
-import TitleLines from "../ui/TitleLines";
-import AnimatedStrokeByStroke from "../AnimatedStrokeByStroke";
+import TitleLines from "../ui/typography/TitleLines";
+import AnimatedStrokeByStroke from "../ui/typography/AnimatedStrokeByStroke";
 
 const OwnedEventsDesktop = dynamic(
   () => import("../bloks/OwnedEventsDesktop"),

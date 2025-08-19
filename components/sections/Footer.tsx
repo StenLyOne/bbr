@@ -114,7 +114,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import SubTitleLine from "../ui/SubTitleLine";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 import { fetchContactSettings, ContactSettings } from "../../lib/api";
 
 interface Props {

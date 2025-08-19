@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "../lib/gsap";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 interface AnimatedStrokeByStrokeProps {
   text: string;

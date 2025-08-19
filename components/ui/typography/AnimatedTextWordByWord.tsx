@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "../lib/gsap";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
-interface AnimatedTextLinesProps {
-  children: React.ReactNode;
-  stagger?: number;
+interface AnimatedTextWordByWordProps {
+  text: string;
   className?: string;
   delay?: number;
-  width?: string;
+  stagger?: number;
 }
 
-// Полифилл
 const safeRequestIdleCallback = (cb: () => void) => {
   if (typeof window !== "undefined" && "requestIdleCallback" in window) {
     (window as any).requestIdleCallback(cb);
@@ -20,20 +18,19 @@ const safeRequestIdleCallback = (cb: () => void) => {
   }
 };
 
-export default function AnimatedTextLines({
-  children,
-  stagger = 0.1,
+export default function AnimatedTextWordByWord({
+  text,
   className = "",
   delay = 0,
-  width = "",
-}: AnimatedTextLinesProps) {
+  stagger = 0.1,
+}: AnimatedTextWordByWordProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!wrapperRef.current) return;
 
-    const lines = wrapperRef.current.querySelectorAll("[data-line]");
-    gsap.set(lines, { y: 60, opacity: 0 });
+    const words = wrapperRef.current.querySelectorAll("[data-word]");
+    gsap.set(words, { y: 60, opacity: 0 });
 
     let trigger: ScrollTrigger;
 
@@ -41,10 +38,9 @@ export default function AnimatedTextLines({
       trigger = ScrollTrigger.create({
         trigger: wrapperRef.current,
         start: "top 65%",
-        toggleActions: "play none none none",
         once: true,
         onEnter: () => {
-          gsap.to(lines, {
+          gsap.to(words, {
             y: 0,
             opacity: 1,
             duration: 1,
@@ -54,27 +50,24 @@ export default function AnimatedTextLines({
           });
         },
       });
+
       ScrollTrigger.refresh();
     });
 
     return () => {
       trigger?.kill();
     };
-  }, [stagger, delay]);
+  }, [delay, stagger]);
+
+  const wordElements = text.split(" ").map((word, i) => (
+    <span key={i} data-word className="inline-block overflow-hidden mr-[0.3em]">
+      <span className="inline-block">{word}</span>
+    </span>
+  ));
 
   return (
-    <div ref={wrapperRef} className={`overflow-hidden w-full ${className}`}>
-      {Array.isArray(children) ? (
-        children.map((child, i) => (
-          <div key={i} data-line className={` w-${width}`}>
-            {child}
-          </div>
-        ))
-      ) : (
-        <div data-line className="overflow-hidden">
-          {children}
-        </div>
-      )}
+    <div ref={wrapperRef} className={`inline-block ${className}`}>
+      {wordElements}
     </div>
   );
 }

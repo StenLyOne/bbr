@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Link from "next/link";
-import AnimatedTextLine from "../AnimatedTextLine";
+import AnimatedTextLine from "../ui/typography/AnimatedTextLine";
 import data from "../../data/owned-events.json";
 
 interface Props {

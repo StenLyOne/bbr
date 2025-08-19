@@ -102,8 +102,8 @@ export default function Home() {
           name: o.title,
           link: `/our-owned-events/${o.slug}`,
           media: {
-            image_src: o.acf.media.hero_image.url,
-            logo_src:  o.acf.media.logo.url,
+            image_src: o.acf.media.hero_image.url ?? "",
+            logo_src:  o.acf.media.logo.url ?? "",
             // pull ACF alt (or fallback to title)
             alt:        o.acf.media.alt || o.title,
           },

@@ -5,14 +5,14 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
 import Footer from "../../../components/sections/Footer";
-import Button from "../../../components/ui/Button";
+import Button from "../../../components/ui/buttons/Button";
 import Header from "../../../components/sections/Header";
-import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
-import SubTitleLine from "../../../components/ui/SubTitleLine";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
+import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import EventCaroursel from "../../../components/bloks/EventCaroursel";
-import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
+import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedStrokeByStroke";
 import SomeWorks from "../../../components/bloks/SomeWorks";
 import { EventPageData } from "../../../lib/api";
 

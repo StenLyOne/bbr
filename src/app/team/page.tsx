@@ -8,13 +8,13 @@ import { API_DOMAIN } from "../../../lib/api";
 import staticData from "../../../data/team.json";
 
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
 
 import Footer from "../../../components/sections/Footer";
 import Header from "../../../components/sections/Header";
-import SubTitleLine from "../../../components/ui/SubTitleLine";
-import Button from "../../../components/ui/Button";
-import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
+import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
+import Button from "../../../components/ui/buttons/Button";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
 
 export default function Team() {
   // ------- DODATO -------

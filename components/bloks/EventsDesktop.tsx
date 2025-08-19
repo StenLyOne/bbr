@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
-import TitleLines from "../ui/TitleLines";
+import TitleLines from "../ui/typography/TitleLines";
 
 interface Event {
   title: string;

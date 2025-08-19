@@ -7,15 +7,15 @@ import Image from "next/image";
 
 import { fetchOurStoryContent, OurStoryData } from "../../../lib/api";
 
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
-import AnimatedStrokeByStroke from "../../../components/AnimatedStrokeByStroke";
+import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
+import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedStrokeByStroke";
 import TimelineSection from "../../../components/bloks/TimelineSection";
 import TestimonialCarousel from "../../../components/bloks/TestimonialCarousel";
 
 import Header from "../../../components/sections/Header";
 import Footer from "../../../components/sections/Footer";
-import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
-import SubTitleLine from "../../../components/ui/SubTitleLine";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
+import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 
 export default function OurStory() {
   const [showIntro, setShowIntro] = useState(true);

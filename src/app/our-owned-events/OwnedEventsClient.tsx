@@ -8,9 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../../../components/sections/Header";
 import Footer from "../../../components/sections/Footer";
-import Button from "../../../components/ui/Button";
-import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import Button from "../../../components/ui/buttons/Button";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
+import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
 import type { OwnedEventSettings, OwnedEvent } from "../../../lib/api";
 
 interface Props {

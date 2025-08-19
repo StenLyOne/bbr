@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import LenisProvider from "../components/LenisProvider";
+import LenisProvider from "../layout/LenisProvider";
 
 export default function ScrollToTop() {
   const pathname = usePathname();

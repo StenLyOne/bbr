@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "../../lib/gsap";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 // Полифилл для Safari и старых браузеров
 const safeRequestIdleCallback = (cb: () => void) => {

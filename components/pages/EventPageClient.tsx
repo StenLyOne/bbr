@@ -5,11 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Header from "../sections/Header";
 import Footer from "../sections/Footer";
-import SubTitleLine from "../ui/SubTitleLine";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 import EventCaroursel from "../bloks/EventCaroursel";
-import Button from "../ui/Button";
-import HeroTitleFadeIn from "../HeroTitleFadeIn";
-import AnimatedTextLine from "../AnimatedTextLine";
+import Button from "../ui/buttons/Button";
+import HeroTitleFadeIn from "../ui/typography/HeroTitleFadeIn";
 import MoreEvents from "../bloks/MoreEvents";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 

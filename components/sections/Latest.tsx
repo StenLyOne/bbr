@@ -1,5 +1,5 @@
-import SubTitleLine from "../ui/SubTitleLine";
-import InstagramEmbed from "../ui/InstagramEmbed";
+import SubTitleLine from "../ui/typography/SubTitleLine";
+import InstagramEmbed from "../ui/media/InstagramEmbed";
 
 interface Props {
   data: {

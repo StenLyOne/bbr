@@ -4,11 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Header from "../../../../components/sections/Header";
 import Footer from "../../../../components/sections/Footer";
-import SubTitleLine from "../../../../components/ui/SubTitleLine";
+import SubTitleLine from "../../../../components/ui/typography/SubTitleLine";
 import EventCaroursel from "../../../../components/bloks/EventCaroursel";
-import Button from "../../../../components/ui/Button";
-import HeroTitleFadeIn from "../../../../components/HeroTitleFadeIn";
-import AnimatedTextLine from "../../../../components/AnimatedTextLine";
+import Button from "../../../../components/ui/buttons/Button";
+import HeroTitleFadeIn from "../../../../components/ui/typography/HeroTitleFadeIn";
+import AnimatedTextLine from "../../../../components/ui/typography/AnimatedTextLine";
 import MoreEvents from "../../../../components/bloks/MoreEventsSlider";
 
 import {

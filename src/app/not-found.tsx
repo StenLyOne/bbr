@@ -2,7 +2,7 @@
 
 import Footer from "../../components/sections/Footer";
 import Header from "../../components/sections/Header";
-import Button from "../../components/ui/Button";
+import Button from "../../components/ui/buttons/Button";
 
 export default function NotFound() {
   return (

@@ -12,11 +12,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../../../components/sections/Header";
 import Footer from "../../../components/sections/Footer";
-import SubTitleLine from "../../../components/ui/SubTitleLine";
+import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import EventCaroursel from "../../../components/bloks/EventCaroursel";
-import Button from "../../../components/ui/Button";
-import HeroTitleFadeIn from "../../../components/HeroTitleFadeIn";
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import Button from "../../../components/ui/buttons/Button";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
+import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import type { PortfolioSettings, SimpleWork } from "../../../lib/api";
 

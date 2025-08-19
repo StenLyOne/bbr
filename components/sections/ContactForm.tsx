@@ -3,7 +3,7 @@
 
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
-import Button from "../ui/Button";
+import Button from "..//ui/buttons/Button";
 
 export type ContactFormProps = {
   labels: {

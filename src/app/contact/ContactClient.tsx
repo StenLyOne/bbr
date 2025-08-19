@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger }         from "../../../lib/gsap";
 import Image                           from "next/image";
 
-import HeroTitleFadeIn  from "../../../components/HeroTitleFadeIn";
-import AnimatedTextLine from "../../../components/AnimatedTextLine";
+import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
+import AnimatedTextLines from "../../../components/ui/typography/AnimatedTextLine";
 import Header           from "../../../components/sections/Header";
-import SubTitleLine     from "../../../components/ui/SubTitleLine";
+import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import ContactForm      from "../../../components/sections/ContactForm";
 import Footer           from "../../../components/sections/Footer";
 
@@ -88,7 +88,7 @@ export default function ContactClient({ data }: { data: ContactData }) {
             </HeroTitleFadeIn>
           </div>
           <div className="flex items-center flex-col justify-start gap-[4px]">
-            <AnimatedTextLine delay={1.1}>
+            <AnimatedTextLines delay={1.1}>
               <Image
                 className="hidden md:block"
                 src={contact_hero_image.url}
@@ -96,7 +96,7 @@ export default function ContactClient({ data }: { data: ContactData }) {
                 width={728}
                 height={326}
               />
-            </AnimatedTextLine>
+            </AnimatedTextLines>
           </div>
         </div>
 

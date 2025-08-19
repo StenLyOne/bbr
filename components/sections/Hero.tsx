@@ -2,8 +2,8 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import AnimatedTextLine from "../AnimatedTextLine";
-import HeroTitleFadeIn from "../../components/HeroTitleFadeIn";
+import AnimatedTextLines from "../ui/typography/AnimatedTextLine";
+import HeroTitleFadeIn from "../ui/typography/HeroTitleFadeIn";
 
 export default function Hero({
   data,
