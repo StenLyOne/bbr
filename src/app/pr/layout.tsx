@@ -3,6 +3,8 @@ import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { fetchPrContent } from '../../../lib/api/pr';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const { seo } = await fetchPrContent();
