@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { SomeWorkItem } from "../../lib/api";
+import { SomeWorkItem } from "../../lib/api/events";
 
 interface SomeWorksProps {
   works: SomeWorkItem[];
