@@ -1,5 +1,4 @@
-"use client";
-export const dynamic = "force-dynamic";
+"use client"
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -19,7 +18,7 @@ import {
   fetchOwnedEventTeasers,
   OwnedEventItemData,
   OwnedEventTeaser,
-} from "../../../../lib/api";
+} from "../../../../lib/api/events";
 
 export default function OwnedEventPage() {
   /* 1) slug */

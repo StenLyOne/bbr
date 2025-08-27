@@ -1,9 +1,8 @@
 // src/app/our-owned-events/[slug]/layout.tsx
 import { ReactNode } from "react";
 import { Metadata }  from "next";
-import { fetchOwnedEventItem } from "../../../../lib/api";
+import { fetchOwnedEventItem } from "../../../../lib/api/events";
 
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(
   { params }: any

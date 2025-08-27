@@ -1,9 +1,7 @@
 // src/app/cookies/layout.tsx
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchCookiesContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchCookiesContent } from "../../../lib/api/cookies";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -21,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
           {
             url: seo_image.url,
             alt: seo_image.alt,
-          }
+          },
         ],
       },
       twitter: {

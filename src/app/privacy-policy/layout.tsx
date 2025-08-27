@@ -1,9 +1,7 @@
 // src/app/privacy-policy/layout.tsx
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchPrivacyContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchPrivacyContent } from "../../../lib/api/privacy";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

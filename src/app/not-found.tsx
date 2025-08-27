@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "../../components/sections/Footer";
+import Footer from "../../components/sections/Footer/index";
 import Header from "../../components/sections/Header";
 import Button from "../../components/ui/buttons/Button";
 

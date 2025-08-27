@@ -1,7 +1,9 @@
+// src/app/portfolio/[slug]/SinglePortfolioClient.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+
 import Header from "../../../../components/sections/Header";
 import Footer from "../../../../components/sections/Footer";
 import SubTitleLine from "../../../../components/ui/typography/SubTitleLine";
@@ -11,38 +13,48 @@ import HeroTitleFadeIn from "../../../../components/ui/typography/HeroTitleFadeI
 import AnimatedTextLine from "../../../../components/ui/typography/AnimatedTextLine";
 import MoreEvents from "../../../../components/bloks/MoreEventsSlider";
 
-import {
+import type {
   PortfolioItemData,
   PortfolioTeaser,
-} from "../../../../lib/api";
+} from "../../../../lib/api/portfolio";
 
-export default function SinglePortfolioClient({
-  work,
-  teasers,
-}: {
+type Props = {
   work: PortfolioItemData;
   teasers: PortfolioTeaser[];
-}) {
+};
+
+export default function SinglePortfolioClient({ work, teasers }: Props) {
   const [animationsReady, setAnimationsReady] = useState(false);
 
-  function scrollToNextSection() {
+  useEffect(() => {
+    // даём Header сигнал, что можно стартовать анимации
+    setAnimationsReady(true);
+  }, []);
+
+  const scrollToNextSection = () => {
     const next = document.querySelector("[data-scroll-target]");
     if (!next) return;
-    const top = next.getBoundingClientRect().top + window.scrollY - 142;
+    const offset = 142;
+    const top = next.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: "smooth" });
-  }
+  };
 
+  console.log(work.event_information)
   return (
     <div className="bg-white text-foreground">
       <Header animationsReady={animationsReady} />
 
-      {/* ── HERO ─────────────────────────────── */}
-      <main className="relative w-full h-[100vh] overflow-hidden" data-bg="dark">
+      {/* ── HERO ────────────────────────────────────── */}
+      <main
+        className="relative w-full h-[100vh] overflow-hidden"
+        data-bg="dark"
+      >
         <Image
           src={work.media.hero_image}
           alt={work.title}
           fill
           className="object-cover z-0"
+          priority
         />
         <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center p-[16px] md:p-[40px]">
           <HeroTitleFadeIn delay={1} className="text-white uppercase mr-auto">
@@ -54,25 +66,56 @@ export default function SinglePortfolioClient({
           onClick={scrollToNextSection}
           className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
         >
-          <svg className="rotate-270" width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect x="0.75" y="0.75" width="36.5" height="36.5" rx="18.25" stroke="#FFF" strokeWidth="1.5" />
-            <path d="M16.57 12.93 10.5 19l6.07 6.07" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M27.5 19H10.67" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            className="rotate-270"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+          >
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#FFF"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#FFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </main>
 
-      {/* ── INFO ─────────────────────────────── */}
-      <section data-scroll-target className="mx-auto px-[16px] md:px-[40px]" data-bg="light">
+      {/* ── INFO ────────────────────────────────────── */}
+      <section
+        data-scroll-target
+        className="mx-auto px-[16px] md:px-[40px]"
+        data-bg="light"
+      >
         <div className="w-full">
-          <SubTitleLine title={work.event_information.sub_title} />
+          {/* <SubTitleLine title={work.event_information.sub_title} /> */}
 
           <div className="w-full flex flex-col-reverse lg:flex-row md:gap-[130px] pt-[32px] md:pt-[118px] pb-[72px] md:pb-[141px]">
+            {/* текст только на мобилке */}
             <AnimatedTextLine className="text-blue pt-[46px] md:hidden">
               <p>{work.event_information.text}</p>
             </AnimatedTextLine>
 
-            {/* left column */}
+            {/* info блок */}
             <div className="md:w-[443px]">
               <AnimatedTextLine
                 stagger={0.2}
@@ -81,7 +124,9 @@ export default function SinglePortfolioClient({
                 {work.event_information.info_block.items.map((it, i, arr) => (
                   <div
                     key={i}
-                    className={`py-[26px] ${i === arr.length - 1 ? "border-b border-blue" : ""}`}
+                    className={`py-[26px] ${
+                      i === arr.length - 1 ? "border-b border-blue" : ""
+                    }`}
                   >
                     <p className="!font-bold">{it.title}</p>
                     <p className="whitespace-pre-line">{it.value}</p>
@@ -90,7 +135,7 @@ export default function SinglePortfolioClient({
               </AnimatedTextLine>
             </div>
 
-            {/* right column */}
+            {/* правая колонка */}
             <div className="space-y-[50px] w-full md:max-w-[60%]">
               <AnimatedTextLine className="w-full">
                 <h2 className="text-blue">{work.event_information.title}</h2>
@@ -105,10 +150,10 @@ export default function SinglePortfolioClient({
         </div>
       </section>
 
-      {/* GALLERY */}
-      <EventCaroursel images={work.gallery} />
+      {/* ── GALLERY ─────────────────────────────────── */}
+      {work.gallery.length !== 0 && <EventCaroursel images={work.gallery} />}
 
-      {/* STATS */}
+      {/* ── STATS BLOCK ─────────────────────────────── */}
       <section className="pb-[16px] md:pb-[40px]">
         <div className="mx-auto px-[16px] md:px-[40px]">
           <SubTitleLine title={work.stats_block.sub_title} />
@@ -119,7 +164,7 @@ export default function SinglePortfolioClient({
             </h2>
           </AnimatedTextLine>
 
-          {/* indicators */}
+          {/* indicators desktop */}
           <div className="hidden md:flex">
             <AnimatedTextLine
               stagger={0.2}
@@ -139,7 +184,7 @@ export default function SinglePortfolioClient({
             </AnimatedTextLine>
           </div>
 
-          {/* mobile indicators */}
+          {/* indicators mobile */}
           <div className="block md:hidden">
             <AnimatedTextLine
               stagger={0.2}
@@ -176,43 +221,49 @@ export default function SinglePortfolioClient({
         </div>
       </section>
 
-      {/* VIDEO */}
-      <section className="relative h-[100vh] w-full">
-        <video
-          src={work.media.video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        />
-      </section>
+      {/* ── VIDEO ───────────────────────────────────── */}
+      {work.media.video !== "" && (
+        <section className="relative h-[100vh] w-full">
+          <video
+            src={work.media.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        </section>
+      )}
 
-      {/* SPONSORS */}
-      <section className="mx-auto px-4 md:px-[40px] py-16">
-        <SubTitleLine title={work.sponsors.sub_title} />
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
-          {work.sponsors.items.map((logo, idx) => (
-            <Image
-              key={idx}
-              src={logo}
-              alt={`sponsor-${idx}`}
-              width={120}
-              height={60}
-              className="object-contain mx-auto"
-            />
+      {/* ── SPONSORS ────────────────────────────────── */}
+      {work.sponsors.items.length !== 0 && (
+        <section className="mx-auto px-4 md:px-[40px] py-16">
+          <SubTitleLine title={work.sponsors.sub_title} />
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
+            {work.sponsors.items.map((logo, idx) => (
+              <Image
+                key={idx}
+                src={logo}
+                alt={`sponsor-${idx}`}
+                width={120}
+                height={60}
+                className="object-contain mx-auto"
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── CTA ─────────────────────────────────────── */}
+      {work.cta.length !== 0 && (
+        <section className="mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
+          {work.cta.map((btn, idx) => (
+            <Button key={idx} text={btn.label} link={btn.link} />
           ))}
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* CTA */}
-      <section className="mx-auto px-4 md:px-[40px] pb-24 flex flex-wrap gap-4 justify-center">
-        {work.cta.map((btn, idx) => (
-          <Button key={idx} text={btn.label} link={btn.link} />
-        ))}
-      </section>
-
-      {/* MORE EVENTS */}
+      {/* ── More events ─────────────────────────────── */}
       <MoreEvents
         events={teasers}
         title="More events"

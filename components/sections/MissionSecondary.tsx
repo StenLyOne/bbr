@@ -16,7 +16,11 @@ interface MissionSecondaryData {
   items: MissionSecondaryItem[];
 }
 
-export default function MissionSecondary({ data }: { data: MissionSecondaryData }) {
+export default function MissionSecondary({
+  data,
+}: {
+  data: MissionSecondaryData;
+}) {
   return (
     <section className="w-full bg-blank">
       <div className=" md:px-[0px] md:px-[40px]">
@@ -36,7 +40,7 @@ export default function MissionSecondary({ data }: { data: MissionSecondaryData 
             {data.items.map((item: any, index: number) => (
               <SquareIcons
                 key={index}
-                link={item.link}
+                link={`${process.env.NEXT_PUBLIC_DOMAIN}${item.link}`}
                 iconSrc={item.icon}
                 title={item.label}
               />

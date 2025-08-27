@@ -6,7 +6,7 @@ import Image from "next/image";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
 import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
-import Footer from "../../../components/sections/Footer";
+import Footer from "../../../components/sections/Footer/index";
 import Button from "../../../components/ui/buttons/Button";
 import Header from "../../../components/sections/Header";
 import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
@@ -14,31 +14,32 @@ import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
-import type { PrContent, PortfolioItemRaw } from "../../../lib/api";
+import type { PrContent } from "../../../lib/api/pr";
+import type { PortfolioItemRaw } from "../../../lib/api/portfolio";
 
 interface PrClientProps {
-  content:     PrContent;
+  content: PrContent;
   latestItems: PortfolioItemRaw[];
 }
 
 export default function PrClient({ content, latestItems }: PrClientProps) {
-  const { hero, where_we_started, services, featured_on, latest_meta } = content;
-
+  const { hero, where_we_started, services, featured_on, latest_meta } =
+    content;
   // Претварамо PortfolioItemRaw у облик који MoreEvents очекује
-  const eventsForMore = latestItems.map(item => ({
-title: item.title,
+  const eventsForMore = latestItems.map((item) => ({
+    title: item.title,
     media: {
-      hero_image: item.acf.media.hero_image.url
+      hero_image: item.acf.media.hero_image.url,
     },
     event_information: {
-      text: item.acf.event_information.text
-    }
+      text: item.acf.event_information.text,
+    },
   }));
-  const slugsForMore = latestItems.map(item => item.slug);
+  const slugsForMore = latestItems.map((item) => item.slug);
 
-  const [showIntro, setShowIntro]             = useState(true);
-  const [contentVisible, setContentVisible]   = useState(false);
-  const contentRef                            = useRef<HTMLDivElement>(null);
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
   const scrollToNextSection = () => {
@@ -54,9 +55,9 @@ title: item.title,
   useEffect(() => {
     if (!showIntro && contentRef.current) {
       gsap.to(contentRef.current, {
-        opacity:  1,
+        opacity: 1,
         duration: 1,
-        ease:     "power2.out",
+        ease: "power2.out",
         onComplete: () => {
           setContentVisible(true);
           setAnimationsReady(true);
@@ -90,7 +91,7 @@ title: item.title,
           <img
             className="w-[100%] md:w-[65%] mx-auto"
             src="/assets/logo/bbr-pr-vector.svg"
-            alt= {hero.title}
+            alt={hero.title}
           />
         </AnimatedTextLine>
 
@@ -120,15 +121,33 @@ title: item.title,
         >
           <svg
             className="rotate-270"
-            width="38" height="38" viewBox="0 0 38 38" fill="none"
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect x="0.75" y="0.75" width="36.5" height="36.5" rx="18.25"
-              stroke="#21224b" strokeWidth="1.5"/>
-            <path d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
-              stroke="#21224b" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M27.5 19H10.67"
-              stroke="#21224b" strokeWidth="1.5" strokeLinecap="round"/>
+            <rect
+              x="0.75"
+              y="0.75"
+              width="36.5"
+              height="36.5"
+              rx="18.25"
+              stroke="#21224b"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M27.5 19H10.67"
+              stroke="#21224b"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
       </main>
@@ -138,7 +157,10 @@ title: item.title,
           <video
             src={hero.video_src}
             className="w-screen h-screen md:w-full md:h-full object-cover"
-            autoPlay muted loop playsInline
+            autoPlay
+            muted
+            loop
+            playsInline
           />
         </div>
       </section>
@@ -174,7 +196,8 @@ title: item.title,
             </div>
 
             {/* велики наслов */}
-            <h2 className="text-[64px] font-[900] text-center uppercase leading-[1.1]
+            <h2
+              className="text-[64px] font-[900] text-center uppercase leading-[1.1]
               break-words whitespace-normal"
             >
               <AnimatedStrokeByStroke
@@ -186,7 +209,7 @@ title: item.title,
 
             {/* други блок */}
             <div className="flex flex-col md:flex-row w-full md:w-[90%] mx-auto gap-[40px] md:gap-[76px] justify-center">
-               <div className="relative w-full  md:max-w-[556px] h-[350px] ">
+              <div className="relative w-full  md:max-w-[556px] h-[350px] ">
                 <Image
                   src={where_we_started.content[1].media.image_src}
                   alt={where_we_started.content[1].title}
@@ -218,7 +241,10 @@ title: item.title,
         <SubTitleLine title={services.sub_title} />
         <div className="md:py-[40px] py-[90px]">
           <h2 className="max-w-[1065px]">
-            <AnimatedStrokeByStroke text={services.title} className="text-left" />
+            <AnimatedStrokeByStroke
+              text={services.title}
+              className="text-left"
+            />
           </h2>
           <div className="space-y-[40px] my-[90px]">
             {services.content.map((ele, idx) => (

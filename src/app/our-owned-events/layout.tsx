@@ -2,9 +2,7 @@
 
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
-import { fetchOwnedEventSettings } from '../../../lib/api';
-
-export const dynamic = 'force-dynamic';
+import { fetchOwnedEventSettings } from '../../../lib/api/events';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

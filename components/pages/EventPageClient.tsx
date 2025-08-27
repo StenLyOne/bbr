@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Header from "../sections/Header";
-import Footer from "../sections/Footer";
+import Footer from "../sections/Footer/index";
 import SubTitleLine from "../ui/typography/SubTitleLine";
 import EventCaroursel from "../bloks/EventCaroursel";
 import Button from "../ui/buttons/Button";

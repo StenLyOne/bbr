@@ -1,9 +1,11 @@
 // src/app/privacy-policy/page.tsx
 import Header from "../../../components/sections/Header";
-import Footer from "../../../components/sections/Footer";
-import { fetchPrivacyContent } from "../../../lib/api";
+import Footer from "../../../components/sections/Footer/index";
+import { fetchPrivacyContent } from "../../../lib/api/privacy";
 
-export const dynamic = "force-dynamic";
+export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+
+export const revalidate = REVALIDATE_SECONDS;
 
 export default async function PrivacyPolicyPage() {
   const { title_privacy, description_privacy } = await fetchPrivacyContent();

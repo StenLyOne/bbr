@@ -2,26 +2,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger }         from "../../../lib/gsap";
-import Image                           from "next/image";
+import { gsap, ScrollTrigger } from "../../../lib/gsap";
+import Image from "next/image";
 
 import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
 import AnimatedTextLines from "../../../components/ui/typography/AnimatedTextLine";
-import Header           from "../../../components/sections/Header";
+import Header from "../../../components/sections/Header";
 import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
-import ContactForm      from "../../../components/sections/ContactForm";
-import Footer           from "../../../components/sections/Footer";
+import ContactForm from "../../../components/sections/ContactForm";
+import Footer from "../../../components/sections/Footer/index";
 
-import type { ContactData } from "../../../lib/api";
+import type { Contact } from "../../../lib/api/contacts";
 
-export default function ContactClient({ data }: { data: ContactData }) {
+export default function ContactClient({ data }: { data: Contact }) {
   const {
     contact_hero_title,
     contact_hero_image,
     contact_section_sub_title,
-        contact_section_tittle,
-        social_tittle,
-
+    contact_section_tittle,
+    social_tittle,
 
     contact_info,
     social_links,
@@ -29,11 +28,11 @@ export default function ContactClient({ data }: { data: ContactData }) {
     enquiry_types,
   } = data;
 
-  const [showIntro, setShowIntro]       = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
-  const contentRef                      = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
-   const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -83,7 +82,10 @@ export default function ContactClient({ data }: { data: ContactData }) {
       >
         <div className="w-full flex justify-center md:justify-between items-center gap-[48px]">
           <div>
-            <HeroTitleFadeIn delay={1} className="text-blue text-center md:text-left">
+            <HeroTitleFadeIn
+              delay={1}
+              className="text-blue text-center md:text-left"
+            >
               {contact_hero_title}
             </HeroTitleFadeIn>
           </div>
@@ -110,7 +112,9 @@ export default function ContactClient({ data }: { data: ContactData }) {
                      cursor-pointer"
         >
           {/* your exact same SVG */}
-          <svg className="rotate-270" width="38" height="38" /* … */>…</svg>
+          <svg className="rotate-270" width="38" height="38" /* … */>
+            …
+          </svg>
         </button>
       </main>
 
@@ -124,10 +128,14 @@ export default function ContactClient({ data }: { data: ContactData }) {
 
           <div className="space-y-[64px]">
             <div className="space-y-[44px]">
-  <h2 className="text-blue">{contact_section_tittle}</h2>
+              <h2 className="text-blue">{contact_section_tittle}</h2>
               <div className="flex flex-col space-y-[12px]">
-                <a href={contact_info.phone_link}>{contact_info.phone_number}</a>
-                <a href={contact_info.email_link}>{contact_info.email_address}</a>
+                <a href={contact_info.phone_link}>
+                  {contact_info.phone_number}
+                </a>
+                <a href={contact_info.email_link}>
+                  {contact_info.email_address}
+                </a>
                 <a>{contact_info.postal_address}</a>
               </div>
             </div>
@@ -141,7 +149,7 @@ export default function ContactClient({ data }: { data: ContactData }) {
                       alt={sl.icon_image.alt}
                       width={20}
                       height={20}
-                       className="transition-all icon-hover"
+                      className="transition-all icon-hover"
                     />
                   </a>
                 ))}

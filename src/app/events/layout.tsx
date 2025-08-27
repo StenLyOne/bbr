@@ -1,13 +1,11 @@
 // src/app/events/layout.tsx
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchEventPageContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchEventManagementContent } from "../../../lib/api/events";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const { seo } = await fetchEventPageContent();
+    const { seo } = await fetchEventManagementContent();
     return {
       title:       seo.meta_title,
       description: seo.meta_description,

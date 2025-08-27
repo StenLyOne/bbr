@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchTeamContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchTeamContent } from "../../../lib/api/team";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

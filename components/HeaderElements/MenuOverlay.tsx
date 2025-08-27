@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "../../lib/gsap";
 import Link from "next/link";
 import { forwardRef } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { usePointerType } from "../../hooks/usePointerType";
 import { useRouter } from "next/navigation";
-import { fetchContactSettings } from "../../lib/api";
-import type { ContactSettings } from "../../lib/api";
+import { useContactSettings } from "../../hooks/useContactSettings";
 import { usePathname } from "next/navigation";
+// см. наш хук
 
 interface Prop {
   menuFun: () => void;
@@ -59,14 +59,9 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   const pathname = usePathname();
 
   // new: load social_links
-  const [socialLinks, setSocialLinks] = useState<
-    ContactSettings["social_links"]
-  >([]);
-  useEffect(() => {
-    fetchContactSettings()
-      .then((cfg) => setSocialLinks(cfg.social_links))
-      .catch((err) => console.error("Failed to load social links:", err));
-  }, []);
+  const contact = useContactSettings(); // { postal_address, copyright, social_links, ... }
+  const { status, data, error } = useContactSettings();
+  const socialLinks = useMemo(() => data?.social_links ?? [], [data]);
 
   useEffect(() => {
     if (!overlayRef.current) return;
@@ -402,7 +397,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                     } transition-colors duration-300`}
                   >
                     {section.href ? (
-                      <SmartLink href={section.href}  menuFun={menuFun}>
+                      <SmartLink href={section.href} menuFun={menuFun}>
                         {section.label}
                       </SmartLink>
                     ) : (
@@ -446,21 +441,25 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           })}
         </div>
         <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
-          {socialLinks.map((s) => (
-            <a
-              key={s.link_url}
-              href={s.link_url}
-              target="_blank"
-              rel="noopener noreferrer "
-              className="icon-wrapper"
-            >
-              <img
-                src={s.icon_url}
-                alt={s.icon_alt}
-                className="w-[20px] h-[20px] object-contain icon-hover"
-              />
-            </a>
-          ))}
+          {status === "ready" && socialLinks.length > 0 && (
+            <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
+              {socialLinks.map((s, i) => (
+                <a
+                  key={s.link_url || i}
+                  href={s.link_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="icon-wrapper"
+                >
+                  <img
+                    src={s.icon_url}
+                    alt={s.icon_alt || ""}
+                    className="w-[20px] h-[20px] object-contain icon-hover"
+                  />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

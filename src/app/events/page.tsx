@@ -1,10 +1,12 @@
 // this is now a server component
 import EventManagementClient from "./EventManagementClient";
-import { fetchEventPageContent } from "../../../lib/api";
+import { fetchEventManagementContent } from "../../../lib/api/events";
 
-export const dynamic = "force-dynamic"; // if you need ISR/SSR per request
+export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+
+export const revalidate = REVALIDATE_SECONDS;
 
 export default async function EventPage() {
-  const data = await fetchEventPageContent();
+  const data = await fetchEventManagementContent();
   return <EventManagementClient data={data} />;
 }

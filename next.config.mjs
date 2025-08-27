@@ -1,13 +1,10 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.gobiz.click',
-        port: '',
-        pathname: '/**',
-      },
+      { protocol: 'https', hostname: 'bbrgroup.net', pathname: '/**' },
+      { protocol: 'https', hostname: 'www.gobiz.click', pathname: '/**' },
+      { protocol: 'https', hostname: 'gobiz.click', pathname: '/**' },
     ],
   },
 };

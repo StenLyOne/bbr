@@ -1,9 +1,7 @@
 // src/app/our-story/layout.tsx
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchOurStoryContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchOurStoryContent } from "../../../lib/api/story";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

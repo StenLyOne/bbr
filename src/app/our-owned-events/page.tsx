@@ -1,9 +1,14 @@
 // src/app/our-owned-events/page.tsx
 
-import OwnedEventsClient from './OwnedEventsClient';
-import { fetchOwnedEventSettings, fetchAllOwnedEvents } from '../../../lib/api';
+import OwnedEventsClient from "./OwnedEventsClient";
+import {
+  fetchOwnedEventSettings,
+  fetchAllOwnedEvents,
+} from "../../../lib/api/events";
 
-export const dynamic = 'force-dynamic';
+export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+
+export const revalidate = REVALIDATE_SECONDS;
 
 export default async function OurOwnedEventsPage() {
   const [settings, events] = await Promise.all([

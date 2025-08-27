@@ -4,8 +4,10 @@ import "./globals.css";
 import { ReactNode } from "react";
 import LenisProvider from "../../components/ui/layout/LenisProvider";
 import ScrollToTop from "../../components/ui/utils/ScrollToTop";
-import { fetchHomeContent, fetchSiteLogos } from "../../lib/api";   // ← dodato fetchSiteLogos
+import { fetchHomeContent } from "../../lib/api/home"; // ← dodato fetchSiteLogos
+import {  fetchSiteLogos } from "../../lib/api";
 import { Metadata } from "next";
+import PageTransition from "../../components/ui/layout/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,26 +28,26 @@ export async function generateMetadata(): Promise<Metadata> {
     ]);
 
     return {
-      title:       seo_settings.meta_title,
+      title: seo_settings.meta_title,
       description: seo_settings.meta_description,
       openGraph: {
-        title:       seo_settings.meta_title,
+        title: seo_settings.meta_title,
         description: seo_settings.meta_description,
-        images:      seo_settings.social_image.url,
-        type:        "website",
+        images: seo_settings.social_image.url,
+        type: "website",
       },
       twitter: {
-        card:        "summary_large_image",
-        title:       seo_settings.meta_title,
+        card: "summary_large_image",
+        title: seo_settings.meta_title,
         description: seo_settings.meta_description,
-        images:      [seo_settings.social_image.url],
+        images: [seo_settings.social_image.url],
       },
       /* globalni favicon iz WP‑a */
       icons: {
         icon: [
-          { url: favicon,             rel: "icon" },
-          { url: favicon,             rel: "shortcut icon" },
-          { url: favicon,             rel: "apple-touch-icon" },
+          { url: favicon, rel: "icon" },
+          { url: favicon, rel: "shortcut icon" },
+          { url: favicon, rel: "apple-touch-icon" },
         ],
       },
     };
@@ -61,7 +63,10 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {/* <PageTransition /> */}
         <ScrollToTop />
         {/* <LenisProvider /> */}
         {children}

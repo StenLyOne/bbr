@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import { fetchDigitalContent } from "../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchDigitalContent } from "../../../lib/api/digital";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

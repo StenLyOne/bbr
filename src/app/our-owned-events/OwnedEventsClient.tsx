@@ -2,16 +2,22 @@
 
 "use client";
 
-import { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../../components/sections/Header";
-import Footer from "../../../components/sections/Footer";
+import Footer from "../../../components/sections/Footer/index";
 import Button from "../../../components/ui/buttons/Button";
 import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
 import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
-import type { OwnedEventSettings, OwnedEvent } from "../../../lib/api";
+import type { OwnedEventSettings, OwnedEvent } from "../../../lib/api/events";
 
 interface Props {
   settings: OwnedEventSettings;
@@ -207,16 +213,12 @@ export default function OwnedEventsClient({ settings, events }: Props) {
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
-            <HeroTitleFadeIn
-              className="relative z-[1000000] max-w-[442px] text-blank text-left"
-            >
+            <HeroTitleFadeIn className="relative z-[1000000] max-w-[442px] text-blank text-left">
               {hero.title || "Fallback Title"}
             </HeroTitleFadeIn>
           </div>
           <div>
-            <AnimatedTextLine
-              
-            >
+            <AnimatedTextLine>
               <p className="large text-blank max-w-[788px]">
                 {hero.description || "Fallback Description"}
               </p>
@@ -282,7 +284,10 @@ export default function OwnedEventsClient({ settings, events }: Props) {
               ref={setCardRef(i)}
             >
               <Link
-                href={`/our-owned-events/${event.slug.replace(/[^a-z0-9-]/gi, "")}`}
+                href={`/our-owned-events/${event.slug.replace(
+                  /[^a-z0-9-]/gi,
+                  ""
+                )}`}
                 onClick={() => console.log("[Link] Clicked slug:", event.slug)}
               >
                 <Image
@@ -292,9 +297,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-blue opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
-                <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <img src={event.logo} alt="Event Logo" />
                 </div>
               </Link>

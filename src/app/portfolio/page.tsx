@@ -1,9 +1,12 @@
 // src/app/portfolio/page.tsx
 import PortfolioClient from "./PortfolioClient";
-import { fetchPortfolioSettings, fetchPortfolioItems } from "../../../lib/api";
+import { fetchPortfolioContent } from "../../../lib/api/portfolio";
+import { fetchPortfolioItems } from "../../../lib/api/portfolio";
+
+export const revalidate = 2;
 
 export default async function PortfolioPage() {
-  const settings = await fetchPortfolioSettings();
-  const works     = await fetchPortfolioItems();
+  const settings = await fetchPortfolioContent();
+  const works = await fetchPortfolioItems();
   return <PortfolioClient settings={settings} works={works} />;
 }

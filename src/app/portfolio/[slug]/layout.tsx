@@ -1,9 +1,7 @@
 // src/app/portfolio/[slug]/layout.tsx
 import { ReactNode } from "react";
 import { Metadata }  from "next";
-import { fetchPortfolioItem } from "../../../../lib/api";
-
-export const dynamic = "force-dynamic";
+import { fetchPortfolioItem } from "../../../../lib/api/portfolio";
 
 export async function generateMetadata(
   { params }: any,                  // ①  uzmi ANY → tip više ne koči

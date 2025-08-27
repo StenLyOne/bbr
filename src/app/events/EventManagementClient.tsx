@@ -6,7 +6,7 @@ import { gsap, ScrollTrigger } from "../../../lib/gsap";
 import Image from "next/image";
 
 import AnimatedTextLine from "../../../components/ui/typography/AnimatedTextLine";
-import Footer from "../../../components/sections/Footer";
+import Footer from "../../../components/sections/Footer/index";
 import Button from "../../../components/ui/buttons/Button";
 import Header from "../../../components/sections/Header";
 import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
@@ -14,10 +14,10 @@ import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import EventCaroursel from "../../../components/bloks/EventCaroursel";
 import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedStrokeByStroke";
 import SomeWorks from "../../../components/bloks/SomeWorks";
-import { EventPageData } from "../../../lib/api";
+import { EventManagement } from "../../../lib/api/events";
 
 interface Props {
-  data: EventPageData;
+  data: EventManagement;
 }
 
 export default function EventManagementClient({ data }: Props) {

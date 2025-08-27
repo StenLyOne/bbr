@@ -179,26 +179,27 @@ export default function OwnedEventsDesktop({ data }: Props) {
             <AnimatedStrokeByStroke text={data.title} />
           </h2>
 
-          <div className="w-full mb-[20px] ">
+          <div className="w-full  mb-[20px] ">
             <AnimatedTextLine
               stagger={0.1}
-              className="w-full flex gap-[8px]"
+              className="w-full h-full flex gap-[8px]"
               width={"full"}
             >
               {data.events.map((event, index) => {
                 const isActive = activeIndex === index;
 
                 return (
-                  <div key={index} data-line>
-                    <Link href={event.link} className="w-full sm:w-auto flex">
-                      <button
+                  <div key={index} data-line className="h-full">
+                    <Link href={event.link} className="w-full h-full sm:w-auto flex">
+                      <button 
                         onClick={() => {
                           setActiveIndex(index);
                           // scrollToEvent(index - 1);
                         }}
-                        className="hover:bg-blue text-blank"
+                        className="hover:bg-blue text-blank h-full" 
                         style={{
                           width: "100%",
+                          height: "100%",
                           padding: "30px",
                           borderRadius: "8px",
                           border: isActive
@@ -207,7 +208,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
                           fontSize: "18px",
                           fontWeight: 600,
                           fontFamily: "Zabal",
-                          lineHeight: "55%",
+                          lineHeight: "110%",
                           cursor: "pointer",
                           backgroundColor: isActive ? "#6276fb" : "transparent",
                           color: isActive ? "#fff" : "#21224b",

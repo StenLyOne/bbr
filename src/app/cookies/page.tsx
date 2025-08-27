@@ -1,9 +1,11 @@
 // src/app/cookies/page.tsx
 import Header from "../../../components/sections/Header";
-import Footer from "../../../components/sections/Footer";
-import { fetchCookiesContent } from "../../../lib/api";
+import Footer from "../../../components/sections/Footer/index";
+import { fetchCookiesContent } from "../../../lib/api/cookies";
 
-export const dynamic = "force-dynamic";
+export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+
+export const revalidate = REVALIDATE_SECONDS;
 
 export default async function CookiesPage() {
   const { title_cookies, description_cookies } = await fetchCookiesContent();
