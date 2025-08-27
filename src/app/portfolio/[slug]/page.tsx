@@ -8,9 +8,9 @@ import {
   type PortfolioTeaser,
 } from "../../../../lib/api/portfolio";
 
-import { DEFAULT_REVALIDATE } from "../../../../lib/api/config";
 
-export const revalidate = DEFAULT_REVALIDATE;
+
+export const revalidate = 2;
 
 /** Пререндерим все страницы по имеющимся slug */
 export async function generateStaticParams() {

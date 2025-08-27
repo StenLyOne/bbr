@@ -1,8 +1,5 @@
-// src/app/portfolio/[slug]/layout.tsx
-import { ReactNode } from "react";
-import { Metadata } from "next";
-import { fetchPortfolioItem } from "../../../../lib/api/portfolio";
+import type { ReactNode } from "react";
 
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
