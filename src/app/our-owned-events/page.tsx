@@ -6,9 +6,9 @@ import {
   fetchAllOwnedEvents,
 } from "../../../lib/api/events";
 
-export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+import { DEFAULT_REVALIDATE } from "../../../lib/api/config";
 
-export const revalidate = REVALIDATE_SECONDS;
+export const revalidate = DEFAULT_REVALIDATE;
 
 export default async function OurOwnedEventsPage() {
   const [settings, events] = await Promise.all([

@@ -2,9 +2,9 @@
 import ContactClient from "./ContactClient";
 import { fetchContactContent } from "../../../lib/api/contacts";
 
-export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+import { DEFAULT_REVALIDATE } from "../../../lib/api/config";
 
-export const revalidate = REVALIDATE_SECONDS;
+export const revalidate = DEFAULT_REVALIDATE;
 
 export default async function ContactPage() {
   const data = await fetchContactContent();

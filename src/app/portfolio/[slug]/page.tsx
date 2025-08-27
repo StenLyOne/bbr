@@ -9,10 +9,9 @@ import {
   type PortfolioTeaser,
 } from "../../../../lib/api/portfolio"; // адаптируй путь под свой индекс api
 
-export const REVALIDATE_SECONDS = Number(process.env.REVALIDATE ?? 600);
+import { DEFAULT_REVALIDATE } from "../../../../lib/api/config";
 
-export const revalidate = REVALIDATE_SECONDS;
-
+export const revalidate = DEFAULT_REVALIDATE;
 /** Пререндерим все страницы по имеющимся slug */
 export async function generateStaticParams() {
   // лёгкий список тизеров (slug'и); можно заменить на любой список работ
