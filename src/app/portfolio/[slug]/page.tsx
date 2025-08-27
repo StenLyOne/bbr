@@ -8,8 +8,6 @@ import {
   type PortfolioTeaser,
 } from "../../../../lib/api/portfolio";
 
-
-
 export const revalidate = 2;
 
 /** Пререндерим все страницы по имеющимся slug */
@@ -19,13 +17,10 @@ export async function generateStaticParams() {
 }
 
 /** SEO из данных конкретной работы */
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { slug } = await props.params;
   try {
-    const data = await fetchPortfolioItem(params.slug);
+    const data = await fetchPortfolioItem(slug);
     const img = data.seo_work.seo_image.url;
 
     return {
@@ -50,11 +45,13 @@ export async function generateMetadata({
 }
 
 /** Страница: данные по конкретной работе */
-export default async function Page({ params }: { params: { slug: string } }) {
-  const work: PortfolioItemData = await fetchPortfolioItem(params.slug);
+export default async function Page(props: any) {
+  // <-- ВАЖНО: дождаться params
+  const { slug } = await props.params;
 
+  const work: PortfolioItemData = await fetchPortfolioItem(slug);
   const allTeasers: PortfolioTeaser[] = await fetchPortfolioTeasers();
-  const teasers = allTeasers.filter((t) => t.slug !== params.slug);
+  const teasers = allTeasers.filter((t) => t.slug !== slug);
 
   return <SinglePortfolioClient work={work} teasers={teasers} />;
 }
