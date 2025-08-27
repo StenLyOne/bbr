@@ -3,9 +3,7 @@ import Header from "../../../components/sections/Header";
 import Footer from "../../../components/sections/Footer/index";
 import { fetchPrivacyContent } from "../../../lib/api/privacy";
 
-import { DEFAULT_REVALIDATE } from "../../../lib/api/config";
-
-export const revalidate = DEFAULT_REVALIDATE;
+export const revalidate = 2;
 
 export default async function PrivacyPolicyPage() {
   const { title_privacy, description_privacy } = await fetchPrivacyContent();

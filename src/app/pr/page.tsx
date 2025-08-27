@@ -2,9 +2,8 @@
 import PrClient from "./PrClient";
 import { fetchPrContent } from "../../../lib/api/pr";
 import { fetchPortfolioItemsByIds } from "../../../lib/api/portfolio";
-import { DEFAULT_REVALIDATE } from "../../../lib/api/config";
 
-export const revalidate = DEFAULT_REVALIDATE;
+export const revalidate = 2;
 
 export default async function PrPage() {
   const content = await fetchPrContent();
