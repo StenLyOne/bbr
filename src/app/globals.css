@@ -39,7 +39,6 @@
   --zabal: "Zabal", sans-serif;
 }
 
-
 .fix-gpu {
   will-change: transform;
   transform: translateZ(0);
@@ -210,7 +209,14 @@ a:hover svg.icon {
 }
 
 .icon-wrapper:hover .icon-hover {
-  filter: invert(34%) sepia(91%) saturate(1406%) hue-rotate(215deg) brightness(97%) contrast(93%);
+  filter: invert(34%) sepia(91%) saturate(1406%) hue-rotate(215deg)
+    brightness(97%) contrast(93%);
+}
+
+@media screen and (max-height: 760px) {
+  .owned-events-title {
+    margin-top: -100px;
+  }
 }
 
 @media (max-width: 767px) {

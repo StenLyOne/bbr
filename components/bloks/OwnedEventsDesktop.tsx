@@ -37,6 +37,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isTall = useMediaQuery("(min-height: 861px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
   const wrapperHeight = Math.min(Math.max(total * 95), 1000);
@@ -171,13 +172,32 @@ export default function OwnedEventsDesktop({ data }: Props) {
 
   return (
     <div className="relative w-full overflow-hidden ">
-      <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
-        <div className="px-[16px] md:px-[40px]">
-          <SubTitleLine title={data.sub_title} />
-
+      {!isTall && (
+        <>
+          <div>
+            <SubTitleLine title={data.sub_title} />
+          </div>
           <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
             <AnimatedStrokeByStroke text={data.title} />
           </h2>
+        </>
+      )}
+      <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
+        <div
+          className={`${
+            !isTall ? "translate-y-[150px]" : ""
+          } px-[16px] md:px-[40px]`}
+        >
+          {isTall && (
+            <>
+              <div>
+                <SubTitleLine title={data.sub_title} />
+              </div>
+              <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
+                <AnimatedStrokeByStroke text={data.title} />
+              </h2>
+            </>
+          )}
 
           <div className="w-full  mb-[20px] ">
             <AnimatedTextLine
@@ -190,13 +210,16 @@ export default function OwnedEventsDesktop({ data }: Props) {
 
                 return (
                   <div key={index} data-line className="h-full">
-                    <Link href={event.link} className="w-full h-full sm:w-auto flex">
-                      <button 
+                    <Link
+                      href={event.link}
+                      className="w-full h-full sm:w-auto flex"
+                    >
+                      <button
                         onClick={() => {
                           setActiveIndex(index);
                           // scrollToEvent(index - 1);
                         }}
-                        className="hover:bg-blue text-blank h-full" 
+                        className="hover:bg-blue text-blank h-full"
                         style={{
                           width: "100%",
                           height: "100%",
