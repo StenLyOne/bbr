@@ -40,7 +40,7 @@ export default function MissionSecondary({
             {data.items.map((item: any, index: number) => (
               <SquareIcons
                 key={index}
-                link={`${process.env.NEXT_PUBLIC_DOMAIN}${item.link}`}
+                link={item.link}
                 iconSrc={item.icon}
                 title={item.label}
               />

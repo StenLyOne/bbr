@@ -65,7 +65,7 @@ async function _fetchHomeView(): Promise<HomeViewModel> {
     mission_secondary: home.mission_secondary,
     partners: home.partners,
     latest: home.latest,
-    ownedEvents, // уже собран
+    ownedEvents,
   };
 }
 
@@ -98,8 +98,8 @@ export async function fetchHomeContent(): Promise<HomeContent> {
   };
 
   const mission: MissionData = {
-    sub_title: acf.mission_block?.sub_title ?? "",
-    content: acf.mission_block?.[""] ?? "",
+    sub_title: acf.mission_block?.sub_title ?? "123",
+    content: acf.mission_block?.[""] ?? "123",
   };
 
   const rawE = acf.bbr_events || {};
@@ -115,16 +115,18 @@ export async function fetchHomeContent(): Promise<HomeContent> {
     })
     .filter((e): e is EventItem => e !== null);
 
+  const mission_secondary_items_links = ["/events", "/pr", "/digital"];
+
   const ms = acf.mission_secondary || {};
   const mission_secondary: MissionSecondaryData = {
     title: ms.title ?? "",
     sub_title: ms.sub_title ?? "",
     content: ms.text ?? "",
     items: Array.isArray(ms.items)
-      ? ms.items.map((it: any) => ({
+      ? ms.items.map((it: any, i: number) => ({
           icon: it.icon?.url ?? "",
           label: it.label ?? "",
-          link: it.link?.url ?? "",
+          link: mission_secondary_items_links[i] ?? "#",
         }))
       : [],
   };

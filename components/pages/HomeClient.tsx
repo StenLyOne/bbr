@@ -41,7 +41,6 @@ export default function HomeClient({
   partners,
   latest,
   ownedEvents,
-  
 }: HomeClientProps) {
   const [showIntro, setShowIntro] = useState(true);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
@@ -131,7 +130,7 @@ export default function HomeClient({
 
         <div className="footer-trigger h-[50vh]" />
         <footer className="fixed bottom-0 left-0 w-full">
-          <Footer/>
+          <Footer />
         </footer>
       </div>
     </>

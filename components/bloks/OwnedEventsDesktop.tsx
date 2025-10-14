@@ -40,7 +40,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
   const isTall = useMediaQuery("(min-height: 861px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const total = data.events.length;
-  const wrapperHeight = Math.min(Math.max(total * 95), 1000);
+  const wrapperHeight = Math.min(Math.max(total * 100), 1000);
 
   useEffect(() => {
     if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)

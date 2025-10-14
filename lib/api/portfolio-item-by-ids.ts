@@ -1,6 +1,12 @@
 import type { PortfolioItemRaw } from "../../lib/api/portfolio";
 import { API_DOMAIN } from "./config";
 
+type NextishInit = RequestInit & {
+  next?: {
+    revalidate?: number;
+    tags?: string[];
+  };
+};
 /**
  * Тянет портфолио‑айтемы по списку ID.
  * Делает:
@@ -29,10 +35,10 @@ export async function fetchPortfolioItemsByIds(
   // 3) фетчим с ISR-кэшем (10 мин по умолчанию) и тегом
   const res = await fetch(url, {
     next: {
-      revalidate: opts.revalidate ?? 1,
+      revalidate: opts.revalidate ?? 60,
       tags: ["portfolio-items"],
     },
-  });
+  } as NextishInit);
 
   if (!res.ok) {
     throw new Error(`Failed to fetch portfolio items: ${res.status}`);
