@@ -1,7 +1,7 @@
 import HomeClient from "../../components/pages/HomeClient";
 import { fetchHomeView } from "../../lib/api/home";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function Page() {
   const {

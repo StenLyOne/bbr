@@ -8,7 +8,7 @@ import {
   type PortfolioTeaser,
 } from "../../../../lib/api/portfolio";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 /** Пререндерим все страницы по имеющимся slug */
 export async function generateStaticParams() {

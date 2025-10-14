@@ -14,7 +14,7 @@ const fetchOurStoryOptions = unstable_cache(
   fetchOurStoryRow,
   ["our-story-options"],
   {
-    revalidate: 1,
+    revalidate: 60,
     tags: ["our-story"],
   }
 );

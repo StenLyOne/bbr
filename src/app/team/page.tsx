@@ -1,7 +1,7 @@
 import { fetchTeamContent } from "../../../lib/api/team";
 import TeamClient from "./TeamClient";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function TeamPage() {
   const team = await fetchTeamContent();

@@ -8,7 +8,7 @@ import type {
   SimpleWork,
 } from "./types";
 const REVALIDATE = Number(
-  process.env.NEXT_PUBLIC_REVALIDATE ?? process.env.REVALIDATE ?? 600
+  process.env.NEXT_PUBLIC_REVALIDATE ?? process.env.REVALIDATE ?? 60
 );
 
 /* ----------------------------- helpers ----------------------------- */
@@ -232,7 +232,7 @@ function cachedPortfolioItem(slug: string) {
     },
     // ключ кэша включает slug
     ["portfolio-item", slug],
-    { revalidate: 2, tags: ["portfolio-items", `portfolio-item:${slug}`] }
+    { revalidate: 60, tags: ["portfolio-items", `portfolio-item:${slug}`] }
   )();
 }
 

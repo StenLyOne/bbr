@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { fetchContactSettings } from "../../../../lib/api/contacts/fetch"; // серверная функция (server-only)
+import { fetchContactSettings } from "../../../../lib/api/contacts/fetch"; 
 
-export const revalidate = 2; // 10 мин
+export const revalidate = 60
 
 export async function GET() {
   try {

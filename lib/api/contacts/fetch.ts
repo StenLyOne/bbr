@@ -7,7 +7,7 @@ const TAG = "contact";
 
 /* ——— базовый кэшируемый источник (RAW json) ——— */
 async function fetchContactOptionsRow(): Promise<any> {
-  const res = await fetch(CONTACT_URL, { next: { revalidate: 2, tags: [TAG] } });
+  const res = await fetch(CONTACT_URL, { next: { revalidate: 60, tags: [TAG] } });
   if (!res.ok) throw new Error(`contact options HTTP ${res.status}`);
   return res.json();
 }
@@ -15,7 +15,7 @@ async function fetchContactOptionsRow(): Promise<any> {
 const getContactOptions = unstable_cache(
   fetchContactOptionsRow,
   ["contact:options"],
-  { revalidate: 1, tags: [TAG] }
+  { revalidate: 60, tags: [TAG] }
 );
 
 /* ——— мапперы ——— */

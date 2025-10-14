@@ -3,7 +3,7 @@ import PortfolioClient from "./PortfolioClient";
 import { fetchPortfolioContent } from "../../../lib/api/portfolio";
 import { fetchPortfolioItems } from "../../../lib/api/portfolio";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function PortfolioPage() {
   const settings = await fetchPortfolioContent();

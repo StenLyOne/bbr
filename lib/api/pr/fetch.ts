@@ -11,7 +11,7 @@ export async function fetchPrOptionRaw(): Promise<any> {
 }
 
 const fetchPrOption = unstable_cache(fetchPrOptionRaw, ["pr-options"], {
-  revalidate: 2,
+  revalidate: 60,
   tags: ["pr"],
 });
 

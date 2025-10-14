@@ -15,7 +15,7 @@ const fetchPrivacyOptions = unstable_cache(
   fetchPrivacyRow,
   ["cookies-options"],
   {
-    revalidate: 2,
+    revalidate: 60,
     tags: ["cookies"],
   }
 );

@@ -14,7 +14,7 @@ const fetchDigitalOptions = unstable_cache(
   fetchDigitalOptionRow,
   ["our-story-options"],
   {
-    revalidate: false,
+    revalidate: 60,
     tags: ["our-story"],
   }
 );

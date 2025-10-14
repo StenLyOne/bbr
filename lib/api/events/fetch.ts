@@ -17,7 +17,7 @@ import type {
 
 async function fetchJSON<T>(
   url: string,
-  revalidate = 2,
+  revalidate = 60,
   tags: string[] = []
 ): Promise<T> {
   const res = await fetch(url, { next: { revalidate, tags } } as any);
@@ -46,14 +46,14 @@ const OWNED_EVENT_TEASERS = `${API_DOMAIN}/wp-json/bbr/v1/event-teasers`;
 const _getEventOptions = unstable_cache(
   async () => fetchJSON<any>(EVENT_PAGE_URL, 2, [TAG_EVENT_PAGE]),
   ["event-page:options"],
-  { revalidate: 2, tags: [TAG_EVENT_PAGE] }
+  { revalidate: 60, tags: [TAG_EVENT_PAGE] }
 );
 
 // works
 const _getEventWorks = unstable_cache(
   async () => fetchJSON<SomeWorkItem[]>(EVENT_WORKS_URL, 2, [TAG_EVENT_PAGE]),
   ["event-page:works"],
-  { revalidate: 2, tags: [TAG_EVENT_PAGE] }
+  { revalidate: 60, tags: [TAG_EVENT_PAGE] }
 );
 
 export async function fetchEventManagementContent(): Promise<EventManagement> {
@@ -141,7 +141,7 @@ export async function fetchEventManagementContent(): Promise<EventManagement> {
 export const fetchOwnedEventsRaw = unstable_cache(
   async () => fetchJSON<any>(OWNED_EVENTS_RAW_URL, 2, [TAG_OWNED_EVENTS]),
   ["owned-events:raw"],
-  { revalidate: 2, tags: [TAG_OWNED_EVENTS] }
+  { revalidate: 60, tags: [TAG_OWNED_EVENTS] }
 );
 
 // настройки страницы owned-events
@@ -168,7 +168,7 @@ export const fetchOwnedEventSettings = unstable_cache(
     };
   },
   ["owned-events:settings"],
-  { revalidate: 2, tags: [TAG_OWNED_EVENTS] }
+  { revalidate: 60, tags: [TAG_OWNED_EVENTS] }
 );
 
 // список всех owned-events (id/slug/title/logo/hero_image)
@@ -193,7 +193,7 @@ export const fetchAllOwnedEvents = unstable_cache(
     }));
   },
   ["owned-events:list"],
-  { revalidate: 2, tags: [TAG_OWNED_EVENTS] }
+  { revalidate: 60, tags: [TAG_OWNED_EVENTS] }
 );
 
 /* ----------------------- OWNED EVENT: BY SLUG ---------------------- */

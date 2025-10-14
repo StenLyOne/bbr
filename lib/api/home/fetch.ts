@@ -71,7 +71,7 @@ async function _fetchHomeView(): Promise<HomeViewModel> {
 
 // кэшируем агрегатор (можно теми же тегами)
 export const fetchHomeView = unstable_cache(_fetchHomeView, ["home-view"], {
-  revalidate: 2,
+  revalidate: 60,
   tags: ["home", "owned-events"],
 });
 
@@ -84,7 +84,7 @@ async function fetchHomeOptionsRaw(): Promise<any> {
 }
 
 const fetchHomeOptions = unstable_cache(fetchHomeOptionsRaw, ["home-options"], {
-  revalidate: 2,
+  revalidate: 60,
   tags: ["home"],
 });
 

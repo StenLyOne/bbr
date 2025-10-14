@@ -3,7 +3,7 @@ import PrClient from "./PrClient";
 import { fetchPrContent } from "../../../lib/api/pr";
 import { fetchPortfolioItemsByIds } from "../../../lib/api/portfolio";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function PrPage() {
   const content = await fetchPrContent();

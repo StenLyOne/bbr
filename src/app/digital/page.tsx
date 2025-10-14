@@ -4,7 +4,7 @@ import { fetchDigitalContent } from "../../../lib/api/digital";
 
 import { fetchPortfolioItemsByIds } from "../../../lib/api/portfolio";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function DigitalPage() {
   const content = await fetchDigitalContent();

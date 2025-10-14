@@ -3,7 +3,7 @@ import Header from "../../../components/sections/Header";
 import Footer from "../../../components/sections/Footer/index";
 import { fetchCookiesContent } from "../../../lib/api/cookies";
 
-export const revalidate = 2;
+export const revalidate = 60;
 
 export default async function CookiesPage() {
   const { title_cookies, description_cookies } = await fetchCookiesContent();

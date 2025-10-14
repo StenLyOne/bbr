@@ -11,7 +11,7 @@ async function fetchTeamRow(): Promise<any> {
 }
 
 const fetchTeamOptions = unstable_cache(fetchTeamRow, ["team-options"], {
-  revalidate: 1,
+  revalidate: 60,
   tags: ["team"],
 });
 
