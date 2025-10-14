@@ -15,7 +15,7 @@ const fetchCookiesOptions = unstable_cache(
   fetchCookiesRow,
   ["cookies-options"],
   {
-    revalidate: 1,
+    revalidate: 60,
     tags: ["cookies"],
   }
 );

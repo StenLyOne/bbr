@@ -6,16 +6,16 @@ const OUR_DIGITAL_URL = `${API_DOMAIN}/wp-json/bbr/v1/options/digital`;
 
 async function fetchDigitalOptionRow(): Promise<any> {
   const res = await fetch(OUR_DIGITAL_URL);
-  if (!res.ok) throw new Error(`our story HTTP ${res.status}`);
+  if (!res.ok) throw new Error(`digital HTTP ${res.status}`);
   return res.json();
 }
 
 const fetchDigitalOptions = unstable_cache(
   fetchDigitalOptionRow,
-  ["our-story-options"],
+  ["digital-options"],
   {
     revalidate: 60,
-    tags: ["our-story"],
+    tags: ["digital"],
   }
 );
 
