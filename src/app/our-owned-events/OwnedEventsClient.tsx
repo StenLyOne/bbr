@@ -50,13 +50,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
   const visibleEvents = showAll ? events : events.slice(0, 9);
 
-  // Debug API data
-  useEffect(() => {
-    console.log("[OwnedEventsClient] Hero data:", {
-      title: settings.hero.title,
-      description: settings.hero.description,
-    });
-  }, [settings.hero]);
+
 
   // GSAP animations for cards and background images
   useLayoutEffect(() => {
@@ -132,7 +126,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
   // Fade-in content
   useEffect(() => {
-    console.log("[GSAP] Checking showIntro:", showIntro);
+
     if (!showIntro && contentRef.current) {
       console.log("[GSAP] Fade-in triggered for contentRef");
       gsap.to(contentRef.current, {

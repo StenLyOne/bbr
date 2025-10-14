@@ -1,8 +1,6 @@
 // src/components/sections/Hero.tsx
 
 import React, { useRef, useEffect } from "react";
-import Image from "next/image";
-import AnimatedTextLines from "../ui/typography/AnimatedTextLine";
 import HeroTitleFadeIn from "../ui/typography/HeroTitleFadeIn";
 
 export default function Hero({

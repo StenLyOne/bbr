@@ -18,6 +18,7 @@ export default function Events({ bbr_events }: Props) {
   const introRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const triggers: ScrollTrigger[] = [];
     const tlCircle = gsap.timeline({
       scrollTrigger: {
         trigger: introRef.current,
@@ -29,6 +30,7 @@ export default function Events({ bbr_events }: Props) {
         // },
       },
     });
+    triggers.push(tlCircle.scrollTrigger!);
 
     tlCircle.fromTo(
       ".circle-1",
@@ -47,6 +49,7 @@ export default function Events({ bbr_events }: Props) {
         anticipatePin: 1,
       },
     });
+    triggers.push(tl.scrollTrigger!);
 
     const steps = [
       // {
@@ -274,13 +277,13 @@ export default function Events({ bbr_events }: Props) {
       const anim = animation(duration); // 👈 передаём в анимацию
       tl.add(anim, start);
     });
-    ScrollTrigger.refresh();
 
     return () => {
       tl.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      triggers.forEach((t) => t?.kill());
+      ScrollTrigger.refresh();
     };
-  }, []);
+  }, [bbr_events.length]);
 
   return (
     <div className="relative w-full px-[16px] md:px-[40px]">
@@ -292,7 +295,7 @@ export default function Events({ bbr_events }: Props) {
       </div>
       <div
         ref={wrapperRef}
-        className={`relative w-full h-screen flex py-[40px] transition-colors duration-500 overflow-visible`}
+        className={`relative transform: none !important w-full h-screen flex py-[40px] transition-colors duration-500 overflow-visible`}
       >
         <div
           className={`relative w-full h-full flex p-[40px] transition-colors duration-500 overflow-visible`}

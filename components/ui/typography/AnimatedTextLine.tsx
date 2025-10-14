@@ -11,15 +11,6 @@ interface AnimatedTextLinesProps {
   width?: string;
 }
 
-// Полифилл
-const safeRequestIdleCallback = (cb: () => void) => {
-  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-    (window as any).requestIdleCallback(cb);
-  } else {
-    setTimeout(cb, 1);
-  }
-};
-
 export default function AnimatedTextLines({
   children,
   stagger = 0.1,
@@ -28,20 +19,15 @@ export default function AnimatedTextLines({
   width = "",
 }: AnimatedTextLinesProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    if (!wrapperRef.current) return;
+    const init = () => {
+      if (!wrapperRef.current) return;
+      const lines = wrapperRef.current.querySelectorAll("[data-line]");
+      gsap.set(lines, { y: 60, opacity: 0 });
 
-    const lines = wrapperRef.current.querySelectorAll("[data-line]");
-    gsap.set(lines, { y: 60, opacity: 0 });
-
-    let trigger: ScrollTrigger;
-
-    safeRequestIdleCallback(() => {
-      trigger = ScrollTrigger.create({
+      const trigger = ScrollTrigger.create({
         trigger: wrapperRef.current,
         start: "top 65%",
-        toggleActions: "play none none none",
         once: true,
         onEnter: () => {
           gsap.to(lines, {
@@ -55,11 +41,12 @@ export default function AnimatedTextLines({
         },
       });
       ScrollTrigger.refresh();
-    });
-
-    return () => {
-      trigger?.kill();
     };
+
+    if (document.readyState === "complete") init();
+    else window.addEventListener("load", init);
+
+    return () => window.removeEventListener("load", init);
   }, [stagger, delay]);
 
   return (

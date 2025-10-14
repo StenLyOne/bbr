@@ -22,6 +22,7 @@ import OwnedEvents from "../../components/sections/OwnedEvents";
 import Partners from "../../components/sections/Partners";
 import Latest from "../../components/sections/Latest";
 import Footer from "../../components/sections/Footer/index";
+import { useScrollRefresh } from "../../hooks/useScrollRefresh";
 
 type HomeClientProps = {
   hero: HeroData;
@@ -42,6 +43,7 @@ export default function HomeClient({
   latest,
   ownedEvents,
 }: HomeClientProps) {
+  useScrollRefresh();
   const [showIntro, setShowIntro] = useState(true);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const [animationsReady, setAnimationsReady] = useState(false);
@@ -106,7 +108,11 @@ export default function HomeClient({
           <Mission data={mission} />
         </div>
 
-        <div className="relative z-[1001]" data-bg="light">
+        <div
+          className="relative z-[1001]"
+          data-bg="light"
+          style={{ overflow: "visible", transform: "none" }}
+        >
           <Events data={events} />
         </div>
 

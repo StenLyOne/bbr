@@ -39,7 +39,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  console.log(work.event_information)
+
   return (
     <div className="bg-white text-foreground">
       <Header animationsReady={animationsReady} />

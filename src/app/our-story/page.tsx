@@ -7,6 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export default async function OurStoryPage() {
   const story = await fetchOurStoryContent(); // серверный вызов к WP
-  console.log(story);
+ 
   return <OurStoryClient story={story} />;
 }

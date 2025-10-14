@@ -108,7 +108,7 @@ export default function TeamClient({ team }: Props) {
   }, []);
 
   const { departments, hero, intro, cta } = team;
-  console.log(departments);
+
   return (
     <>
       <div

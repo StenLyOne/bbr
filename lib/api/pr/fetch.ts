@@ -76,17 +76,16 @@ export async function fetchPrContent(): Promise<PrContent> {
     title: acf.latest_pr?.tittle ?? "",
     ids: Array.isArray(acf.latest_pr?.latest_prr)
       ? (() => {
-          console.log("raw latest_prr:", acf.latest_pr); // что приходит напрямую
+     
 
           const numbers = acf.latest_pr.latest_prr.map((v: unknown): number =>
             Number(v)
           );
-          console.log("after map → Number:", numbers); // массив чисел (может содержать NaN)
 
           const filtered = numbers.filter(
             (n: number): n is number => !isNaN(n)
           );
-          console.log("after filter → no NaN:", filtered); // массив только валидных чисел
+    
 
           return filtered;
         })()

@@ -231,7 +231,7 @@ export default function PortfolioClient({ settings, works }: Props) {
             <div key={`${work.slug}-${index}`} ref={setCardRef(index)}>
               <Link
                 href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
-                onClick={() => console.log("[Link] Clicked slug:", work.slug)}
+           
               >
                 <Image
                   src={work.media.hero_image}
