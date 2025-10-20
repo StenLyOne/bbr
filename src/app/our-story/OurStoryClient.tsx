@@ -188,14 +188,16 @@ export default function OurStoryClient({ story }: Props) {
               key={idx}
               className="flex flex-col-reverse w-full md:w-[90%] mx-auto md:flex-row gap-[60px] md:gap-[76px]"
             >
-              <div className="relative w-full  md:max-w-[556px] h-[350px] ">
-                <Image
-                  src={ele.media.image_src}
-                  alt={ele.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              { ele.media.image_src &&
+                <div className="relative w-full  md:max-w-[556px] h-[350px] ">
+                  <Image
+                    src={ele.media.image_src}
+                    alt={ele.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              }
               <div className="w-full md:w-4/6 space-y-[37px]">
                 <h3>
                   <AnimatedStrokeByStroke text={ele.title} />
