@@ -2,11 +2,10 @@
 import { fetchOurStoryContent } from "../../../lib/api/story";
 import OurStoryClient from "./OurStoryClient";
 
-
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export default async function OurStoryPage() {
   const story = await fetchOurStoryContent(); // серверный вызов к WP
- 
+
   return <OurStoryClient story={story} />;
 }
