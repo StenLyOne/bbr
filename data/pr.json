@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "title": "PR SERVICES",
+    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.",  
+    "video": "/assets/video/test-video.mp4"
+  },
+  "where_we_started": {
+    "sub_title": "WHERE WE STARTED",
+    "title": "WE ARE TASTEMAKERS",
+    "content": [
+      {
+        "title": "IN THE MEDIA",
+        "description": 
+          "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival is held on Circular Quay & in the Rocks, a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts.",
+        "media": {
+          "image_src": "/assets/images/bbr-events-image.png",
+          "alt": "lorem Ipsum"
+        }
+      },
+      {
+        "title": "Our media partners",
+        "description": 
+          "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival is held on Circular Quay & in the Rocks, a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts.",
+        "media": {
+          "image_src": "/assets/images/bbr-events-image.png",
+          "alt": "lorem Ipsum"
+        }
+      }
+    ]
+  },
+  "services": {
+    "sub_title": "SERVICES",
+    "title": "CREATING “THE IDEA” THAT SUITS YOUR BRAND AND RESONATE IN THE MEDIA.",
+    "content": [
+      {
+        "title": "In the press",
+        "description": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival is held on Circular Quay & in the Rocks, a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts.",
+        "media": {
+          "image_src": "/assets/images/bbr-events-image.png",
+          "alt": "lorem Ipsum"
+        }
+      },
+      {
+        "title": "Media Partnerships",
+        "description": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival is held on Circular Quay & in the Rocks, a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts.",
+        "media": {
+          "image_src": "/assets/images/bbr-events-image.png",
+          "alt": "lorem Ipsum"
+        }
+      },
+      {
+        "title": "Larghe scale media coverage",
+        "description": "This huge free street festival celebrates the best things in life – FOOD, WINE and ARTS – right in the heart of Sydney. The festival is held on Circular Quay & in the Rocks, a few meter away from the iconic Sydney Opera House, Harbour Bridge and the Museum of Contemporary Arts.",
+        "media": {
+          "image_src": "/assets/images/bbr-events-image.png",
+          "alt": "lorem Ipsum"
+        }
+      }
+    ]
+  },
+  "featured_on": {
+    "sub_title": "FEATURED ON",
+    "gallery": [
+      "/assets/logo/Sponsor-Logos--43.svg",
+      "/assets/logo/Sponsor-Logos--44.svg",
+      "/assets/logo/Sponsor-Logos--45.svg",
+      "/assets/logo/Sponsor-Logos--46.svg",
+      "/assets/logo/Sponsor-Logos--47.svg",
+      "/assets/logo/Sponsor-Logos--48.svg",
+      "/assets/logo/Sponsor-Logos--49.svg",
+      "/assets/logo/Sponsor-Logos--49.svg"
+    ]
+  }
+}
