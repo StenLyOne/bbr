@@ -101,7 +101,7 @@ export default function Hero({
         {animationsReady ? (
           <HeroTitleFadeIn
             delay={0.4}
-            className={"text-blank max-w-[800px] mt-[100px]"}
+            className={"text-blank  mt-[100px]"}
           >
             {data.title}
           </HeroTitleFadeIn>
