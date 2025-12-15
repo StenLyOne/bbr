@@ -296,7 +296,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
             return isDesktop ? (
               <div
                 key={section.label}
-                className={`flex ${
+                className={`flex  ${
                   hasItems
                     ? "justify-between items-end"
                     : "items-center justify-end"
@@ -316,7 +316,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                 }}
               >
                 {hasItems && (
-                  <div className="flex gap-[30px] overflow-hidden">
+                  <div className="flex gap-[30px] overflow-hidden scale-130">
                     {section.items.map((text, j) => (
                       <p
                         key={text}
@@ -336,34 +336,36 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                   </div>
                 )}
                 <div className="flex items-center justify-center gap-[10px] cursor-pointer">
-                  <svg
-                    ref={(el) => {
-                      arrowRef.current[i] = el;
-                    }}
-                    width="38"
-                    height="28"
-                    viewBox="0 0 38 28"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="opacity-0 translate-y-[30px]"
-                  >
-                    <path
-                      d="M14.14 1.86011L2.00002 14.0001L14.14 26.1401"
-                      stroke="#6276FB"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M36 14.0001H2.34"
-                      stroke="#6276FB"
-                      strokeWidth="3"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  {section.label === "ABOUT" || section.label === "SERVICES" ? (
+                    <svg
+                      ref={(el) => {
+                        arrowRef.current[i] = el;
+                      }}
+                      width="38"
+                      height="28"
+                      viewBox="0 0 38 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="opacity-0 translate-y-[30px]"
+                    >
+                      <path
+                        d="M14.14 1.86011L2.00002 14.0001L14.14 26.1401"
+                        stroke="#6276FB"
+                        strokeWidth="3"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M36 14.0001H2.34"
+                        stroke="#6276FB"
+                        strokeWidth="3"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : null}
 
                   <p className="header hover:text-accent transition-colors duration-300">
                     {section.href ? (
@@ -440,7 +442,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
             );
           })}
         </div>
-        <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
+        <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center scale-120 translate-x-[-25px]">
           {status === "ready" && socialLinks.length > 0 && (
             <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
               {socialLinks.map((s, i) => (

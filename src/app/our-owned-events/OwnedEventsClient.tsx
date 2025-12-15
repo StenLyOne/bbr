@@ -283,12 +283,13 @@ export default function OwnedEventsClient({ settings, events }: Props) {
                   ""
                 )}`}
                 onClick={() => console.log("[Link] Clicked slug:", event.slug)}
+                
               >
                 <Image
                   src={event.hero_image}
                   alt={event.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-120"
                 />
                 <div className="absolute inset-0 bg-blue opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

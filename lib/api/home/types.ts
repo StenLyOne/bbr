@@ -8,6 +8,7 @@ export interface HeroData {
 export interface MissionData {
   sub_title: string;
   content: string;
+  title: string;
 }
 
 export interface EventItem {

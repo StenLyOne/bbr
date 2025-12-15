@@ -98,8 +98,9 @@ export async function fetchHomeContent(): Promise<HomeContent> {
   };
 
   const mission: MissionData = {
-    sub_title: acf.mission_block?.sub_title ?? "123",
-    content: acf.mission_block?.[""] ?? "123",
+    sub_title: acf.mission_block?.sub_title ?? "",
+    title: acf.mission_block?.title ?? "no title",
+    content: acf.mission_block?.[""] ?? "",
   };
 
   const rawE = acf.bbr_events || {};

@@ -250,7 +250,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
             {services.content.map((ele, idx) => (
               <div
                 key={idx}
-                className="w-full md:w-[85%] flex flex-col-reverse md:flex-row
+                className="w-full flex flex-col-reverse md:flex-row
                   gap-[40px] md:gap-[131px]"
               >
                 <div className="w-full md:w-2/3 space-y-[30px]">

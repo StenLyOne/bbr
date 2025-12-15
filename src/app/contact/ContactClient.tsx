@@ -74,14 +74,14 @@ export default function ContactClient({ data }: { data: Contact }) {
       <main
         className={`
           transition-opacity duration-1000
-          w-full h-[100vh]
+          w-full 
           flex items-center justify-center
           px-[16px] md:px-[40px]
           ${contentVisible ? "opacity-100" : "pointer-events-none"}
         `}
       >
         <div className="w-full flex justify-center md:justify-between items-center gap-[48px]">
-          <div>
+          <div className="mt-50 md:mt-60 mb-30 md:mb-35">
             <HeroTitleFadeIn
               delay={1}
               className="text-blue text-center md:text-left"
@@ -89,7 +89,7 @@ export default function ContactClient({ data }: { data: Contact }) {
               {contact_hero_title}
             </HeroTitleFadeIn>
           </div>
-          <div className="flex items-center flex-col justify-start gap-[4px]">
+          {/* <div className="flex items-center flex-col justify-start gap-[4px]">
             <AnimatedTextLines delay={1.1}>
               <Image
                 className="hidden md:block"
@@ -99,7 +99,7 @@ export default function ContactClient({ data }: { data: Contact }) {
                 height={326}
               />
             </AnimatedTextLines>
-          </div>
+          </div> */}
         </div>
 
         <button
@@ -130,12 +130,20 @@ export default function ContactClient({ data }: { data: Contact }) {
             <div className="space-y-[44px]">
               <h2 className="text-blue">{contact_section_tittle}</h2>
               <div className="flex flex-col space-y-[12px]">
-                <a href={contact_info.phone_link}>
+                <a
+                  className="text-link w-max"
+                  href={`tel:${contact_info.phone_number}`}
+                >
                   {contact_info.phone_number}
                 </a>
-                <a href={contact_info.email_link}>
+
+                <a
+                  className="text-link w-max"
+                  href={`mailto:${contact_info.email_address}`}
+                >
                   {contact_info.email_address}
                 </a>
+
                 <a>{contact_info.postal_address}</a>
               </div>
             </div>
@@ -143,7 +151,11 @@ export default function ContactClient({ data }: { data: Contact }) {
               <h2 className="text-blue">{social_tittle}</h2>
               <div className="flex gap-[24px] items-center">
                 {social_links.map((sl, i) => (
-                  <a key={i} href={sl.link_url} className="icon-wrapper">
+                  <a
+                    key={i}
+                    href={sl.link_url}
+                    className="icon-wrapper scale-120"
+                  >
                     <Image
                       src={sl.icon_image.url}
                       alt={sl.icon_image.alt}

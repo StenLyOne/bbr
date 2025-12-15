@@ -44,7 +44,7 @@ export default function HomeClient({
   ownedEvents,
 }: HomeClientProps) {
   useScrollRefresh();
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [hasScrolledTop, setHasScrolledTop] = useState(false);
   const [animationsReady, setAnimationsReady] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -91,7 +91,8 @@ export default function HomeClient({
   return (
     <>
       {/*  PageIntro */}
-      {showIntro && <PageIntro onFinish={() => setShowIntro(false)} />}
+      {/* {showIntro && <PageIntro onFinish={() => setShowIntro(false)} />} */}
+
       <div
         ref={contentRef}
         className="transition-opacity duration-1000 bg-blank opacity-100"
@@ -99,7 +100,7 @@ export default function HomeClient({
         <Header animationsReady={animationsReady} />
 
         <div className="relative z-[101] fix-gpu" data-bg="dark">
-          <Hero data={hero} animationsReady={animationsReady} />
+          <Hero data={hero} animationsReady={true} />
         </div>
 
         <div className="relative z-[101]" data-bg="light" />
@@ -108,13 +109,13 @@ export default function HomeClient({
           <Mission data={mission} />
         </div>
 
-        <div
+        {/* <div
           className="relative z-[1001]"
           data-bg="light"
           style={{ overflow: "visible", transform: "none" }}
         >
           <Events data={events} />
-        </div>
+        </div> */}
 
         <div className="relative z-[102]" data-bg="light">
           <MissionSecondary data={missionSecondary} />

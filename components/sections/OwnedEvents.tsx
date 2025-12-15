@@ -52,7 +52,7 @@ export default function OwnedEvents({ data }: Props) {
         <OwnedEventsDesktop data={data} />
       ) : (
         <div className="w-full">
-          <div className=" px-[16px]">
+          <div >
             <SubTitleLine title={data.title} />
 
             <h2 className="pt-[35px] pb-[54px] text-blue event-title-1 ">

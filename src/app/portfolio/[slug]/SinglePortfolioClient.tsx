@@ -239,7 +239,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
       {work.sponsors.items.length !== 0 && (
         <section className="mx-auto px-4 md:px-[40px] py-16">
           <SubTitleLine title={work.sponsors.sub_title} />
-          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
+          <div className={`grid grid-cols-3 sm:grid-cols-3 gap-8 mt-8 ${work.sponsors.items.length < 4 ? "md:grid-cols-3" : " md:grid-cols-4"}`}>
             {work.sponsors.items.map((logo, idx) => (
               <Image
                 key={idx}

@@ -15,15 +15,18 @@ export default function SomeWorks({ works }: SomeWorksProps) {
         <Link
           key={work.id}
           href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
-          className="w-full md:w-1/3"
+          className="w-full md:w-1/3 group"
         >
-          <Image
-            src={work.hero_image.url}
-            alt={work.title}
-            width={443}
-            height={278}
-            className="w-full h-[278px]"
-          />
+          <div className="w-full h-[278px] overflow-hidden">
+            <Image
+              src={work.hero_image.url}
+              alt={work.title}
+              width={443}
+              height={278}
+              className="w-full h-[278px] transition-all group-hover:scale-120 duration-200"
+            />
+          </div>
+
           <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
           <p>{work.work_type}</p>
         </Link>

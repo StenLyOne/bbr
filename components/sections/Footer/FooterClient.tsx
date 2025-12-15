@@ -76,7 +76,7 @@ export default function FooterClient({
                 "--color-blue": isDark ? "#ffffff" : "#0A1C2B",
               } as React.CSSProperties
             }
-            className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center"
+            className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center scale-120"
           >
             {social_links.map((s, i) => (
               <a
@@ -84,20 +84,21 @@ export default function FooterClient({
                 href={s.link_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                className=" icon-wrapper"
               >
                 {/* apply filter on dark footers */}
                 <img
                   src={s.icon_url}
                   alt={s.icon_alt}
                   style={iconFilterStyle}
-                  className="h-[15px] w-auto icon-svg"
+                  className="min-h-[20px] min-w-[20px] transition-all icon-hover"
                 />
               </a>
             ))}
           </div>
 
           {/* desktop logo */}
-          <div className="md:block hidden">
+          <div className="md:block hidden scale-120 translate-x-[-10px]">
             <img
               src={`/assets/logo/BBR-Group-Logo-Footer${logoSuffix}.svg`}
               alt="BBR Logo"
@@ -107,7 +108,7 @@ export default function FooterClient({
 
         {/* bottom mask */}
         <img
-          className="mt-[50px] md:mt-[130px] w-full"
+          className="mt-[50px] md:mt-[130px] w-full "
           src={`/assets/logo/BBR-Group-Text-Mask${maskSuffix}.svg`}
           alt="BBR Mask"
         />

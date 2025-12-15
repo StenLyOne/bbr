@@ -28,14 +28,14 @@ export default function MissionSecondary({
           <SubTitleLine title={data.sub_title} />
         </div>
         <AnimatedTextLines>
-          <p className="large max-w-[902px] px-[16px] md:px-[0px] mx-auto mt-[32px] mb-[67px] md:mt-[164px] md:mb-[164px] text-blue">
+          <p className="text-balance large md:text-[32px]! md:leading-[40px]!  text-center max-w-[902px] px-[16px] md:px-[0px] mx-auto mt-[32px] mb-[67px] md:mt-[164px] md:mb-[164px] text-blue">
             {data.content}
           </p>
         </AnimatedTextLines>
         <div className="">
           <AnimatedTextLines
             stagger={0.1}
-            className="mx-auto max-w-[910px] flex justify-between gap-[14px] pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide"
+            className="mx-auto  flex justify-center gap-10 pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide"
           >
             {data.items.map((item: any, index: number) => (
               <SquareIcons

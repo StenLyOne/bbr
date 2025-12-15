@@ -5,7 +5,7 @@ import HeroTitleFadeIn from "../ui/typography/HeroTitleFadeIn";
 
 export default function Hero({
   data,
-  animationsReady,
+  animationsReady = true,
 }: {
   data: any;
   animationsReady: boolean;
@@ -97,7 +97,7 @@ export default function Hero({
       </video>
 
       {/* TITLE */}
-      <div className="w-full relative z-10 flex items-center h-full break-all">
+      <div className="min-w-full relative z-10 flex items-center min-h-full w-full break-all">
         {animationsReady ? (
           <HeroTitleFadeIn
             delay={0.4}

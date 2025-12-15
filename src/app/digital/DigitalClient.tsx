@@ -13,10 +13,10 @@ import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedSt
 import MoreEvents from "../../../components/bloks/MoreEvents";
 
 import type { DigitalContent } from "../../../lib/api/digital";
-import type { PortfolioItemRaw } from "../../../lib/api/portfolio"
+import type { PortfolioItemRaw } from "../../../lib/api/portfolio";
 
 interface DigitalClientProps {
-  content:     DigitalContent & { two_column_title: string };
+  content: DigitalContent & { two_column_title: string };
   latestItems: PortfolioItemRaw[];
 }
 
@@ -41,9 +41,9 @@ export default function DigitalClient({
   }));
   const slugsForMore = latestItems.map((item) => item.slug);
 
-  const [showIntro, setShowIntro]             = useState(true);
-  const [contentVisible, setContentVisible]   = useState(false);
-  const contentRef                            = useRef<HTMLDivElement>(null);
+  const [showIntro, setShowIntro] = useState(true);
+  const [contentVisible, setContentVisible] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
 
   const scrollToNextSection = () => {
@@ -235,9 +235,15 @@ export default function DigitalClient({
           <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {what_we_offer.content.map((blk, i) => (
               <div key={i} className="flex flex-col ">
-                <AnimatedTextLine>
-                  <img src={blk.icon_src} alt={blk.title} className="mx-auto md:mx-0"/>
-                </AnimatedTextLine>
+                {blk.icon_src && (
+                  <AnimatedTextLine>
+                    <img
+                      src={blk.icon_src}
+                      alt={blk.title}
+                      className="mx-auto md:mx-0"
+                    />
+                  </AnimatedTextLine>
+                )}
                 <h3 className="!text-[19px] text-center md:text-left mt-[41px] mb-[21px]">
                   <AnimatedStrokeByStroke text={blk.title} />
                 </h3>
@@ -253,7 +259,12 @@ export default function DigitalClient({
             </p>
           </AnimatedTextLine>
           <div className="flex justify-center">
-            <Button text="Let’s Talk" type="button" link="/contact" color="white" />
+            <Button
+              text="Let’s Talk"
+              type="button"
+              link="/contact"
+              color="white"
+            />
           </div>
         </div>
       </section>
@@ -274,10 +285,10 @@ export default function DigitalClient({
 }
 
 interface TwoColumnBlockProps {
-  title:       string;
+  title: string;
   description: string;
-  media:       { image_src: string; alt?: string };
-  reverse?:    boolean;
+  media: { image_src: string; alt?: string };
+  reverse?: boolean;
 }
 const TwoColumnBlock = ({
   title,
@@ -300,7 +311,11 @@ const TwoColumnBlock = ({
     </div>
     <div className="w-full md:w-1/2 flex justify-center">
       <div className="w-full md:max-w-max">
-        <img src={media.image_src} alt={title} className="w-full h-auto object-cover" />
+        <img
+          src={media.image_src}
+          alt={title}
+          className="w-full h-auto object-cover"
+        />
       </div>
     </div>
   </div>

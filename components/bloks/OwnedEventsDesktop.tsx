@@ -174,7 +174,7 @@ export default function OwnedEventsDesktop({ data }: Props) {
     <div className="relative w-full overflow-hidden ">
       {!isTall && (
         <>
-          <div>
+          <div className=" px-[16px] py-5 md:py-10">
             <SubTitleLine title={data.sub_title} />
           </div>
           <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
@@ -190,10 +190,10 @@ export default function OwnedEventsDesktop({ data }: Props) {
         >
           {isTall && (
             <>
-              <div>
+              <div className=" px-[16px] py-5 md:py-10">
                 <SubTitleLine title={data.sub_title} />
               </div>
-              <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
+              <h2 className=" mx-auto my-[40px] md:my-[60px] text-center text-blue">
                 <AnimatedStrokeByStroke text={data.title} />
               </h2>
             </>
@@ -252,15 +252,13 @@ export default function OwnedEventsDesktop({ data }: Props) {
               {data.events.map((event, index) => (
                 <div
                   key={`logo-wrap-${index}`}
-                  className="overflow-hidden w-[300px] h-[150px] absolute flex justify-center items-center"
+                  className="w-full h-full  absolute flex justify-center items-center"
                 >
-                  <div className="overflow-hidden">
-                    <Image
+                  <div className=" ">
+                    <img
                       src={event.media.logo_src}
                       alt={event.media.alt}
-                      width={300}
-                      height={150}
-                      className={`logo-${index} logo-line-${index} block translate-y-full opacity-0`}
+                      className={`logo-${index} logo-line-${index} block translate-y-full opacity-0 object-cover max-w-[400px] max-h-[300px]`}
                     />
                   </div>
                 </div>

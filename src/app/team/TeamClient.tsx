@@ -198,7 +198,7 @@ export default function TeamClient({ team }: Props) {
           </div>
         </section>
         <section className="relative w-full bg-blank ">
-          <img
+          {/* <img
             ref={setImageRef}
             className="absolute top-[200px] right-[-0px] md:top-[3%] right-[-500px]
       -translate-x-1/2 -translate-y-1/2 md:scale-[1.5]"
@@ -218,13 +218,13 @@ export default function TeamClient({ team }: Props) {
       -translate-x-1/2 -translate-y-1/2 scale-[1.2] z-[0]"
             src="assets/logo/digital-border-vector.svg"
             alt=""
-          />
+          /> */}
           {isDesktop ? (
             <div className="px-[40px] pb-[155px] flex flex-col">
               {departments.map((department, index) => (
                 <div key={index} className="pt-[143px]">
                   <AnimatedTextLine>
-                    <h2 className="text-blue mb-[139px]">{department.title}</h2>
+                    <h2 className="text-blue mb-[60px]">{department.title}</h2>
                   </AnimatedTextLine>
                   <div className="">
                     <AnimatedTextLine

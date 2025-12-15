@@ -29,7 +29,7 @@ export default function HeroTitleFadeIn({
         ease: "power3.out",
       }
     );
-  }, []);
+  }, [delay]);
 
   return (
     <h1 className={`${className} relative overflow-hidden`}>

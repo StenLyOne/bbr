@@ -39,7 +39,7 @@ export default function PortfolioClient({ settings, works }: Props) {
   // Tags & filter
   const [tags, setTags] = useState<string[]>([]);
   const [activeTag, setActiveTag] = useState<string | null>(null);
-
+  const allTags = ["All", ...tags];
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -59,31 +59,38 @@ export default function PortfolioClient({ settings, works }: Props) {
 
   // GSAP cards animation
   useLayoutEffect(() => {
-    requestAnimationFrame(() => {
-      if (!cardsRef.current.length) return;
+    if (!cardsRef.current.length) return;
 
-      gsap.fromTo(
-        cardsRef.current,
-        { opacity: 0, y: 60, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: {
-            amount: 1,
-            grid: "auto",
-            from: "start",
-          },
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
+    // 👇 сброс визуального состояния
+    gsap.set(cardsRef.current, {
+      opacity: 0,
+      y: 60,
+      scale: 0.95,
     });
+
+    const ctx = gsap.context(() => {
+      gsap.to(cardsRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: {
+          amount: 1,
+          grid: "auto",
+          from: "start",
+        },
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+    }, gridRef);
+
+    return () => {
+      ctx.revert(); // 👈 КРИТИЧЕСКИ ВАЖНО
+    };
   }, [paginatedWorks]);
 
   // Fade-in content
@@ -204,19 +211,24 @@ export default function PortfolioClient({ settings, works }: Props) {
                 stagger={0.2}
                 className="flex gap-[19px] flex-nowrap min-w-max p-[16px] md:p-[40px]"
               >
-                {tags.map((tag, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                    className={`w-[200px] md:w-[272px] py-[21px] flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 group cursor-pointer ${
-                      activeTag === tag
-                        ? "bg-accent text-white"
-                        : "bg-blank text-blue hover:bg-accent hover:text-white"
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
+                {allTags.map((tag, i) => {
+                  const isActive =
+                    activeTag === tag || (tag === "All" && activeTag === null);
+
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => setActiveTag(tag === "All" ? null : tag)}
+                      className={`w-[200px] md:w-[272px] py-[21px] flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 cursor-pointer ${
+                        isActive
+                          ? "bg-accent text-white"
+                          : "bg-blank text-blue hover:bg-accent hover:text-white"
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  );
+                })}
               </AnimatedTextLine>
             )}
           </div>
@@ -231,7 +243,6 @@ export default function PortfolioClient({ settings, works }: Props) {
             <div key={`${work.slug}-${index}`} ref={setCardRef(index)}>
               <Link
                 href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
-           
               >
                 <Image
                   src={work.media.hero_image}

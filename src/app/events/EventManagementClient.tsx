@@ -134,6 +134,7 @@ export default function EventManagementClient({ data }: Props) {
 
       {/* ===== MANAGEMENT ===== */}
       <section
+         data-bg="light"
         data-scroll-target
         className="text-blank px-[16px] md:px-[40px]"
       >
@@ -234,9 +235,9 @@ export default function EventManagementClient({ data }: Props) {
           {services.content.map((ele, idx) => (
             <div
               key={idx}
-              className="w-full md:w-[85%] flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
+              className="w-full flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
             >
-              <div className="w-full md:w-2/3 space-y-[30px]">
+              <div className="w-full space-y-[30px] max-w-2/3">
                 <h3>
                   <AnimatedStrokeByStroke text={ele.title} />
                 </h3>

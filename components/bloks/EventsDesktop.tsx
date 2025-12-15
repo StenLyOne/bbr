@@ -89,6 +89,17 @@ export default function Events({ bbr_events }: Props) {
           ),
       },
       {
+        range: [14, 19],
+        animation: (duration: number) =>
+          gsap.to(".event-title-1", {
+            y: 0,
+            opacity: 1,
+            duration,
+            ease: "power4.out",
+            stagger: 1,
+          }),
+      },
+      {
         range: [15, 20],
         animation: (duration: number) =>
           gsap.to(".event-line-1", {
@@ -161,6 +172,17 @@ export default function Events({ bbr_events }: Props) {
           ),
       },
       {
+        range: [39, 44],
+        animation: (duration: number) =>
+          gsap.to(".event-title-2", {
+            y: 0,
+            opacity: 1,
+            duration,
+            ease: "power4.out",
+            stagger: 1,
+          }),
+      },
+      {
         range: [40, 45],
         animation: (duration: number) =>
           gsap.to(".event-line-2", {
@@ -231,6 +253,18 @@ export default function Events({ bbr_events }: Props) {
             { clipPath: "inset(0 0 0 100%)", opacity: 1 },
             { clipPath: "inset(0 0 0 0%)", opacity: 1, duration }
           ),
+      },
+
+      {
+        range: [64, 69],
+        animation: (duration: number) =>
+          gsap.to(".event-title-3", {
+            y: 0,
+            opacity: 1,
+            duration,
+            ease: "power4.out",
+            stagger: 1,
+          }),
       },
       {
         range: [65, 70],
@@ -313,24 +347,69 @@ export default function Events({ bbr_events }: Props) {
             className="circle-3 absolute top-1/2 left-1/2 
                 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] rounded-full bg-rouge z-6"
           />
-          {/* LARGE LOGO */}
-          <img
-            src="/assets/logo/bbr-events-vector.svg"
-            alt="bbr event logo"
-            className={`large-logo-1 absolute top-[45vh] left-[45vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 `}
-          />
-          <img
-            src="/assets/logo/bbr-pr-vector.svg"
-            alt="bbr pr logo"
-            className={`large-logo-2 absolute top-[-15vh] left-[-40vh] scale-[1.2] -translate-x-1/2 -translate-y-1/2 z-[4] mix-blend-multiply`}
-          />
-          <Image
-            src="/assets/logo/bbr-digital-vector.svg"
-            width={2000}
-            height={2000}
-            alt="bbr digital logo"
-            className={`large-logo-3 absolute top-[55vh] left-[100vh] scale-[1.5] -translate-x-1/2 -translate-y-1/2 z-[6] mix-blend-multiply`}
-          />
+
+          <svg
+            width="1916"
+            height="1916"
+            viewBox="0 0 1916 1916"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`large-logo-1 absolute w-screen h-auto top-[30%] left-[20%] scale-[1.4]   `}
+          >
+            <path
+              d="M1915.94 0L1505.97 864.273C1477.84 923.577 1477.84 992.423 1505.97 1051.73L1915.94 1916L1051.69 1506.02C992.391 1477.88 923.547 1477.88 864.245 1506.02L0 1916L409.969 1051.73C438.102 992.423 438.102 923.577 409.969 864.273L0.0619323 0L864.307 409.983C923.609 438.116 992.453 438.116 1051.75 409.983L1916 0H1915.94Z"
+              fill="#1A1B3E"
+            />
+          </svg>
+
+          <svg
+            width="1556"
+            height="1194"
+            viewBox="0 0 1556 1194"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`large-logo-2 absolute w-screen h-auto top-[-10%] left-[-28%] scale-110  z-[4] mix-blend-multiply `}
+          >
+            <g opacity="0.25">
+              <path
+                d="M0 490.035C0 670.431 37.0604 812.831 111.27 917.188C185.436 1021.55 312.627 1113.68 492.756 1193.65L628.599 933.288C517.819 880.619 441.201 828.172 398.834 776.038C356.422 723.859 332.83 662.181 328.013 591.004H628.599V0H0V490.035Z"
+                fill="#BCBEC0"
+              />
+              <path
+                d="M1444.73 276.459C1370.56 172.101 1243.37 79.963 1063.24 0L927.401 260.359C1038.23 313.029 1114.8 365.475 1157.17 417.609C1199.58 469.788 1223.17 531.466 1227.99 602.643H927.401V1193.65H1556V703.612C1556 523.216 1518.94 380.816 1444.73 276.459Z"
+                fill="#BCBEC0"
+              />
+            </g>
+          </svg>
+
+          <svg
+            width="1994"
+            height="1993"
+            viewBox="0 0 1994 1993"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`large-logo-3 absolute w-screen h-auto top-[1%] left-[10%] scale-[1.3] z-[6] mix-blend-multiply`}
+          >
+            <g className="mix-blend-mode:multiply" opacity="0.35">
+              <path
+                d="M997.434 1494.42L748.055 1743.71L997.434 1993L1246.81 1743.71L997.434 1494.42Z"
+                fill="#D72529"
+              />
+              <path
+                d="M249.042 747.79L0 996.743L249.042 1245.7L498.084 996.743L249.042 747.79Z"
+                fill="#D72529"
+              />
+              <path
+                d="M1495.69 498.195L1246.29 747.501L1495.69 996.332L1246.29 1245.64L996.898 996.332L1246.29 747.501L996.898 498.671L498.584 996.332L996.898 1494.94L1246.29 1245.64L1495.21 1494.94L1994 996.332L1495.69 498.195Z"
+                fill="#D72529"
+              />
+              <path
+                d="M996.75 0L747.708 248.954L996.75 497.907L1245.79 248.954L996.75 0Z"
+                fill="#D72529"
+              />
+            </g>
+          </svg>
+
           {/* RECTANGLE */}
           <div className="rectangle-1 absolute inset-0 w-full h-full bg-blank z-[1] will-change-transform" />
           <div className="rectangle-2 absolute inset-0 w-full h-full bg-blank z-[4] will-change-transform" />
@@ -463,18 +542,18 @@ export default function Events({ bbr_events }: Props) {
           />
         </div>
 
-        <h2 className="event-title-1 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blue">
-          <TitleLines title={bbr_events[0].title} lineClass="event-line-1" />
+        <h2 className="absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[2] space-y-[-3px] text-blue">
+          <TitleLines title={bbr_events[0].title} lineClass="event-title-1" />
         </h2>
 
         {/* TITLE 2 */}
-        <h2 className="event-title-2 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blue">
-          <TitleLines title={bbr_events[1].title} lineClass="event-line-2" />
+        <h2 className=" absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[5] space-y-[-3px] text-blue">
+          <TitleLines title={bbr_events[1].title} lineClass="event-title-2" />
         </h2>
 
         {/* TITLE 3 */}
-        <h2 className="event-title-3 absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[7] space-y-[-3px] text-blue">
-          <TitleLines title={bbr_events[2].title} lineClass="event-line-3" />
+        <h2 className="absolute top-1/2 left-[40px] -translate-y-1/2 max-w-[565px] text-left z-[7] space-y-[-3px] text-blue">
+          <TitleLines title={bbr_events[2].title} lineClass="event-title-3" />
         </h2>
         {/* <h2
             className={`event-title-1 absolute top-1/2 -translate-y-1/2 max-w-[565px] text-left z-[2]`}

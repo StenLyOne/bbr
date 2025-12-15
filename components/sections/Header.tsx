@@ -10,6 +10,7 @@ import MenuOverlay from "../HeaderElements/MenuOverlay";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header({
   animationsReady,
@@ -24,6 +25,8 @@ export default function Header({
   const prRef = useRef(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isDark = !menuOpen && isDarkBackground;
+  const headerRef = useRef<HTMLElement | null>(null);
+  const path = usePathname()
 
   const logoDuck = isDark
     ? "/assets/logo/logo-duck-light.svg"
@@ -122,22 +125,84 @@ export default function Header({
     return () => window.removeEventListener("scroll", onScroll);
   }, []); // 👈 обязательно добавь зависимость
 
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const showHeader = () => {
+      gsap.to(headerRef.current, {
+        opacity: 1,
+        duration: 0.25,
+        ease: "power2.out",
+      });
+    };
+
+    const hideHeader = () => {
+      gsap.to(headerRef.current, {
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.out",
+      });
+    };
+
+    const clearIdle = () => {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = null;
+    };
+
+    const armIdle = () => {
+      clearIdle();
+      idleTimer = setTimeout(() => {
+        // если вернулись на верх — не прячем
+        if (window.scrollY === 0) return;
+        // если меню открыто — тоже не прячем (опционально)
+        if (!menuOpen) return;
+        hideHeader();
+      }, 3000);
+    };
+
+    const onScroll = () => {
+      // на самом верху всегда показываем и не запускаем таймер
+      if (window.scrollY === 0) {
+        showHeader();
+        clearIdle();
+        return;
+      }
+
+      // ниже верха: показали и запустили отсчёт
+      showHeader();
+      armIdle();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // стартовое состояние
+    onScroll();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearIdle();
+    };
+  }, []);
+
   return (
     <>
       <header
         className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]"
+        ref={headerRef}
         style={{
-          backgroundColor: !isDark ? "#fff" : "transparent", // 👈 динамический фон
+          backgroundColor: !isDark && path != "/pr" ? "#fff"  : "transparent", // 👈 динамический фон
         }}
       >
         <div
           className={`w-full flex items-center justify-between py-[30px] md:py-[40px]`}
-          style={{
-            borderBottom: !isDark ? `` : `1px solid ${borderColor}`,
-          }}
+          // style={{
+          //   borderBottom: !isDark ? `` : `1px solid ${borderColor}`,
+          // }}
         >
-          <Link href={"/"} className="cursor-pointer" >
-            <div className="flex items-end gap-[10px]">
+          <Link href={"/"} className="cursor-pointer">
+            <div className="flex items-end gap-[10px] scale-120 translate-x-3 md:translate-x-4">
               <span>
                 <Image
                   src={logoDuck}
