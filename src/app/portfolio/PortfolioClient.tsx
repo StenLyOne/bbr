@@ -240,17 +240,19 @@ export default function PortfolioClient({ settings, works }: Props) {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[16px] gap-y-[46px]"
         >
           {paginatedWorks.map((work, index) => (
-            <div key={`${work.slug}-${index}`} ref={setCardRef(index)}>
+            <div className="group" key={`${work.slug}-${index}`} ref={setCardRef(index)}>
               <Link
                 href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
               >
-                <Image
-                  src={work.media.hero_image}
-                  alt={work.title}
-                  width={443}
-                  height={278}
-                  className="w-full h-[278] object-cover"
-                />
+                <div className=" overflow-hidden w-full h-[278]">
+                  <Image
+                    src={work.media.hero_image}
+                    alt={work.title}
+                    width={443}
+                    height={278}
+                    className="w-full h-[278] object-cover group-hover:scale-120 duration-200"
+                  />
+                </div>
                 <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
                 <p>{work.work_type}</p>
               </Link>

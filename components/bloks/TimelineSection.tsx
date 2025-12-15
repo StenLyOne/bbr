@@ -23,66 +23,71 @@ export default function TimelineSection({
   const bgRefs = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
+    // 👇 ЯВНОЕ НАЧАЛЬНОЕ СОСТОЯНИЕ
+    bgRefs.current.forEach((img, i) => {
+      gsap.set(img, { opacity: i === 0 ? 1 : 0 });
+    });
+
     sectionRefs.current.forEach((section, index) => {
       const image = bgRefs.current[index];
-      const content = section.querySelector(".content");
+      if (!image) return;
 
-      if (!image || !content) return;
-
-      // Параллакс на фон
-      gsap.to(image, {
-        y: "20%", // было 10%
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => {
+          bgRefs.current.forEach((img, i) =>
+            gsap.to(img, {
+              opacity: i === index ? 1 : 0,
+              duration: 0.4,
+              overwrite: "auto",
+            })
+          );
+        },
+        onEnterBack: () => {
+          bgRefs.current.forEach((img, i) =>
+            gsap.to(img, {
+              opacity: i === index ? 1 : 0,
+              duration: 0.4,
+              overwrite: "auto",
+            })
+          );
         },
       });
-
-      // Появление контента
-      gsap.fromTo(
-        content,
-        { autoAlpha: 1, y: 0 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, [data.content]);
 
   return (
     <div className="relative">
+      <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
+        {data.content.map((item, i) => (
+          <Image
+            key={i}
+            ref={(el) => {
+              if (el) bgRefs.current[i] = el;
+            }}
+            src={item.media.image_src}
+            alt={item.media.alt}
+            fill
+            className="absolute inset-0 object-cover scale-[1.2] opacity-0"
+          />
+        ))}
+      </div>
+
       {data.content.map((item, i) => (
         <div
           key={i}
           ref={(el) => {
             if (el) sectionRefs.current[i] = el;
           }}
-          className="relative min-h-screen overflow-hidden"
+          className={`relative overflow-hidden ${i === 0 ? "mt-[-100vh]" : ""}`}
         >
           {/* Локальный фон внутри секции */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <Image
-              ref={(el) => {
-                if (el) bgRefs.current[i] = el;
-              }}
-              src={item.media.image_src}
-              alt={item.media.alt}
-              fill
-              className="object-cover parallax-bg scale-[1.2]"
-            />
-          </div>
 
           <div className="relative z-10 h-screen flex items-center justify-center px-6">
             <div className="relative  h-full flex items-center max-w-[1000px] w-full">
@@ -120,7 +125,9 @@ export default function TimelineSection({
                   </div>
                 )}
                 <div className="space-y-[18px]">
-                  <h3 className="text-center text-blue md:hidden">{item.date}</h3>
+                  <h3 className="text-center text-blue md:hidden">
+                    {item.date}
+                  </h3>
                   <p className="text-blue text-center md:text-left">
                     {item.description}
                   </p>
