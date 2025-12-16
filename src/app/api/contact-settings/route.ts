@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { fetchContactSettings } from "../../../../lib/api/contacts/fetch";
 
-export const revalidate = 60;
+export const revalidate = 200;
 
 export async function GET() {
   try {

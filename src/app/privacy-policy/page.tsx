@@ -16,7 +16,7 @@ export default async function PrivacyPolicyPage() {
           {title_privacy}
         </h2>
         <div
-          className="prose text-blue"
+          className="prose text-blue whitespace-pre-line"
           dangerouslySetInnerHTML={{ __html: description_privacy }}
         />
       </section>

@@ -213,6 +213,10 @@ a:hover svg.icon {
     brightness(97%) contrast(93%);
 }
 
+.prose {
+  white-space: pre-line;
+}
+
 @media screen and (max-height: 760px) {
   .owned-events-title {
     margin-top: -100px;
