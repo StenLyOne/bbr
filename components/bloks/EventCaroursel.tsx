@@ -21,7 +21,7 @@ export default function InfiniteGallery({ images }: GalleryProps) {
       gsap.to(trackRef.current, {
         xPercent: -100,
         ease: "none",
-        duration: 100,
+        duration: 300,
         repeat: -1,
       });
     }, wrapperRef);

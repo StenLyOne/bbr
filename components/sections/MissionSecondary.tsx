@@ -35,7 +35,7 @@ export default function MissionSecondary({
         <div className="">
           <AnimatedTextLines
             stagger={0.1}
-            className="mx-auto  flex justify-center gap-10 pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide"
+            className="mx-auto  flex justify-start md:justify-center gap-4 md:gap-10 pl-[16px] md:pl-[0px] overflow-x-auto scrollbar-hide"
           >
             {data.items.map((item: any, index: number) => (
               <SquareIcons
@@ -47,9 +47,9 @@ export default function MissionSecondary({
             ))}
           </AnimatedTextLines>
         </div>
-        <div className="px-[16px] md:px-[0px] py-[64px] md:py-[164px]">
-          <h2 className="!text-[128px] !leading-[122px] !font-[900] text-center text-blue">
-            <AnimatedTextWordByWord text={data.title} />
+        <div className="px-[46px] md:px-[0px] py-[64px] md:py-[164px]">
+          <h2 className="text-[100px]! leading-[90px]! md:text-[128px]! md:leading-[122px]! !font-[900] text-center text-blue">
+            <AnimatedTextWordByWord text={data.title}/>
           </h2>
         </div>
       </div>

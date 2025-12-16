@@ -3,12 +3,11 @@
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../../../lib/gsap";
 
-// Полифилл для Safari и старых браузеров
 const safeRequestIdleCallback = (cb: () => void) => {
   if (typeof window.requestIdleCallback === "function") {
     window.requestIdleCallback(cb);
   } else {
-    setTimeout(cb, 1); // fallback
+    setTimeout(cb, 1);
   }
 };
 
@@ -56,10 +55,17 @@ export default function SubTitleLine({ title, color }: Prop) {
   return (
     <div
       ref={trigerRef}
-      className="w-full flex justify-between gap-[24px] py-[35px]"
+      className="w-full overflow-hidden flex items-center gap-[24px] py-[35px]"
     >
       {title.trim() !== "" && (
-        <h4 className={`w-max text-${dark} whitespace-nowrap`}>
+        <h4
+          className={`
+            max-w-[70%]
+            text-${dark}
+            md:whitespace-nowrap
+            break-words
+          `}
+        >
           <span className="block overflow-hidden">
             <span ref={titleRef} className="block will-change-transform">
               {title}
@@ -67,10 +73,11 @@ export default function SubTitleLine({ title, color }: Prop) {
           </span>
         </h4>
       )}
+
       <span
         ref={lineRef}
-        className={`w-full h-[1px] bg-${dark} my-auto will-change-transform origin-right`}
-      ></span>
+        className={`flex-1 h-[1px] bg-${dark} my-auto will-change-transform`}
+      />
     </div>
   );
 }

@@ -205,9 +205,7 @@ export default function DigitalClient({
             <div className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
               <AnimatedStrokeByStroke
                 text={two_column_title}
-                className="!text-[72px] md:!text-[128px]
-                  !leading-[72px] md:!leading-[129px] text-center
-                  !font-[900] break-all"
+                className="break-all text-left !text-[60px] md:!text-[128px] !leading-[60px] md:!leading-[129px] !font-[900]  md:px-[40px]"
               />
             </div>
 
@@ -229,7 +227,7 @@ export default function DigitalClient({
       <section className="px-[16px] md:px-[40px] py-[40px] md:py-[90px] text-blank">
         <SubTitleLine color="white" title={what_we_offer.sub_title} />
         <div className="max-w-[1100px] mx-auto">
-          <h2 className="text-center mt-[30px] md:mt-[100px]">
+          <h2 className="text-left md:text-center mt-[30px] md:mt-[100px]">
             <AnimatedStrokeByStroke text={what_we_offer.title} />
           </h2>
           <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -240,15 +238,15 @@ export default function DigitalClient({
                     <img
                       src={blk.icon_src}
                       alt={blk.title}
-                      className="mx-auto md:mx-0"
+                      className=" md:mx-0 max-w-[80px]"
                     />
                   </AnimatedTextLine>
                 )}
-                <h3 className="!text-[19px] text-center md:text-left mt-[41px] mb-[21px]">
+                <h3 className="!text-[19px]text-left mt-[41px] mb-[21px]">
                   <AnimatedStrokeByStroke text={blk.title} />
                 </h3>
                 <AnimatedTextLine>
-                  <p className="text-center md:text-left">{blk.description}</p>
+                  <p className="text-left">{blk.description}</p>
                 </AnimatedTextLine>
               </div>
             ))}

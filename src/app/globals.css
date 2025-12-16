@@ -221,8 +221,12 @@ a:hover svg.icon {
 
 @media (max-width: 767px) {
   h1 {
-    font-size: 72px;
-    line-height: 63px;
+    font-size: 42px;
+    line-height: 50px;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   h2 {
@@ -248,4 +252,12 @@ a:hover svg.icon {
     font-size: 16px;
     line-height: 26px;
   }
+
+  p.header {
+  font-size: 35px;
+
+  line-height: 26px;
+
+  cursor: pointer;
+}
 }

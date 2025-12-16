@@ -126,7 +126,7 @@ export default function TeamClient({ team }: Props) {
             <div>
               <HeroTitleFadeIn
                 delay={1}
-                className={"text-blue text-center md:text-left"}
+                className={"text-blue text-left"}
               >
                 {hero.title}
               </HeroTitleFadeIn>
@@ -318,7 +318,7 @@ export default function TeamClient({ team }: Props) {
                               <h3 className="!font-[900] text-blue">
                                 {member.name}
                               </h3>
-                              <h4 className="mt-[10px] mb-[16px] !font-[500] text-blue">
+                              <h4 className="mt-[10px] mb-[16px] leading-[18px]! !font-[500] text-blue">
                                 {member.position}
                               </h4>
                               <a

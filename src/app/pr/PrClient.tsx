@@ -202,8 +202,8 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
             >
               <AnimatedStrokeByStroke
                 text={where_we_started.title}
-                className="md:!text-[128px] !text-[78px] !leading-[72px]
-                  md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
+          className="break-all !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
+
               />
             </h2>
 

@@ -77,7 +77,7 @@ export default function OwnedEvents({ data }: Props) {
                         openEvent === index ? "rotate-90" : "rotate-0"
                       }`}
                       src="/assets/icons/arrow.svg"
-                      alt=""
+                      alt="logo"
                     />
                   </div>
                 </AnimatedTextLine>
@@ -88,7 +88,7 @@ export default function OwnedEvents({ data }: Props) {
                       : "max-h-0 opacity-100"
                   }`}
                 >
-                  <div className="space-y-[80px]">
+                  <div className="space-y-[60px]">
                     <AnimatedTextLine>
                       <Image
                         src={event.media.image_src}
@@ -99,10 +99,10 @@ export default function OwnedEvents({ data }: Props) {
                     </AnimatedTextLine>
                     <AnimatedTextLine>
                       {" "}
-                      <img src={event.media.logo_src} alt="" className="mx-auto" />
+                      <img src={event.media.logo_src} alt="" className="mx-auto max-w-[260px]" />
                     </AnimatedTextLine>
                   </div>
-                  <div className="space-y-[50px] py-[80px]">
+                  <div className="space-y-[40px] pt-[60px] pb-[80px]">
                     {event.stats.map((stat, index) => (
                       <div
                         key={index}

@@ -194,53 +194,66 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
       className="fixed inset-0 bg-white z-[1000] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none text-blue"
     >
       <div className="flex flex-col md:justify-between h-full md:items-end space-y-6 text-right justify-end md:pt-[200px]">
-        <div className="space-y-[38px] w-full md:w-auto ">
-          <div className="flex flex-col items-start md:items-center gap-[21px] md:flex-row pb-[10%] md:pb-[5%]">
-            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="group-hover:[&>path]:fill-accent"
-              >
-                <path
-                  d="M47.6258 0.374146L37.5077 21.6893C36.8156 23.1551 36.8156 24.8449 37.5077 26.3107L47.6258 47.6258L26.3107 37.5077C24.8449 36.8156 23.1551 36.8156 21.6893 37.5077L0.374146 47.6258L10.4922 26.3107C11.1844 24.8449 11.1844 23.1551 10.4922 21.6893L0.374146 0.374146L21.6893 10.4922C23.1551 11.1844 24.8449 11.1844 26.3107 10.4922L47.6258 0.374146Z"
-                  fill="#21224B"
-                  className="transition-colors duration-300"
-                />
-              </svg>
+        <div className="space-y-[34px] md:space-y-[38px] w-full md:w-auto ">
+          <div className="max-[769px]:scale-80 max-[768px]:translate-x-[-30px] max-[768px]:translate-y-[0px]  flex flex-col items-start md:items-center gap-[21px] md:flex-row pb-[0%] md:pb-[5%]">
+            <Link
+              href="/events"
+              className="flex items-center justify-center gap-[8px] cursor-pointer group"
+            >
+              <div className="w-[58px]">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="group-hover:[&>path]:fill-accent"
+                >
+                  <path
+                    d="M47.6258 0.374146L37.5077 21.6893C36.8156 23.1551 36.8156 24.8449 37.5077 26.3107L47.6258 47.6258L26.3107 37.5077C24.8449 36.8156 23.1551 36.8156 21.6893 37.5077L0.374146 47.6258L10.4922 26.3107C11.1844 24.8449 11.1844 23.1551 10.4922 21.6893L0.374146 0.374146L21.6893 10.4922C23.1551 11.1844 24.8449 11.1844 26.3107 10.4922L47.6258 0.374146Z"
+                    fill="#21224B"
+                    className="transition-colors duration-300"
+                  />
+                </svg>
+              </div>
               <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 EVENTS
               </p>
-            </div>
-            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
-              <svg
-                width="54"
-                height="42"
-                viewBox="0 0 54 42"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transition-colors duration-300 group-hover:[&>path]:fill-accent"
-              >
-                <path
-                  d="M0.340759 17.3355C0.340759 23.5245 1.60298 28.3901 4.14777 31.9732C6.69256 35.5562 11.0492 38.7118 17.2178 41.4398L21.8799 32.5229C18.0932 30.711 15.467 28.9194 14.0012 27.1279C12.5558 25.3364 11.7414 23.2191 11.5786 20.7965H21.8799V0.539917H0.340759V17.3355Z"
-                  fill="#E6E7E8"
-                  className="transition-colors duration-300"
-                />
-                <path
-                  d="M49.8523 10.0269C47.3075 6.44385 42.9508 3.28831 36.7822 0.560295L32.1201 9.47725C35.9272 11.2891 38.533 13.0807 39.9988 14.8722C41.4443 16.6637 42.2586 18.781 42.4215 21.2036H32.1201V41.4602H53.6593V24.6646C53.6593 18.4756 52.397 13.61 49.8523 10.0269Z"
-                  fill="#E6E7E8"
-                  className="transition-colors duration-300"
-                />
-              </svg>
+            </Link>
+            <Link
+              href="/pr"
+              className="flex items-center justify-center gap-[8px] cursor-pointer group"
+            >
+              <div className="w-[58px]">
+                <svg
+                  width="54"
+                  height="42"
+                  viewBox="0 0 54 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-colors duration-300 group-hover:[&>path]:fill-accent"
+                >
+                  <path
+                    d="M0.340759 17.3355C0.340759 23.5245 1.60298 28.3901 4.14777 31.9732C6.69256 35.5562 11.0492 38.7118 17.2178 41.4398L21.8799 32.5229C18.0932 30.711 15.467 28.9194 14.0012 27.1279C12.5558 25.3364 11.7414 23.2191 11.5786 20.7965H21.8799V0.539917H0.340759V17.3355Z"
+                    fill="#E6E7E8"
+                    className="transition-colors duration-300"
+                  />
+                  <path
+                    d="M49.8523 10.0269C47.3075 6.44385 42.9508 3.28831 36.7822 0.560295L32.1201 9.47725C35.9272 11.2891 38.533 13.0807 39.9988 14.8722C41.4443 16.6637 42.2586 18.781 42.4215 21.2036H32.1201V41.4602H53.6593V24.6646C53.6593 18.4756 52.397 13.61 49.8523 10.0269Z"
+                    fill="#E6E7E8"
+                    className="transition-colors duration-300"
+                  />
+                </svg>
+              </div>
               <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 PR
               </p>
-            </div>
+            </Link>
 
-            <div className="flex items-center justify-center gap-[8px] cursor-pointer group">
+            <Link
+              href="/digital"
+              className="flex items-center justify-center gap-[8px] cursor-pointer group"
+            >
               <svg
                 width="58"
                 height="58"
@@ -272,7 +285,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
               <p className="!text-[64px] !font-[900] text-blue transition-colors duration-300 group-hover:text-accent">
                 DIGITAL
               </p>
-            </div>
+            </Link>
           </div>
 
           {[
@@ -323,7 +336,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                         ref={(el) => {
                           if (sectionRefs) sectionRefs.current[j] = el;
                         }}
-                        className="!font-[600] text-blue hover:text-accent transition-colors duration-300 opacity-0 translate-y-[30px]"
+                        className="!font-[600] text-blue hover:text-accent transition-colors duration-300 opacity-0 translate-y-[30px] "
                       >
                         <SmartLink
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}
@@ -386,7 +399,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                     ? "justify-between flex-col items-start"
                     : "items-center justify-start"
                 } gap-[0px] ${
-                  activeSection === section.label ? "gap-[32px]" : "gap-[0px]"
+                  activeSection === section.label ? "gap-[22px]" : "gap-[0px]"
                 }`}
                 onClick={() => toggleSection(section.label)}
               >
@@ -410,7 +423,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
 
                 {hasItems && (
                   <div
-                    className={`flex flex-col gap-[16px] overflow-hidden transition-all duration-500 ${
+                    className={`flex flex-col gap-[10px] md:gap-[16px] overflow-hidden transition-all duration-500 ${
                       activeSection === section.label
                         ? "max-h-[500px]"
                         : "max-h-0"
@@ -422,7 +435,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                         ref={(el) => {
                           if (sectionRefs) sectionRefs.current[j] = el;
                         }}
-                        className={`!font-[600] text-blue hover:text-accent transition-all duration-300 ${
+                        className={`!font-[600] text-blue hover:text-accent transition-all duration-300 text-left ${
                           activeSection === section.label
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-[30px] pointer-events-none"
@@ -442,7 +455,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
             );
           })}
         </div>
-        <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center scale-120 translate-x-[-25px]">
+        <div className="hidden md:flex max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%]  gap-[24px] items-center justify-center scale-120 translate-x-[-25px]">
           {status === "ready" && socialLinks.length > 0 && (
             <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
               {socialLinks.map((s, i) => (

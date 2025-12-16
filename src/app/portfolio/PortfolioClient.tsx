@@ -146,7 +146,7 @@ export default function PortfolioClient({ settings, works }: Props) {
       <Header animationsReady={animationsReady} />
       <main
         className={`
-          transition-opacity duration-1000 relative w-full h-[100vh] 
+          transition-opacity duration-1000 relative w-full max-[768]:py-40 md:h-[100vh] 
           flex items-center justify-center px-[16px] md:px-[40px]
           ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
@@ -165,7 +165,7 @@ export default function PortfolioClient({ settings, works }: Props) {
         </div>
         <button
           onClick={scrollToNextSection}
-          className="z-100 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-100 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
             className="rotate-270"
@@ -209,7 +209,7 @@ export default function PortfolioClient({ settings, works }: Props) {
             {tags.length > 0 && (
               <AnimatedTextLine
                 stagger={0.2}
-                className="flex gap-[19px] flex-nowrap min-w-max p-[16px] md:p-[40px]"
+                className="flex gap-2 md:gap-4 flex-wrap md:flex-nowrap w-full md:min-w-max p-[16px] md:p-[40px]"
               >
                 {allTags.map((tag, i) => {
                   const isActive =
@@ -219,7 +219,7 @@ export default function PortfolioClient({ settings, works }: Props) {
                     <button
                       key={i}
                       onClick={() => setActiveTag(tag === "All" ? null : tag)}
-                      className={`w-[200px] md:w-[272px] py-[21px] flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 cursor-pointer ${
+                      className={`w-auto px-6 md:w-[272px] py-3 md:py-5 flex-shrink-0 flex gap-[10px] items-center justify-center rounded-[100px] border border-blue font-semibold transition-all duration-300 cursor-pointer ${
                         isActive
                           ? "bg-accent text-white"
                           : "bg-blank text-blue hover:bg-accent hover:text-white"

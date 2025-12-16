@@ -157,7 +157,7 @@ export default function Header({
         // если вернулись на верх — не прячем
         if (window.scrollY === 0) return;
         // если меню открыто — тоже не прячем (опционально)
-        if (!menuOpen) return;
+        if (menuOpen) return;
         hideHeader();
       }, 3000);
     };
@@ -184,7 +184,7 @@ export default function Header({
       window.removeEventListener("scroll", onScroll);
       clearIdle();
     };
-  }, []);
+  }, [menuOpen]);
 
   return (
     <>
@@ -192,7 +192,7 @@ export default function Header({
         className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]"
         ref={headerRef}
         style={{
-          backgroundColor: !isDark && path != "/pr" ? "#fff"  : "transparent", // 👈 динамический фон
+          backgroundColor: !isDark && path != "/pr" && !menuOpen ? "#fff"  : "transparent", // 👈 динамический фон
         }}
       >
         <div

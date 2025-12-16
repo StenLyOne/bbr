@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -202,13 +202,13 @@ export default function OwnedEventPage() {
           <div className="hidden md:flex">
             <AnimatedTextLine
               stagger={0.2}
-              className="flex w-full justify-center mb-[16px] text-blue text-center"
+              className="flex w-full h-full justify-center mb-[16px] text-blue text-center"
               width="full"
             >
               {event.stats_block.indicators.map((ind, idx, arr) => (
                 <div
                   key={idx}
-                  className={`w-full px-[24px] py-[10px] min-w-[140px] border-blue border-y-[4px] border-l-[4px] ${
+                  className={`w-full h-full flex items-center  px-[24px] py-[10px] min-w-[140px] border-blue border-y-[4px] border-l-[4px] ${
                     idx === arr.length - 1 ? "border-r-[4px]" : ""
                   }`}
                 >
@@ -218,17 +218,21 @@ export default function OwnedEventPage() {
             </AnimatedTextLine>
           </div>
 
+         
           {/* indicators (mobile) */}
           <div className="block md:hidden">
             <AnimatedTextLine
               stagger={0.2}
-              className="space-y-[24px] justify-center mb-[16px] py-[31px] text-blue text-center border-1 border-blue"
+              className="flex flex-col md:flex-row gap-1 justify-center mb-[16px] py-[31px] text-blue text-center border-0 border-blue w-full h-full"
               width="full"
             >
-              {event.stats_block.indicators.map((ind, idx) => (
-                <p key={idx} className="!font-[700]">
-                  {ind}
-                </p>
+              {event.stats_block.indicators.map((ind, idx, arr) => (
+                <div
+                  key={idx}
+                  className={`w-full h-full flex items-center  px-[24px] py-[10px] min-w-[140px] border-blue border-y-[2px] border-x-[2px] `}
+                >
+                  <p className="!font-[700] text-center mx-auto">{ind}</p>
+                </div>
               ))}
             </AnimatedTextLine>
           </div>
@@ -236,17 +240,17 @@ export default function OwnedEventPage() {
           {/* stats numbers */}
           <AnimatedTextLine
             stagger={0.2}
-            className="grid grid-cols-2 md:grid-cols-3 gap-[16px] text-blue"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] text-blue"
           >
             {event.stats_block.stats.map((st, idx) => (
               <div
                 key={idx}
-                className="bg-white-gris py-[70px] md:py-[169px] flex flex-col items-center justify-center text-center"
+                className="bg-white-gris py-[60px] px-4 md:py-[169px] flex flex-col items-center justify-center text-center w-full h-full"
               >
-                <p className="!text-[40px] md:!text-[84px] !leading-[60px] md:!leading-[90px] !font-[900] mb-[10px] md:mb-[24px]">
+                <p className="!text-[40px] md:!text-[74px] !leading-[60px] md:!leading-[90px] !font-[900] mb-[10px] md:mb-[24px]">
                   {st.value}
                 </p>
-                <p className="large text-[16px] leading-[24px] font-[500]">
+                <p className="large text-[16px]! leading-[24px]! font-[500]!">
                   {st.label}
                 </p>
               </div>
@@ -272,16 +276,18 @@ export default function OwnedEventPage() {
       {/* SPONSORS */}
       <section className="mx-auto px-4 md:px-[40px] py-16">
         <SubTitleLine title={event.sponsors.sub_title} />
+
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
           {event.sponsors.items.map((logo, idx) => (
-            <Image
-              key={idx}
-              src={logo}
-              alt={`sponsor-${idx}`}
-              width={120}
-              height={60}
-              className="object-contain mx-auto"
-            />
+            <div key={idx} className="flex items-center justify-center">
+              <Image
+                src={logo}
+                alt={`sponsor-${idx}`}
+                width={120}
+                height={60}
+                className="object-contain"
+              />
+            </div>
           ))}
         </div>
       </section>

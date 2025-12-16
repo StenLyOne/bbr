@@ -45,7 +45,7 @@ export default function Hero({
       {/* SCROLL BUTTON */}
       <button
         onClick={scrollToNextSection}
-        className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+        className="hidden md:flex z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px]  items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
       >
         <svg
           className="rotate-270"
@@ -84,8 +84,7 @@ export default function Hero({
       </button>
 
       <video
-              ref={videoRef}
-
+        ref={videoRef}
         autoPlay
         muted
         loop
@@ -97,12 +96,9 @@ export default function Hero({
       </video>
 
       {/* TITLE */}
-      <div className="min-w-full relative z-10 flex items-center min-h-full w-full break-all">
+      <div className="min-w-full relative z-10 min-h-full w-full flex items-center md:break-all">
         {animationsReady ? (
-          <HeroTitleFadeIn
-            delay={0.4}
-            className={"text-blank  mt-[100px]"}
-          >
+          <HeroTitleFadeIn delay={0.4} className={"text-blank  md:mt-[100px]"}>
             {data.title}
           </HeroTitleFadeIn>
         ) : (

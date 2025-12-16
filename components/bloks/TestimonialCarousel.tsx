@@ -63,34 +63,59 @@ export default function MoreEvents({ testimonial }: Props) {
           ))}
         </div>
 
-        {isMobile ||
-          (testimonial.length > 3 && (
-            <div className="flex justify-center mb-[70px] gap-4">
-              <button
-                onClick={() => scrollBy("left")}
-                className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
-              >
-                <Image
-                  src="/assets/icons/BTN-Main-Positive.svg"
-                  width={38}
-                  height={38}
-                  alt="Prev"
-                />
-              </button>
-              <button
-                onClick={() => scrollBy("right")}
-                className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
-              >
-                <Image
-                  src="/assets/icons/BTN-Main-Positive.svg"
-                  width={38}
-                  height={38}
-                  alt="Next"
-                  className="rotate-180"
-                />
-              </button>
-            </div>
-          ))}
+        {testimonial.length > 3 ? (
+          <div className="flex justify-center mb-[70px] gap-4">
+            <button
+              onClick={() => scrollBy("left")}
+              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
+            >
+              <Image
+                src="/assets/icons/BTN-Main-Positive.svg"
+                width={38}
+                height={38}
+                alt="Prev"
+              />
+            </button>
+            <button
+              onClick={() => scrollBy("right")}
+              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
+            >
+              <Image
+                src="/assets/icons/BTN-Main-Positive.svg"
+                width={38}
+                height={38}
+                alt="Next"
+                className="rotate-180"
+              />
+            </button>
+          </div>
+        ) : isMobile ? (
+          <div className="flex justify-center mb-[70px] gap-4">
+            <button
+              onClick={() => scrollBy("left")}
+              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
+            >
+              <Image
+                src="/assets/icons/BTN-Main-Positive.svg"
+                width={38}
+                height={38}
+                alt="Prev"
+              />
+            </button>
+            <button
+              onClick={() => scrollBy("right")}
+              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer hover:brightness-125"
+            >
+              <Image
+                src="/assets/icons/BTN-Main-Positive.svg"
+                width={38}
+                height={38}
+                alt="Next"
+                className="rotate-180"
+              />
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

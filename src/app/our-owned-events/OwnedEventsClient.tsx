@@ -201,7 +201,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
       <main
         data-bg="dark"
-        className={`transition-opacity duration-1000 w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] ${
+        className={`transition-opacity duration-1000 w-full md:h-[100vh] max-[768px]:py-40 flex items-center justify-center px-[16px] md:px-[40px] ${
           contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -221,7 +221,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
         </div>
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
             className="rotate-270"

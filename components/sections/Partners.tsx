@@ -7,11 +7,12 @@ import { gsap } from "../../lib/gsap";
 export default function Partners({ data }: { data: any }) {
   const logos = data.logos;
 
-  // разбиваем на 3 группы
+  const third = Math.ceil(logos.length / 3);
+
   const chunkedLogos = [
-    logos.slice(0, logos.length / 3),
-    logos.slice(logos.length / 3, (logos.length * 2) / 3),
-    logos.slice((logos.length * 2) / 3),
+    logos.slice(0, third),
+    logos.slice(third, third * 2),
+    logos.slice(third * 2),
   ];
 
   useEffect(() => {
@@ -25,6 +26,8 @@ export default function Partners({ data }: { data: any }) {
         repeat: -1,
         ease: "none",
         duration: 30,
+        force3D: true,
+        overwrite: true,
         modifiers: {
           xPercent: gsap.utils.wrap(-100, 0),
         },
@@ -41,16 +44,22 @@ export default function Partners({ data }: { data: any }) {
           {chunkedLogos.map((logoRow: string[], rowIndex: number) => (
             <div
               key={rowIndex}
-              className="logo-row flex whitespace-nowrap gap-[52.5px] md:gap-[70px] will-change-transform"
+              className="logo-row flex whitespace-nowrap gap-[52.5px] md:gap-[70px] will-change-transform [transform:translate3d(0,0,0)]"
               data-direction={rowIndex % 2 === 0 ? 1 : -1}
             >
               {[...logoRow, ...logoRow, ...logoRow, ...logoRow].map(
                 (logo, index) => (
-                  <div key={`${rowIndex}-${index}`} className="flex-shrink-0 h-[95px]">
+                  <div
+                    key={`${rowIndex}-${index}`}
+                    className="flex-shrink-0 h-[95px]"
+                  >
                     <img
                       src={logo}
                       alt={`logo-${rowIndex}-${index}`}
-                      className="h-auto w-auto max-h-[95px] max-w-none"
+                      height={95}
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-[95px] max-h-[95px] w-auto max-w-none object-contain [transform:translate3d(0,0,0)]"
                     />
                   </div>
                 )

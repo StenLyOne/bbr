@@ -60,7 +60,7 @@ export default function AnimatedTextWordByWord({
   }, [delay, stagger]);
 
   const wordElements = text.split(" ").map((word, i) => (
-    <span key={i} data-word className="inline-block overflow-hidden mr-[0.3em]">
+    <span key={i} data-word className="inline-block overflow-hidden md:mr-[0.3em]">
       <span className="inline-block">{word}</span>
     </span>
   ));

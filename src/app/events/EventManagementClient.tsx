@@ -220,7 +220,7 @@ export default function EventManagementClient({ data }: Props) {
       <section className="space-y-[60px] md:space-y-[100px] mt-[70px] md:mt-[140px] text-blank">
         <AnimatedStrokeByStroke
           text={carousel.title}
-          className="break-all !text-[72px] md:!text-[128px] !leading-[72px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
+          className="break-all !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
         />
         <EventCaroursel images={carousel.gallery} />
       </section>

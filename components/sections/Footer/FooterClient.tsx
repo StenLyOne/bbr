@@ -50,19 +50,19 @@ export default function FooterClient({
           </div>
 
           {/* address & copyright */}
-          <div className="space-y-[10px]">
-            <p className={`small ${textColor}`}>{postal_address}</p>
-            <div className="flex flex-col md:flex-row gap-[16px]">
-              <p className={`small ${textColor}`}>{copyright}</p>
+          <div className="space-y-[14px]">
+            <p className={` w-max small-a ${textColor}`}>{postal_address}</p>
+            <div className="flex flex-col md:flex-row gap-[14px] md:gap-[16px]">
+              <p className={`small-a  w-max ${textColor}`}>{copyright}</p>
               <Link
                 href="/cookies/"
-                className={`text-link small-a ${textColor}`}
+                className={`text-link  w-max small-a ${textColor}`}
               >
                 Cookies
               </Link>
               <Link
                 href="/privacy-policy/"
-                className={`text-link small-a ${textColor}`}
+                className={`text-link  w-max small-a max-[769px]:font-medium! ${textColor}`}
               >
                 Privacy Policy
               </Link>
@@ -76,7 +76,7 @@ export default function FooterClient({
                 "--color-blue": isDark ? "#ffffff" : "#0A1C2B",
               } as React.CSSProperties
             }
-            className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center scale-120"
+            className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center scale-120 translate-x-[22px] md:translate-x-0 mt-4 md:mt-0"
           >
             {social_links.map((s, i) => (
               <a
