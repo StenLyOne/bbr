@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AnimatedTextLines from "../typography/AnimatedTextLine";
+import Link from "next/link";
 
 type SquareIconProps = {
   link: string;
@@ -9,7 +10,7 @@ type SquareIconProps = {
 
 export default function SquareIcons({ link, iconSrc, title }: SquareIconProps) {
   return (
-    <a href={link} className="group">
+    <Link href={link} className="group">
       <AnimatedTextLines stagger={0}>
         <div className="flex flex-col items-center justify-center gap-10 w-[230px] h-[230px] md:w-[300px] md:h-[300px]  py-[40.5px] px-[60px] bg-white-gris md:bg-white hover:bg-white-gris transition-colors duration-300 ease-in-out">
           <div className="w-max group-hover:scale-140 transition-all">
@@ -33,6 +34,6 @@ export default function SquareIcons({ link, iconSrc, title }: SquareIconProps) {
           </AnimatedTextLines>
         </div>
       </AnimatedTextLines>
-    </a>
+    </Link>
   );
 }
