@@ -71,11 +71,11 @@ export default function FooterClient({
 
           {/* social icons */}
           <div
-            style={
-              {
-                "--color-blue": isDark ? "#ffffff" : "#0A1C2B",
-              } as React.CSSProperties
-            }
+            // style={
+            //   {
+            //     "--color-blue": isDark ? "#ffffff" : "#0A1C2B",
+            //   } as React.CSSProperties
+            // }
             className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center scale-120 translate-x-[22px] md:translate-x-0 mt-4 md:mt-0"
           >
             {social_links.map((s, i) => (
@@ -86,7 +86,7 @@ export default function FooterClient({
                 rel="noopener noreferrer"
                 className=" icon-wrapper"
               >
-                {/* apply filter on dark footers */}
+           
                 <img
                   src={s.icon_url}
                   alt={s.icon_alt}

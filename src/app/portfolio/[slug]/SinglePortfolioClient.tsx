@@ -177,7 +177,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
                     idx === arr.length - 1 ? "border-r-[4px]" : ""
                   }`}
                 >
-                  <p className="!font-[700]">{ind}</p>
+                  <p className="!font-[700] mx-auto">{ind}</p>
                 </div>
               ))}
             </AnimatedTextLine>
@@ -238,19 +238,43 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
       )}
 
       {/* ── SPONSORS ────────────────────────────────── */}
-      {work.sponsors.items.length !== 0 && (
+      {work.sponsors.items?.length > 0 && (
         <section className="mx-auto px-4 md:px-[40px] py-16">
           <SubTitleLine title={work.sponsors.sub_title} />
-          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
+
+          <div
+            className={`
+        grid gap-8 mt-8 justify-items-center
+        ${
+          work.sponsors.items.length === 1
+            ? "grid-cols-1"
+            : work.sponsors.items.length === 2
+            ? "grid-cols-2"
+            : work.sponsors.items.length === 3
+            ? "grid-cols-3"
+            : "grid-cols-3"
+        }
+        ${
+          work.sponsors.items.length === 1
+            ? "md:grid-cols-1"
+            : work.sponsors.items.length === 2
+            ? "md:grid-cols-2"
+            : work.sponsors.items.length === 3
+            ? "md:grid-cols-3"
+            : "md:grid-cols-4"
+        }
+      `}
+          >
             {work.sponsors.items.map((logo, idx) => (
-              <Image
-                key={idx}
-                src={logo}
-                alt={`sponsor-${idx}`}
-                width={120}
-                height={60}
-                className="object-contain mx-auto"
-              />
+              <div key={idx} className="flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`sponsor-${idx}`}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
             ))}
           </div>
         </section>

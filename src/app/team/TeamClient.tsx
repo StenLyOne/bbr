@@ -124,10 +124,7 @@ export default function TeamClient({ team }: Props) {
         >
           <div className="w-full flex justify-center md:justify-between items-center">
             <div>
-              <HeroTitleFadeIn
-                delay={1}
-                className={"text-blue text-left"}
-              >
+              <HeroTitleFadeIn delay={1} className={"text-blue text-left"}>
                 {hero.title}
               </HeroTitleFadeIn>
             </div>
@@ -198,27 +195,6 @@ export default function TeamClient({ team }: Props) {
           </div>
         </section>
         <section className="relative w-full bg-blank ">
-          {/* <img
-            ref={setImageRef}
-            className="absolute top-[200px] right-[-0px] md:top-[3%] right-[-500px]
-      -translate-x-1/2 -translate-y-1/2 md:scale-[1.5]"
-            src="assets/logo/events-border-vector.svg"
-            alt=""
-          />
-          <img
-            ref={setImageRef}
-            className="absolute top-1/2 right-[-400px]
-      -translate-x-1/2 -translate-y-1/2 scale-[1.2]"
-            src="assets/logo/pr-border-vector.svg"
-            alt=""
-          />
-          <img
-            ref={setImageRef}
-            className="absolute bottom-[-400px] md:bottom-[-600px] right-[-400px] md:right-[-560px]
-      -translate-x-1/2 -translate-y-1/2 scale-[1.2] z-[0]"
-            src="assets/logo/digital-border-vector.svg"
-            alt=""
-          /> */}
           {isDesktop ? (
             <div className="px-[40px] pb-[155px] flex flex-col">
               {departments.map((department, index) => (
@@ -362,7 +338,7 @@ export default function TeamClient({ team }: Props) {
         </section>
         <section className="relative p-[16px] md:p-[40px] z-[1]">
           <div
-            className="w-full h-full min-h-[496px] flex gap-[64px] flex-col items-center md:px-[115px] md:items-start justify-center text-white text-center"
+            className="relative w-full h-full min-h-[496px] flex gap-[64px] flex-col items-center md:px-[115px] md:items-start justify-center text-white text-center z-1"
             style={{
               backgroundImage: `url(${cta.background_image})`,
               backgroundSize: "cover",
@@ -370,16 +346,22 @@ export default function TeamClient({ team }: Props) {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <AnimatedTextLine>
-              <h2 className="text-[32px] md:text-left md:text-[48px] font-bold ">
-                {cta.title}
-              </h2>
-            </AnimatedTextLine>
-            <Button
-              text={cta.button.text}
-              link={cta.button.link}
-              color={"white"}
-            />
+            <div className="absolute inset-0 bg-black/40 z-1"></div>
+
+            <div className="z-2">
+              <AnimatedTextLine>
+                <h2 className="text-[32px] md:text-left md:text-[48px] font-bold ">
+                  {cta.title}
+                </h2>
+              </AnimatedTextLine>
+            </div>
+            <div className="z-3">
+              <Button
+                text={cta.button.text}
+                link={cta.button.link}
+                color={"white"}
+              />
+            </div>
           </div>
         </section>
       </div>

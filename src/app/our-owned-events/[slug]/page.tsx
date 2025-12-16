@@ -212,13 +212,12 @@ export default function OwnedEventPage() {
                     idx === arr.length - 1 ? "border-r-[4px]" : ""
                   }`}
                 >
-                  <p className="!font-[700]">{ind}</p>
+                  <p className="!font-[700] mx-auto">{ind}</p>
                 </div>
               ))}
             </AnimatedTextLine>
           </div>
 
-         
           {/* indicators (mobile) */}
           <div className="block md:hidden">
             <AnimatedTextLine
@@ -274,23 +273,47 @@ export default function OwnedEventPage() {
       )}
 
       {/* SPONSORS */}
-      <section className="mx-auto px-4 md:px-[40px] py-16">
-        <SubTitleLine title={event.sponsors.sub_title} />
+      {event.sponsors.items?.length > 0 && (
+        <section className="mx-auto px-4 md:px-[40px] py-16">
+          <SubTitleLine title={event.sponsors.sub_title} />
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
-          {event.sponsors.items.map((logo, idx) => (
-            <div key={idx} className="flex items-center justify-center">
-              <Image
-                src={logo}
-                alt={`sponsor-${idx}`}
-                width={120}
-                height={60}
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+          <div
+            className={`
+        grid gap-8 mt-8
+        ${
+          event.sponsors.items.length === 1
+            ? "grid-cols-1 justify-items-center"
+            : event.sponsors.items.length === 2
+            ? "grid-cols-2 justify-items-center"
+            : event.sponsors.items.length === 3
+            ? "grid-cols-3 justify-items-center"
+            : "grid-cols-3"
+        }
+        ${
+          event.sponsors.items.length === 1
+            ? "md:grid-cols-1"
+            : event.sponsors.items.length === 2
+            ? "md:grid-cols-2"
+            : event.sponsors.items.length === 3
+            ? "md:grid-cols-3"
+            : "md:grid-cols-4"
+        }
+      `}
+          >
+            {event.sponsors.items.map((logo, idx) => (
+              <div key={idx} className="flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`sponsor-${idx}`}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       {event.cta.length !== 0 && (

@@ -26,7 +26,7 @@ export default function Header({
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isDark = !menuOpen && isDarkBackground;
   const headerRef = useRef<HTMLElement | null>(null);
-  const path = usePathname()
+  const path = usePathname();
 
   const logoDuck = isDark
     ? "/assets/logo/logo-duck-light.svg"
@@ -186,13 +186,29 @@ export default function Header({
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none"; // iOS
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-1001 px-[16px] md:px-[40px]"
+        className="fixed top-0 left-0 w-full z-1022 px-[16px] md:px-[40px]"
         ref={headerRef}
         style={{
-          backgroundColor: !isDark && path != "/pr" && !menuOpen ? "#fff"  : "transparent", // 👈 динамический фон
+          backgroundColor:
+            !isDark && path != "/pr" && !menuOpen ? "#fff" : "transparent", // 👈 динамический фон
         }}
       >
         <div

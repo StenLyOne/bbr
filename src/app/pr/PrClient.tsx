@@ -202,8 +202,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
             >
               <AnimatedStrokeByStroke
                 text={where_we_started.title}
-          className="break-all !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
-
+                className="break-all !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
               />
             </h2>
 
@@ -284,21 +283,47 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       </section>
 
       {/* FEATURED ON */}
-      <section className="px-[16px] md:px-[40px]">
-        <SubTitleLine title={featured_on.sub_title} />
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8 py-[50px]">
-          {featured_on.gallery.map((logo, i) => (
-            <Image
-              key={i}
-              src={logo}
-              alt={`sponsor-${i}`}
-              width={120}
-              height={60}
-              className="object-contain mx-auto"
-            />
-          ))}
-        </div>
-      </section>
+      {featured_on.gallery?.length > 0 && (
+        <section className="px-[16px] md:px-[40px]">
+          <SubTitleLine title={featured_on.sub_title} />
+
+          <div
+            className={`
+        grid gap-8 mt-8 py-[50px] justify-items-center
+        ${
+          featured_on.gallery.length === 1
+            ? "grid-cols-1"
+            : featured_on.gallery.length === 2
+            ? "grid-cols-2"
+            : featured_on.gallery.length === 3
+            ? "grid-cols-3"
+            : "grid-cols-3"
+        }
+        ${
+          featured_on.gallery.length === 1
+            ? "md:grid-cols-1"
+            : featured_on.gallery.length === 2
+            ? "md:grid-cols-2"
+            : featured_on.gallery.length === 3
+            ? "md:grid-cols-3"
+            : "md:grid-cols-4"
+        }
+      `}
+          >
+            {featured_on.gallery.map((logo, i) => (
+              <div key={i} className="flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`featured-${i}`}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* LATEST */}
       <MoreEvents

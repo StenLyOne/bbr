@@ -107,14 +107,14 @@ export default function HomeClient({
         <div data-scroll-target className="relative z-[101]" data-bg="light">
           <Mission data={mission} />
         </div>
-{/* 
+
         <div
-          className="relative z-[1001]"
+          className="relative z-[1023]"
           data-bg="light"
           style={{ overflow: "visible", transform: "none" }}
         >
           <Events data={events} />
-        </div> */}
+        </div>
 
         <div className="relative z-[102]" data-bg="light">
           <MissionSecondary data={missionSecondary} />

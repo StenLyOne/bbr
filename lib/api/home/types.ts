@@ -37,8 +37,15 @@ export interface PartnersData {
 
 export interface LatestData {
   sub_title: string;
-  instagram_links: string[];
+  instagram_links: instagramData[];
 }
+
+type instagramData = {
+  instagram_url: string;
+  account_name: string;
+  avatar: string;
+  media: string;
+};
 
 export interface OwnedEventsMetaRaw {
   events: number[];

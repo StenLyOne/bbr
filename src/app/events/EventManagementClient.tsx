@@ -237,7 +237,7 @@ export default function EventManagementClient({ data }: Props) {
               key={idx}
               className="w-full flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
             >
-              <div className="w-full space-y-[30px] max-w-2/3">
+              <div className="w-full space-y-[30px] md:max-w-2/3">
                 <h3>
                   <AnimatedStrokeByStroke text={ele.title} />
                 </h3>

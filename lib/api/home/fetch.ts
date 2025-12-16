@@ -140,15 +140,19 @@ export async function fetchHomeContent(): Promise<HomeContent> {
   };
 
   const lt = acf.latest || {};
+
   const latest: LatestData = {
     sub_title: lt.sub_title ?? "",
     instagram_links: Array.isArray(lt.instagram_links)
-      ? lt.instagram_links
-          .map((it: any) => it.links?.url ?? "")
-          .filter((u: string) => u.length > 0)
+      ? lt.instagram_links.map((it: any) => ({
+          instagram_url: it.instagram_url?.url ?? "",
+          account_name: it.account_name ?? "",
+          avatar: it.avatar?.url ?? "",
+          media: it.media?.url ?? "",
+        }))
       : [],
   };
-
+  console.log(latest);
   const oe = acf.owned_events || {};
   const owned_events_meta: OwnedEventsMetaRaw = {
     sub_title: oe.subtittle ?? oe.sub_title ?? "",

@@ -16,7 +16,7 @@ export default function Button({
   arrow = true,
 }: ButtonProps) {
   const base =
-    "w-[272px] h-[71px] flex gap-[10px] items-center justify-center rounded-[8px] border font-semibold transition-all duration-300 group";
+    "w-[272px] h-[71px] flex gap-[10px] items-center justify-center rounded-[8px] border-[2px] font-semibold transition-all duration-300 group";
   const baseBorderColor =
     color === "white" ? "border-white" : "border-[#1a1a3f]";
 
