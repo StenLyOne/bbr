@@ -1,4 +1,4 @@
-// next.config.mjs
+
 const nextConfig = {
   images: {
     remotePatterns: [

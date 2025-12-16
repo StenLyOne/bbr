@@ -26,7 +26,7 @@ export default function MoreEvents({
 }: Props) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const containerRef = useRef<HTMLDivElement>(null);
-  // console.log(events);
+ 
   let visibleEvents: any[] = [];
   let eventSlugs: string[] = [];
 

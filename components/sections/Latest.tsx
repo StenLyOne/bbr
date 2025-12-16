@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function Latest({ data }: Props) {
-  console.log(data);
+
   return (
     <section className="w-full  bg-white-gris py-[40px]">
       <div className="px-[16px] md:px-[40px] w-full h-full">

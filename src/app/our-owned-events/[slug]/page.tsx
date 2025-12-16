@@ -337,3 +337,38 @@ export default function OwnedEventPage() {
     </div>
   );
 }
+
+const ArrowButtonIcon = () => (
+  <svg
+    width="38"
+    height="38"
+    viewBox="0 0 38 38"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="transition-colors duration-300"
+  >
+    <rect
+      x="0.75"
+      y="0.75"
+      width="36.5"
+      height="36.5"
+      rx="18.25"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M27.5 19H10.67"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);

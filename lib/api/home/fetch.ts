@@ -152,7 +152,7 @@ export async function fetchHomeContent(): Promise<HomeContent> {
         }))
       : [],
   };
-  console.log(latest);
+
   const oe = acf.owned_events || {};
   const owned_events_meta: OwnedEventsMetaRaw = {
     sub_title: oe.subtittle ?? oe.sub_title ?? "",

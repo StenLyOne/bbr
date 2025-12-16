@@ -105,7 +105,7 @@ export default function MoreEvents({
 
         <div
           ref={containerRef}
-          className={`transition-all duration-300 ${
+          className={`transition-all duration-300 md:mb-[70px] ${
             isMobile
               ? "flex flex-col gap-[46px]"
               : "flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
@@ -185,34 +185,38 @@ export default function MoreEvents({
           </Link>
         </div>
 
-        {!isMobile && (
-          <div className="flex justify-center my-[70px] gap-4">
+       {!isMobile && visibleEvents.length > 3 && (
+          <div className="flex justify-center mb-[70px] gap-4">
+            {/* PREV */}
             <button
               onClick={() => scrollBy("left")}
-              className="w-[38px] h-[38px] flex items-center justify-center transition-colors duration-300 cursor-pointer"
+              className={`
+        w-[38px] h-[38px]
+        flex items-center justify-center
+        cursor-pointer
+        transition-colors duration-300
+        text-${color === "transporent" ? "white" : "[--color-blue]"}
+   hover:text-[#6276FB]
+      `}
             >
-              <Image
-                src={`/assets/icons/BTN-Main-Positive${
-                  color === "transporent" ? "-White" : ""
-                }.svg`}
-                width={38}
-                height={38}
-                alt="Prev"
-              />
+              <ArrowButtonIcon />
             </button>
+
+            {/* NEXT */}
             <button
               onClick={() => scrollBy("right")}
-              className="w-[38px] h-[38px] transition-colors duration-300 cursor-pointer"
+              className={`
+        w-[38px] h-[38px]
+        flex items-center justify-center
+        cursor-pointer
+        transition-colors duration-300
+        text-${color === "transporent" ? "white" : "[--color-blue]"}
+    hover:text-[#6276FB]
+      `}
             >
-              <Image
-                src={`/assets/icons/BTN-Main-Positive${
-                  color === "transporent" ? "-White" : ""
-                }.svg`}
-                width={38}
-                height={38}
-                alt="Next"
-                className="rotate-180"
-              />
+              <div className="rotate-180">
+                <ArrowButtonIcon />
+              </div>
             </button>
           </div>
         )}
@@ -220,3 +224,38 @@ export default function MoreEvents({
     </section>
   );
 }
+
+const ArrowButtonIcon = () => (
+  <svg
+    width="38"
+    height="38"
+    viewBox="0 0 38 38"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="transition-colors duration-300"
+  >
+    <rect
+      x="0.75"
+      y="0.75"
+      width="36.5"
+      height="36.5"
+      rx="18.25"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M27.5 19H10.67"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
