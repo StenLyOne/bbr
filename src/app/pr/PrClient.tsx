@@ -41,6 +41,29 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
   const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay blocked — silently ignore
+        });
+      }
+    };
+
+    video.load(); // перезагружаем источник
+    tryPlay(); // пробуем сразу
+    video.addEventListener("canplay", tryPlay); // пробуем, когда готово
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
 
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("[data-scroll-target]");
@@ -82,14 +105,14 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="light"
-        className={`w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]
+        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh]  flex items-center justify-center px-[16px] md:px-[40px]
           transition-opacity duration-1000 relative ${
             contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
       >
         <AnimatedTextLine delay={1.1} className="absolute mx-auto">
           <img
-            className="w-[100%] md:w-[65%] mx-auto"
+            className="w-[100%] md:w-[65%] mx-auto scale-80"
             src="/assets/logo/bbr-pr-vector.svg"
             alt={hero.title}
           />
@@ -99,14 +122,14 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
           <div>
             <HeroTitleFadeIn
               delay={1}
-              className="max-w-[600px] text-blue text-left"
+              className=" text-blue text-left"
             >
               {hero.title}
             </HeroTitleFadeIn>
           </div>
-          <div>
+          <div className="w-full md:w-1/2">
             <AnimatedTextLine delay={1.1}>
-              <p className="large text-blue max-w-[788px]">
+              <p className="large text-blue ">
                 {hero.description}
               </p>
             </AnimatedTextLine>
@@ -116,7 +139,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
         <button
           onClick={scrollToNextSection}
           className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px]
-            w-[38px] h-[38px] flex items-center justify-center transition-all duration-300
+            w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300
             hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
@@ -155,12 +178,15 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       <section data-scroll-target className="">
         <div className="flex gap-[22px]">
           <video
+            ref={videoRef}
             src={hero.video_src}
             className="w-screen h-screen md:w-full md:h-full object-cover"
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
+            disablePictureInPicture
           />
         </div>
       </section>

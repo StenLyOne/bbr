@@ -67,7 +67,7 @@ export default function EventManagementClient({ data }: Props) {
       {/* ===== HERO ===== */}
       <main
         data-bg="dark"
-        className="transition-opacity duration-1000 relative w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] text-blank"
+        className="transition-opacity duration-1000 relative w-full max-[768px]:pt-40 max-[768px]:pb-20 md:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] text-blank"
       >
         <AnimatedTextLine delay={1.1} className="absolute mx-auto">
           <img
@@ -78,24 +78,19 @@ export default function EventManagementClient({ data }: Props) {
         </AnimatedTextLine>
         <div className="w-full flex gap-[46px] flex-col md:flex-row md:justify-between items-start">
           <div>
-            <HeroTitleFadeIn
-              delay={1.3}
-              className="max-w-[600px] text-blank text-left break-all"
-            >
+            <HeroTitleFadeIn delay={1.3} className=" text-blank text-left ">
               {hero.title}
             </HeroTitleFadeIn>
           </div>
-          <div>
+          <div className="w-full md:max-w-1/2 ">
             <AnimatedTextLine delay={1.5}>
-              <p className="large text-blank max-w-[788px]">
-                {hero.description}
-              </p>
+              <p className="large text-blank ">{hero.description}</p>
             </AnimatedTextLine>
           </div>
         </div>
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
             className="rotate-270"
@@ -134,7 +129,7 @@ export default function EventManagementClient({ data }: Props) {
 
       {/* ===== MANAGEMENT ===== */}
       <section
-         data-bg="light"
+        data-bg="light"
         data-scroll-target
         className="text-blank px-[16px] md:px-[40px]"
       >

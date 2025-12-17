@@ -59,12 +59,12 @@ export default function OwnedEvents({ data }: Props) {
               <AnimatedStrokeByStroke text={data.title} />
             </h2>
           </div>
-          <div className="pb-[70px]">
+          <div className="pb-[70px] [&>div:last-child_.event-row]:border-b-1">
             {data.events.map((event, index) => (
-              <div className="" key={index}>
+              <div key={index}>
                 <AnimatedTextLine>
                   <div
-                    className="flex justify-between py-[26px] mx-[16px] border-t-1 border-blue"
+                    className="event-row flex justify-between py-[26px] mx-[16px] border-t-1 border-blue"
                     onClick={() =>
                       setOpenEvent(openEvent === index ? null : index)
                     }
@@ -99,7 +99,11 @@ export default function OwnedEvents({ data }: Props) {
                     </AnimatedTextLine>
                     <AnimatedTextLine>
                       {" "}
-                      <img src={event.media.logo_src} alt="" className="mx-auto max-w-[260px]" />
+                      <img
+                        src={event.media.logo_src}
+                        alt=""
+                        className="mx-auto max-w-[260px]"
+                      />
                     </AnimatedTextLine>
                   </div>
                   <div className="space-y-[40px] pt-[60px] pb-[80px]">

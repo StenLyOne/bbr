@@ -63,8 +63,9 @@ export default function TimelineSection({
   }, [data.content]);
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-col ">
       <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
         {data.content.map((item, i) => (
           <Image
             key={i}
@@ -85,12 +86,12 @@ export default function TimelineSection({
           ref={(el) => {
             if (el) sectionRefs.current[i] = el;
           }}
-          className={`relative overflow-hidden ${i === 0 ? "mt-[-100vh]" : ""}`}
+          className={`relative overflow-hidden ${i === 0 ? "mt-[-95vh] md:mt-[-100vh]" : ""}`}
         >
           {/* Локальный фон внутри секции */}
 
-          <div className="relative z-10 h-screen flex items-center justify-center px-6">
-            <div className="relative  h-full flex items-center max-w-[1000px] w-full">
+          <div className="relative z-10 max-[768px]:gap-40 h-full md:h-[70vh] flex items-center justify-center px-6">
+            <div className="relative h-full md:h-[70vh] flex items-center max-w-[1000px] w-full">
               {/* Дата + точка */}
               <div className="hidden md:block">
                 <p className="w-[200px] max-w-[200px] text-white !font-[900] text-right large whitespace-nowrap -translate-x-[120px]">
@@ -112,7 +113,7 @@ export default function TimelineSection({
               </div>
 
               {/* Карточка */}
-              <div className="content bg-white space-y-[60px] p-[24px] md:p-[52px] max-w-[787px] w-full ">
+              <div className="content bg-white space-y-[60px] p-[24px] md:p-[52px] max-w-[787px] w-full max-[768px]:mb-10">
                 {item.media.logo_src && (
                   <div className="mb-4">
                     <Image

@@ -13,15 +13,6 @@ export default function Hero({
   // Ref na video element da bismo mogli da ga reload-ujemo
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Kad se promeni data.video, nateraj video element da reload-uje i pusti novi izvor
-  useEffect(() => {
-    const vid = videoRef.current;
-    if (vid) {
-      vid.load();
-      vid.play().catch(() => {});
-    }
-  }, [data.video]);
-
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("[data-scroll-target]");
     if (nextSection) {
@@ -35,7 +26,28 @@ export default function Hero({
       });
     }
   };
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay заблокирован — принимаем реальность
+        });
+      }
+    };
+
+    video.load(); // reload source
+    tryPlay(); // 1️⃣ сразу
+    video.addEventListener("canplay", tryPlay); // 2️⃣ когда готов
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, [data.video]);
+  
   return (
     <main
       style={{ backfaceVisibility: "hidden" }}
@@ -89,8 +101,16 @@ export default function Hero({
         muted
         loop
         playsInline
+        preload="auto"
+        disablePictureInPicture
+        controls={false}
+        poster={data.poster}
         className="absolute top-0 left-0 w-full h-full object-cover"
-        style={{ contain: "layout paint", transform: "translateZ(0)" }}
+        style={{
+          contain: "layout paint",
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+        }}
       >
         <source src={data.video} type="video/mp4" />
       </video>

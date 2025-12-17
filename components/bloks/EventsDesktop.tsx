@@ -16,6 +16,38 @@ interface Props {
 export default function Events({ bbr_events }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
+  const videoRefs = useRef<HTMLVideoElement[]>([]);
+
+  useEffect(() => {
+    const videos = videoRefs.current;
+
+    const tryPlayAll = () => {
+      videos.forEach((video) => {
+        if (!video) return;
+
+        const p = video.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            // autoplay заблокирован — игнорируем
+          });
+        }
+      });
+    };
+
+    // первая попытка
+    tryPlayAll();
+
+    // вторая — когда браузер готов
+    videos.forEach((video) => {
+      video?.addEventListener("canplay", tryPlayAll);
+    });
+
+    return () => {
+      videos.forEach((video) => {
+        video?.removeEventListener("canplay", tryPlayAll);
+      });
+    };
+  }, []);
 
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
@@ -472,12 +504,16 @@ export default function Events({ bbr_events }: Props) {
               w-1/2 h-full ml-auto absolute inset-0 z-[2]`}
           >
             <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
               src={bbr_events[0].video}
               className="w-full h-full object-cover"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
             />
           </div>
           <div
@@ -486,12 +522,16 @@ export default function Events({ bbr_events }: Props) {
               w-1/2 h-full ml-auto absolute inset-0 z-[4]`}
           >
             <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
               src={bbr_events[1].video}
               className="w-full h-full object-cover"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
             />
           </div>
           <div
@@ -500,12 +540,16 @@ export default function Events({ bbr_events }: Props) {
               w-1/2 h-full ml-auto absolute inset-0 z-[7]`}
           >
             <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
               src={bbr_events[2].video}
               className="w-full h-full object-cover"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
             />
           </div>
           {/* lOGO */}

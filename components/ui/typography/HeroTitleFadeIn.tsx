@@ -71,7 +71,7 @@ export default function HeroTitleFadeIn({
 
   // 👉 DESKTOP: split по |
   return (
-    <h1 className={`${className} relative overflow-hidden`}>
+    <h1 className={`${className} relative break-all overflow-hidden`}>
       {children.split("|").map((line, i) => (
         <span
           key={i}

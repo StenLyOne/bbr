@@ -15,6 +15,38 @@ interface Props {
 export default function Events({ bbr_events = [] }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
+  const videoRefs = useRef<HTMLVideoElement[]>([]);
+
+  useEffect(() => {
+    const videos = videoRefs.current;
+
+    const tryPlayAll = () => {
+      videos.forEach((video) => {
+        if (!video) return;
+
+        const p = video.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            // autoplay заблокирован — игнорируем
+          });
+        }
+      });
+    };
+
+    // первая попытка
+    tryPlayAll();
+
+    // вторая — когда браузер готов
+    videos.forEach((video) => {
+      video?.addEventListener("canplay", tryPlayAll);
+    });
+
+    return () => {
+      videos.forEach((video) => {
+        video?.removeEventListener("canplay", tryPlayAll);
+      });
+    };
+  }, []);
 
   useEffect(() => {
     const tlCircle = gsap.timeline({
@@ -373,48 +405,55 @@ export default function Events({ bbr_events = [] }: Props) {
 
           {/* IMAGE */}
 
-      
-            <div
-        
-              className={`event-image-1 w-full h-full ml-auto absolute object-cover inset-0 z-[2]`}
-            >
-              <video
-                 src={bbr_events[0].video}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
-            <div
-             
-              className={`event-image-2 w-full h-full ml-auto absolute object-cover inset-0 z-[4]`}
-            >
-              <video
-                 src={bbr_events[1].video}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
-            <div
-       
-              className={`event-image-3
+          <div
+            className={`event-image-1 w-full h-full ml-auto absolute object-cover inset-0 z-[2]`}
+          >
+            <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
+              src={bbr_events[0].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          </div>
+          <div
+            className={`event-image-2 w-full h-full ml-auto absolute object-cover inset-0 z-[4]`}
+          >
+            <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
+              src={bbr_events[1].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          </div>
+          <div
+            className={`event-image-3
                w-full h-full ml-auto absolute object-cover inset-0 z-[8]`}
-            >
-              <video
-                 src={bbr_events[2].video}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
-     
+          >
+            <video
+              ref={(el) => {
+                if (el) videoRefs.current[0] = el;
+              }}
+              src={bbr_events[2].video}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          </div>
 
           {/* lOGO */}
           <Image

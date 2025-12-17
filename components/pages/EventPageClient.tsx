@@ -61,6 +61,29 @@ interface Props {
 export default function EventPageClient({ event }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay blocked — silently ignore
+        });
+      }
+    };
+
+    video.load(); // перезагружаем источник
+    tryPlay(); // пробуем сразу
+    video.addEventListener("canplay", tryPlay); // пробуем, когда готово
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
 
   // scroll to top + fade‑in
   useEffect(() => {
@@ -88,12 +111,20 @@ export default function EventPageClient({ event }: Props) {
   };
 
   return (
-    <div ref={ref} className="transition-opacity duration-1000 opacity-0 bg-white text-foreground">
+    <div
+      ref={ref}
+      className="transition-opacity duration-1000 opacity-0 bg-white text-foreground"
+    >
       <Header animationsReady={ready} />
 
       {/* Hero */}
       <main className="relative w-full h-screen overflow-hidden" data-bg="dark">
-        <Image src={event.media.hero_image} alt={event.media.alt} fill className="object-cover" />
+        <Image
+          src={event.media.hero_image}
+          alt={event.media.alt}
+          fill
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <HeroTitleFadeIn delay={1} className="text-white uppercase">
             {event.title}
@@ -105,10 +136,16 @@ export default function EventPageClient({ event }: Props) {
       </main>
 
       {/* Info */}
-      <section data-scroll-target className="px-4 md:px-10 py-20" data-bg="light">
+      <section
+        data-scroll-target
+        className="px-4 md:px-10 py-20"
+        data-bg="light"
+      >
         <SubTitleLine title={event.event_information.sub_title} />
         <h2 className="text-blue pt-8">{event.event_information.title}</h2>
-        <p className="mt-4 whitespace-pre-line">{event.event_information.text}</p>
+        <p className="mt-4 whitespace-pre-line">
+          {event.event_information.text}
+        </p>
         {event.event_information.info_block?.items && (
           <div className="mt-8 border-t border-blue divide-y divide-blue">
             {event.event_information.info_block.items.map((it, i) => (
@@ -127,11 +164,15 @@ export default function EventPageClient({ event }: Props) {
       {/* Stats */}
       <section className="px-4 md:px-10 py-20">
         <SubTitleLine title={event.stats_block.sub_title} />
-        {event.stats_block.title && <h2 className="uppercase mt-8">{event.stats_block.title}</h2>}
+        {event.stats_block.title && (
+          <h2 className="uppercase mt-8">{event.stats_block.title}</h2>
+        )}
         {event.stats_block.indicators && (
           <div className="flex flex-wrap gap-4 mt-4 text-blue">
             {event.stats_block.indicators.map((ind, i) => (
-              <span key={i} className="font-bold">{ind}</span>
+              <span key={i} className="font-bold">
+                {ind}
+              </span>
             ))}
           </div>
         )}
@@ -148,11 +189,14 @@ export default function EventPageClient({ event }: Props) {
       {/* Full‑screen video */}
       <section className="h-screen w-full">
         <video
+          ref={videoRef}
           src={event.media.video}
           autoPlay
-          loop
           muted
+          loop
           playsInline
+          preload="auto"
+          disablePictureInPicture
           className="w-full h-full object-cover"
         />
       </section>
@@ -162,7 +206,14 @@ export default function EventPageClient({ event }: Props) {
         <SubTitleLine title={event.sponsors.sub_title} />
         <div className="grid grid-cols-3 md:grid-cols-4 gap-8 mt-8">
           {event.sponsors.items.map((logo, i) => (
-            <Image key={i} src={logo} alt={`sponsor-${i}`} width={120} height={60} className="mx-auto" />
+            <Image
+              key={i}
+              src={logo}
+              alt={`sponsor-${i}`}
+              width={120}
+              height={60}
+              className="mx-auto"
+            />
           ))}
         </div>
       </section>

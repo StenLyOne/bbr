@@ -45,6 +45,7 @@ type instagramData = {
   account_name: string;
   avatar: string;
   media: string;
+  likes: string;
 };
 
 export interface OwnedEventsMetaRaw {

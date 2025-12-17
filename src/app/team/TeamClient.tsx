@@ -118,11 +118,11 @@ export default function TeamClient({ team }: Props) {
         <Header animationsReady={animationsReady} />
         <main
           className={`
-    transition-opacity duration-1000 w-full h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]  ${
+    transition-opacity duration-1000 w-full  md:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]  ${
       contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
     }`}
         >
-          <div className="w-full flex justify-center md:justify-between items-center">
+          <div className="w-full flex justify-center max-[768px]:pt-50 max-[768px]:pb-40  md:justify-between items-center">
             <div>
               <HeroTitleFadeIn delay={1} className={"text-blue text-left"}>
                 {hero.title}
@@ -142,7 +142,7 @@ export default function TeamClient({ team }: Props) {
           </div>
           <button
             onClick={scrollToNextSection}
-            className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+            className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
           >
             <svg
               className="rotate-270"
@@ -231,24 +231,30 @@ export default function TeamClient({ team }: Props) {
                               >
                                 {/* iconLinkedIn */}
                                 <svg
-                                  className="w-5 h-5"
                                   width="15"
                                   height="15"
                                   viewBox="0 0 15 15"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"
+                                  className="
+                                    w-5 h-5
+                                    text-[#21224B]
+                                    transition-colors
+                                    duration-200
+                                    hover:text-[#6276FB]
+                                  "
                                 >
                                   <path
                                     d="M13.8757 7.17529C13.6148 6.32278 12.9341 5.67385 12.0689 5.45118C11.5599 5.31122 11.0318 5.25396 10.5038 5.27304C9.84215 5.29213 9.19959 5.47027 8.62701 5.79473C8.23893 5.98559 7.9081 6.26552 7.65362 6.61543V5.52116C7.65362 5.36847 7.65362 5.36847 7.50093 5.36847H5.16607C5.01975 5.36847 5.01339 5.36847 5.01339 5.52116V14.3644C5.01339 14.4789 5.0452 14.517 5.15971 14.517H7.6409C7.74905 14.517 7.79358 14.4852 7.78086 14.3771C7.78086 14.3325 7.78086 14.2944 7.78086 14.2498V9.98729C7.78086 9.63102 7.83812 9.28111 7.94627 8.93756C8.23893 8.01507 9.19323 7.48702 10.1284 7.72242C10.6183 7.8433 11.0128 8.21229 11.1591 8.69581C11.3118 9.10297 11.3881 9.52923 11.3754 9.96185V14.3453C11.3754 14.4683 11.439 14.5298 11.5663 14.5298H14.0029C14.1174 14.5298 14.1747 14.4725 14.1747 14.358V9.12206C14.1874 8.46041 14.0856 7.80512 13.882 7.17529H13.8757Z"
-                                    fill="#21224B"
+                                    fill="currentColor"
                                   />
                                   <path
                                     d="M3.07297 5.39392H0.598151C0.496359 5.39392 0.445463 5.44694 0.445463 5.55297V14.3453C0.445463 14.5043 0.445463 14.5107 0.610875 14.5107H3.04752C3.16204 14.5107 3.2193 14.4534 3.2193 14.3389L3.23202 9.92367V5.54025C3.23202 5.43846 3.18113 5.38756 3.07934 5.38756L3.07297 5.39392Z"
-                                    fill="#21224B"
+                                    fill="currentColor"
                                   />
                                   <path
                                     d="M1.83874 0.469727C0.884442 0.469727 0.108276 1.24589 0.108276 2.20019C0.108276 3.1545 0.884442 3.93066 1.83874 3.93066C2.79304 3.93066 3.56921 3.1545 3.56921 2.20019C3.56921 1.24589 2.79304 0.469727 1.83874 0.469727Z"
-                                    fill="#21224B"
+                                    fill="currentColor"
                                   />
                                 </svg>
                               </a>

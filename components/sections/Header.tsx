@@ -159,7 +159,7 @@ export default function Header({
         // если меню открыто — тоже не прячем (опционально)
         if (menuOpen) return;
         hideHeader();
-      }, 3000);
+      }, 1500);
     };
 
     const onScroll = () => {
@@ -208,7 +208,7 @@ export default function Header({
         ref={headerRef}
         style={{
           backgroundColor:
-            !isDark && path != "/pr" && !menuOpen ? "#fff" : "transparent", // 👈 динамический фон
+            !isDark  && !menuOpen ? "#fff" : "transparent", // 👈 динамический фон
         }}
       >
         <div

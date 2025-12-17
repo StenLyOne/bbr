@@ -6,6 +6,7 @@ type instagramData = {
   account_name: string;
   avatar: string;
   media: string;
+  likes: string;
 };
 interface Props {
   data: {
@@ -15,7 +16,6 @@ interface Props {
 }
 
 export default function Latest({ data }: Props) {
-
   return (
     <section className="w-full  bg-white-gris py-[40px]">
       <div className="px-[16px] md:px-[40px] w-full h-full">

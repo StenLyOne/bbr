@@ -195,9 +195,9 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
       ref={overlayRef}
       className="fixed inset-0 bg-white z-[1021] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none text-blue"
     >
-      <div className="flex flex-col md:justify-end h-full md:items-end space-y-6 text-right justify-end gap-15">
+      <div className="flex flex-col md:justify-end h-full md:items-end md:space-y-6 text-right justify-end gap-28">
         <div className="space-y-[34px] md:space-y-[38px] w-full md:w-auto ">
-          <div className="max-[769px]:scale-80 max-[768px]:translate-x-[-30px] max-[768px]:translate-y-[0px]  flex flex-col items-start md:items-center gap-[21px] md:flex-row pb-[0%] md:pb-[5%]">
+          <div className="max-[769px]:scale-60 max-[768px]:translate-x-[-20%] max-[768px]:translate-y-[20px]  flex flex-col items-start md:items-center gap-[21px] md:flex-row pb-[0%] md:pb-[5%]">
             <Link
               href="/events"
               className="flex items-center justify-center gap-[8px] cursor-pointer group"

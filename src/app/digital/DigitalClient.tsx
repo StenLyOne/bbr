@@ -45,7 +45,28 @@ export default function DigitalClient({
   const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationsReady, setAnimationsReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay blocked — silently ignore
+        });
+      }
+    };
+
+    video.load(); // перезагружаем источник
+    tryPlay(); // пробуем сразу
+    video.addEventListener("canplay", tryPlay); // пробуем, когда готово
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
   const scrollToNextSection = () => {
     const next = document.querySelector("[data-scroll-target]");
     if (!next) return;
@@ -84,38 +105,36 @@ export default function DigitalClient({
       <main
         data-bg="dark"
         className={`
-        transition-opacity duration-1000 relative w-full h-[100vh]
+        transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh] 
         flex items-center justify-center px-[16px] md:px-[40px] 
         ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
       `}
       >
         <AnimatedTextLine delay={1.1} className="absolute mx-auto">
           <img
-            className=" w-[100%] md:w-[100%] mx-auto"
+            className=" w-[100%]  mx-auto"
             src="/assets/logo/bbr-digital-vector-2.svg"
             alt={hero.title}
           />
         </AnimatedTextLine>
-        <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
+        <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start ">
           <div>
             <HeroTitleFadeIn
               delay={1.3}
-              className={"max-w-[600px] text-blank text-left break-all"}
+              className={" text-blank text-left break-all"}
             >
               {hero.title}
             </HeroTitleFadeIn>
           </div>
-          <div>
+          <div className="w-full md:w-1/2">
             <AnimatedTextLine delay={1.5}>
-              <p className="large text-blank max-w-[788px]">
-                {hero.description}
-              </p>
+              <p className="large text-blank ">{hero.description}</p>
             </AnimatedTextLine>
           </div>
         </div>
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80 cursor-pointer"
         >
           <svg
             className="rotate-270"
@@ -174,12 +193,15 @@ export default function DigitalClient({
           </div>
           <div className="flex gap-[22px]">
             <video
+              ref={videoRef}
               src={communications.video_src}
               className="w-screen h-screen md:w-full md:h-full object-cover"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
+              disablePictureInPicture
             />
           </div>
         </div>
@@ -202,10 +224,10 @@ export default function DigitalClient({
             ))}
 
             {/* велики наслов */}
-            <div className="text-[64px] font-[900] text-center uppercase leading-[1.1]">
+            <div className="font-[900]  uppercase">
               <AnimatedStrokeByStroke
                 text={two_column_title}
-                className="break-all text-left !text-[60px] md:!text-[128px] !leading-[60px] md:!leading-[129px] !font-[900]  md:px-[40px]"
+                className="break-all text-left md:text-center !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] !font-[900]  md:px-[40px]"
               />
             </div>
 
@@ -242,7 +264,7 @@ export default function DigitalClient({
                     />
                   </AnimatedTextLine>
                 )}
-                <h3 className="!text-[19px]text-left mt-[41px] mb-[21px]">
+                <h3 className="!text-[19px] text-left mt-[41px] mb-[21px]">
                   <AnimatedStrokeByStroke text={blk.title} />
                 </h3>
                 <AnimatedTextLine>

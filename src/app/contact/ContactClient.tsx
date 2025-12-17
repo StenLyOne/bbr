@@ -80,11 +80,11 @@ export default function ContactClient({ data }: { data: Contact }) {
           ${contentVisible ? "opacity-100" : "pointer-events-none"}
         `}
       >
-        <div className="w-full flex justify-center md:justify-between items-center gap-[48px]">
+        <div className="w-full flex justify-between items-center gap-[48px]">
           <div className="mt-50 md:mt-60 mb-30 md:mb-35">
             <HeroTitleFadeIn
               delay={1}
-              className="text-blue text-center md:text-left"
+              className="text-blue text-left"
             >
               {contact_hero_title}
             </HeroTitleFadeIn>

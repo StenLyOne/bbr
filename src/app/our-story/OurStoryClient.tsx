@@ -68,23 +68,20 @@ export default function OurStoryClient({ story }: Props) {
       {/* Hero Intro */}
       <main
         data-bg="light"
-        className={`w-full h-[100vh] flex items-center justify-center px-[16px] 
+        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh]  flex items-center justify-center px-[16px] 
             md:px-[40px] transition-opacity duration-1000 relative ${
               contentVisible ? "opacity-100 pointer-events-auto" : ""
             }`}
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
-            <HeroTitleFadeIn
-              delay={1}
-              className="max-w-[442px] text-blue text-left"
-            >
+            <HeroTitleFadeIn delay={1} className=" text-blue text-left">
               {hero.title}
             </HeroTitleFadeIn>
           </div>
-          <div>
+          <div className="w-full md:w-1/2">
             <AnimatedTextLine delay={1.1}>
-              <p className="large text-blue max-w-[788px]">
+              <p className="large text-blue ">
                 {hero.description}
               </p>
             </AnimatedTextLine>
@@ -188,7 +185,7 @@ export default function OurStoryClient({ story }: Props) {
               key={idx}
               className="flex flex-col-reverse w-full md:w-[90%] mx-auto md:flex-row gap-[60px] md:gap-[76px]"
             >
-              { ele.media.image_src &&
+              {ele.media.image_src && (
                 <div className="relative w-full  md:max-w-[556px] h-[350px] ">
                   <Image
                     src={ele.media.image_src}
@@ -197,7 +194,7 @@ export default function OurStoryClient({ story }: Props) {
                     className="object-cover"
                   />
                 </div>
-              }
+              )}
               <div className="w-full md:w-4/6 space-y-[37px]">
                 <h3>
                   <AnimatedStrokeByStroke text={ele.title} />
@@ -216,7 +213,7 @@ export default function OurStoryClient({ story }: Props) {
       </section>
 
       {/* Timeline */}
-      <section className="bg-white-gris">
+      <section className="bg-white-gris ">
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine title={timeline.sub_title} />
           <h2 className="text-blue py-[40px] md:py-[100px] text-center">
@@ -229,7 +226,7 @@ export default function OurStoryClient({ story }: Props) {
       {/* Testimonials */}
       <section className="bg-white-gris px-[16px] md:px-[40px]">
         <SubTitleLine title={testimonial.sub_title} />
-        <div className="pt-[50px] md:pt-[100px] pb-[40px]">
+        <div className="pt-[50px] md:pt-[100px] pb-[10px] md:pb-[40px]">
           <h2 className="mb-[64px] md:mb-[108px] mx-auto text-center text-blue">
             <AnimatedStrokeByStroke text={testimonial.title} />
           </h2>

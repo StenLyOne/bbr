@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 
@@ -30,6 +30,7 @@ export default function OwnedEventPage() {
   const [teasers, setTeasers] = useState<OwnedEventTeaser[]>([]);
   const [loading, setLoading] = useState(true);
   const [animationsReady, setAnimationsReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   /* 3) fetch on slug change */
   useEffect(() => {
@@ -51,6 +52,28 @@ export default function OwnedEventPage() {
       }
     })();
   }, [slug]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay blocked — silently ignore
+        });
+      }
+    };
+
+    video.load(); // перезагружаем источник
+    tryPlay(); // пробуем сразу
+    video.addEventListener("canplay", tryPlay); // пробуем, когда готово
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
 
   /* 4) loading / 404 */
   if (loading) return null;
@@ -94,7 +117,7 @@ export default function OwnedEventPage() {
 
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
         >
           {/* svg strelica */}
           <svg
@@ -262,11 +285,14 @@ export default function OwnedEventPage() {
       {event.media.video !== "" && (
         <section className="relative h-[100vh] w-full">
           <video
+            ref={videoRef}
             src={event.media.video}
             autoPlay
-            loop
             muted
+            loop
             playsInline
+            preload="auto"
+            disablePictureInPicture
             className="w-full h-full object-cover"
           />
         </section>

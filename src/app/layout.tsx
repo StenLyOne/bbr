@@ -5,9 +5,10 @@ import { ReactNode } from "react";
 import LenisProvider from "../../components/ui/layout/LenisProvider";
 import ScrollToTop from "../../components/ui/utils/ScrollToTop";
 import { fetchHomeContent } from "../../lib/api/home"; // ← dodato fetchSiteLogos
-import {  fetchSiteLogos } from "../../lib/api";
+import { fetchSiteLogos } from "../../lib/api";
 import { Metadata } from "next";
 import PageTransition from "../../components/ui/layout/PageTransition";
+import CookieBanner from "../../components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         {/* <PageTransition /> */}
         <ScrollToTop />
+        <CookieBanner />
         {/* <LenisProvider /> */}
         {children}
       </body>

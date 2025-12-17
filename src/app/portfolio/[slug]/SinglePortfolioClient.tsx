@@ -1,7 +1,7 @@
 // src/app/portfolio/[slug]/SinglePortfolioClient.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import Header from "../../../../components/sections/Header";
@@ -25,6 +25,29 @@ type Props = {
 
 export default function SinglePortfolioClient({ work, teasers }: Props) {
   const [animationsReady, setAnimationsReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // autoplay blocked — silently ignore
+        });
+      }
+    };
+
+    video.load(); // перезагружаем источник
+    tryPlay(); // пробуем сразу
+    video.addEventListener("canplay", tryPlay); // пробуем, когда готово
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
 
   useEffect(() => {
     // даём Header сигнал, что можно стартовать анимации
@@ -63,7 +86,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
 
         <button
           onClick={scrollToNextSection}
-          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
+          className="z-1020 absolute md:bottom-[40px] md:left-[40px] bottom-[16px] left-[16px] w-[38px] h-[38px] hidden md:flex items-center justify-center transition-all duration-300 hover:translate-y-[4px] hover:opacity-80"
         >
           <svg
             className="rotate-270"
@@ -227,12 +250,15 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
       {work.media.video !== "" && (
         <section className="relative h-[100vh] w-full">
           <video
+            ref={videoRef}
             src={work.media.video}
             autoPlay
-            loop
             muted
+            loop
             playsInline
             className="w-full h-full object-cover"
+            preload="auto"
+            disablePictureInPicture
           />
         </section>
       )}

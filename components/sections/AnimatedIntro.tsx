@@ -3,39 +3,46 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "../../lib/gsap";
 import Image from "next/image";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export default function PageIntro({ onFinish }: { onFinish: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
+    if (!containerRef.current || !svgRef.current) return;
+
+    const items = svgRef.current.querySelectorAll("g > path");
+
+    const offsetY = isDesktop ? 30 : 16; // 👈 как ты хотел
+
     const tl = gsap.timeline({
       onComplete: () => {
-        // плавное исчезновение интро
         gsap.to(containerRef.current, {
           opacity: 0,
           duration: 0.5,
+          ease: "power2.out",
           onComplete: onFinish,
         });
       },
     });
 
-    // начальная анимация логотипа
-    tl.set(containerRef.current, { opacity: 1 });
-    tl.fromTo(
-      logoRef.current,
-      { clipPath: "inset(0 100% 0 0)", opacity: 0 },
-      {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        duration: 1,
-        ease: "power4.out",
-      }
-    );
+    gsap.set(items, {
+      y: offsetY,
+      opacity: 0,
+    });
 
-    // держим на экране 2 секунды
-    tl.to({}, { duration: 2 });
-  }, [onFinish]);
+    tl.to(items, {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power3.out",
+      stagger: 0.015,
+    });
+
+    tl.to({}, { duration: 1.2 }); // пауза перед уходом
+  }, [isDesktop, onFinish]);
 
   return (
     <div
@@ -43,12 +50,13 @@ export default function PageIntro({ onFinish }: { onFinish: () => void }) {
       className="fixed inset-0 z-[9999] bg-blue flex items-center justify-center transition-opacity duration-500"
     >
       <svg
+        ref={svgRef}
         width="132"
         height="55"
         viewBox="0 0 132 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="scale-200"
+        className="scale-[1.8] md:scale-[2.4]"
       >
         <g clipPath="url(#clip0_1274_439)">
           <path

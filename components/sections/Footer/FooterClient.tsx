@@ -51,7 +51,9 @@ export default function FooterClient({
 
           {/* address & copyright */}
           <div className="space-y-[14px]">
-            <p className={` w-max small-a ${textColor}`}>{postal_address}</p>
+            <p className={` w-max text-[14px]! font-medium! leading-[100%]! ${textColor}`}>
+              {postal_address}
+            </p>
             <div className="flex flex-col md:flex-row gap-[14px] md:gap-[16px]">
               <p className={`small-a  w-max ${textColor}`}>{copyright}</p>
               <Link
@@ -86,7 +88,6 @@ export default function FooterClient({
                 rel="noopener noreferrer"
                 className=" icon-wrapper"
               >
-           
                 <img
                   src={s.icon_url}
                   alt={s.icon_alt}

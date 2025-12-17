@@ -146,22 +146,24 @@ export default function PortfolioClient({ settings, works }: Props) {
       <Header animationsReady={animationsReady} />
       <main
         className={`
-          transition-opacity duration-1000 relative w-full max-[768]:py-40 md:h-[100vh] 
+          transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh] 
           flex items-center justify-center px-[16px] md:px-[40px]
           ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
-        <div className="w-full flex flex-col md:flex-row justify-center md:justify-between gap-[48px]">
+        <div className="w-full flex flex-col md:flex-row  justify-center md:justify-between gap-[48px]">
           <div>
             <HeroTitleFadeIn
               delay={1}
-              className={"text-blue text-left max-w-[450px]"}
+              className={"text-blue text-left"}
             >
               {hero_port.title_port}
             </HeroTitleFadeIn>
           </div>
-          <AnimatedTextLine delay={1} className="justify-end flex">
-            <p className="large max-w-[788px]">{hero_port.description_port}</p>
-          </AnimatedTextLine>
+          <div className="w-full md:w-1/2">
+            <AnimatedTextLine delay={1} className="justify-end flex">
+              <p className="large ">{hero_port.description_port}</p>
+            </AnimatedTextLine>
+          </div>
         </div>
         <button
           onClick={scrollToNextSection}
@@ -240,7 +242,11 @@ export default function PortfolioClient({ settings, works }: Props) {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[16px] gap-y-[46px]"
         >
           {paginatedWorks.map((work, index) => (
-            <div className="group" key={`${work.slug}-${index}`} ref={setCardRef(index)}>
+            <div
+              className="group"
+              key={`${work.slug}-${index}`}
+              ref={setCardRef(index)}
+            >
               <Link
                 href={`/portfolio/${work.slug.replace(/[^a-z0-9-]/gi, "")}`}
               >
@@ -253,7 +259,42 @@ export default function PortfolioClient({ settings, works }: Props) {
                     className="w-full h-[278] object-cover group-hover:scale-120 duration-200"
                   />
                 </div>
-                <h3 className="pt-[30px] pb-[4px]">{work.title}</h3>
+                <div className="flex  pt-[30px] pb-[4px] justify-between gap-4 ">
+                  <h3 className="">{work.title}</h3>
+                  <svg
+                    width="38"
+                    height="38"
+                    viewBox="0 0 38 38"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="transition-colors duration-300 rotate-180 min-w-[38px] min-h-[38px] md:hidden"
+                  >
+                    <rect
+                      x="0.75"
+                      y="0.75"
+                      width="36.5"
+                      height="36.5"
+                      rx="18.25"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M27.5 19H10.67"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+
                 <p>{work.work_type}</p>
               </Link>
             </div>

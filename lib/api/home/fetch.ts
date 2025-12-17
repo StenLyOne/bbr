@@ -140,7 +140,7 @@ export async function fetchHomeContent(): Promise<HomeContent> {
   };
 
   const lt = acf.latest || {};
-
+console.log(lt)
   const latest: LatestData = {
     sub_title: lt.sub_title ?? "",
     instagram_links: Array.isArray(lt.instagram_links)
@@ -149,6 +149,7 @@ export async function fetchHomeContent(): Promise<HomeContent> {
           account_name: it.account_name ?? "",
           avatar: it.avatar?.url ?? "",
           media: it.media?.url ?? "",
+          likes: it.likes ?? "",
         }))
       : [],
   };

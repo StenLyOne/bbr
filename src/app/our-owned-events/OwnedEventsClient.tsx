@@ -50,8 +50,6 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
   const visibleEvents = showAll ? events : events.slice(0, 9);
 
-
-
   // GSAP animations for cards and background images
   useLayoutEffect(() => {
     if (!cardsRef.current.length || !gridRef.current) return;
@@ -126,7 +124,6 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
   // Fade-in content
   useEffect(() => {
-
     if (!showIntro && contentRef.current) {
       console.log("[GSAP] Fade-in triggered for contentRef");
       gsap.to(contentRef.current, {
@@ -201,19 +198,19 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
       <main
         data-bg="dark"
-        className={`transition-opacity duration-1000 w-full md:h-[100vh] max-[768px]:py-40 flex items-center justify-center px-[16px] md:px-[40px] ${
+        className={`transition-opacity duration-1000 w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] ${
           contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
-            <HeroTitleFadeIn className="relative z-[1000000] max-w-[442px] text-blank text-left">
+            <HeroTitleFadeIn className="relative z-100 text-blank text-left">
               {hero.title || "Fallback Title"}
             </HeroTitleFadeIn>
           </div>
-          <div>
+          <div className="w-full md:max-w-1/2">
             <AnimatedTextLine>
-              <p className="large text-blank max-w-[788px]">
+              <p className="large text-blank ">
                 {hero.description || "Fallback Description"}
               </p>
             </AnimatedTextLine>
@@ -283,7 +280,6 @@ export default function OwnedEventsClient({ settings, events }: Props) {
                   ""
                 )}`}
                 onClick={() => console.log("[Link] Clicked slug:", event.slug)}
-                
               >
                 <Image
                   src={event.hero_image}
@@ -291,10 +287,43 @@ export default function OwnedEventsClient({ settings, events }: Props) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-120"
                 />
-                <div className="absolute inset-0 bg-blue opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
+                <div className="absolute inset-0 bg-blue opacity-40 md:opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <img src={event.logo} alt="Event Logo" />
                 </div>
+
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="absolute bottom-4 right-4 transition-colors duration-300 rotate-180 min-w-[38px] min-h-[38px] text-white block md:hidden z-11"
+                >
+                  <rect
+                    x="0.75"
+                    y="0.75"
+                    width="36.5"
+                    height="36.5"
+                    rx="18.25"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M16.5703 12.9302L10.5003 19.0002L16.5703 25.0702"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M27.5 19H10.67"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             </div>
           ))}

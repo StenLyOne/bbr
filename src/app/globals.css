@@ -217,6 +217,7 @@ a:hover svg.icon {
   white-space: pre-line;
 }
 
+
 @media screen and (max-height: 760px) {
   .owned-events-title {
     margin-top: -100px;
@@ -258,10 +259,10 @@ a:hover svg.icon {
   }
 
   p.header {
-  font-size: 35px;
+    font-size: 35px;
 
-  line-height: 26px;
+    line-height: 26px;
 
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 }
