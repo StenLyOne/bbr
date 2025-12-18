@@ -13,6 +13,7 @@ import ContactForm from "../../../components/sections/ContactForm";
 import Footer from "../../../components/sections/Footer/index";
 
 import type { Contact } from "../../../lib/api/contacts";
+import Link from "next/link";
 
 export default function ContactClient({ data }: { data: Contact }) {
   const {
@@ -82,10 +83,7 @@ export default function ContactClient({ data }: { data: Contact }) {
       >
         <div className="w-full flex justify-between items-center gap-[48px]">
           <div className="mt-50 md:mt-60 mb-30 md:mb-35">
-            <HeroTitleFadeIn
-              delay={1}
-              className="text-blue text-left"
-            >
+            <HeroTitleFadeIn delay={1} className="text-blue text-left">
               {contact_hero_title}
             </HeroTitleFadeIn>
           </div>
@@ -130,19 +128,19 @@ export default function ContactClient({ data }: { data: Contact }) {
             <div className="space-y-[44px]">
               <h2 className="text-blue">{contact_section_tittle}</h2>
               <div className="flex flex-col space-y-[12px]">
-                <a
+                <Link
                   className="text-link w-max"
                   href={`tel:${contact_info.phone_number}`}
                 >
                   {contact_info.phone_number}
-                </a>
+                </Link>
 
-                <a
+                <Link
                   className="text-link w-max"
                   href={`mailto:${contact_info.email_address}`}
                 >
                   {contact_info.email_address}
-                </a>
+                </Link>
 
                 <a>{contact_info.postal_address}</a>
               </div>
@@ -151,7 +149,7 @@ export default function ContactClient({ data }: { data: Contact }) {
               <h2 className="text-blue">{social_tittle}</h2>
               <div className="flex gap-[24px] items-center">
                 {social_links.map((sl, i) => (
-                  <a
+                  <Link
                     key={i}
                     href={sl.link_url}
                     className="icon-wrapper scale-120"
@@ -163,7 +161,7 @@ export default function ContactClient({ data }: { data: Contact }) {
                       height={20}
                       className="transition-all icon-hover"
                     />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

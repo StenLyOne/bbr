@@ -461,7 +461,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
           {status === "ready" && socialLinks.length > 0 && (
             <div className="max-w-[228px] max-h-[20px] pt-[50%] md:pt-[0%] flex gap-[24px] items-center justify-center">
               {socialLinks.map((s, i) => (
-                <a
+                <Link
                   key={s.link_url || i}
                   href={s.link_url}
                   target="_blank"
@@ -473,7 +473,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                     alt={s.icon_alt || ""}
                     className="w-[20px] h-[20px] object-contain icon-hover"
                   />
-                </a>
+                </Link>
               ))}
             </div>
           )}

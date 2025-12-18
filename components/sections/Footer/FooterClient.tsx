@@ -81,7 +81,7 @@ export default function FooterClient({
             className="max-w-[228px] max-h-[20px] flex gap-[24px] items-center scale-120 translate-x-[22px] md:translate-x-0 mt-4 md:mt-0"
           >
             {social_links.map((s, i) => (
-              <a
+              <Link
                 key={i}
                 href={s.link_url}
                 target="_blank"
@@ -94,7 +94,7 @@ export default function FooterClient({
                   style={iconFilterStyle}
                   className="min-h-[20px] min-w-[20px] transition-all icon-hover"
                 />
-              </a>
+              </Link>
             ))}
           </div>
 
