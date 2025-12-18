@@ -114,7 +114,7 @@ export default function MoreEvents({
           {visibleEvents.map((event, i) => (
             <Link
               key={i}
-              className="flex flex-col gap-[40px]"
+              className="flex flex-col gap-[40px] group"
               href={`${
                 flag === "event" ? "/portfolio/" : "/our-owned-events/"
               }${eventSlugs[i]}`}
@@ -126,11 +126,14 @@ export default function MoreEvents({
                     : "snap-start shrink-0 w-[calc(47.5vw-8px)]"
                 }`}
               >
-                <img
-                  src={event.media.hero_image.url || event.media.hero_image}
-                  alt={event.title}
-                  className="w-full h-[300px] object-cover"
-                />
+                <div className="overflow-hidden">
+                  {" "}
+                  <img
+                    src={event.media.hero_image.url || event.media.hero_image}
+                    alt={event.title}
+                    className="w-full h-[300px] object-cover group-hover:scale-120 duration-200"
+                  />
+                </div>
 
                 <div className="flex  mt-[30px] mb-[20px] justify-between items-center gap-4 ">
                   <h3
