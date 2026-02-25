@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.ts,.tsx"
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
