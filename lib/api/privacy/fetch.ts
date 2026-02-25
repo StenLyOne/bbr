@@ -3,20 +3,20 @@ import type { Privacy } from "./types";
 
 import { API_DOMAIN } from "../config";
 
-const COOKIES_URL = `${API_DOMAIN}/wp-json/bbr/v1/options/privacy`;
+const PRIVACY_URL = `${API_DOMAIN}/wp-json/bbr/v1/options/privacy`;
 
 async function fetchPrivacyRow(): Promise<any> {
-  const res = await fetch(COOKIES_URL);
-  if (!res.ok) throw new Error(`cookies option HTTP ${res.status}`);
+  const res = await fetch(PRIVACY_URL);
+  if (!res.ok) throw new Error(`privacy option HTTP ${res.status}`);
   return res.json();
 }
 
 const fetchPrivacyOptions = unstable_cache(
   fetchPrivacyRow,
-  ["cookies-options"],
+  ["privacy-options"],
   {
     revalidate: 60,
-    tags: ["cookies"],
+    tags: ["privacy"],
   }
 );
 
