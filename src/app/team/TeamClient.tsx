@@ -118,7 +118,7 @@ export default function TeamClient({ team }: Props) {
         <Header animationsReady={animationsReady} />
         <main
           className={`
-    transition-opacity duration-1000 w-full  md:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px]  ${
+    transition-opacity duration-1000 w-full  md:h-[80vh] flex items-center justify-center px-[16px] md:px-[40px]  relative ${
       contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
     }`}
         >
@@ -185,7 +185,7 @@ export default function TeamClient({ team }: Props) {
           className="px-[16px] md:px-[40px] bg-white-gris"
         >
           <SubTitleLine title={intro.sub_title} />
-          <div className="max-w-[787px] space-y-[50px] pt-[32px] pb-[72px] md:pt-[118px] md:pb-[209px]">
+          <div className="max-w-[787px] mx-auto text-center! space-y-[50px] pt-[32px] pb-[72px] md:pt-[118px] md:pb-[209px]">
             <AnimatedTextLine>
               <h2 className=" text-blue">{intro.title}</h2>
             </AnimatedTextLine>

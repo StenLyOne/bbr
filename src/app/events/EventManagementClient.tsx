@@ -58,16 +58,15 @@ export default function EventManagementClient({ data }: Props) {
   return (
     <div
       ref={contentRef}
-      className={`transition-opacity duration-1000 bg-blue z-[100000] ${
-        contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      className={`transition-opacity duration-1000 bg-blue z-[100000] ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
     >
       <Header animationsReady={animationsReady} />
 
       {/* ===== HERO ===== */}
       <main
         data-bg="dark"
-        className="transition-opacity duration-1000 relative w-full max-[768px]:pt-40 max-[768px]:pb-20 md:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] text-blank"
+        className="transition-opacity duration-1000 relative w-full max-[768px]:pt-40 max-[768px]:pb-20 md:h-[80vh] flex items-center justify-center px-[16px] md:px-[40px] text-blank"
       >
         <AnimatedTextLine delay={1.1} className="absolute mx-auto">
           <img
@@ -84,7 +83,7 @@ export default function EventManagementClient({ data }: Props) {
           </div>
           <div className="w-full md:max-w-1/2 ">
             <AnimatedTextLine delay={1.5}>
-              <p className="large text-blank ">{hero.description}</p>
+              <p className="large md:text-[32px]! md:leading-[40px]! text-blank ">{hero.description}</p>
             </AnimatedTextLine>
           </div>
         </div>
@@ -136,7 +135,7 @@ export default function EventManagementClient({ data }: Props) {
         <SubTitleLine color="white" title={management.sub_title} />
         <div className="pt-[30px] md:pt-[50px] space-y-[70px] md:space-y-[170px]">
           <div className="space-y-[70px] md:space-y-[120px]">
-            <div className="space-y-[30px] max-w-[787px]">
+            <div className="space-y-[30px] max-w-[787px] text-center! mx-auto">
               <h2>
                 <AnimatedStrokeByStroke text={management.title} />
               </h2>
@@ -164,7 +163,7 @@ export default function EventManagementClient({ data }: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-[70px]">
+          <div className="flex flex-col md:flex-row gap-[70px] md:w-[80%] mx-auto">
             <div className="relative hidden md:block w-full max-w-[443px] h-[500px]">
               {management.content[0].media && (
                 <Image
@@ -223,33 +222,36 @@ export default function EventManagementClient({ data }: Props) {
       {/* ===== SERVICES ===== */}
       <section className="px-[16px] md:px-[40px] pb-[90px] text-blank">
         <SubTitleLine color="white" title={services.sub_title} />
-        <h2 className="mt-[30px] md:mt-[70px]">
-          <AnimatedStrokeByStroke text={services.title} />
-        </h2>
-        <div className="space-y-[70px] md:space-y-[40px] my-[90px]">
-          {services.content.map((ele, idx) => (
-            <div
-              key={idx}
-              className="w-full flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
-            >
-              <div className="w-full space-y-[30px] md:max-w-2/3">
-                <h3>
-                  <AnimatedStrokeByStroke text={ele.title} />
-                </h3>
-                <AnimatedTextLine>
-                  <p>{ele.description}</p>
-                </AnimatedTextLine>
+        <div className="md:w-[80%] mx-auto">
+          <h2 className="mt-[30px] md:mt-[70px]">
+            <AnimatedStrokeByStroke text={services.title} />
+          </h2>
+          <div className="space-y-[70px] md:space-y-[40px] my-[90px] ">
+            {services.content.map((ele, idx) => (
+              <div
+                key={idx}
+                className="w-full flex flex-col-reverse md:flex-row gap-[40px] md:gap-[131px]"
+              >
+                <div className="w-full space-y-[30px] md:max-w-2/3">
+                  <h3>
+                    <AnimatedStrokeByStroke text={ele.title} />
+                  </h3>
+                  <AnimatedTextLine>
+                    <p>{ele.description}</p>
+                  </AnimatedTextLine>
+                </div>
+                <div className="relative w-full md:w-[443px] h-[278px]">
+                  <Image
+                    src={ele.media.url}
+                    alt={ele.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
-              <div className="relative w-full md:w-[443px] h-[278px]">
-                <Image
-                  src={ele.media.url}
-                  alt={ele.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          ))}
+
+            ))}
+          </div>
         </div>
         <div className="flex justify-center">
           <Button text="Let’s Talk" link="/contact" color="white" />

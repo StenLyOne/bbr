@@ -79,11 +79,21 @@ export type OwnedEventRaw = {
   id: number;
   slug: string;
   title: string;
+  excerpt?: {
+    rendered?: string;
+  };
   acf: {
     media: {
       logo: { url: string; alt?: string };
       hero_image: { url: string; alt?: string };
       alt: string;
+    };
+    event_information?: {
+      title?: string;
+      text?: string;
+    };
+    preview?: {
+      excerpt?: string;
     };
     stats_block?: {
       stats?: { label: string; value: string }[];
@@ -99,6 +109,8 @@ export interface OwnedEventStat {
 export interface OwnedEventItem {
   name: string;
   link: string;
+  headline?: string;
+  description?: string;
   media: {
     image_src: string;
     logo_src: string;

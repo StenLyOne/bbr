@@ -105,7 +105,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="light"
-        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh]  flex items-center justify-center px-[16px] md:px-[40px]
+        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh]  flex items-center justify-center px-[16px] md:px-[40px]
           transition-opacity duration-1000 relative ${
             contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
@@ -129,7 +129,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
           </div>
           <div className="w-full md:w-1/2">
             <AnimatedTextLine delay={1.1}>
-              <p className="large text-blue ">
+              <p className="large md:text-[32px]! md:leading-[40px]! text-blue ">
                 {hero.description}
               </p>
             </AnimatedTextLine>
@@ -180,7 +180,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
           <video
             ref={videoRef}
             src={hero.video_src}
-            className="w-screen h-screen md:w-full md:h-full object-cover"
+            className="w-screen h-[80vh] md:w-full md:h-full object-cover"
             autoPlay
             muted
             loop
@@ -196,7 +196,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
           <SubTitleLine title={where_we_started.sub_title} />
           <div className="flex flex-col gap-[75px] md:gap-[130px]">
             {/* први блок */}
-            <div className="flex flex-col md:flex-row gap-[40px] md:gap-[26px]">
+            <div className="flex flex-col md:flex-row gap-[40px] ">
               <div className="w-full md:max-w-[439px] space-y-[50px]">
                 <h2>
                   <AnimatedStrokeByStroke
@@ -228,7 +228,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
             >
               <AnimatedStrokeByStroke
                 text={where_we_started.title}
-                className="break-all !text-[50px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
+                className="break-all !text-[42px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
               />
             </h2>
 
@@ -264,7 +264,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       {/* SERVICES */}
       <section className="px-[16px] md:px-[40px] text-blue">
         <SubTitleLine title={services.sub_title} />
-        <div className="md:py-[40px] py-[90px]">
+        <div className="md:py-[40px] py-[90px] md:w-[80%] mx-auto">
           <h2 className="max-w-[1065px]">
             <AnimatedStrokeByStroke
               text={services.title}

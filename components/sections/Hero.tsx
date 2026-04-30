@@ -118,7 +118,7 @@ export default function Hero({
       {/* TITLE */}
       <div className="min-w-full relative z-10 min-h-full w-full flex items-center md:break-all">
         {animationsReady ? (
-          <HeroTitleFadeIn delay={0.4} className={"text-blank  md:mt-[100px]"}>
+          <HeroTitleFadeIn delay={0.4} className={"text-blank  ]"}>
             {data.title}
           </HeroTitleFadeIn>
         ) : (

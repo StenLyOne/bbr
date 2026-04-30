@@ -35,7 +35,7 @@ export default function CookieBanner() {
     <>
       {/* MAIN BANNER */}
       {visible && (
-        <div className="fixed bottom-4 left-4 z-[9999] bg-blue text-white px-4 py-4 w-[80%] md:max-w-[360px] rounded-2xl">
+        <div className="fixed bottom-4 right-4 z-[9999] bg-blue text-white px-4 py-4 w-[80%] md:max-w-[360px] rounded-2xl">
           <p className="text-sm leading-[100%]">
             We use cookies to ensure the website functions properly and to
             analyse traffic. Learn more in our{" "}
@@ -66,8 +66,8 @@ export default function CookieBanner() {
       {showReopen && !visible && (
         <button
           onClick={() => setVisible(true)}
-          className="  rounded-full font-bold
-            fixed bottom-4 left-4 z-[9998]
+          className=" max-md:hidden rounded-full font-bold
+            fixed bottom-4 right-4 z-[9998]
             bg-blue text-white
             px-6 py-3 text-[14px]
         hover:opacity-90 cursor-pointer

@@ -64,7 +64,7 @@ export default function TimelineSection({
 
   return (
     <div className="relative flex flex-col ">
-      <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
+      <div className="sticky top-0 h-[100vh] w-full z-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/30 z-10"></div>
         {data.content.map((item, i) => (
           <Image
@@ -90,7 +90,7 @@ export default function TimelineSection({
         >
           {/* Локальный фон внутри секции */}
 
-          <div className="relative z-10 max-[768px]:gap-40 h-full md:h-[70vh] flex items-center justify-center px-6">
+          <div className="relative z-10 max-[768px]:gap-40 h-full md:h-[60vh] flex items-center justify-center px-6">
             <div className="relative h-full md:h-[70vh] flex items-center max-w-[1000px] w-full">
               {/* Дата + точка */}
               <div className="hidden md:block">

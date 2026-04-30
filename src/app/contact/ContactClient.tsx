@@ -129,20 +129,20 @@ export default function ContactClient({ data }: { data: Contact }) {
               <h2 className="text-blue">{contact_section_tittle}</h2>
               <div className="flex flex-col space-y-[12px]">
                 <Link
-                  className="text-link w-max"
+                  className="text-link text-[22px]! font-medium w-max"
                   href={`tel:${contact_info.phone_number}`}
                 >
                   {contact_info.phone_number}
                 </Link>
 
                 <Link
-                  className="text-link w-max"
+                  className="text-link text-[22px]! font-medium w-max"
                   href={`mailto:${contact_info.email_address}`}
                 >
                   {contact_info.email_address}
                 </Link>
 
-                <a>{contact_info.postal_address}</a>
+                <a className="text-[22px]! font-medium">{contact_info.postal_address}</a>
               </div>
             </div>
             <div className="space-y-[44px]">
@@ -157,8 +157,8 @@ export default function ContactClient({ data }: { data: Contact }) {
                     <Image
                       src={sl.icon_image.url}
                       alt={sl.icon_image.alt}
-                      width={20}
-                      height={20}
+                      width={28}
+                      height={28}
                       className="transition-all icon-hover"
                     />
                   </Link>

@@ -34,6 +34,8 @@ export default function OwnedEventsClient({ settings, events }: Props) {
   const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
   const bgImagesRef = useRef<Array<HTMLImageElement | null>>([]);
 
+  console.log(events)
+
   const setCardRef = useCallback(
     (index: number) => (el: HTMLDivElement | null) => {
       cardsRef.current[index] = el;
@@ -198,7 +200,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
 
       <main
         data-bg="dark"
-        className={`transition-opacity duration-1000 w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh] flex items-center justify-center px-[16px] md:px-[40px] ${
+        className={`transition-opacity relative duration-1000 w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh] flex items-center justify-center px-[16px] md:px-[40px] ${
           contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -210,7 +212,7 @@ export default function OwnedEventsClient({ settings, events }: Props) {
           </div>
           <div className="w-full md:max-w-1/2">
             <AnimatedTextLine>
-              <p className="large text-blank ">
+              <p className="large md:text-[32px]! md:leading-[40px]! text-blank ">
                 {hero.description || "Fallback Description"}
               </p>
             </AnimatedTextLine>
@@ -275,18 +277,32 @@ export default function OwnedEventsClient({ settings, events }: Props) {
               ref={setCardRef(i)}
             >
               <Link
+                className="block w-full h-full"
                 href={`/our-owned-events/${event.slug.replace(
                   /[^a-z0-9-]/gi,
                   ""
                 )}`}
                 onClick={() => console.log("[Link] Clicked slug:", event.slug)}
               >
-                <Image
-                  src={event.hero_image}
-                  alt={event.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-120"
-                />
+                {event.display_video && event.video ? (
+                  <video
+                    src={event.video}
+                    poster={event.hero_image}
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-120"
+                  />
+                ) : (
+                  <Image
+                    src={event.hero_image}
+                    alt={event.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-120"
+                  />
+                )}
                 <div className="absolute inset-0 bg-blue opacity-40 md:opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <img src={event.logo} alt="Event Logo" />

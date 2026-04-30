@@ -27,8 +27,13 @@ export default function MissionSecondary({
         <div className="px-[16px] md:px-[0px]">
           <SubTitleLine title={data.sub_title} />
         </div>
+        <div className="px-[46px] md:px-[0px] py-[64px]  mt-[32px] mb-[67px] md:mt-[164px] md:mb-[104px]">
+          <h2 className="text-[100px]! leading-[90px]! md:text-[128px]! md:leading-[122px]! !font-[900] text-center text-blue">
+            <AnimatedTextWordByWord text={data.title} />
+          </h2>
+        </div>
         <AnimatedTextLines>
-          <p className="text-balance large md:text-[32px]! md:leading-[40px]!  text-center max-w-[902px] px-[16px] md:px-[0px] mx-auto mt-[32px] mb-[67px] md:mt-[164px] md:mb-[164px] text-blue">
+          <p className="text-balance large md:text-[32px]! md:leading-[40px]!  text-center max-w-[902px] px-[16px] md:px-[0px] mx-auto  mb-[67px]  md:mb-[164px] text-blue">
             {data.content}
           </p>
         </AnimatedTextLines>
@@ -47,11 +52,7 @@ export default function MissionSecondary({
             ))}
           </AnimatedTextLines>
         </div>
-        <div className="px-[46px] md:px-[0px] py-[64px] md:py-[164px]">
-          <h2 className="text-[100px]! leading-[90px]! md:text-[128px]! md:leading-[122px]! !font-[900] text-center text-blue">
-            <AnimatedTextWordByWord text={data.title}/>
-          </h2>
-        </div>
+
       </div>
     </section>
   );

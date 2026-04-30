@@ -60,7 +60,7 @@ export default function SubTitleLine({ title, color }: Prop) {
       {title.trim() !== "" && (
         <h4
           className={`
-            max-w-[70%]
+            md:max-w-[70%]
             text-${dark}
             md:whitespace-nowrap
             break-words

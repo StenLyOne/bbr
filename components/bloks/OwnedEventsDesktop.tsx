@@ -1,11 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import SubTitleLine from "../ui/typography/SubTitleLine";
-import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "../../lib/gsap";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-import AnimatedStrokeByStroke from "../ui/typography/AnimatedStrokeByStroke";
-import AnimatedTextLine from "../ui/typography/AnimatedTextLine";
 import Link from "next/link";
+import { useMemo, useState } from "react";
+import Button from "../ui/buttons/Button";
+import SubTitleLine from "../ui/typography/SubTitleLine";
 
 interface Stat {
   name: string;
@@ -21,6 +20,8 @@ interface MediaItem {
 interface EventItem {
   name: string;
   link: string;
+  headline?: string;
+  description?: string;
   stats: Stat[];
   media: MediaItem;
 }
@@ -33,279 +34,163 @@ interface Props {
   };
 }
 
+const FALLBACK_DESCRIPTION =
+  "Detailed event information will be available soon.";
+
 export default function OwnedEventsDesktop({ data }: Props) {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
-  const isTall = useMediaQuery("(min-height: 861px)");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const total = data.events.length;
-  const wrapperHeight = Math.min(Math.max(total * 100), 1000);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !isDesktop || !wrapperRef.current)
-      return;
-
-    const baseShift = 40;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        id: "owned-events",
-        trigger: wrapperRef.current,
-        start: "top top",
-        end: `+=${total * baseShift * 2}%`,
-        scrub: true,
-        pin: true,
-        pinSpacing: false,
-        anticipatePin: 1,
-      },
-    });
-
-    ScrollTrigger.create({
-      trigger: wrapperRef.current,
-      start: "top top",
-      end: `+=${total * baseShift * 2}%`,
-      scrub: true,
-      onUpdate: (self) => {
-        const newIndex = Math.min(total - 1, Math.floor(self.progress * total));
-        setActiveIndex((prev) => (prev !== newIndex ? newIndex : prev));
-      },
-    });
-
-    const totalScrollDuration = total * baseShift;
-
-    const steps = data.events.flatMap((_, i) => {
-      const base = i * baseShift;
-
-      return [
-        {
-          range: [base + 2, base + 12],
-          animation: (duration: number) =>
-            gsap.fromTo(
-              `.logo-line-${i}`,
-              { y: 100, opacity: 0 },
-              { y: 0, opacity: 1, duration, ease: "power4.out" }
-            ),
-        },
-        {
-          range: [base + 2, base + 12],
-          animation: (duration: number) =>
-            gsap.fromTo(
-              `.image-${i}`,
-              { clipPath: "inset(0 0 0 100%)", opacity: 1 },
-              { clipPath: "inset(0 0 0 0%)", opacity: 1, duration }
-            ),
-        },
-        {
-          range: [base + 18, base + 19],
-          animation: (duration: number) =>
-            gsap.to(`.logo-line-${i}`, {
-              y: -100,
-              opacity: 0,
-              duration,
-              ease: "power4.inOut",
-            }),
-        },
-        {
-          range: [base + 20, base + 24],
-          animation: (duration: number) => {
-            const lines = gsap.utils.toArray<HTMLElement>([
-              `.stat-line-${i}-0`,
-              `.stat-line-${i}-1`,
-              `.stat-line-${i}-2`,
-            ]);
-            return gsap.to(lines, {
-              y: 0,
-              opacity: 1,
-              duration,
-              ease: "power4.out",
-              stagger: 0.3,
-            });
-          },
-        },
-        {
-          range: [base + 35, base + 36],
-          animation: (duration: number) =>
-            gsap.to(`.stats-${i}`, { opacity: 0, y: -50, duration }),
-        },
-      ];
-    });
-
-    tl.duration(totalScrollDuration);
-    steps.forEach(({ range, animation }) => {
-      const [startP, endP] = range;
-      const start = (startP / 100) * totalScrollDuration;
-      const duration = ((endP - startP) / 100) * totalScrollDuration;
-      tl.add(animation(duration), start);
-    });
-    timelineRef.current = tl;
-
-    ScrollTrigger.refresh();
-
-    return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [data.events, isDesktop, total]);
-
-  // const scrollToEvent = (index: number) => {
-  //   const section = wrapperRef.current;
-  //   if (!section || !timelineRef.current) return;
-
-  //   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-
-  //   gsap.to(window, {
-  //     scrollTo: sectionTop,
-  //     duration: 1,
-  //     ease: "power2.inOut",
-  //     onComplete: () => {
-  //       const baseProgress = index / total;
-  //       const targetProgress = Math.min(baseProgress + 0.05, 0.99);
-
-  //       gsap.to(timelineRef.current!, {
-  //         progress: targetProgress,
-  //         duration: 1,
-  //         ease: "power2.inOut",
-  //       });
-  //     },
-  //   });
-  // };
+  const activeEvent = useMemo(
+    () => (activeIndex === null ? null : data.events[activeIndex] ?? null),
+    [activeIndex, data.events]
+  );
 
   return (
-    <div className="relative w-full overflow-hidden ">
-      {!isTall && (
-        <>
-          <div className=" px-[16px] py-5 md:py-10">
-            <SubTitleLine title={data.sub_title} />
-          </div>
-          <h2 className="max-w-[676px] mx-auto my-[40px] md:my-[60px] text-center text-blue">
-            <AnimatedStrokeByStroke text={data.title} />
-          </h2>
-        </>
-      )}
-      <div ref={wrapperRef} style={{ height: `${wrapperHeight}vh` }}>
-        <div
-          className={`${
-            !isTall ? "translate-y-[150px]" : ""
-          } px-[16px] md:px-[40px]`}
-        >
-          {isTall && (
-            <>
-              <div className=" px-[16px] py-5 md:py-10">
-                <SubTitleLine title={data.sub_title} />
-              </div>
-              <h2 className=" mx-auto my-[40px] md:my-[60px] text-center text-blue">
-                <AnimatedStrokeByStroke text={data.title} />
-              </h2>
-            </>
-          )}
+    <div className="w-full px-4 pb-16 md:px-10 md:pb-24 ">
+      <SubTitleLine title={data.sub_title || "BBR OWNED EVENTS"} />
 
-          <div className="w-full  mb-[20px] ">
-            <AnimatedTextLine
-              stagger={0.1}
-              className="w-full h-full flex gap-[8px]"
-              width={"full"}
-            >
-              {data.events.map((event, index) => {
-                const isActive = activeIndex === index;
 
-                return (
-                  <div key={index} data-line className="h-full">
-                    <Link
-                      href={event.link}
-                      className="w-full h-full sm:w-auto flex"
-                    >
-                      <button
-                        onClick={() => {
-                          setActiveIndex(index);
-                          // scrollToEvent(index - 1);
-                        }}
-                        className="hover:bg-blue text-blank h-full"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          padding: "30px",
-                          borderRadius: "8px",
-                          border: isActive
-                            ? "1px solid #6276fb"
-                            : "1px solid black",
-                          fontSize: "18px",
-                          fontWeight: 600,
-                          fontFamily: "Zabal",
-                          lineHeight: "110%",
-                          cursor: "pointer",
-                          backgroundColor: isActive ? "#6276fb" : "transparent",
-                          color: isActive ? "#fff" : "#21224b",
-                          transition: "all 0.3s ease",
-                        }}
-                      >
-                        {event.name}
-                      </button>
-                    </Link>
-                  </div>
-                );
-              })}
-            </AnimatedTextLine>
-          </div>
+      <div className="relative">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+          {data.events.map((event, index) => {
+            const isActive = activeIndex === index;
 
-          <div className="w-full flex gap-[0px] relative">
-            <div className="relative w-2/3 bg-blue flex items-center justify-center overflow-hidden">
-              {data.events.map((event, index) => (
+            return (
+              <button
+                key={`${event.link}-${index}`}
+                type="button"
+                onClick={() => setActiveIndex((prev) => (prev === index ? null : index))}
+                className="group relative block aspect-[4/4] overflow-hidden text-left cursor-pointer"
+                aria-expanded={isActive}
+                aria-controls={isActive ? "owned-event-expanded" : undefined}
+              >
+                {event.media.image_src ? (
+                  <Image
+                    src={event.media.image_src}
+                    alt={event.media.alt || event.name}
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-blue/10" />
+                )}
+
                 <div
-                  key={`logo-wrap-${index}`}
-                  className="w-full h-full  absolute flex justify-center items-center"
+                  className={`absolute inset-0 bg-[#1b224e]/60 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
+                />
+
+                <div
+                  className={`absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
                 >
-                  <div className=" ">
+                  {event.media.logo_src ? (
                     <img
                       src={event.media.logo_src}
-                      alt={event.media.alt}
-                      className={`logo-${index} logo-line-${index} block translate-y-full opacity-0 object-cover max-w-[400px] max-h-[300px]`}
+                      alt={`${event.name} logo`}
+                      className="max-h-[120px] max-w-[260px] object-contain"
                     />
+                  ) : (
+                    <span className="text-blank text-[28px] font-[700] uppercase tracking-[0.08em]">
+                      {event.name}
+                    </span>
+                  )}
+                </div>
+
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          className={`absolute inset-0 w-full h-full  overflow-hidden transition-all duration-300 ${activeEvent
+            ? "max-h-[2200px] opacity-100"
+            : "pointer-events-none max-h-0 opacity-0"
+            }`}
+        >
+          {activeEvent && (
+            <div
+              id="owned-event-expanded"
+              className="relative min-h-[520px] bg-blue md:min-h-[700px] h-full"
+            >
+              {activeEvent.media.image_src ? (
+                <Image
+                  src={activeEvent.media.image_src}
+                  alt={activeEvent.media.alt || activeEvent.name}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              ) : null}
+
+              <div className="absolute inset-0 bg-[#1b224e]/80" />
+
+              <button
+                type="button"
+                onClick={() => setActiveIndex(null)}
+                aria-label="Close event details"
+                className="absolute right-4 top-4 z-20  cursor-pointer md:right-8 md:top-8"
+              >
+                <span className="relative mx-auto block h-5 w-5">
+                  <span className="absolute left-1/2 top-1/2 h-[1px] w-5 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
+                  <span className="absolute left-1/2 top-1/2 h-[1px] w-5 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white" />
+                </span>
+              </button>
+
+              <div className="relative flex justify-between flex-col z-10 h-full px-5 py-8 text-blank md:px-12 md:py-12 xl:px-16 xl:py-14">
+                <h3 className=" text-center! font-[900]! uppercase leading-[67.5px]!  text-[48px]!">
+                  {activeEvent.headline || activeEvent.name}
+                </h3>
+
+                <div className="mt-8 flex justify-between gap-10 lg:mt-12 ">
+                  <div className="w-[40%] flex items-center justify-between">
+                    {activeEvent.media.logo_src ? (
+                      <img
+                        src={activeEvent.media.logo_src}
+                        alt={`${activeEvent.name} logo`}
+                        className=" w-[60%] object-contain object-left"
+                      />
+                    ) : (
+                      <p className="text-[28px] font-[700] uppercase tracking-[0.08em]">
+                        {activeEvent.name}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-[80px] flex flex-col w-[70%]">
+                    <div className="flex gap-10 items-end justify-between w-full h-full ">
+                      {activeEvent.stats.map((stat, index) => (
+                        <div key={`${stat.name}-${index}`} className="space-y-6 flex flex-col items-center">
+                          <p className="text-[63px]! leading-[67.5px]! font-[900]! ">
+                            {stat.number}
+                          </p>
+                          <p className="text-[21px]! text-center text-balance leading-[21px]! text-blank/90">
+                            {stat.name}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="w-full text-[22px]  ml-auto text-blank/90 flex">
+                      {activeEvent.description?.trim() || FALLBACK_DESCRIPTION}
+                    </p>
                   </div>
                 </div>
-              ))}
-              {data.events.map((event, index) => (
-                <div
-                  key={`stats-${index}`}
-                  className={`stats-${index} absolute inset-0 flex justify-center gap-[65px] ld:gap-[80px] items-center `}
-                >
-                  {event.stats.map((stat, statIdx) => (
-                    <div
-                      key={statIdx}
-                      className="text-white text-center z-[20]"
-                    >
-                      <h2 className="overflow-hidden">
-                        <span
-                          className={`stat-line-${index}-${statIdx} block translate-y-full`}
-                        >
-                          {stat.number}
-                        </span>
-                      </h2>
-                      <p className="overflow-hidden">
-                        <span
-                          className={`stat-line-${index}-${statIdx} block translate-y-full`}
-                        >
-                          {stat.name}
-                        </span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+                <div className="mt-10 flex md:justify-end">
+                  <Button
+                    arrow
+                    color="white"
+                    link={activeEvent.link}
+                    text="Learn More"
 
-            <div className="w-1/3 h-[443px] relative bg-blue">
-              {data.events.map((event, index) => (
-                <Image
-                  key={`image-${index}`}
-                  src={event.media.image_src}
-                  alt={event.media.alt}
-                  width={443}
-                  height={443}
-                  className={`image-${index} absolute object-cover w-full h-full opacity-1`}
-                />
-              ))}
+                  >
+
+
+                  </Button>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

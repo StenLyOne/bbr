@@ -24,14 +24,14 @@ export default function SquareIcons({ link, iconSrc, title }: SquareIconProps) {
               />
             </AnimatedTextLines>
           </div>
-          <AnimatedTextLines stagger={0.5}>
+     
             <div className="flex justify-center gap-[15px] group-hover:scale-140 transition-all">
-              <p className="!text-[19px] !leading-[100%] !font-[700] text-center ">
+              <p className="!text-[19px] roup-hover:leading-[140%] !leading-[100%] !font-[700] text-center ">
                 {title}
               </p>
               <img className="md:hidden" src="/assets/icons/arrow.svg" alt="" />
             </div>
-          </AnimatedTextLines>
+         
         </div>
       </AnimatedTextLines>
     </Link>

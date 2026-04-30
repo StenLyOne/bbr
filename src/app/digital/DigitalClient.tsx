@@ -105,7 +105,7 @@ export default function DigitalClient({
       <main
         data-bg="dark"
         className={`
-        transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh] 
+        transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh] 
         flex items-center justify-center px-[16px] md:px-[40px] 
         ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
       `}
@@ -195,7 +195,7 @@ export default function DigitalClient({
             <video
               ref={videoRef}
               src={communications.video_src}
-              className="w-screen h-screen md:w-full md:h-full object-cover"
+              className="w-screen h-[80vh] md:w-full md:h-full object-cover"
               autoPlay
               muted
               loop

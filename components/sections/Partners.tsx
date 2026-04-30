@@ -16,23 +16,83 @@ export default function Partners({ data }: { data: any }) {
   ];
 
   useEffect(() => {
+    const DURATION = 150;
+    const MOBILE_SPEED_MULTIPLIER = 2;
     const rows = gsap.utils.toArray<HTMLElement>(".logo-row");
+    const imageListenersCleanup: Array<() => void> = [];
+    const tweens: gsap.core.Tween[] = [];
+    let rafId: number | null = null;
+
+    const killTweens = () => {
+      tweens.forEach((tween) => tween.kill());
+      tweens.length = 0;
+    };
+
+    const init = () => {
+      killTweens();
+
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      const speedMultiplier = isMobile ? MOBILE_SPEED_MULTIPLIER : 1;
+
+      rows.forEach((row) => {
+        const direction = Number(row.dataset.direction) || 1;
+        const fullSetWidth = row.scrollWidth / 4;
+        if (!fullSetWidth) return;
+
+        const distance = fullSetWidth * speedMultiplier;
+        const fromX = direction === 1 ? 0 : -distance;
+        const toX = direction === 1 ? -distance : 0;
+
+        tweens.push(
+          gsap.fromTo(
+            row,
+            { x: fromX },
+            {
+              x: toX,
+              repeat: -1,
+              ease: "none",
+              duration: DURATION,
+              force3D: true,
+              overwrite: true,
+            }
+          )
+        );
+      });
+    };
+
+    const scheduleInit = () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        init();
+        rafId = null;
+      });
+    };
+
+    scheduleInit();
+    window.addEventListener("resize", scheduleInit);
 
     rows.forEach((row) => {
-      const direction = Number(row.dataset.direction) || 1;
+      const images = Array.from(row.querySelectorAll("img"));
+      images.forEach((img) => {
+        if (img.complete) return;
 
-      gsap.to(row, {
-        xPercent: direction * -50,
-        repeat: -1,
-        ease: "none",
-        duration: 30,
-        force3D: true,
-        overwrite: true,
-        modifiers: {
-          xPercent: gsap.utils.wrap(-100, 0),
-        },
+        const onLoad = () => scheduleInit();
+        img.addEventListener("load", onLoad);
+        img.addEventListener("error", onLoad);
+
+        imageListenersCleanup.push(() => {
+          img.removeEventListener("load", onLoad);
+          img.removeEventListener("error", onLoad);
+        });
       });
     });
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", scheduleInit);
+      imageListenersCleanup.forEach((fn) => fn());
+      killTweens();
+    };
   }, []);
 
   return (

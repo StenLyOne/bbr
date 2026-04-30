@@ -68,14 +68,14 @@ export default function OurStoryClient({ story }: Props) {
       {/* Hero Intro */}
       <main
         data-bg="light"
-        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh]  flex items-center justify-center px-[16px] 
+        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh]  flex items-center justify-center px-[16px] 
             md:px-[40px] transition-opacity duration-1000 relative ${
               contentVisible ? "opacity-100 pointer-events-auto" : ""
             }`}
       >
         <div className="w-full flex gap-[46px] justify-center flex-col md:flex-row md:justify-between items-start">
           <div>
-            <HeroTitleFadeIn delay={1} className=" text-blue text-left">
+            <HeroTitleFadeIn delay={1} className=" text-blue text-left text-balance">
               {hero.title}
             </HeroTitleFadeIn>
           </div>
@@ -156,7 +156,7 @@ export default function OurStoryClient({ story }: Props) {
       <section className="bg-blank px-[16px] md:px-[40px]">
         <SubTitleLine title={where_we_started.sub_title} />
         <div className="py-[30px] md:py-[130px] space-y-[60px] md:space-y-[120px]">
-          <div className="flex flex-col md:flex-row justify-between gap-[60px] md:gap-[24px] text-blue">
+          <div className="flex flex-col md:flex-row justify-between gap-[60px]  text-blue">
             <div className="w-full md:w-1/3 space-y-[28px] md:space-y-[50px]">
               <h2>
                 <AnimatedStrokeByStroke
@@ -183,7 +183,7 @@ export default function OurStoryClient({ story }: Props) {
           {where_we_started.content.slice(1).map((ele, idx) => (
             <div
               key={idx}
-              className="flex flex-col-reverse w-full md:w-[90%] mx-auto md:flex-row gap-[60px] md:gap-[76px]"
+              className="flex flex-col-reverse w-full md:w-[80%] mx-auto md:flex-row gap-[60px] md:gap-[76px]"
             >
               {ele.media.image_src && (
                 <div className="relative w-full  md:max-w-[556px] h-[350px] ">

@@ -83,15 +83,15 @@ export async function fetchEventManagementContent(): Promise<EventManagement> {
       },
       content: Array.isArray(acf.management?.content)
         ? acf.management.content.map((item: any) => ({
-            title: item?.title ?? "",
-            description: item?.description ?? "",
-            media: item?.media?.image
-              ? {
-                  url: item.media.image?.url ?? "",
-                  alt: item.media.image?.alt ?? "",
-                }
-              : undefined,
-          }))
+          title: item?.title ?? "",
+          description: item?.description ?? "",
+          media: item?.media?.image
+            ? {
+              url: item.media.image?.url ?? "",
+              alt: item.media.image?.alt ?? "",
+            }
+            : undefined,
+        }))
         : [],
     },
 
@@ -99,8 +99,8 @@ export async function fetchEventManagementContent(): Promise<EventManagement> {
       title: acf.carousel?.title ?? "",
       gallery: Array.isArray(acf.carousel?.gallery)
         ? acf.carousel.gallery
-            .map((img: any) => (typeof img === "string" ? img : img?.url ?? ""))
-            .filter(Boolean)
+          .map((img: any) => (typeof img === "string" ? img : img?.url ?? ""))
+          .filter(Boolean)
         : [],
     },
 
@@ -109,13 +109,13 @@ export async function fetchEventManagementContent(): Promise<EventManagement> {
       title: acf.services_event?.title ?? "",
       content: Array.isArray(acf.services_event?.content)
         ? acf.services_event.content.map((item: any) => ({
-            title: item?.title ?? "",
-            description: item?.description ?? "",
-            media: {
-              url: item?.media?.image?.url ?? "",
-              alt: item?.media?.image?.alt ?? "",
-            },
-          }))
+          title: item?.title ?? "",
+          description: item?.description ?? "",
+          media: {
+            url: item?.media?.image?.url ?? "",
+            alt: item?.media?.image?.alt ?? "",
+          },
+        }))
         : [],
     },
 
@@ -174,6 +174,16 @@ export const fetchOwnedEventSettings = unstable_cache(
 // список всех owned-events (id/slug/title/logo/hero_image)
 export const fetchAllOwnedEvents = unstable_cache(
   async (): Promise<OwnedEvent[]> => {
+    const toBoolean = (value: unknown): boolean => {
+      if (typeof value === "boolean") return value;
+      if (typeof value === "number") return value === 1;
+      if (typeof value === "string") {
+        const normalized = value.trim().toLowerCase();
+        return normalized === "1" || normalized === "true";
+      }
+      return false;
+    };
+
     const data = await fetchJSON<
       Array<{
         id: number;
@@ -181,15 +191,26 @@ export const fetchAllOwnedEvents = unstable_cache(
         title: string;
         logo: string;
         hero_image: string;
+        video?: string;
+        display_video?: boolean | number | string;
+        acf?: {
+          video?: { url?: string };
+          display_video?: boolean | number | string;
+          media?: {
+            hero_video?: { url?: string };
+          };
+        };
       }>
     >(ALL_OWNED_EVENTS_URL, 2, [TAG_OWNED_EVENTS]);
-
+    console.log(data)
     return (Array.isArray(data) ? data : []).map((evt) => ({
       id: evt.id,
       slug: evt.slug,
       title: evt.title,
       logo: evt.logo,
       hero_image: evt.hero_image,
+      video: evt.video ?? evt.acf?.video?.url ?? evt.acf?.media?.hero_video?.url ?? "",
+      display_video: toBoolean(evt.display_video ?? evt.acf?.display_video),
     }));
   },
   ["owned-events:list"],
@@ -249,8 +270,8 @@ export async function fetchOwnedEventItem(
       title: acf.stats_block?.title ?? "",
       indicators: Array.isArray(acf.stats_block?.indicators)
         ? acf.stats_block.indicators.map(
-            (i: any) => i?.indicator_text ?? i ?? ""
-          )
+          (i: any) => i?.indicator_text ?? i ?? ""
+        )
         : [],
       stats: Array.isArray(acf.stats_block?.stats) ? acf.stats_block.stats : [],
     },
@@ -264,9 +285,9 @@ export async function fetchOwnedEventItem(
 
     cta: Array.isArray(acf.cta)
       ? acf.cta.map((btn: any) => ({
-          label: btn?.label ?? "",
-          link: btn?.link?.url ?? "",
-        }))
+        label: btn?.label ?? "",
+        link: btn?.link?.url ?? "",
+      }))
       : [],
 
     seo_owned_event: {
@@ -283,8 +304,8 @@ export async function fetchOwnedEventItem(
 
     more_events_ids: Array.isArray(js?.more_events)
       ? js.more_events
-          .map((p: any): number => Number(p?.ID))
-          .filter((n: number) => Number.isFinite(n))
+        .map((p: any): number => Number(p?.ID))
+        .filter((n: number) => Number.isFinite(n))
       : [],
   };
 }

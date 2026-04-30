@@ -116,6 +116,8 @@ export interface OwnedEvent {
   title: string;
   logo: string;
   hero_image: string;
+  video?: string;
+  display_video?: boolean;
 }
 
 export interface OwnedEventItemData {

@@ -79,7 +79,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
           priority
         />
         <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center p-[16px] md:p-[40px]">
-          <HeroTitleFadeIn delay={1} className="text-white uppercase mr-auto">
+          <HeroTitleFadeIn delay={1} className="text-white uppercase mr-auto text-balance">
             {work.title}
           </HeroTitleFadeIn>
         </div>
@@ -181,7 +181,7 @@ export default function SinglePortfolioClient({ work, teasers }: Props) {
           <SubTitleLine title={work.stats_block.sub_title} />
 
           <AnimatedTextLine>
-            <h2 className="max-w-[800px] uppercase mr-auto pt-[32px] md:pt-[116px] pb-[46px] md:pb-[134px] text-blue">
+            <h2 className="max-w-[800px] text-center mx-auto uppercase mr-auto pt-[32px] md:pt-[116px] pb-[46px] md:pb-[134px] text-blue">
               {work.stats_block.title}
             </h2>
           </AnimatedTextLine>

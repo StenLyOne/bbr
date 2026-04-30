@@ -16,6 +16,9 @@ import { fetchOwnedEventsRaw } from "../events";
 import { API_DOMAIN } from "../config";
 import { SeoSettings } from "../seo";
 
+const stripHtml = (value: string) =>
+  value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+
 // маленький чистый хелпер (pure function)
 function buildOwnedEvents(
   ids: number[],
@@ -32,6 +35,11 @@ function buildOwnedEvents(
     events: filtered.map((o) => ({
       name: o.title,
       link: `/our-owned-events/${o.slug}`,
+      headline: o.acf.event_information?.title?.trim() || o.title,
+      description:
+        o.acf.event_information?.text?.trim() ||
+        o.acf.preview?.excerpt?.trim() ||
+        (o.excerpt?.rendered ? stripHtml(o.excerpt.rendered) : ""),
       media: {
         image_src: o.acf.media.hero_image?.url ?? "",
         logo_src: o.acf.media.logo?.url ?? "",
@@ -140,7 +148,6 @@ export async function fetchHomeContent(): Promise<HomeContent> {
   };
 
   const lt = acf.latest || {};
-console.log(lt)
   const latest: LatestData = {
     sub_title: lt.sub_title ?? "",
     instagram_links: Array.isArray(lt.instagram_links)

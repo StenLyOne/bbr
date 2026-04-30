@@ -193,7 +193,7 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 bg-white z-[1021] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none text-blue"
+      className="fixed max-md:pb-20 inset-0 bg-white z-[1021] px-[16px] md:px-[40px] py-[40px] opacity-0 pointer-events-none text-blue"
     >
       <div className="flex flex-col md:justify-end h-full md:items-end md:space-y-6 text-right justify-end gap-28">
         <div className="space-y-[34px] md:space-y-[38px] w-full md:w-auto ">
@@ -331,14 +331,14 @@ export default function MenuOverlay({ isOpen, menuFun }: Prop) {
                 }}
               >
                 {hasItems && (
-                  <div className="flex gap-[30px] overflow-hidden scale-130">
+                  <div className="flex gap-[30px] overflow-hidden">
                     {section.items.map((text, j) => (
                       <p
                         key={text}
                         ref={(el) => {
                           if (sectionRefs) sectionRefs.current[j] = el;
                         }}
-                        className="!font-[600] text-blue hover:text-accent transition-colors duration-300 opacity-0 translate-y-[30px] "
+                        className="!font-[600] text-[24px]! leading-[30px] text-blue hover:text-accent transition-colors duration-300 opacity-0 translate-y-[30px] "
                       >
                         <SmartLink
                           href={`/${text.replace(/\s+/g, "-").toLowerCase()}`}

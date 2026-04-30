@@ -17,7 +17,7 @@ export default function Mission({ data }: { data: any }) {
             </h2>
           </AnimatedTextLines>
           <AnimatedTextLines>
-            <p className="text-balance large md:text-[32px]! md:leading-[40px]! w-full text-center max-w-[1000px]  mx-auto text-blue !lg:font-[28px]">
+            <p className="text-balance large md:text-[32px]! md:leading-[40px]! w-full text-center max-w-[1000px]  mx-auto text-blue ">
               {data.content}
             </p>
           </AnimatedTextLines>
