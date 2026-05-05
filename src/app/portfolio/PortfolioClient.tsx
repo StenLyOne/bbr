@@ -146,7 +146,7 @@ export default function PortfolioClient({ settings, works }: Props) {
       <Header animationsReady={animationsReady} />
       <main
         className={`
-          transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh] 
+          transition-opacity duration-1000 relative w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 md:h-[80vh] 
           flex items-center justify-center px-[16px] md:px-[40px]
           ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >

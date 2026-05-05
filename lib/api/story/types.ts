@@ -21,6 +21,7 @@ export interface OurStoryData {
     sub_title: string;
     title: string;
     content: Array<{
+      title: string;
       date: string;
       description: string;
       media: { image_src: string; alt: string; logo_src: string };

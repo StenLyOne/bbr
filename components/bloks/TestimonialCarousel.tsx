@@ -20,11 +20,37 @@ export default function MoreEvents({ testimonial }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollBy = (dir: "left" | "right") => {
-    const width = containerRef.current?.offsetWidth || 0;
-    if (!containerRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    containerRef.current.scrollBy({
-      left: dir === "right" ? width : -width,
+    const cards = Array.from(container.children) as HTMLElement[];
+    if (!cards.length) return;
+
+    const maxScrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
+    const current = container.scrollLeft;
+    const EPS = 2;
+
+    if (dir === "right") {
+      if (current >= maxScrollLeft - EPS) return;
+
+      const nextCard = cards.find((card) => card.offsetLeft > current + EPS);
+      if (!nextCard) return;
+
+      container.scrollTo({
+        left: Math.min(nextCard.offsetLeft, maxScrollLeft),
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    if (current <= EPS) return;
+
+    const prevCard = [...cards]
+      .reverse()
+      .find((card) => card.offsetLeft < current - EPS);
+
+    container.scrollTo({
+      left: prevCard ? Math.max(prevCard.offsetLeft, 0) : 0,
       behavior: "smooth",
     });
   };
@@ -39,7 +65,7 @@ export default function MoreEvents({ testimonial }: Props) {
           {testimonial.map((ele, i) => (
             <div
               key={i}
-              className={`snap-start shrink-0 bg-blank p-[24px] md:p-[30px] text-blue ${
+              className={`snap-start snap-always shrink-0 bg-blank p-[24px] md:p-[30px] text-blue ${
                 isMobile ? "w-[90vw]" : "w-[calc(33vw-28px)]"
               } flex flex-col gap-[20px]`}
             >

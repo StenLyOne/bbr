@@ -5,6 +5,7 @@ import { gsap, ScrollTrigger } from "../../lib/gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 interface TimelineItem {
+  title: string;
   date: string;
   description: string;
   media: {
@@ -90,7 +91,7 @@ export default function TimelineSection({
         >
           {/* Локальный фон внутри секции */}
 
-          <div className="relative z-10 max-[768px]:gap-40 h-full md:h-[60vh] flex items-center justify-center px-6">
+          <div className="relative z-10 max-[768px]:gap-40 h-full md:h-[70vh] flex items-center justify-center px-6">
             <div className="relative h-full md:h-[70vh] flex items-center max-w-[1000px] w-full">
               {/* Дата + точка */}
               <div className="hidden md:block">
@@ -126,9 +127,14 @@ export default function TimelineSection({
                   </div>
                 )}
                 <div className="space-y-[18px]">
-                  <h3 className="text-center text-blue md:hidden">
+                  <h3 className="text-center text-blue text-[34px] leading-[1.05] font-[900] md:hidden">
                     {item.date}
                   </h3>
+                  {item.title && (
+                    <h3 className="max-md:text-[20px]! max-md:mb-1! text-center md:text-left text-blue text-[20px] md:text-[28px] max-md:leading-[28px]! leading-[1.15] font-[700]">
+                      {item.title}
+                    </h3>
+                  )}
                   <p className="text-blue text-center md:text-left">
                     {item.description}
                   </p>

@@ -105,7 +105,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
       <Header animationsReady={animationsReady} />
       <main
         data-bg="light"
-        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[80vh]  flex items-center justify-center px-[16px] md:px-[40px]
+        className={`w-full max-[1279px]:pt-40 max-[800px]:pb-20 max-[1279px]:pb-40 xl:h-[100vh]  flex items-center justify-center px-[16px] md:px-[40px]
           transition-opacity duration-1000 relative ${
             contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
@@ -228,7 +228,7 @@ export default function PrClient({ content, latestItems }: PrClientProps) {
             >
               <AnimatedStrokeByStroke
                 text={where_we_started.title}
-                className="break-all !text-[42px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
+                className="break-all !text-[42  px] md:!text-[128px] !leading-[60px] md:!leading-[129px] text-center !font-[900] px-[16px] md:px-[40px]"
               />
             </h2>
 

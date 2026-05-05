@@ -59,6 +59,7 @@ export async function fetchOurStoryContent(): Promise<OurStoryData> {
       sub_title: acf.timeline?.sub_title ?? "",
       title: acf.timeline?.title ?? "",
       content: (acf.timeline?.content ?? []).map((item: any) => ({
+        title: item.title ?? "",
         date: item.date ?? "",
         description: item.description ?? "",
         media: {

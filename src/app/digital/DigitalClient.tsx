@@ -11,9 +11,12 @@ import HeroTitleFadeIn from "../../../components/ui/typography/HeroTitleFadeIn";
 import SubTitleLine from "../../../components/ui/typography/SubTitleLine";
 import AnimatedStrokeByStroke from "../../../components/ui/typography/AnimatedStrokeByStroke";
 import MoreEvents from "../../../components/bloks/MoreEvents";
+import TestimonialCarousel from "../../../components/bloks/TestimonialCarousel";
+import Partners from "../../../components/sections/Partners";
 
 import type { DigitalContent } from "../../../lib/api/digital";
 import type { PortfolioItemRaw } from "../../../lib/api/portfolio";
+import Image from "next/image";
 
 interface DigitalClientProps {
   content: DigitalContent & { two_column_title: string };
@@ -30,6 +33,9 @@ export default function DigitalClient({
     two_column_title,
     two_column,
     what_we_offer,
+    cta,
+    testimonial,
+    our_client_network,
     latest_meta,
   } = content;
 
@@ -173,6 +179,22 @@ export default function DigitalClient({
         </button>
       </main>
 
+      <section data-scroll-target className="z-1000 relative">
+        <div className="flex gap-[22px]">
+          <video
+            ref={videoRef}
+            src={communications.video_src}
+            className="w-screen h-[80vh] md:w-full md:h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            disablePictureInPicture
+          />
+        </div>
+      </section>
+
       {/* COMMUNICATIONS */}
       <section
         data-scroll-target
@@ -182,37 +204,51 @@ export default function DigitalClient({
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine color="white" title={communications.sub_title} />
         </div>
-        <div className="pt-[20px] md:pt-[50px] space-y-[90px]">
-          <div className="space-y-[30px] max-w-[787px] px-[16px] md:px-[40px]">
-            <h2>
-              <AnimatedStrokeByStroke text={communications.title} />
-            </h2>
-            <AnimatedTextLine>
-              <p>{communications.description}</p>
-            </AnimatedTextLine>
-          </div>
-          <div className="flex gap-[22px]">
-            <video
-              ref={videoRef}
-              src={communications.video_src}
-              className="w-screen h-[80vh] md:w-full md:h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              disablePictureInPicture
-            />
+        <div className="pt-[20px] md:pt-[100px] px-[16px] md:px-[40px] pb-[90px] md:pb-[150px]">
+          <div className="grid items-center gap-[40px] lg:grid-cols-[1.2fr_1fr]">
+            <div className="space-y-[30px]">
+              <h2>
+                <AnimatedStrokeByStroke text={communications.title} />
+              </h2>
+              <AnimatedTextLine>
+                <p>{communications.description}</p>
+              </AnimatedTextLine>
+
+              {communications.stats.length > 0 && (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 pt-[20px] w-max">
+                  {communications.stats.map((stat, index) => (
+                    <div key={`${stat.label}-${index}`} className="space-y-2">
+                      <p className="!font-[900]  w-max !text-[56px] !leading-[0.95] md:!text-[72px]">
+                        {stat.value}
+                      </p>
+                      <p className="uppercase tracking-[0.02em] text-blank/90">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="w-full flex justify-center lg:justify-end">
+              {communications.image.src && (
+                <img
+                  src={communications.image.src}
+                  alt={communications.image.alt || communications.title}
+                  className="w-full max-w-[520px] h-auto object-contain"
+                />
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ДВОКОЛОНА секција */}
-      <section className="space-y-[100px] text-blank">
+      {/* <section className="space-y-[100px] text-blank">
         <div className="px-[16px] md:px-[40px]">
           <SubTitleLine color="white" title={what_we_offer.sub_title} />
           <div className="flex mt-[40px] md:mt-0 flex-col gap-[70px] md:gap-[130px]">
-            {/* прва два */}
+           
             {two_column.slice(0, 2).map((blk, idx) => (
               <TwoColumnBlock
                 key={idx}
@@ -223,7 +259,7 @@ export default function DigitalClient({
               />
             ))}
 
-            {/* велики наслов */}
+
             <div className="font-[900]  uppercase">
               <AnimatedStrokeByStroke
                 text={two_column_title}
@@ -231,7 +267,7 @@ export default function DigitalClient({
               />
             </div>
 
-            {/* остала два */}
+         
             {two_column.slice(2).map((blk, idx) => (
               <TwoColumnBlock
                 key={idx + 2}
@@ -243,13 +279,13 @@ export default function DigitalClient({
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* GRID секција “What We Offer” */}
-      <section className="px-[16px] md:px-[40px] py-[40px] md:py-[90px] text-blank">
-        <SubTitleLine color="white" title={what_we_offer.sub_title} />
+      <section className="px-[16px] md:px-[40px] py-[0px]! text-blank bg-white">
+        <SubTitleLine color="blue" title={what_we_offer.sub_title} />
         <div className="max-w-[1100px] mx-auto">
-          <h2 className="text-left md:text-center mt-[30px] md:mt-[100px]">
+          <h2 className="text-left md:text-center mt-[30px] md:mt-[100px] text-blue">
             <AnimatedStrokeByStroke text={what_we_offer.title} />
           </h2>
           <div className="grid gap-[60px] md:gap-[100px] my-[90px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -260,34 +296,129 @@ export default function DigitalClient({
                     <img
                       src={blk.icon_src}
                       alt={blk.title}
-                      className=" md:mx-0 max-w-[80px]"
+                      className=" md:mx-0 max-w-[80px] text-blue"
                     />
                   </AnimatedTextLine>
                 )}
-                <h3 className="!text-[19px] text-left mt-[41px] mb-[21px]">
+                <h3 className="!text-[19px] text-left mt-[41px] mb-[21px] text-blue">
                   <AnimatedStrokeByStroke text={blk.title} />
                 </h3>
                 <AnimatedTextLine>
-                  <p className="text-left">{blk.description}</p>
+                  <p className="text-left text-blue">{blk.description}</p>
                 </AnimatedTextLine>
+                {what_we_offer.social_media.length > 0 && (
+                  <div className="mt-[22px] flex items-center gap-[8px]">
+                    {what_we_offer.social_media.map((social, socialIndex) => (
+                      <a
+                        key={`${social.url}-${socialIndex}`}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.alt || "social link"}
+                        className="inline-flex h-[40px] w-[40px] items-center justify-center rounded-full  transition-transform duration-200 hover:scale-105 hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-blank/80"
+                      >
+                        <img
+                          src={social.icon_src}
+                          alt={social.alt || ""}
+                          className="h-[40px] w-[40px] object-contain"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
           <AnimatedTextLine>
-            <p className="large text-center max-w-[936px] md:text-left mb-[100px] mx-auto">
+            {what_we_offer.description && <p className="large text-blue text-center max-w-[936px] md:text-left mb-[100px] mx-auto">
               {what_we_offer.description}
-            </p>
+            </p>}
+
           </AnimatedTextLine>
-          <div className="flex justify-center">
-            <Button
-              text="Let’s Talk"
-              type="button"
-              link="/contact"
-              color="white"
-            />
-          </div>
         </div>
       </section>
+
+      {our_client_network.gallery?.length > 0 && (
+        <section className="px-[16px] md:px-[40px] bg-white pb-10">
+          <SubTitleLine title={our_client_network.sub_title} />
+
+          <div
+            className={`
+              grid gap-8 md:mt-8 py-[50px] justify-items-center
+              ${our_client_network.gallery.length === 1
+                ? "grid-cols-1"
+                : our_client_network.gallery.length === 2
+                  ? "grid-cols-2"
+                  : our_client_network.gallery.length === 3
+                    ? "grid-cols-3"
+                    : "grid-cols-3"
+              }
+              ${our_client_network.gallery.length === 1
+                ? "md:grid-cols-1"
+                : our_client_network.gallery.length === 2
+                  ? "md:grid-cols-2"
+                  : our_client_network.gallery.length === 3
+                    ? "md:grid-cols-3"
+                    : "md:grid-cols-4"
+              }
+            `}
+          >
+            {our_client_network.gallery.map((logo, i) => (
+              <div key={i} className="flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`featured-${i}`}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+
+      {testimonial.testimonials.length > 0 && (
+        <section className="bg-white-gris px-[16px] md:px-[40px]">
+          <SubTitleLine title={testimonial.sub_title} />
+          <div className="pt-[50px] md:pt-[100px] pb-[10px] md:pb-[40px]">
+            {testimonial.title && (
+              <h2 className="mb-[64px] md:mb-[108px] mx-auto text-center text-blue">
+                <AnimatedStrokeByStroke text={testimonial.title} />
+              </h2>
+            )}
+            <TestimonialCarousel testimonial={testimonial.testimonials} />
+          </div>
+        </section>
+      )}
+
+      {(cta.title || cta.description) && (
+        <section className="bg-rouge text-blank px-[16px] md:px-[40px] py-[90px] md:py-[120px]">
+          <div className="mx-auto  text-center">
+            {cta.title && (
+              <h2 className="text-center">
+                <AnimatedStrokeByStroke text={cta.title} className="text-center text-balance" />
+              </h2>
+            )}
+            {cta.description && (
+              <AnimatedTextLine>
+                <p className="large max-md:text-[20px]! text-[24px]! mx-auto mt-[28px] md:mt-[36px] text-balance max-w-[1300px]">
+                  {cta.description}
+                </p>
+              </AnimatedTextLine>
+            )}
+            <div className="flex justify-center mt-15">
+              <Button
+                text="Let’s Talk"
+                type="button"
+                link="/contact"
+                color="white"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* LATEST */}
       <MoreEvents
@@ -317,9 +448,8 @@ const TwoColumnBlock = ({
   reverse = false,
 }: TwoColumnBlockProps) => (
   <div
-    className={`flex flex-col md:flex-row ${
-      reverse ? "md:flex-row-reverse" : ""
-    } items-center justify-between gap-[40px]`}
+    className={`flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""
+      } items-center justify-between gap-[40px]`}
   >
     <div className="w-full md:w-1/2">
       <h2 className="text-[24px] font-[800] mb-[30px] md:mb-[40px]">
