@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.bbr-group.com.au
+
+# Sitemaps
+Sitemap: https://www.bbr-group.com.au/sitemap.xml
