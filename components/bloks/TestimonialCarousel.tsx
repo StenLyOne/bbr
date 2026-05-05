@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { gsap } from "../../lib/gsap";
 
 interface Testimonial {
   description: string;
@@ -27,31 +28,30 @@ export default function MoreEvents({ testimonial }: Props) {
     if (!cards.length) return;
 
     const maxScrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
+    const gap = Number.parseFloat(window.getComputedStyle(container).columnGap || "0") || 0;
+    const step = cards[0].offsetWidth + gap;
     const current = container.scrollLeft;
-    const EPS = 2;
+    const targetRaw = dir === "right" ? current + step : current - step;
+    const target = Math.max(0, Math.min(targetRaw, maxScrollLeft));
 
-    if (dir === "right") {
-      if (current >= maxScrollLeft - EPS) return;
+    if (Math.abs(target - current) < 1) return;
 
-      const nextCard = cards.find((card) => card.offsetLeft > current + EPS);
-      if (!nextCard) return;
+    gsap.killTweensOf(container);
+    const previousSnapType = container.style.scrollSnapType;
+    container.style.scrollSnapType = "none";
 
-      container.scrollTo({
-        left: Math.min(nextCard.offsetLeft, maxScrollLeft),
-        behavior: "smooth",
-      });
-      return;
-    }
+    const restoreSnap = () => {
+      container.style.scrollSnapType = previousSnapType || "x mandatory";
+      container.scrollLeft = target;
+    };
 
-    if (current <= EPS) return;
-
-    const prevCard = [...cards]
-      .reverse()
-      .find((card) => card.offsetLeft < current - EPS);
-
-    container.scrollTo({
-      left: prevCard ? Math.max(prevCard.offsetLeft, 0) : 0,
-      behavior: "smooth",
+    gsap.to(container, {
+      scrollTo: { x: target, autoKill: false },
+      duration: 0.65,
+      ease: "power3.out",
+      overwrite: true,
+      onComplete: restoreSnap,
+      onInterrupt: restoreSnap,
     });
   };
 
@@ -60,7 +60,7 @@ export default function MoreEvents({ testimonial }: Props) {
       <div className="mx-auto ">
         <div
           ref={containerRef}
-          className="transition-all mb-[40px] md:mb-[70px] duration-300 flex gap-[16px] overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+          className="transition-all mb-[40px] md:mb-[70px] duration-300 flex gap-[16px] overflow-x-auto snap-x snap-mandatory no-scrollbar"
         >
           {testimonial.map((ele, i) => (
             <div
@@ -99,7 +99,7 @@ export default function MoreEvents({ testimonial }: Props) {
         flex items-center justify-center
         cursor-pointer
         transition-colors duration-300
-        text-blue}
+        text-blue
    hover:text-[#6276FB]
       `}
             >
@@ -114,7 +114,7 @@ export default function MoreEvents({ testimonial }: Props) {
         flex items-center justify-center
         cursor-pointer
         transition-colors duration-300
-        text-blue}
+        text-blue
     hover:text-[#6276FB]
       `}
             >
