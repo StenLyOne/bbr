@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { gsap } from "../../lib/gsap";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Button from "../ui/buttons/Button";
 import SubTitleLine from "../ui/typography/SubTitleLine";
 
@@ -39,11 +39,76 @@ const FALLBACK_DESCRIPTION =
 
 export default function OwnedEventsDesktop({ data }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [renderedIndex, setRenderedIndex] = useState<number | null>(null);
+  const detailsRef = useRef<HTMLDivElement | null>(null);
+  const detailsContentRef = useRef<HTMLDivElement | null>(null);
 
   const activeEvent = useMemo(
-    () => (activeIndex === null ? null : data.events[activeIndex] ?? null),
-    [activeIndex, data.events]
+    () => (renderedIndex === null ? null : data.events[renderedIndex] ?? null),
+    [renderedIndex, data.events]
   );
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      setRenderedIndex(activeIndex);
+    }
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const details = detailsRef.current;
+    const content = detailsContentRef.current;
+    if (!details) return;
+
+    gsap.killTweensOf(details);
+    if (content) gsap.killTweensOf(content);
+
+    if (activeIndex !== null && renderedIndex !== null) {
+      gsap.set(details, { pointerEvents: "auto" });
+      gsap.fromTo(
+        details,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.45, ease: "power3.out", overwrite: true }
+      );
+      if (content) {
+        gsap.fromTo(
+          content,
+          { y: 24, autoAlpha: 0.7 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.6,
+            ease: "power3.out",
+            overwrite: true,
+          }
+        );
+      }
+      return;
+    }
+
+    if (renderedIndex !== null) {
+      gsap.to(details, {
+        autoAlpha: 0,
+        duration: 0.35,
+        ease: "power2.in",
+        overwrite: true,
+        onComplete: () => {
+          setRenderedIndex(null);
+          gsap.set(details, { pointerEvents: "none" });
+        },
+      });
+      if (content) {
+        gsap.to(content, {
+          y: 16,
+          autoAlpha: 0.75,
+          duration: 0.3,
+          ease: "power2.in",
+          overwrite: true,
+        });
+      }
+    } else {
+      gsap.set(details, { autoAlpha: 0, pointerEvents: "none" });
+    }
+  }, [activeIndex, renderedIndex]);
 
   return (
     <div className="w-full px-4 pb-16 md:px-10 md:pb-24 ">
@@ -104,14 +169,13 @@ export default function OwnedEventsDesktop({ data }: Props) {
         </div>
 
         <div
-          className={`absolute inset-0 w-full h-full  overflow-hidden transition-all duration-300 ${activeEvent
-            ? "max-h-[2200px] opacity-100"
-            : "pointer-events-none max-h-0 opacity-0"
-            }`}
+          ref={detailsRef}
+          className="absolute inset-0 h-full w-full overflow-hidden"
         >
           {activeEvent && (
             <div
               id="owned-event-expanded"
+              ref={detailsContentRef}
               className="relative min-h-[520px] bg-blue md:min-h-[700px] h-full"
             >
               {activeEvent.media.image_src ? (
@@ -184,8 +248,6 @@ export default function OwnedEventsDesktop({ data }: Props) {
                     text="Learn More"
 
                   >
-
-
                   </Button>
                 </div>
               </div>
